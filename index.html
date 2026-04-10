@@ -41,10 +41,7 @@
             color: white;
         }
 
-        .logo-area img {
-            height: 35px;
-            width: auto;
-        }
+        .logo-area img { height: 35px; }
 
         .nav-links {
             list-style: none;
@@ -58,10 +55,7 @@
             text-transform: uppercase;
             font-size: 13px;
             font-weight: 500;
-            transition: 0.3s;
         }
-
-        .nav-links a:hover { opacity: 0.7; }
 
         .apply-btn {
             background-color: #1a1a1a;
@@ -96,106 +90,60 @@
         .hero-content h1 {
             font-size: clamp(40px, 12vw, 80px);
             letter-spacing: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        /* --- ANIMASYONLU SAYAÇ (Flip-Down) --- */
+        /* --- STATİK SAYAÇ (Görseldeki gibi) --- */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: clamp(10px, 2vw, 25px);
-            margin-top: 30px;
-            perspective: 1000px;
+            gap: clamp(10px, 3vw, 30px);
+            margin-top: 20px;
         }
 
-        .time-group {
+        .time-box {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .time-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.8;
+        .time-box .label {
+            font-size: clamp(12px, 2vw, 18px);
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
-        .digit-group {
+        .digit-wrapper {
             display: flex;
-            gap: 4px;
+            gap: 5px;
         }
 
-        .flip-card {
-            position: relative;
-            width: clamp(35px, 6vw, 50px);
+        .digit {
+            background-color: #1a1a1a; /* Görseldeki koyu gri kutular */
+            width: clamp(35px, 6vw, 55px);
             height: clamp(50px, 8vw, 75px);
-            font-size: clamp(28px, 5vw, 44px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(28px, 5vw, 45px);
             font-weight: bold;
-            line-height: clamp(50px, 8vw, 75px);
             border-radius: 6px;
-            background-color: #1a1a1a;
+            position: relative;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
-        .flip-card::before {
-            content: '';
+        /* Ortadaki yatay çizgi detayı */
+        .digit::after {
+            content: "";
             position: absolute;
-            left: 0;
-            top: 50%;
             width: 100%;
             height: 1px;
-            background-color: rgba(255,255,255,0.1);
-            z-index: 10;
+            background: rgba(255,255,255,0.05);
+            top: 50%;
         }
 
-        .card-half {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            overflow: hidden;
-            background-color: inherit;
-            text-align: center;
-            border-radius: 6px;
-        }
-
-        .card-top {
-            top: 0;
-            line-height: clamp(100px, 16vw, 150px);
-        }
-
-        .card-bottom {
-            bottom: 0;
-            line-height: 0;
-        }
-
-        .card-flip {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 50%;
-            background-color: #1a1a1a;
-            text-align: center;
-            backface-visibility: hidden;
-            border-radius: 6px;
-            line-height: clamp(100px, 16vw, 150px);
-            transform-origin: bottom center;
-            z-index: 5;
-        }
-
-        .flipping .card-flip {
-            animation: flipDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        @keyframes flipDown {
-            0% { transform: rotateX(0deg); }
-            100% { transform: rotateX(-180deg); }
-        }
-
-        /* Footer (Görseldeki Gibi) */
+        /* Footer */
         footer {
             background-color: #4a0404;
             padding: 80px 8% 40px 8%;
@@ -205,35 +153,31 @@
         }
 
         .footer-brand img { height: 160px; margin-bottom: 20px; }
-        .footer-brand h2 { font-size: 32px; letter-spacing: 4px; margin-bottom: 5px; }
-        .footer-brand p { font-style: italic; font-size: 14px; opacity: 0.8; }
+        .footer-brand h2 { font-size: 32px; letter-spacing: 4px; }
+        .footer-brand p { font-style: italic; opacity: 0.8; }
 
-        .footer-col h4 { font-size: 13px; opacity: 0.6; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-col h4 { font-size: 13px; opacity: 0.6; margin-bottom: 25px; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; transition: 0.3s; }
-        .footer-col ul li a:hover { opacity: 0.6; }
+        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; }
 
         .social-icons { display: flex; gap: 15px; }
-        .social-icons i { font-size: 20px; color: white; }
+        .social-icons i { font-size: 20px; }
 
         .bottom-bar {
             background-color: #4a0404;
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
-            align-items: center;
             font-size: 11px;
             border-top: 1px solid rgba(255,255,255,0.05);
-            opacity: 0.7;
         }
 
-        /* Mobil Uyumluluk */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             footer { grid-template-columns: 1fr; text-align: center; }
             .social-icons { justify-content: center; }
-            .bottom-bar { flex-direction: column; gap: 10px; }
+            .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
         }
     </style>
 </head>
@@ -246,8 +190,8 @@
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="committees.html">Committees</a></li> <li><a href="#">FAQ</a></li>
+            <li><a href="committees.html">Committees</a></li>
+            <li><a href="#">FAQ</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
         <a href="#" class="apply-btn">Apply Now</a>
@@ -257,33 +201,33 @@
         <div class="hero-content">
             <h1>RAYMUN</h1>
             
-            <div class="countdown" id="countdown">
-                <div class="time-group">
-                    <span class="time-label">Days</span>
-                    <div class="digit-group" id="days-group">
-                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
-                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+            <div class="countdown">
+                <div class="time-box">
+                    <span class="label">Days</span>
+                    <div class="digit-wrapper">
+                        <div class="digit" id="d1">0</div>
+                        <div class="digit" id="d2">0</div>
                     </div>
                 </div>
-                <div class="time-group">
-                    <span class="time-label">Hours</span>
-                    <div class="digit-group" id="hours-group">
-                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
-                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                <div class="time-box">
+                    <span class="label">Hours</span>
+                    <div class="digit-wrapper">
+                        <div class="digit" id="h1">0</div>
+                        <div class="digit" id="h2">0</div>
                     </div>
                 </div>
-                <div class="time-group">
-                    <span class="time-label">Minutes</span>
-                    <div class="digit-group" id="minutes-group">
-                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
-                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                <div class="time-box">
+                    <span class="label">Minutes</span>
+                    <div class="digit-wrapper">
+                        <div class="digit" id="m1">0</div>
+                        <div class="digit" id="m2">0</div>
                     </div>
                 </div>
-                <div class="time-group">
-                    <span class="time-label">Seconds</span>
-                    <div class="digit-group" id="seconds-group">
-                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
-                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                <div class="time-box">
+                    <span class="label">Seconds</span>
+                    <div class="digit-wrapper">
+                        <div class="digit" id="s1">0</div>
+                        <div class="digit" id="s2">0</div>
                     </div>
                 </div>
             </div>
@@ -294,7 +238,8 @@
 
     <footer>
         <div class="footer-brand">
-            <img src="raymunlogo.jpg" alt="Logo"> <h2>RAYMUN2026</h2>
+            <img src="raymunlogo.jpg" alt="Logo">
+            <h2>RAYMUN2026</h2>
             <p>Where vision becomes voice</p>
         </div>
         <div class="footer-col">
@@ -330,55 +275,33 @@
 
     <script>
         const targetDate = new Date("Jun 14, 2026 09:00:00").getTime();
-        const groups = {
-            days: document.getElementById('days-group').querySelectorAll('.flip-card'),
-            hours: document.getElementById('hours-group').querySelectorAll('.flip-card'),
-            minutes: document.getElementById('minutes-group').querySelectorAll('.flip-card'),
-            seconds: document.getElementById('seconds-group').querySelectorAll('.flip-card')
-        };
-        let previousTime = { d: '', h: '', m: '', s: '' };
-
-        function updateDigit(card, newValue) {
-            const top = card.querySelector('.card-top');
-            const bottom = card.querySelector('.card-bottom');
-            const flip = card.querySelector('.card-flip');
-            if (top.innerText === newValue) return;
-            card.classList.add('flipping');
-            flip.innerText = top.innerText;
-            top.innerText = newValue;
-            setTimeout(() => {
-                bottom.innerText = newValue;
-                card.classList.remove('flipping');
-            }, 600);
-        }
-
-        function setGroupValue(groupCards, value) {
-            const paddedValue = value.toString().padStart(2, '0');
-            updateDigit(groupCards[0], paddedValue[0]);
-            updateDigit(groupCards[1], paddedValue[1]);
-        }
 
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
+
             if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "<h2>STARTED</h2>";
+                document.querySelector(".countdown").innerHTML = "STARTED";
                 return;
             }
-            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((distance % (1000 * 60)) / 1000);
 
-            if (previousTime.d !== d) { setGroupValue(groups.days, d); previousTime.d = d; }
-            if (previousTime.h !== h) { setGroupValue(groups.hours, h); previousTime.h = h; }
-            if (previousTime.m !== m) { setGroupValue(groups.minutes, m); previousTime.m = m; }
-            if (previousTime.s !== s) { setGroupValue(groups.seconds, s); previousTime.s = s; }
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            const s = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+
+            document.getElementById("d1").innerText = d[0];
+            document.getElementById("d2").innerText = d[1];
+            document.getElementById("h1").innerText = h[0];
+            document.getElementById("h2").innerText = h[1];
+            document.getElementById("m1").innerText = m[0];
+            document.getElementById("m2").innerText = m[1];
+            document.getElementById("s1").innerText = s[0];
+            document.getElementById("s2").innerText = s[1];
         }
 
+        setInterval(updateCountdown, 1000);
         updateCountdown();
-        const timer = setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
