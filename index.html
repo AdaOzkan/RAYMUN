@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAYFELMUN | Where Vision Becomes Voice</title>
+    <title>RAYMUN '26 | Where Vision Becomes Voice</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Genel Stiller */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #f7f1e3; 
         }
 
         body {
             background-color: #000;
+            color: white;
         }
 
+        /* Navigasyon */
         nav {
-            background-color: #4a0404;
+            background-color: #4a0404; /* Bordo tonu */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -33,8 +35,10 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: bold;
-            letter-spacing: 1px;
+        }
+
+        .logo-area img {
+            height: 40px;
         }
 
         .nav-links {
@@ -44,23 +48,26 @@
         }
 
         .nav-links a {
+            color: white;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .apply-btn {
             background-color: #1a1a1a;
-            padding: 8px 18px;
+            color: white;
+            padding: 10px 20px;
             border-radius: 20px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 14px;
-            border: 1px solid #f7f1e3;
         }
 
+        /* Hero Bölümü */
         .hero {
             height: 100vh;
+            /* Arka plan görseli rayfelmun.jpg olarak güncellendi */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('rayfelmun.jpg') no-repeat center center/cover;
             display: flex;
@@ -70,76 +77,80 @@
         }
 
         .hero-content {
-            background-color: rgba(74, 4, 4, 0.85);
+            background-color: rgba(74, 4, 4, 0.85); /* Şeffaf bordo kutu */
             padding: 50px;
             border-radius: 15px;
             max-width: 800px;
             width: 90%;
-            border: 1px solid rgba(247, 241, 227, 0.2);
         }
 
-        /* Ortadaki RAYFELMUN yazısı rengi */
         .hero-content h1 {
-            font-size: clamp(40px, 8vw, 80px);
+            font-size: 80px;
             letter-spacing: 5px;
             margin-bottom: 20px;
-            color: #2596be; 
         }
 
+        /* Geri Sayım */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
+            font-size: 24px;
             margin-top: 20px;
         }
 
         .time-box span {
             display: block;
-            font-size: clamp(24px, 5vw, 40px);
+            font-size: 40px;
             font-weight: bold;
         }
 
         .slogan {
             font-style: italic;
             margin-top: 40px;
-            opacity: 0.9;
+            opacity: 0.8;
         }
 
+        /* Footer */
         footer {
             background-color: #4a0404;
-            padding: 40px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            padding: 60px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Alt kısımdaki RAYFELMUN'25 özel renklendirme */
-        .footer-logo h2 { 
-            letter-spacing: 2px; 
+        .footer-col h4 {
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        
-        .footer-logo .quote { color: #000000; } /* Siyah tırnak */
-        .footer-logo .year { color: #2596be; }  /* Turkuaz 25 */
 
-        .footer-links ul { list-style: none; }
-        .footer-links a { text-decoration: none; font-size: 14px; opacity: 0.8; }
-
-        .social-icons a {
-            font-size: 28px;
-            transition: transform 0.3s;
-            display: inline-block;
+        .footer-col ul {
+            list-style: none;
         }
-        
-        .social-icons a:hover { transform: scale(1.1); }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .social-icons i {
+            font-size: 24px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
 
         .copyright {
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             background-color: #350303;
-            font-size: 11px;
-            opacity: 0.6;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -147,12 +158,16 @@
 
     <nav>
         <div class="logo-area">
-            <span>RAYFELMUN</span>
+            <img src="https://via.placeholder.com/40" alt="Logo">
+            <span>RAYMUN</span>
         </div>
         <ul class="nav-links">
             <li><a href="#">About</a></li>
+            <li><a href="#">Our Team</a></li>
             <li><a href="#">Committees</a></li>
-            <li><a href="#">Team</a></li>
+            <li><a href="#">Venue</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">FAQ</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
         <a href="#" class="apply-btn">Apply Now</a>
@@ -160,45 +175,59 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>RAYFELMUN</h1>
+            <h1>RAYMUN</h1>
             <div class="countdown">
-                <div class="time-box"><span id="days">00</span> Days</div>
-                <div class="time-box"><span id="hours">00</span> Hours</div>
-                <div class="time-box"><span id="minutes">00</span> Mins</div>
-                <div class="time-box"><span id="seconds">00</span> Secs</div>
+                <div class="time-box"><span id="days">00</span> DAYS</div>
+                <div class="time-box"><span id="hours">00</span> HOURS</div>
+                <div class="time-box"><span id="minutes">00</span> MINUTES</div>
+                <div class="time-box"><span id="seconds">00</span> SECONDS</div>
             </div>
             <p class="slogan">Where vision becomes voice</p>
         </div>
     </section>
 
     <footer>
-        <div class="footer-logo">
-            <h2>RAYFELMUN<span class="quote">'</span><span class="year">25</span></h2>
-            <p style="font-size: 12px; opacity: 0.7;">14 June 2026</p>
+        <div class="footer-col">
+            <img src="https://via.placeholder.com/100" alt="Footer Logo" style="margin-bottom:20px">
+            <h2>RAYMUN'25</h2>
+            <p>Where vision becomes voice</p>
         </div>
-        
-        <div class="footer-links">
+        <div class="footer-col">
+            <h4>CONFERENCE</h4>
             <ul>
-                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Committees</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Apply</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>LEGAL</h4>
+            <ul>
+                <li><a href="#">Terms and Conditions</a></li>
                 <li><a href="#">Privacy Policy</a></li>
             </ul>
         </div>
-
-        <div class="social-icons">
-            <a href="https://www.instagram.com/rayfelmun/" target="_blank">
+        <div class="footer-col">
+            <h4>SOCIAL</h4>
+            <div class="social-icons">
                 <i class="fab fa-instagram"></i>
-            </a>
+                <i class="fab fa-tiktok"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
         </div>
     </footer>
 
     <div class="copyright">
-        © rayfelmun2026 | Developed by Ada Özkan
+        © raymun2026 | Crafted with ❤️ by Ada Özkan
     </div>
 
     <script>
+        // Hedef Tarih: 14 Haziran 2026 (Önceki adımdan güncel)
         const targetDate = new Date("Jun 14, 2026 09:00:00").getTime();
 
-        setInterval(function() {
+        const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
@@ -211,6 +240,12 @@
             document.getElementById("hours").innerText = h < 10 ? "0"+h : h;
             document.getElementById("minutes").innerText = m < 10 ? "0"+m : m;
             document.getElementById("seconds").innerText = s < 10 ? "0"+s : s;
+
+            // Süre dolduğunda yapılacaklar
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector(".countdown").innerHTML = "CONFERENCE STARTED!";
+            }
         }, 1000);
     </script>
 </body>
