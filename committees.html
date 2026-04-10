@@ -47,14 +47,15 @@
         .committee-card {
             position: relative;
             height: 280px;
-            border-radius: 15px;
+            border-radius: 20px; /* Biraz daha yuvarlak köşeler */
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Çok hafif sınır */
             transition: all 0.4s ease;
             text-decoration: none;
             color: white;
+            cursor: pointer;
         }
-        .committee-card:hover { transform: translateY(-10px); border-color: #4a0404; }
+        .committee-card:hover { transform: translateY(-8px); border-color: rgba(74, 4, 4, 0.5); }
 
         /* Arkaplan Görseli */
         .card-image {
@@ -64,20 +65,30 @@
             background-position: center;
             z-index: 1;
             transition: transform 0.6s ease;
-            filter: brightness(0.6); /* Yazıların okunması için karartma */
+            filter: brightness(0.7); /* Temel parlaklık */
         }
-        .committee-card:hover .card-image { transform: scale(1.1); filter: brightness(0.8); }
+        .committee-card:hover .card-image { transform: scale(1.05); filter: brightness(0.9); }
 
+        /* === YENİ VE GELİŞTİRİLMİŞ RENK KATMANI (OVERLAY) === */
         .card-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+            /* Referans görseldeki gibi: alt siyah, üst karanlık bordo */
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 15%, rgba(45, 10, 10, 0.6) 100%);
             z-index: 2;
+            mix-blend-mode: multiply; /* Fotoğrafın detaylarını korumak için */
+            opacity: 0.9;
+            transition: opacity 0.4s ease;
         }
+        .committee-card:hover .card-overlay { opacity: 0.7; }
 
-        .card-content { position: relative; z-index: 3; padding: 25px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-top { display: flex; justify-content: space-between; font-size: 12px; letter-spacing: 2px; opacity: 0.8; }
-        .card-title { font-size: 32px; font-weight: bold; margin: 0; text-transform: uppercase; }
+        .card-content { position: relative; z-index: 3; padding: 30px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+        
+        /* Kart Üst Bilgileri */
+        .card-top { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: 3px; opacity: 0.7; text-transform: uppercase; }
+        
+        /* Kart Başlığı */
+        .card-title { font-size: 36px; font-weight: bold; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
 
         /* Footer */
         footer { background-color: #4a0404; padding: 80px 8% 40px 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 0.8fr; gap: 40px; }
