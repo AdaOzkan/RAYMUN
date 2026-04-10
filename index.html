@@ -17,6 +17,7 @@
         body {
             background-color: #000;
             color: white;
+            overflow-x: hidden; /* Yatay kaymayı engeller */
         }
 
         /* Navigasyon */
@@ -38,7 +39,7 @@
         }
 
         .logo-area img {
-            height: 40px;
+            height: 35px;
             width: auto;
         }
 
@@ -52,17 +53,18 @@
             color: white;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
         }
 
         .apply-btn {
             background-color: #1a1a1a;
             color: white;
-            padding: 10px 20px;
+            padding: 8px 18px;
             border-radius: 20px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 13px;
         }
 
         /* Hero Bölümü */
@@ -74,18 +76,19 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 0 20px;
         }
 
         .hero-content {
             background-color: rgba(74, 4, 4, 0.85);
-            padding: 50px;
+            padding: clamp(20px, 5vw, 50px);
             border-radius: 15px;
             max-width: 800px;
-            width: 90%;
+            width: 100%;
         }
 
         .hero-content h1 {
-            font-size: 80px;
+            font-size: clamp(40px, 12vw, 80px); /* Mobilde küçülür, masaüstünde büyür */
             letter-spacing: 5px;
             margin-bottom: 20px;
         }
@@ -94,39 +97,37 @@
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            font-size: 24px;
+            flex-wrap: wrap; /* Mobilde sığmazsa alt satıra geçer */
+            gap: clamp(10px, 3vw, 30px);
+            font-size: clamp(12px, 3vw, 24px);
             margin-top: 20px;
         }
 
         .time-box span {
             display: block;
-            font-size: 40px;
+            font-size: clamp(24px, 6vw, 40px);
             font-weight: bold;
         }
 
-        /* Footer Düzenlemesi (Görseldeki Gibi) */
+        /* Footer */
         footer {
             background-color: #4a0404;
-            padding: 80px 8% 40px 8%;
+            padding: 60px 8% 40px 8%;
             display: grid;
-            /* Logo için geniş alan, linkler için orta alanlar, sosyal için dar alan */
             grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
-            gap: 20px;
+            gap: 40px;
             align-items: start;
         }
 
-        .footer-brand {
-            text-align: left;
-        }
+        .footer-brand { text-align: left; }
 
         .footer-brand img {
-            height: 180px; /* Görseldeki gibi büyük logo */
+            height: clamp(100px, 15vw, 180px);
             margin-bottom: 20px;
         }
 
         .footer-brand h2 {
-            font-size: 36px;
+            font-size: clamp(24px, 5vw, 36px);
             letter-spacing: 4px;
             margin-bottom: 5px;
             font-weight: 500;
@@ -134,59 +135,79 @@
 
         .footer-brand p {
             font-style: italic;
-            font-size: 15px;
+            font-size: 14px;
             opacity: 0.9;
         }
 
         .footer-col h4 {
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 2px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: #ffffff;
             opacity: 0.7;
             text-transform: uppercase;
         }
 
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 12px;
-        }
-
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
         .footer-col ul li a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             transition: 0.3s;
         }
 
-        .footer-col ul li a:hover {
-            opacity: 0.6;
-        }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons i { font-size: 22px; color: white; }
 
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-icons i {
-            font-size: 22px;
-            color: white;
-            cursor: pointer;
-        }
-
-        /* Alt Alt Bilgi (Copyright) */
         .bottom-bar {
             background-color: #4a0404;
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
+            font-size: 11px;
             opacity: 0.7;
             border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- MOBİL AYARLAR (Responsive) --- */
+
+        @media (max-width: 992px) {
+            footer {
+                grid-template-columns: 1fr 1.2fr; /* Tabletlerde 2 sütun */
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column; /* Mobilde menüyü dikey yap */
+                gap: 15px;
+                padding: 15px 2%;
+            }
+
+            .nav-links {
+                gap: 10px;
+                flex-wrap: wrap; /* Linkler sığmazsa aşağı iner */
+                justify-content: center;
+            }
+
+            .nav-links a { font-size: 11px; }
+
+            footer {
+                grid-template-columns: 1fr; /* Mobilde her şey alt alta */
+                text-align: center;
+                gap: 50px;
+            }
+
+            .footer-brand { text-align: center; }
+            .social-icons { justify-content: center; }
+
+            .bottom-bar {
+                flex-direction: column; /* Alt bar alt alta */
+                gap: 10px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -199,9 +220,8 @@
         </div>
         <ul class="nav-links">
             <li><a href="#">About</a></li>
-            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Team</a></li>
             <li><a href="#">Committees</a></li>
-            <li><a href="#">Venue</a></li>
             <li><a href="#">Calendar</a></li>
             <li><a href="#">FAQ</a></li>
             <li><a href="#">Contact</a></li>
@@ -218,7 +238,7 @@
                 <div class="time-box"><span id="minutes">00</span> MINUTES</div>
                 <div class="time-box"><span id="seconds">00</span> SECONDS</div>
             </div>
-            <p class="slogan" style="font-style: italic; margin-top: 40px; opacity: 0.8;">Where vision becomes voice</p>
+            <p style="font-style: italic; margin-top: 30px; opacity: 0.8;">Where vision becomes voice</p>
         </div>
     </section>
 
@@ -235,7 +255,6 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Committees</a></li>
-                <li><a href="#">Our Team</a></li>
                 <li><a href="#">Apply</a></li>
                 <li><a href="#">FAQ</a></li>
                 <li><a href="#">Contact</a></li>
@@ -262,7 +281,7 @@
 
     <div class="bottom-bar">
         <div>© raymun2026</div>
-        <div>Crafted with ❤️ by Ada Özkan </div>
+        <div>Crafted with ❤️ by Ada Özkan</div>
     </div>
 
     <script>
@@ -270,6 +289,7 @@
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
+
             const d = Math.floor(distance / (1000 * 60 * 60 * 24));
             const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
