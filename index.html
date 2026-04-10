@@ -21,7 +21,7 @@
 
         /* Navigasyon */
         nav {
-            background-color: #4a0404; /* Bordo tonu */
+            background-color: #4a0404;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -37,10 +37,9 @@
             gap: 10px;
         }
 
-        /* Üst logo boyutu */
         .logo-area img {
             height: 40px;
-            width: auto; /* Oranı korumak için */
+            width: auto;
         }
 
         .nav-links {
@@ -78,7 +77,7 @@
         }
 
         .hero-content {
-            background-color: rgba(74, 4, 4, 0.85); /* Şeffaf bordo kutu */
+            background-color: rgba(74, 4, 4, 0.85);
             padding: 50px;
             border-radius: 15px;
             max-width: 800px;
@@ -106,26 +105,46 @@
             font-weight: bold;
         }
 
-        .slogan {
-            font-style: italic;
-            margin-top: 40px;
-            opacity: 0.8;
-        }
-
-        /* Footer */
+        /* Footer Düzenlemesi (Görseldeki Gibi) */
         footer {
             background-color: #4a0404;
-            padding: 60px 10%;
+            padding: 80px 8% 40px 8%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            /* Logo için geniş alan, linkler için orta alanlar, sosyal için dar alan */
+            grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .footer-brand {
+            text-align: left;
+        }
+
+        .footer-brand img {
+            height: 180px; /* Görseldeki gibi büyük logo */
+            margin-bottom: 20px;
+        }
+
+        .footer-brand h2 {
+            font-size: 36px;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .footer-brand p {
+            font-style: italic;
+            font-size: 15px;
+            opacity: 0.9;
         }
 
         .footer-col h4 {
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            font-size: 14px;
             letter-spacing: 2px;
+            margin-bottom: 25px;
+            color: #ffffff;
+            opacity: 0.7;
+            text-transform: uppercase;
         }
 
         .footer-col ul {
@@ -133,49 +152,41 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-col ul li a {
-            color: #ccc;
+            color: #ffffff;
             text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            opacity: 0.6;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
         }
 
         .social-icons i {
-            font-size: 24px;
-            margin-right: 15px;
+            font-size: 22px;
+            color: white;
             cursor: pointer;
         }
 
-        .copyright {
-            text-align: center;
-            padding: 20px;
-            background-color: #350303;
+        /* Alt Alt Bilgi (Copyright) */
+        .bottom-bar {
+            background-color: #4a0404;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 12px;
-        }
-
-        /* Büyük ve ortalanmış footer logosu için yeni stiller */
-        .footer-logo-container {
-            grid-column: 1 / -1; /* Tüm genişliği kapla */
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo-container img {
-            height: 150px; /* Logoyu büyüt */
-            width: auto;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo-container h2 {
-            font-size: 32px; /* Başlığı büyüt */
-            margin-bottom: 10px;
-        }
-
-        .footer-logo-container p {
-            font-size: 18px; /* Sloganı büyüt */
-            font-style: italic;
-            opacity: 0.8;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
     </style>
 </head>
@@ -207,14 +218,14 @@
                 <div class="time-box"><span id="minutes">00</span> MINUTES</div>
                 <div class="time-box"><span id="seconds">00</span> SECONDS</div>
             </div>
-            <p class="slogan">Where vision becomes voice</p>
+            <p class="slogan" style="font-style: italic; margin-top: 40px; opacity: 0.8;">Where vision becomes voice</p>
         </div>
     </section>
 
     <footer>
-        <div class="footer-logo-container">
-            <img src="raymunlogo.jpg" alt="RAYMUN Footer Logo">
-            <h2>IAFLMUN'25</h2>
+        <div class="footer-brand">
+            <img src="raymunlogo.jpg" alt="RAYMUN Logo">
+            <h2>IAFLMUN25</h2>
             <p>Where vision becomes voice</p>
         </div>
 
@@ -226,8 +237,11 @@
                 <li><a href="#">Committees</a></li>
                 <li><a href="#">Our Team</a></li>
                 <li><a href="#">Apply</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </div>
+
         <div class="footer-col">
             <h4>LEGAL</h4>
             <ul>
@@ -235,6 +249,7 @@
                 <li><a href="#">Privacy Policy</a></li>
             </ul>
         </div>
+
         <div class="footer-col">
             <h4>SOCIAL</h4>
             <div class="social-icons">
@@ -245,18 +260,16 @@
         </div>
     </footer>
 
-    <div class="copyright">
-        © raymun2026 | Crafted with ❤️ by Ada Özkan
+    <div class="bottom-bar">
+        <div>© iaflmun2025</div>
+        <div>Crafted with ❤️ by Furkan Turhan</div>
     </div>
 
     <script>
-        // Hedef Tarih: 14 Haziran 2026
         const targetDate = new Date("Jun 14, 2026 09:00:00").getTime();
-
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
-
             const d = Math.floor(distance / (1000 * 60 * 60 * 24));
             const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -267,7 +280,6 @@
             document.getElementById("minutes").innerText = m < 10 ? "0"+m : m;
             document.getElementById("seconds").innerText = s < 10 ? "0"+s : s;
 
-            // Süre dolduğunda yapılacaklar
             if (distance < 0) {
                 clearInterval(timer);
                 document.querySelector(".countdown").innerHTML = "CONFERENCE STARTED!";
