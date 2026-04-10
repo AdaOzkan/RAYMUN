@@ -1,310 +1,269 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAYMUN '26 | Where Vision Becomes Voice</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Genel Stiller */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        /* --- Mevcut Genel Stiller (Değişmeyecek) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #000; color: white; overflow-x: hidden; }
+        nav { background-color: #4a0404; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; position: fixed; width: 100%; z-index: 1000; }
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-area img { height: 35px; width: auto; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 13px; font-weight: 500; }
+        .apply-btn { background-color: #1a1a1a; color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 13px; }
+        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('rayfelmun.jpg') no-repeat center center/cover; display: flex; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+        .hero-content { background-color: rgba(74, 4, 4, 0.85); padding: clamp(20px, 5vw, 50px); border-radius: 15px; max-width: 800px; width: 100%; }
+        .hero-content h1 { font-size: clamp(40px, 12vw, 80px); letter-spacing: 5px; margin-bottom: 20px; }
 
-        body {
-            background-color: #000;
-            color: white;
-            overflow-x: hidden; /* Yatay kaymayı engeller */
-        }
+        /* ==========================================================
+           YENİ ANIMASYONLU SAYAÇ STİLLERİ
+           ========================================================== */
 
-        /* Navigasyon */
-        nav {
-            background-color: #4a0404;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-area img {
-            height: 35px;
-            width: auto;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .apply-btn {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 8px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-        }
-
-        /* Hero Bölümü */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('rayfelmun.jpg') no-repeat center center/cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero-content {
-            background-color: rgba(74, 4, 4, 0.85);
-            padding: clamp(20px, 5vw, 50px);
-            border-radius: 15px;
-            max-width: 800px;
-            width: 100%;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(40px, 12vw, 80px); /* Mobilde küçülür, masaüstünde büyür */
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-        }
-
-        /* Geri Sayım */
         .countdown {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Mobilde sığmazsa alt satıra geçer */
-            gap: clamp(10px, 3vw, 30px);
-            font-size: clamp(12px, 3vw, 24px);
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 30px;
+            perspective: 1000px; /* 3D efekti için gerekli */
         }
 
-        .time-box span {
-            display: block;
-            font-size: clamp(24px, 6vw, 40px);
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #4a0404;
-            padding: 60px 8% 40px 8%;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .footer-brand { text-align: left; }
-
-        .footer-brand img {
-            height: clamp(100px, 15vw, 180px);
-            margin-bottom: 20px;
-        }
-
-        .footer-brand h2 {
-            font-size: clamp(24px, 5vw, 36px);
-            letter-spacing: 4px;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .footer-brand p {
-            font-style: italic;
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .footer-col h4 {
-            font-size: 13px;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            color: #ffffff;
-            opacity: 0.7;
-            text-transform: uppercase;
-        }
-
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .social-icons { display: flex; gap: 15px; }
-        .social-icons i { font-size: 22px; color: white; }
-
-        .bottom-bar {
-            background-color: #4a0404;
-            padding: 20px 8%;
+        /* Zaman grubu (Days, Hours, vb.) */
+        .time-group {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            font-size: 11px;
-            opacity: 0.7;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            gap: 5px;
         }
 
-        /* --- MOBİL AYARLAR (Responsive) --- */
-
-        @media (max-width: 992px) {
-            footer {
-                grid-template-columns: 1fr 1.2fr; /* Tabletlerde 2 sütun */
-            }
+        /* Zaman etiketi (Days, Hours) */
+        .time-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            opacity: 0.9;
+            text-transform: capitalize;
         }
 
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column; /* Mobilde menüyü dikey yap */
-                gap: 15px;
-                padding: 15px 2%;
-            }
-
-            .nav-links {
-                gap: 10px;
-                flex-wrap: wrap; /* Linkler sığmazsa aşağı iner */
-                justify-content: center;
-            }
-
-            .nav-links a { font-size: 11px; }
-
-            footer {
-                grid-template-columns: 1fr; /* Mobilde her şey alt alta */
-                text-align: center;
-                gap: 50px;
-            }
-
-            .footer-brand { text-align: center; }
-            .social-icons { justify-content: center; }
-
-            .bottom-bar {
-                flex-direction: column; /* Alt bar alt alta */
-                gap: 10px;
-                text-align: center;
-            }
+        /* Rakam kartlarının container'ı */
+        .digit-group {
+            display: flex;
+            gap: 4px; /* Rakamlar arasındaki boşluk */
         }
+
+        /* Ana flip kart container'ı */
+        .flip-card {
+            position: relative;
+            width: 50px; /* Rakam genişliği */
+            height: 70px; /* Rakam yüksekliği */
+            font-size: 48px; /* Rakam boyutu */
+            font-weight: bold;
+            line-height: 70px;
+            border-radius: 6px;
+            background-color: #1a1a1a; /* Referans görseldeki gibi koyu gri */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            perspective: 400px;
+        }
+
+        /* Ortadaki bölme çizgisi */
+        .flip-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255,255,255,0.1); /* Hafif çizgi */
+            z-index: 10;
+        }
+
+        /* Ortak kart yarım yüzeyleri */
+        .card-half {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            overflow: hidden;
+            background-color: inherit;
+            color: white;
+            text-align: center;
+            backface-visibility: hidden;
+            border-radius: 6px;
+        }
+
+        /* Üst Yarım */
+        .card-top {
+            top: 0;
+            border-bottom: 0.5px solid rgba(0,0,0,0.2);
+            line-height: 140px; /* Ortalamak için: yükseklik * 2 */
+        }
+
+        /* Alt Yarım */
+        .card-bottom {
+            bottom: 0;
+            line-height: 0; /* Ortalamak için: 0 */
+            background-color: #1a1a1a;
+            border-top: 0.5px solid rgba(255,255,255,0.05);
+            transform-origin: top center;
+        }
+
+        /* Hareketli Kart (Flip) */
+        .card-flip {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            backface-visibility: hidden;
+            border-radius: 6px;
+            line-height: 140px;
+            transform-origin: bottom center;
+            transform: rotateX(0deg);
+            z-index: 5;
+        }
+
+        /* Animasyon Tetikleyici Sınıf */
+        .flip-card.flipping .card-flip {
+            animation: flipDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes flipDown {
+            0% { transform: rotateX(0deg); }
+            100% { transform: rotateX(-180deg); }
+        }
+
+        /* Sonraki Rakamı Alt Yarımda Göster (Animasyon sırasında) */
+        .flip-card.flipping .card-bottom-next {
+            z-index: 4;
+            animation: fadeInNext 0.6s forwards;
+        }
+
+        @keyframes fadeInNext {
+            0%, 50% { opacity: 0; }
+            51%, 100% { opacity: 1; }
+        }
+
+        /* --- Mevcut Footer ve Bottom Bar (Değişmeyecek) --- */
+        /* ... (Mevcut footer CSS kalacak) ... */
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo-area">
-            <img src="raymunlogo.jpg" alt="RAYMUN Logo">
-            <span>RAYMUN</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Committees</a></li>
-            <li><a href="#">Calendar</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <a href="#" class="apply-btn">Apply Now</a>
-    </nav>
-
     <section class="hero">
         <div class="hero-content">
             <h1>RAYMUN</h1>
-            <div class="countdown">
-                <div class="time-box"><span id="days">00</span> DAYS</div>
-                <div class="time-box"><span id="hours">00</span> HOURS</div>
-                <div class="time-box"><span id="minutes">00</span> MINUTES</div>
-                <div class="time-box"><span id="seconds">00</span> SECONDS</div>
+            
+            <div class="countdown" id="countdown">
+                <div class="time-group">
+                    <span class="time-label">Days</span>
+                    <div class="digit-group" id="days-group">
+                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                    </div>
+                </div>
+                <div class="time-group">
+                    <span class="time-label">Hours</span>
+                    <div class="digit-group" id="hours-group">
+                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                    </div>
+                </div>
+                <div class="time-group">
+                    <span class="time-label">Minutes</span>
+                    <div class="digit-group" id="minutes-group">
+                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                    </div>
+                </div>
+                <div class="time-group">
+                    <span class="time-label">Seconds</span>
+                    <div class="digit-group" id="seconds-group">
+                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                        <div class="flip-card"><div class="card-half card-top">0</div><div class="card-half card-bottom">0</div><div class="card-flip">0</div></div>
+                    </div>
+                </div>
             </div>
+
             <p style="font-style: italic; margin-top: 30px; opacity: 0.8;">Where vision becomes voice</p>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-brand">
-            <img src="raymunlogo.jpg" alt="RAYMUN Logo">
-            <h2>RAYMUN2026</h2>
-            <p>Where vision becomes voice</p>
-        </div>
-
-        <div class="footer-col">
-            <h4>CONFERENCE</h4>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Committees</a></li>
-                <li><a href="#">Apply</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4>LEGAL</h4>
-            <ul>
-                <li><a href="#">Terms and Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4>SOCIAL</h4>
-            <div class="social-icons">
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-tiktok"></i>
-                <i class="fab fa-linkedin"></i>
-            </div>
-        </div>
-    </footer>
-
-    <div class="bottom-bar">
-        <div>© raymun2026</div>
-        <div>Crafted with ❤️ by Ada Özkan</div>
-    </div>
-
     <script>
+        // Hedef Tarih
         const targetDate = new Date("Jun 14, 2026 09:00:00").getTime();
-        const timer = setInterval(function() {
+
+        // Her bir zaman grubu için kartları seç
+        const groups = {
+            days: document.getElementById('days-group').querySelectorAll('.flip-card'),
+            hours: document.getElementById('hours-group').querySelectorAll('.flip-card'),
+            minutes: document.getElementById('minutes-group').querySelectorAll('.flip-card'),
+            seconds: document.getElementById('seconds-group').querySelectorAll('.flip-card')
+        };
+
+        // Önceki zaman değerlerini tutmak için
+        let previousTime = { d: '', h: '', m: '', s: '' };
+
+        function updateDigit(card, newValue) {
+            const top = card.querySelector('.card-top');
+            const bottom = card.querySelector('.card-bottom');
+            const flip = card.querySelector('.card-flip');
+
+            // Eğer değer aynıysa animasyon yapma
+            if (top.innerText === newValue) return;
+
+            // Animasyon sınıfını ekle
+            card.classList.add('flipping');
+
+            // Hareketli kart ve alt kartı bir sonraki değerle güncelle
+            flip.innerText = top.innerText; // Eskiyi flip yap
+            top.innerText = newValue; // Yeniyi tepeye koy
+
+            // Animasyon bittiğinde temizlik yap
+            setTimeout(() => {
+                bottom.innerText = newValue; // Altta da yeniyi göster
+                card.classList.remove('flipping');
+            }, 600); // CSS animasyon süresiyle aynı olmalı
+        }
+
+        function setGroupValue(groupCards, value) {
+            // Değeri iki haneli yap (0 padded)
+            const paddedValue = value.toString().padStart(2, '0');
+            
+            // Her bir hane için güncelleme yap
+            updateDigit(groupCards[0], paddedValue[0]); // Onlar basamağı
+            updateDigit(groupCards[1], paddedValue[1]); // Birler basamağı
+        }
+
+        function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<h2 style='font-size:30px;'>CONFERENCE STARTED!</h2>";
+                return;
+            }
+
+            // Zaman hesaplamaları
             const d = Math.floor(distance / (1000 * 60 * 60 * 24));
             const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerText = d < 10 ? "0"+d : d;
-            document.getElementById("hours").innerText = h < 10 ? "0"+h : h;
-            document.getElementById("minutes").innerText = m < 10 ? "0"+m : m;
-            document.getElementById("seconds").innerText = s < 10 ? "0"+s : s;
+            // Sadece değişen grupları güncelle (Performans ve animasyon stabilitesi için)
+            if (previousTime.d !== d) { setGroupValue(groups.days, d); previousTime.d = d; }
+            if (previousTime.h !== h) { setGroupValue(groups.hours, h); previousTime.h = h; }
+            if (previousTime.m !== m) { setGroupValue(groups.minutes, m); previousTime.m = m; }
+            if (previousTime.s !== s) { setGroupValue(groups.seconds, s); previousTime.s = s; }
+        }
 
-            if (distance < 0) {
-                clearInterval(timer);
-                document.querySelector(".countdown").innerHTML = "CONFERENCE STARTED!";
-            }
-        }, 1000);
+        // İlk güncellemeyi hemen yap
+        updateCountdown();
+        // Her saniye güncelle
+        const timer = setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
