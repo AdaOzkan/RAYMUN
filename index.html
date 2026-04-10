@@ -3,22 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAYMUN '26 | Where Vision Becomes Voice</title>
+    <title>IAFLMUN '25 | Where Vision Becomes Voice</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Genel Stiller */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #000;
-            color: white;
-            overflow-x: hidden;
-        }
+        /* Genel Temeller */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #000; color: white; overflow-x: hidden; }
 
         /* Navigasyon */
         nav {
@@ -32,163 +22,76 @@
             z-index: 1000;
             top: 0;
         }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: white;
-        }
-
+        .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
         .logo-area img { height: 35px; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 13px; font-weight: 500; }
+        .apply-btn { background-color: #1a1a1a; color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 13px; }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 13px;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover { opacity: 0.7; }
-
-        .apply-btn {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 8px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-        }
-
-        /* Hero Bölümü */
+        /* Hero & Statik Sayaç */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('rayfelmun.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('rayfelmun.jpg') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
         }
+        .hero-content { background-color: rgba(74, 4, 4, 0.85); padding: 50px; border-radius: 15px; width: 90%; max-width: 800px; }
+        .hero-content h1 { font-size: clamp(40px, 10vw, 80px); letter-spacing: 5px; margin-bottom: 20px; }
 
-        .hero-content {
-            background-color: rgba(74, 4, 4, 0.85);
-            padding: clamp(30px, 5vw, 60px);
-            border-radius: 15px;
-            max-width: 900px;
-            width: 100%;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(40px, 12vw, 80px);
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-        }
-
-        /* Statik Sayaç */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: clamp(10px, 3vw, 30px);
-            margin-top: 20px;
-        }
-
-        .time-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .time-box .label {
-            font-size: clamp(12px, 2vw, 18px);
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .digit-wrapper {
-            display: flex;
-            gap: 5px;
-        }
-
+        .countdown { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        .time-box { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .time-box span { font-size: 14px; font-weight: 600; text-transform: uppercase; }
+        .digit-container { display: flex; gap: 4px; }
         .digit {
-            background-color: #1a1a1a;
-            width: clamp(35px, 6vw, 55px);
-            height: clamp(50px, 8vw, 75px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: clamp(28px, 5vw, 45px);
-            font-weight: bold;
-            border-radius: 6px;
+            background-color: #1a1a1a; /* Görseldeki koyu gri kutular */
+            width: 45px; height: 65px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 36px; font-weight: bold; border-radius: 4px;
             position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
+        .digit::after { content: ""; position: absolute; width: 100%; height: 1px; background: rgba(255,255,255,0.1); top: 50%; }
 
-        .digit::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            background: rgba(255,255,255,0.05);
-            top: 50%;
-        }
-
-        /* Footer */
+        /* Footer (Görseldeki yeni yapı) */
         footer {
             background-color: #4a0404;
             padding: 80px 8% 40px 8%;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr; /* 4 sütunlu yapı */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
             gap: 40px;
         }
+        .footer-left { flex: 1; min-width: 250px; }
+        .footer-left img { height: 120px; margin-bottom: 20px; }
+        .footer-left h2 { font-size: 28px; letter-spacing: 3px; }
+        .footer-left p { font-style: italic; opacity: 0.8; font-size: 14px; }
 
-        .footer-brand img { height: 160px; margin-bottom: 20px; }
-        .footer-brand h2 { font-size: 32px; letter-spacing: 4px; margin-bottom: 5px; }
-        .footer-brand p { font-style: italic; opacity: 0.8; font-size: 14px; }
-
-        .footer-col h4 { font-size: 13px; opacity: 0.6; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-nav { display: flex; gap: 60px; flex: 2; justify-content: flex-end; }
+        .footer-col h4 { font-size: 14px; opacity: 0.6; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: white; text-decoration: none; font-size: 15px; transition: 0.3s; }
         .footer-col ul li a:hover { opacity: 0.6; }
 
-        .social-icons { display: flex; gap: 15px; margin-top: 10px; }
-        .social-icons i { font-size: 20px; color: white; cursor: pointer; transition: 0.3s; }
-        .social-icons i:hover { opacity: 0.6; }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { color: white; font-size: 24px; text-decoration: none; }
 
         .bottom-bar {
             background-color: #4a0404;
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-size: 11px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
             opacity: 0.7;
         }
 
-        /* Mobil Uyumluluk */
-        @media (max-width: 992px) {
-            footer { grid-template-columns: 1fr 1fr; }
-        }
-
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            footer { grid-template-columns: 1fr; text-align: center; }
-            .social-icons { justify-content: center; }
-            .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
+            .footer-nav { flex-direction: column; gap: 30px; align-items: center; text-align: center; }
+            .footer-left { text-align: center; margin-bottom: 20px; }
+            footer { justify-content: center; }
         }
     </style>
 </head>
@@ -197,92 +100,95 @@
     <nav>
         <a href="index.html" class="logo-area">
             <img src="raymunlogo.jpg" alt="Logo">
-            <span>RAYMUN</span>
+            <span>IAFLMUN</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="team.html">Our Team</a></li> <li><a href="committees.html">Committees</a></li>
-            <li><a href="#contact">Contact</a></li> </ul>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="committees.html">Committees</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
         <a href="#" class="apply-btn">Apply Now</a>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>RAYMUN</h1>
-            
+            <h1>IAFLMUN '25</h1>
             <div class="countdown">
                 <div class="time-box">
-                    <span class="label">Days</span>
-                    <div class="digit-wrapper">
+                    <span>Days</span>
+                    <div class="digit-container">
                         <div class="digit" id="d1">0</div>
                         <div class="digit" id="d2">0</div>
                     </div>
                 </div>
                 <div class="time-box">
-                    <span class="label">Hours</span>
-                    <div class="digit-wrapper">
+                    <span>Hours</span>
+                    <div class="digit-container">
                         <div class="digit" id="h1">0</div>
                         <div class="digit" id="h2">0</div>
                     </div>
                 </div>
                 <div class="time-box">
-                    <span class="label">Minutes</span>
-                    <div class="digit-wrapper">
+                    <span>Minutes</span>
+                    <div class="digit-container">
                         <div class="digit" id="m1">0</div>
                         <div class="digit" id="m2">0</div>
                     </div>
                 </div>
                 <div class="time-box">
-                    <span class="label">Seconds</span>
-                    <div class="digit-wrapper">
+                    <span>Seconds</span>
+                    <div class="digit-container">
                         <div class="digit" id="s1">0</div>
                         <div class="digit" id="s2">0</div>
                     </div>
                 </div>
             </div>
-
-            <p style="font-style: italic; margin-top: 40px; opacity: 0.8;">Where vision becomes voice</p>
+            <p style="margin-top: 30px; font-style: italic;">Where vision becomes voice</p>
         </div>
     </section>
 
     <footer id="contact">
-        <div class="footer-brand">
+        <div class="footer-left">
             <img src="raymunlogo.jpg" alt="Logo">
-            <h2>RAYMUN2026</h2>
+            <h2>IAFLMUN25</h2>
             <p>Where vision becomes voice</p>
         </div>
-        
-        <div class="footer-col">
-            <h4>CONFERENCE</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="committees.html">Committees</a></li>
-                <li><a href="team.html">Our Team</a></li>
-                <li><a href="#">Apply</a></li>
-            </ul>
-        </div>
 
-        <div class="footer-col">
-            <h4>CONTACT US</h4> <ul>
-                <li><a href="mailto:info@raymun.org"><i class="fas fa-envelope"></i> info@raymun.org</a></li>
-                <li><a href="#"><i class="fas fa-map-marker-alt"></i> Istanbul, Turkey</a></li>
-                <li><a href="https://instagram.com/iaflmun" target="_blank">Instagram DM</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4>SOCIAL MEDIA</h4>
-            <div class="social-icons">
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-tiktok"></i>
-                <i class="fab fa-linkedin"></i>
+        <div class="footer-nav">
+            <div class="footer-col">
+                <h4>CONFERENCE</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="committees.html">Committees</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="#">Apply</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>LEGAL</h4>
+                <ul>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>SOCIAL</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
     <div class="bottom-bar">
-        <div>© raymun2026</div>
-        <div>Crafted with ❤️ by Ada Özkan</div>
+        <div>© iaflmun2025</div>
+        <div>Crafted with ❤️ by Furkan Turhan</div>
     </div>
 
     <script>
@@ -290,17 +196,14 @@
 
         function updateCountdown() {
             const now = new Date().getTime();
-            const distance = targetDate - now;
+            const gap = targetDate - now;
 
-            if (distance < 0) {
-                document.querySelector(".countdown").innerHTML = "STARTED";
-                return;
-            }
+            if (gap < 0) return;
 
-            const d = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-            const s = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            const d = Math.floor(gap / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            const s = Math.floor((gap % (1000 * 60)) / 1000).toString().padStart(2, '0');
 
             document.getElementById("d1").innerText = d[0];
             document.getElementById("d2").innerText = d[1];
