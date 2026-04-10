@@ -153,6 +153,30 @@
             background-color: #350303;
             font-size: 12px;
         }
+
+        /* Büyük ve ortalanmış footer logosu için yeni stiller */
+        .footer-logo-container {
+            grid-column: 1 / -1; /* Tüm genişliği kapla */
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo-container img {
+            height: 150px; /* Logoyu büyüt */
+            width: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-container h2 {
+            font-size: 32px; /* Başlığı büyüt */
+            margin-bottom: 10px;
+        }
+
+        .footer-logo-container p {
+            font-size: 18px; /* Sloganı büyüt */
+            font-style: italic;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -188,11 +212,12 @@
     </section>
 
     <footer>
-        <div class="footer-col">
-            <img src="raymunlogo.jpg" alt="RAYMUN Footer Logo" style="height: 80px; width: auto; margin-bottom:20px">
-            <h2>RAYMUN'26</h2>
+        <div class="footer-logo-container">
+            <img src="raymunlogo.jpg" alt="RAYMUN Footer Logo">
+            <h2>IAFLMUN'25</h2>
             <p>Where vision becomes voice</p>
         </div>
+
         <div class="footer-col">
             <h4>CONFERENCE</h4>
             <ul>
