@@ -39,7 +39,7 @@
         .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 13px; font-weight: 500; }
         .apply-btn { background-color: #1a1a1a; color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 13px; }
 
-        /* Venue İçerik Alanı */
+        /* İçerik Alanı */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -57,13 +57,13 @@
         }
 
         .venue-title {
-            font-size: clamp(30px, 5vw, 50px);
+            font-size: clamp(30px, 5vw, 45px);
             color: #222;
             margin-bottom: 40px;
             font-weight: 500;
         }
 
-        /* Konum Kartı (Bordo Oval Kart) */
+        /* Konum Kartı */
         .location-card {
             background-color: #4a0404;
             color: white;
@@ -74,22 +74,23 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .location-card h2 { font-size: 28px; margin-bottom: 10px; }
+        .location-card h2 { font-size: 26px; margin-bottom: 10px; }
         .location-card p { font-size: 16px; opacity: 0.9; }
 
-        /* Harita Alanı (Görseldeki gibi odaklanmış) */
+        /* Harita Alanı (Görseldeki gibi bilgi kutucuklu simülasyon) */
         .map-wrapper {
             background: white;
             padding: 15px;
             border-radius: 40px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             margin-bottom: 40px;
+            position: relative;
             overflow: hidden;
         }
 
         .map-container iframe {
             width: 100%;
-            height: 500px;
+            height: 550px;
             border: 0;
             border-radius: 30px;
         }
@@ -101,15 +102,14 @@
             border-radius: 40px;
             text-align: left;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
-        .info-card h3 { color: #4a0404; font-size: 22px; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .info-group { margin-bottom: 20px; }
+        .info-card h3 { color: #4a0404; font-size: 22px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .info-group { margin-bottom: 15px; }
         .info-group strong { display: block; color: #4a0404; margin-bottom: 5px; }
-        .info-group p { color: #555; line-height: 1.6; }
 
-        /* Footer */
+        /* --- FOOTER (Görseldeki Tam Düzen) --- */
         footer {
             background-color: #4a0404;
             color: white;
@@ -121,26 +121,28 @@
         }
 
         .footer-brand { text-align: left; }
-        .footer-brand img { height: 120px; margin-bottom: 20px; }
-        .footer-brand h2 { font-size: 32px; letter-spacing: 4px; font-weight: 500; }
-        .footer-brand p { font-style: italic; font-size: 14px; opacity: 0.8; margin-top: 5px; }
+        .footer-brand img { height: 100px; margin-bottom: 20px; }
+        .footer-brand h2 { font-size: 28px; letter-spacing: 3px; font-weight: 600; }
+        .footer-brand p { font-style: italic; font-size: 14px; opacity: 0.8; }
 
-        .footer-col h4 { font-size: 13px; letter-spacing: 2px; margin-bottom: 20px; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+        .footer-col h4 { font-size: 13px; letter-spacing: 2px; margin-bottom: 20px; color: rgba(255,255,255,0.6); text-transform: uppercase; }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li { margin-bottom: 10px; }
         .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .footer-col ul li a:hover { opacity: 0.7; }
 
-        .social-icons { display: flex; gap: 20px; }
-        .social-icons a { color: white; font-size: 24px; text-decoration: none; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a { color: white; font-size: 22px; }
 
         .bottom-bar {
-            background-color: #310303;
-            padding: 15px 8%;
+            background-color: #4a0404;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 11px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.5);
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         @media (max-width: 768px) {
@@ -161,7 +163,6 @@
         </div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#">About</a></li>
             <li><a href="committees.html">Committees</a></li> 
             <li><a href="venue.html">Venue</a></li>
             <li><a href="faq.html">FAQ</a></li>
@@ -176,16 +177,15 @@
 
         <div class="location-card">
             <h2>Lüleburgaz Ramazan Yaman Fen Lisesi</h2>
-            <p>Hürriyet, Eski İstasyon Cd. No:49, 39750 Lüleburgaz/Kırklareli</p>
+            <p>Sevgi, Selami Şaşmaz Cd. No:19 D:17, 39750 Lüleburgaz/Kırklareli</p>
         </div>
 
         <div class="map-wrapper">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.183491410293!2d27.35520847656649!3d41.41355419437142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b325da0678450f%3A0x48577ecaa4243e90!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1712845000000!5m2!1str!2str" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.413217436034!2d27.345869276556535!3d41.40858567129657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b3a5da0678450f%3A0x48577eca34243e90!2sRamazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1712850000000!5m2!1str!2str" 
                     allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
+                    loading="lazy">
                 </iframe>
             </div>
         </div>
@@ -193,12 +193,12 @@
         <div class="info-card">
             <h3>Public Transportation</h3>
             <div class="info-group">
-                <strong>Town Center:</strong>
-                <p>The school is conveniently located near the city center, just a 10-minute walk from the main square.</p>
+                <strong>Minibus (Dolmuş):</strong>
+                <p>Line 1 and Line 3 minibuses pass through the school district regularly.</p>
             </div>
             <div class="info-group">
-                <strong>Local Access:</strong>
-                <p>City minibuses (Line 1) pass through the street frequently.</p>
+                <strong>Walking:</strong>
+                <p>Located in the heart of Lüleburgaz, easily accessible from the town center within 10 minutes.</p>
             </div>
         </div>
     </div>
@@ -209,14 +209,19 @@
             <h2>RAYMUN2026</h2>
             <p>Where vision becomes voice</p>
         </div>
+
         <div class="footer-col">
             <h4>CONFERENCE</h4>
             <ul>
                 <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
                 <li><a href="committees.html">Committees</a></li>
+                <li><a href="#">Apply</a></li>
                 <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </div>
+
         <div class="footer-col">
             <h4>LEGAL</h4>
             <ul>
@@ -224,6 +229,7 @@
                 <li><a href="#">Privacy Policy</a></li>
             </ul>
         </div>
+
         <div class="footer-col">
             <h4>SOCIAL</h4>
             <div class="social-icons">
