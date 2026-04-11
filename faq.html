@@ -6,7 +6,7 @@
     <title>FAQ | RAYMUN '26</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Genel Stiller ve Renk Paleti (Ana sayfa ile uyumlu) */
+        /* Genel Stiller */
         * {
             margin: 0;
             padding: 0;
@@ -15,12 +15,12 @@
         }
 
         body {
-            background-color: #fdf5f0; /* Görseldeki hafif krem rengi arka plan */
-            color: #4a0404; /* Ana bordo rengi */
+            background-color: #fdf5f0; 
+            color: #4a0404;
             overflow-x: hidden;
         }
 
-        /* Navigasyon (Aynen korundu) */
+        /* Navigasyon */
         nav {
             background-color: #4a0404;
             display: flex;
@@ -66,7 +66,7 @@
             font-size: 13px;
         }
 
-        /* FAQ Bölümü Stilleri */
+        /* FAQ Bölümü */
         .faq-section {
             padding: 150px 10% 80px 10%;
             max-width: 1000px;
@@ -94,7 +94,7 @@
             color: #333;
         }
 
-        /* Akordiyon Konteynırı */
+        /* AKORDİYON & ANİMASYON STİLLERİ */
         .accordion {
             text-align: left;
         }
@@ -105,7 +105,7 @@
             margin-bottom: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             overflow: hidden;
-            transition: 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .faq-question {
@@ -116,34 +116,48 @@
             cursor: pointer;
             font-weight: 600;
             font-size: 17px;
+            position: relative;
+            background: white;
+            z-index: 2;
         }
 
         .faq-answer {
-            padding: 0 35px 25px 35px;
-            display: none; /* Başlangıçta gizli */
+            max-height: 0; /* Başlangıçta gizli */
+            overflow: hidden;
+            padding: 0 35px; /* Dikey padding başlangıçta 0 */
             line-height: 1.6;
             color: #555;
             font-size: 15px;
+            opacity: 0;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        padding 0.4s ease, 
+                        opacity 0.3s ease;
+        }
+
+        /* Aktif Durum Efektleri */
+        .faq-item.active {
+            box-shadow: 0 10px 30px rgba(74, 4, 4, 0.1);
+            transform: translateY(-3px);
         }
 
         .faq-item.active .faq-answer {
-            display: block;
+            max-height: 500px; /* İçeriğin sığacağı kadar büyük bir değer */
+            padding: 5px 35px 30px 35px;
+            opacity: 1;
         }
 
-        .faq-item.active {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
+        /* İkon Animasyonu */
         .icon {
             font-size: 18px;
-            transition: 0.3s;
+            color: #4a0404;
+            transition: transform 0.4s ease;
         }
 
         .faq-item.active .icon {
             transform: rotate(45deg); /* Artıyı çarpı yapar */
         }
 
-        /* Footer (Ana sayfa ile aynı) */
+        /* Footer */
         footer {
             background-color: #4a0404;
             padding: 60px 8% 40px 8%;
@@ -175,7 +189,8 @@
         @media (max-width: 768px) {
             footer { grid-template-columns: 1fr; text-align: center; }
             .social-icons { justify-content: center; }
-            nav { flex-direction: column; }
+            nav { flex-direction: column; padding: 15px 2%; }
+            .nav-links { gap: 10px; margin: 10px 0; }
         }
     </style>
 </head>
@@ -190,7 +205,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="committees.html">Committees</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
         <a href="#" class="apply-btn">Apply Now</a>
@@ -324,15 +339,16 @@
     </div>
 
     <script>
-        // Akordiyonun çalışmasını sağlayan JS
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentElement;
                 
-                // Diğer açık olanları kapatmak istersen bu kısmı kullanabilirsin:
-                // document.querySelectorAll('.faq-item').forEach(i => {
-                //    if(i !== item) i.classList.remove('active');
-                // });
+                // İsteğe bağlı: Sadece bir tanesinin açık kalmasını istiyorsan alttaki satırları aktifleştir
+                /*
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    if(i !== item) i.classList.remove('active');
+                });
+                */
 
                 item.classList.toggle('active');
             });
