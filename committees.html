@@ -16,7 +16,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 8%;
+            padding: 18px 5%;
             position: fixed;
             width: 100%;
             top: 0;
@@ -28,14 +28,14 @@
         .logo-area img { height: 40px; width: auto; filter: brightness(1.2); }
         .logo-area span { font-weight: 600; letter-spacing: 2px; font-size: 18px; text-transform: uppercase; }
 
-        .nav-links { list-style: none; display: flex; gap: 30px; align-items: center; }
+        .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
         .nav-links a { 
             color: white; 
             text-decoration: none; 
             text-transform: uppercase; 
-            font-size: 12px; 
+            font-size: 11px; 
             font-weight: 600; 
-            letter-spacing: 1.5px; 
+            letter-spacing: 1.2px; 
             opacity: 0.8; 
             transition: 0.3s ease; 
         }
@@ -44,11 +44,11 @@
         .apply-btn { 
             background-color: #1a1a1a; 
             color: white; 
-            padding: 10px 25px; 
-            border-radius: 25px; 
+            padding: 8px 20px; 
+            border-radius: 20px; 
             text-decoration: none; 
             font-weight: 700; 
-            font-size: 12px; 
+            font-size: 11px; 
             text-transform: uppercase;
             letter-spacing: 1px;
             border: 1px solid rgba(255,255,255,0.1);
@@ -56,7 +56,7 @@
         }
         .apply-btn:hover { background-color: white; color: black; transform: translateY(-2px); }
 
-        /* Başlık Bölümü - Görseldeki 'Committees' Estetiği */
+        /* Başlık Bölümü */
         .page-header { 
             padding: 180px 5% 60px 5%; 
             text-align: center; 
@@ -101,7 +101,6 @@
         }
         .committee-card:hover { transform: translateY(-10px); border-color: #4a0404; }
 
-        /* Arkaplan Görseli */
         .card-image {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -124,7 +123,7 @@
         .card-top { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: 3px; opacity: 0.7; }
         .card-title { font-size: 36px; font-weight: bold; margin: 0; text-transform: uppercase; }
 
-        /* === MODAL (BİLGİ KARTI) === */
+        /* MODAL */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.9);
@@ -183,11 +182,17 @@
         
         .bottom-bar { background-color: #4a0404; padding: 25px 8%; display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.8; }
 
+        @media (max-width: 992px) {
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 9px; }
+        }
+
         @media (max-width: 768px) {
             .committees-container { grid-template-columns: 1fr; }
             footer { grid-template-columns: 1fr; text-align: center; }
             .social-icons { justify-content: center; }
             .modal-title { font-size: 36px; }
+            .nav-links { display: none; } /* Mobile menu toggle would go here */
         }
     </style>
 </head>
@@ -199,12 +204,15 @@
             <span>RAYMUN</span>
         </a>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="team.html">Team</a></li>
             <li><a href="committees.html">Committees</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Apply Now</a></li>
+            <li><a href="venue.html">Venue</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
-        <a href="#" class="apply-btn">Contact</a>
+        <a href="#" class="apply-btn">Apply Now</a>
     </nav>
 
     <header class="page-header">
@@ -294,9 +302,10 @@
             <h4>CONFERENCE</h4>
             <ul>
                 <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="committees.html">Committees</a></li>
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="faq.html">FAQ</a></li>
             </ul>
         </div>
         <div class="footer-col">
