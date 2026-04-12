@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* Navigasyon */
+        /* Navigasyon - Geliştirilmiş ve Mobil Uyumlu */
         nav {
             background-color: #4a0404;
             display: flex;
@@ -33,11 +33,41 @@
             top: 0;
         }
 
-        .logo-area { display: flex; align-items: center; gap: 10px; color: white; }
+        .logo-area { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; z-index: 1001; }
         .logo-area img { height: 35px; width: auto; }
-        .nav-links { list-style: none; display: flex; gap: 20px; }
-        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 13px; font-weight: 500; }
-        .apply-btn { background-color: #1a1a1a; color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 13px; }
+        .logo-area span { font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+
+        .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
+        .nav-links a { 
+            color: white; 
+            text-decoration: none; 
+            text-transform: uppercase; 
+            font-size: 11px; 
+            font-weight: 600; 
+            letter-spacing: 1.2px;
+            opacity: 0.9;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { opacity: 1; color: #ff9999; }
+
+        .mobile-menu-icon {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .apply-btn { 
+            background-color: #1a1a1a; 
+            color: white; 
+            padding: 8px 18px; 
+            border-radius: 20px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 11px; 
+            text-transform: uppercase;
+        }
 
         /* İçerik Alanı */
         .container {
@@ -145,30 +175,55 @@
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
+        /* Tablet ve Mobil Uyumluluk */
+        @media (max-width: 1024px) {
+            .nav-links { 
+                position: fixed;
+                top: 0; right: -100%;
+                height: 100vh; width: 75%;
+                background: #4a0404;
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s ease;
+                z-index: 1000;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 18px; }
+            .mobile-menu-icon { display: block; }
+            .apply-btn { margin-top: 20px; font-size: 16px; }
+        }
+
         @media (max-width: 768px) {
             footer { grid-template-columns: 1fr; text-align: center; }
             .footer-brand { text-align: center; }
             .social-icons { justify-content: center; }
             .bottom-bar { flex-direction: column; gap: 10px; }
-            .location-card { border-radius: 30px; }
+            .location-card { border-radius: 30px; padding: 25px; }
+            .container { padding-top: 100px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-area">
+        <a href="index.html" class="logo-area">
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
             <span>RAYMUN</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="committees.html">Committees</a></li> 
+        </a>
+
+        <i class="fas fa-bars mobile-menu-icon" onclick="toggleMenu()"></i>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="about.html">About</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="committees.html">Committees</a></li>
             <li><a href="venue.html">Venue</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
             <li><a href="faq.html">FAQ</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" class="apply-btn">Apply Now</a></li>
         </ul>
-        <a href="#" class="apply-btn">Apply Now</a>
     </nav>
 
     <div class="container">
@@ -183,7 +238,7 @@
         <div class="map-wrapper">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.3546743126815!2d27.34270737666244!3d41.39493847129929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b395da0678450f%3A0x48577ecaca243e90!2sRamazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1713192000000!5m2!1str!2str" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.6726678280034!2d27.351651876495394!3d41.40292797129759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b490f846f90377%3A0xe7a5c7a0c8428574!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
                     allowfullscreen="" 
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
@@ -215,11 +270,11 @@
             <h4>CONFERENCE</h4>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="committees.html">Committees</a></li>
-                <li><a href="#">Apply</a></li>
+                <li><a href="team.html">Our Team</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
 
@@ -246,5 +301,27 @@
         <div>Crafted with ❤️ by Ada Özkan</div>
     </div>
 
+    <script>
+        // Mobil Menü Fonksiyonu
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+            
+            const icon = document.querySelector('.mobile-menu-icon');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        }
+
+        // Linklere tıklandığında menüyü kapat
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+                document.querySelector('.mobile-menu-icon').classList.replace('fa-times', 'fa-bars');
+            });
+        });
+    </script>
 </body>
 </html>
