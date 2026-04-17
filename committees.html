@@ -10,7 +10,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #0b0101; color: white; line-height: 1.6; overflow-x: hidden; }
 
-        /* Navigasyon Bölümü */
+        /* Navigasyon (Bozulmadı) */
         nav {
             background: linear-gradient(to bottom, #4a0404 0%, #2a0202 100%);
             display: flex;
@@ -22,115 +22,59 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
         .logo-area { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
         .logo-area img { height: 40px; }
         .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
-        .nav-links a { color: white; text-decoration: none; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.8; }
+        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 11px; font-weight: 600; letter-spacing: 1.2px; opacity: 0.8; }
         .apply-btn { background-color: #1a1a1a; padding: 8px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
 
-        /* Başlık */
+        /* Başlık Bölümü */
         .page-header { padding: 180px 5% 60px 5%; text-align: center; }
         .page-header h2 { font-size: clamp(40px, 7vw, 68px); font-weight: 700; background: linear-gradient(to bottom, #ffffff 50%, #888888 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* Komite Kartları Grid */
-        .committees-container {
-            max-width: 1200px;
-            margin: 0 auto 100px auto;
-            padding: 0 5%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
+        /* Grid Sistemi */
+        .committees-container { max-width: 1200px; margin: 0 auto 100px auto; padding: 0 5%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
 
-        .committee-card {
-            position: relative;
-            height: 280px;
-            border-radius: 25px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.4s ease;
-            cursor: pointer;
-        }
-
-        .card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; opacity: 0.9; }
+        /* Kart ve Renk Efektleri */
+        .committee-card { position: relative; height: 280px; border-radius: 25px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; transition: 0.4s; }
+        .card-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; }
+        .card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; opacity: 0.85; }
         
-        /* Renk Tanımlamaları */
-        .disec-theme { background-color: #781414; }
-        .who-theme { background-color: #3d7761; }
-        .undc-theme { background-color: #8c6b3d; }
-        .unsc-theme { background-color: #b85c38; }
-        .jcc-theme { background-color: #6a1e55; }
+        /* Renk Kodları Uygulaması */
+        .disec-effect .card-overlay { background: #781414; }
+        .who-effect .card-overlay { background: #3d7761; }
+        .undc-effect .card-overlay { background: #8c6b3d; }
+        .unsc-effect .card-overlay { background: #b85c38; }
+        .jcc-effect .card-overlay { background: #6a1e55; }
 
         .card-content { position: relative; z-index: 3; padding: 30px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-title { font-size: 36px; font-weight: bold; text-transform: uppercase; }
+        .card-top { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; letter-spacing: 2px; }
+        .card-title { font-size: 42px; font-weight: 800; }
 
-        /* --- MODAL (POP-UP) TASARIMI --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            backdrop-filter: blur(10px);
-        }
-
-        .modal-card {
-            width: 90%;
-            max-width: 800px;
-            max-height: 85vh;
-            border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .modal-body {
-            padding: 40px;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255,255,255,0.2) transparent;
-        }
-
-        .modal-header-info { display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: 600; letter-spacing: 2px; opacity: 0.8; font-size: 14px; }
-        .modal-title { font-size: 48px; font-weight: 800; margin-bottom: 10px; line-height: 1; }
-        .modal-topic { font-size: 18px; font-weight: 500; margin-bottom: 25px; opacity: 0.9; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
-        .modal-desc-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; }
-        .modal-text { font-size: 15px; line-height: 1.8; opacity: 0.85; text-align: justify; margin-bottom: 30px; }
+        /* Modal Tasarımı (Görsellerdeki Yapıya Göre) */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(5px); }
+        .modal-card { width: 90%; max-width: 800px; height: 85vh; border-radius: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
         
-        .modal-close { position: absolute; top: 25px; right: 25px; font-size: 24px; cursor: pointer; z-index: 10; transition: 0.3s; }
+        .modal-content-scroll { padding: 50px; overflow-y: auto; height: 100%; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
+        
+        .modal-header-info { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 14px; font-weight: 600; letter-spacing: 2px; opacity: 0.8; }
+        .modal-title { font-size: 56px; font-weight: 800; margin-bottom: 10px; }
+        .modal-agenda { font-size: 18px; margin-bottom: 40px; line-height: 1.4; font-weight: 500; }
+        .modal-section-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+        .modal-body-text { font-size: 16px; line-height: 1.7; opacity: 0.9; text-align: justify; margin-bottom: 30px; }
+        
+        .study-guide-btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; border-radius: 15px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: white; text-decoration: none; font-weight: 600; width: fit-content; transition: 0.3s; }
+        .study-guide-btn:hover { background: rgba(255,255,255,0.1); }
+        
+        .modal-close { position: absolute; top: 30px; right: 40px; font-size: 24px; cursor: pointer; z-index: 10; transition: 0.3s; }
         .modal-close:hover { transform: rotate(90deg); }
 
-        .view-guide-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 15px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        .view-guide-btn:hover { background: white; color: black; }
-
-        /* Footer */
-        footer { background-color: #4a0404; padding: 80px 8% 40px 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
-        .footer-logo { font-size: 32px; font-weight: bold; margin-bottom: 10px; }
-        .social-icons { display: flex; gap: 20px; font-size: 24px; }
-
-        @media (max-width: 768px) {
-            .committees-container { grid-template-columns: 1fr; }
-            footer { grid-template-columns: 1fr; text-align: center; }
-            .social-icons { justify-content: center; }
-        }
+        /* Footer (Bozulmadı) */
+        footer { background-color: #4a0404; padding: 80px 8% 40px 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 0.8fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-brand img { height: 120px; margin-bottom: 20px; }
+        .bottom-bar { background-color: #4a0404; padding: 25px 8%; display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
@@ -141,9 +85,7 @@
             <span>RAYMUN</span>
         </a>
         <ul class="nav-links">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Committees</a></li>
+            <li><a href="#">About</a></li><li><a href="#">Team</a></li><li><a href="#">Committees</a></li><li><a href="#">Venue</a></li><li><a href="#">Calendar</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li>
             <li><a href="#" class="apply-btn">Apply Now</a></li>
         </ul>
     </nav>
@@ -153,58 +95,59 @@
     </header>
 
     <main class="committees-container">
-        <div class="committee-card disec-theme" onclick="openModal('DISEC', 'GA - 1', '#781414', 'Establishing International Legal Norms for AI in Armed Conflict', 'The Disarmament and International Security Committee (DISEC) is the First Committee of the UN General Assembly. It deals with disarmament, global challenges, and threats to peace that affect the international community. In the era of rapid technological advancement, DISEC plays a crucial role in regulating modern warfare tools, including autonomous weapons and AI systems, to ensure they align with international humanitarian law.')">
+        <div class="committee-card disec-effect" onclick="openModal('DISEC', 'GA-1', '#781414', 'Establishing International Legal Norms for Artificial Intelligence in Armed Conflict', 'The Disarmament and International Security Committee (GA-1 DISEC) is the First Committee of the United Nations General Assembly. It deals with disarmament, global challenges, and threats to peace that affect the international community. <br><br>As technology evolves, the prevalence of Artificial Intelligence increases day by day. This situation raises critical questions regarding conflict norms and human rights. In this committee, delegates will work on establishing legal frameworks to ensure AI usage in warfare remains within the bounds of international humanitarian law.')">
+            <div class="card-image" style="background-image: url('disec.jpg');"></div>
+            <div class="card-overlay"></div>
             <div class="card-content">
-                <div class="modal-header-info"><span>GA - 1</span><span>IAFLMUN</span></div>
+                <div class="card-top"><span>GA - 1</span><span>IAFLMUN</span></div>
                 <h3 class="card-title">DISEC</h3>
             </div>
         </div>
 
-        <div class="committee-card who-theme" onclick="openModal('WHO', 'GA - 2', '#3d7761', 'Global Healthcare Equity and Pandemic Preparedness', 'The World Health Organization (WHO) is a specialized agency of the United Nations responsible for international public health. This committee focuses on building resilient health systems across borders, ensuring equitable access to life-saving vaccines, and establishing protocols for future global health emergencies. Delegates will navigate the complex intersection of national sovereignty and collective global health security.')">
+        <div class="committee-card unsc-effect" onclick="openModal('LEGAL', 'GA-6', '#b85c38', 'International Legal Standards on Human Germline Genetic Modification in Embryos', 'The UN General Assembly Sixth Committee is the primary forum for the consideration of legal questions in the General Assembly. Established in 1947, it serves as a major pillar of the international legal system.<br><br>The topics range from treaty law to state responsibility and protection of civilians. In RAYMUN 2026, the Legal Committee will dive into the complex ethical and legal boundaries of human germline genetic modification, seeking common ground for international obligations.')">
+            <div class="card-image" style="background-image: url('legal.jpg');"></div>
+            <div class="card-overlay"></div>
             <div class="card-content">
-                <div class="modal-header-info"><span>GA - 2</span><span>IAFLMUN</span></div>
+                <div class="card-top"><span>GA - 6</span><span>IAFLMUN</span></div>
+                <h3 class="card-title">LEGAL</h3>
+            </div>
+        </div>
+
+        <div class="committee-card who-effect" onclick="openModal('WHO', 'GA-2', '#3d7761', 'Global Health Equity and Pandemic Preparedness', 'The World Health Organization (WHO) committee focuses on international public health and coordinating responses to global health emergencies. Delegates will address the disparities in healthcare access and develop strategies for sustainable health systems worldwide.')">
+            <div class="card-image" style="background-image: url('who.jpg');"></div>
+            <div class="card-overlay"></div>
+            <div class="card-content">
+                <div class="card-top"><span>GA - 2</span><span>IAFLMUN</span></div>
                 <h3 class="card-title">WHO</h3>
             </div>
         </div>
 
-        <div class="committee-card undc-theme" onclick="openModal('UNDC', 'SPECIAL', '#8c6b3d', 'Nuclear Non-Proliferation and Regional Stability', 'The United Nations Disarmament Commission (UNDC) was established as a deliberative body with the mandate to consider and make recommendations on various problems in the field of disarmament. The committee focuses on creating long-term frameworks for reducing nuclear stockpiles and preventing the weaponization of outer space, fostering trust between major world powers.')">
+        <div class="committee-card undc-effect" onclick="openModal('UNDC', 'SPECIAL', '#8c6b3d', 'Disarmament of Non-State Actors in Volatile Regions', 'The United Nations Disarmament Commission (UNDC) specializes in creating recommendations for global disarmament. This session focuses on the proliferation of small arms among non-state actors and the impact on regional stability.')">
+            <div class="card-image" style="background-image: url('undc.jpg');"></div>
+            <div class="card-overlay"></div>
             <div class="card-content">
-                <div class="modal-header-info"><span>SPECIAL</span><span>IAFLMUN</span></div>
+                <div class="card-top"><span>SPECIAL</span><span>IAFLMUN</span></div>
                 <h3 class="card-title">UNDC</h3>
-            </div>
-        </div>
-
-        <div class="committee-card unsc-theme" onclick="openModal('UNSC', 'SPECIAL', '#b85c38', 'Crisis Management in Sovereignty Disputes', 'The Security Council (UNSC) holds the primary responsibility for maintaining international peace and security. Unlike other committees, the UNSC has the power to make binding decisions that member states are obligated to implement. This session will demand high-level diplomacy to address ongoing territorial conflicts and the implementation of peacekeeping missions in high-risk zones.')">
-            <div class="card-content">
-                <div class="modal-header-info"><span>SPECIAL</span><span>IAFLMUN</span></div>
-                <h3 class="card-title">UNSC</h3>
-            </div>
-        </div>
-
-        <div class="committee-card jcc-theme" style="grid-column: span 2;" onclick="openModal('JCC', 'CRISIS', '#6a1e55', 'Historical Crisis: The Cold War Escalation', 'The Joint Crisis Committee (JCC) provides an immersive experience where actions have immediate consequences. Delegates are split into opposing cabinets, reacting to real-time updates and secret directives. This year\'s simulation focuses on a critical historical turning point, requiring delegates to balance military strategy, secret intelligence, and public diplomacy to prevent a global catastrophe.')">
-            <div class="card-content">
-                <div class="modal-header-info"><span>CRISIS</span><span>IAFLMUN</span></div>
-                <h3 class="card-title">JCC</h3>
             </div>
         </div>
     </main>
 
     <div id="committeeModal" class="modal-overlay" onclick="closeModal()">
-        <div id="modalContent" class="modal-card" onclick="event.stopPropagation()">
+        <div id="modalCard" class="modal-card" onclick="event.stopPropagation()">
             <i class="fas fa-times modal-close" onclick="closeModal()"></i>
-            <div class="modal-body">
+            <div class="modal-content-scroll">
                 <div class="modal-header-info">
-                    <span id="mTag"></span>
+                    <span id="modalTag"></span>
                     <span>IAFLMUN</span>
                 </div>
-                <h2 id="mTitle" class="modal-title"></h2>
-                <p id="mTopic" class="modal-topic"></p>
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <p id="modalAgenda" class="modal-agenda"></p>
                 
-                <h4 class="modal-desc-title">About this Committee</h4>
-                <div id="mDesc" class="modal-text"></div>
+                <h4 class="modal-section-title">About this Committee</h4>
+                <div id="modalBody" class="modal-body-text"></div>
                 
-                <a href="#" class="view-guide-btn">
-                    <i class="fas fa-external-link-alt"></i> View Study Guide
+                <a href="#" class="study-guide-btn">
+                    <i class="far fa-share-square"></i> View Study Guide
                 </a>
             </div>
         </div>
@@ -212,42 +155,39 @@
 
     <footer>
         <div class="footer-brand">
-            <div class="footer-logo">RAYMUN2026</div>
+            <img src="raymunlogo.jpg" alt="Logo">
+            <h2 style="font-size: 32px; letter-spacing: 4px;">RAYMUN2026</h2>
             <p>Where vision becomes voice</p>
         </div>
         <div class="footer-col">
-            <h4>CONFERENCE</h4>
-            <p>Home</p><p>About</p><p>Committees</p>
+            <h4 style="font-size: 14px; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.7;">CONFERENCE</h4>
+            <ul style="list-style: none;"><li>Home</li><li>About</li><li>Committees</li><li>Apply</li><li>FAQ</li><li>Contact</li></ul>
         </div>
         <div class="footer-col">
-            <h4>LEGAL</h4>
-            <p>Terms</p><p>Privacy</p>
+            <h4 style="font-size: 14px; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.7;">LEGAL</h4>
+            <ul style="list-style: none;"><li>Terms and Conditions</li><li>Privacy Policy</li></ul>
         </div>
         <div class="footer-col">
-            <h4>SOCIAL</h4>
-            <div class="social-icons">
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-tiktok"></i>
-                <i class="fab fa-linkedin"></i>
-            </div>
+            <h4 style="font-size: 14px; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.7;">SOCIAL</h4>
+            <div style="display: flex; gap: 20px; font-size: 20px;"><i class="fab fa-instagram"></i><i class="fab fa-tiktok"></i><i class="fab fa-linkedin"></i></div>
         </div>
     </footer>
 
+    <div class="bottom-bar"><div>© raymun2026</div><div>Crafted with ❤️ by Ada Özkan</div></div>
+
     <script>
-        function openModal(title, tag, color, topic, desc) {
+        function openModal(title, tag, color, agenda, body) {
             const modal = document.getElementById('committeeModal');
-            const content = document.getElementById('modalContent');
+            const modalCard = document.getElementById('modalCard');
             
-            document.getElementById('mTitle').innerText = title;
-            document.getElementById('mTag').innerText = tag;
-            document.getElementById('mTopic').innerText = topic;
-            document.getElementById('mDesc').innerText = desc;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalTag').innerText = tag;
+            document.getElementById('modalAgenda').innerText = agenda;
+            document.getElementById('modalBody').innerHTML = body;
             
-            // Kartın rengini pop-up arka planına uygula
-            content.style.backgroundColor = color;
-            
+            modalCard.style.backgroundColor = color;
             modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Kaydırmayı engelle
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
