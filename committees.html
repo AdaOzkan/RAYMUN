@@ -94,7 +94,7 @@
             margin: 0 auto 100px auto;
             padding: 0 5%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr); /* İkili dizilim */
             gap: 30px;
         }
 
@@ -108,6 +108,14 @@
             transition: all 0.4s ease;
             cursor: pointer;
         }
+        /* JCC Kartını Ortala */
+        .committee-card.full-width {
+            grid-column: span 2;
+            max-width: 585px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
         .committee-card:hover { transform: translateY(-10px); border-color: #4a0404; }
 
         .card-image {
@@ -212,6 +220,7 @@
 
         @media (max-width: 768px) {
             .committees-container { grid-template-columns: 1fr; }
+            .committee-card.full-width { grid-column: span 1; }
             footer { grid-template-columns: 1fr; text-align: center; }
             .social-icons { justify-content: center; }
             .modal-title { font-size: 36px; }
@@ -255,21 +264,21 @@
             </div>
         </div>
 
+        <div class="committee-card" onclick="openModal('UNSC', 'SPECIAL', 'unsc.jpg', 'Strengthening Economic Resilience across Europe', 'The European Council defines the EU\'s political direction and priorities.')">
+            <div class="card-image" style="background-image: url('unsc.jpg');"></div>
+            <div class="card-overlay"></div>
+            <div class="card-content">
+                <div class="card-top"><span>SPECIAL</span><span>RAYMUN</span></div>
+                <h3 class="card-title">UNSC</h3>
+            </div>
+        </div>
+
         <div class="committee-card" onclick="openModal('WHO', 'GA - 2', 'who.jpg', 'Global Health Security and Universal Healthcare Access', 'The World Health Organization (WHO) focuses on international public health and coordinating global health responses.')">
             <div class="card-image" style="background-image: url('who.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
                 <div class="card-top"><span>GA - 2</span><span>RAYMUN</span></div>
                 <h3 class="card-title">WHO</h3>
-            </div>
-        </div>
-
-        <div class="committee-card" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'The Social, Humanitarian and Cultural Committee (SOCHUM) addresses social and humanitarian affairs.')">
-            <div class="card-image" style="background-image: url('jcc.jpg');"></div>
-            <div class="card-overlay"></div>
-            <div class="card-content">
-                <div class="card-top"><span>GA - 3</span><span>RAYMUN</span></div>
-                <h3 class="card-title">JCC</h3>
             </div>
         </div>
 
@@ -282,21 +291,12 @@
             </div>
         </div>
 
-        <div class="committee-card" onclick="openModal('UNSC', 'SPECIAL', 'unsc.jpg', 'Strengthening Economic Resilience across Europe', 'The European Council defines the EU\'s political direction and priorities.')">
-            <div class="card-image" style="background-image: url('unsc.jpg');"></div>
+        <div class="committee-card full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'The Social, Humanitarian and Cultural Committee (SOCHUM) addresses social and humanitarian affairs.')">
+            <div class="card-image" style="background-image: url('jcc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
-                <div class="card-top"><span>SPECIAL</span><span>RAYMUN</span></div>
-                <h3 class="card-title">UNSC</h3>
-            </div>
-        </div>
-
-        <div class="committee-card" onclick="openModal('TREATY OF LAUSANNE', 'CRISIS', 'lausanne.jpg', 'Redefining Borders: The 1923 Lausanne Conference Crisis', 'A historical crisis committee navigating post-WWI negotiations.')">
-            <div class="card-image" style="background-image: url('lausanne.jpg');"></div>
-            <div class="card-overlay"></div>
-            <div class="card-content">
-                <div class="card-top"><span>CRISIS</span><span>RAYMUN</span></div>
-                <h3 class="card-title">Treaty of Lausanne</h3>
+                <div class="card-top"><span>GA - 3</span><span>RAYMUN</span></div>
+                <h3 class="card-title">JCC</h3>
             </div>
         </div>
     </main>
@@ -356,12 +356,9 @@
     </div>
 
     <script>
-        // Mobil Menü Fonksiyonu
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
-            
-            // İkonu değiştir (hamburger/kapat)
             const icon = document.querySelector('.mobile-menu-icon');
             if(navLinks.classList.contains('active')) {
                 icon.classList.replace('fa-bars', 'fa-times');
@@ -385,7 +382,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Linklere tıklandığında menüyü kapat
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('active');
