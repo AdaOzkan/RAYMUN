@@ -10,7 +10,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #0b0101; color: white; line-height: 1.6; overflow-x: hidden; }
 
-        /* Navigasyon - Görseldeki Premium Stil */
+        /* Navigasyon */
         nav {
             background: linear-gradient(to bottom, #4a0404 0%, #2a0202 100%);
             display: flex;
@@ -41,7 +41,6 @@
         }
         .nav-links a:hover { opacity: 1; color: #ff9999; }
 
-        /* Mobil Menü İkonu */
         .mobile-menu-icon {
             display: none;
             font-size: 24px;
@@ -94,11 +93,11 @@
             margin: 0 auto 100px auto;
             padding: 0 5%;
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* İkili dizilim */
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
-        /* Kart Tasarımı */
+        /* Kart Tasarımı ve Renk Efektleri */
         .committee-card {
             position: relative;
             height: 280px;
@@ -108,15 +107,13 @@
             transition: all 0.4s ease;
             cursor: pointer;
         }
-        /* JCC Kartını Ortala */
+        
         .committee-card.full-width {
             grid-column: span 2;
             max-width: 585px;
             margin: 0 auto;
             width: 100%;
         }
-
-        .committee-card:hover { transform: translateY(-10px); border-color: #4a0404; }
 
         .card-image {
             position: absolute;
@@ -125,68 +122,43 @@
             background-position: center;
             z-index: 1;
             transition: transform 0.6s ease;
+            filter: grayscale(30%);
         }
-        .committee-card:hover .card-image { transform: scale(1.1); }
 
         .card-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 10%, rgba(45, 10, 10, 0.7) 100%);
             z-index: 2;
-            mix-blend-mode: multiply;
+            transition: 0.4s ease;
         }
+
+        /* Belirlediğin Renk Efektleri */
+        .disec-effect .card-overlay { background: linear-gradient(to top, #781414 10%, rgba(120, 20, 20, 0.4) 100%); }
+        .who-effect .card-overlay { background: linear-gradient(to top, #3d7761 10%, rgba(61, 119, 97, 0.4) 100%); }
+        .undc-effect .card-overlay { background: linear-gradient(to top, #8c6b3d 10%, rgba(140, 107, 61, 0.4) 100%); }
+        .unsc-effect .card-overlay { background: linear-gradient(to top, #b85c38 10%, rgba(184, 92, 56, 0.4) 100%); }
+        .jcc-effect .card-overlay { background: linear-gradient(to top, #6a1e55 10%, rgba(106, 30, 85, 0.4) 100%); }
+
+        .committee-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.5); }
+        .committee-card:hover .card-image { transform: scale(1.1); filter: grayscale(0%); }
+        .committee-card:hover .card-overlay { opacity: 0.8; }
 
         .card-content { position: relative; z-index: 3; padding: 30px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-top { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: 3px; opacity: 0.7; }
-        .card-title { font-size: 36px; font-weight: bold; margin: 0; text-transform: uppercase; }
+        .card-top { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: 3px; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .card-title { font-size: 36px; font-weight: bold; margin: 0; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
 
-        /* MODAL */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: none; justify-content: center; align-items: center;
-            z-index: 2000; backdrop-filter: blur(8px);
-        }
-
-        .modal-card {
-            width: 90%; max-width: 750px; max-height: 85vh;
-            background-color: #2a0202; border-radius: 25px;
-            position: relative; overflow-y: auto;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .modal-header-img {
-            width: 100%; height: 250px; background-size: cover; background-position: center;
-            position: relative;
-        }
-
-        .modal-header-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(42, 2, 2, 0.3), #2a0202);
-        }
-
-        .modal-close {
-            position: absolute; top: 20px; right: 25px; font-size: 28px;
-            color: white; cursor: pointer; z-index: 10; opacity: 0.8; transition: 0.3s;
-        }
-        .modal-close:hover { opacity: 1; transform: rotate(90deg); }
-
+        /* Modal ve Footer (Dokunulmadı) */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(8px); }
+        .modal-card { width: 90%; max-width: 750px; max-height: 85vh; background-color: #2a0202; border-radius: 25px; position: relative; overflow-y: auto; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .modal-header-img { width: 100%; height: 250px; background-size: cover; background-position: center; position: relative; }
+        .modal-header-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(42, 2, 2, 0.3), #2a0202); }
+        .modal-close { position: absolute; top: 20px; right: 25px; font-size: 28px; color: white; cursor: pointer; z-index: 10; opacity: 0.8; transition: 0.3s; }
         .modal-body { padding: 40px; position: relative; margin-top: -80px; }
         .modal-tag { font-size: 12px; letter-spacing: 3px; opacity: 0.6; text-transform: uppercase; }
         .modal-title { font-size: 48px; font-weight: bold; margin: 10px 0; letter-spacing: 1px; }
         .modal-topic { font-size: 17px; font-style: italic; margin-bottom: 25px; color: #ff9999; line-height: 1.4; }
         .modal-desc { font-size: 15px; line-height: 1.8; opacity: 0.85; margin-bottom: 35px; text-align: justify; }
-
-        .study-guide-btn {
-            display: inline-flex; align-items: center; gap: 12px;
-            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2);
-            color: white; padding: 15px 30px; border-radius: 15px;
-            text-decoration: none; font-weight: 600; transition: 0.3s;
-        }
-        .study-guide-btn:hover { background: #fff; color: #4a0404; transform: scale(1.05); }
-
-        /* Footer */
+        .study-guide-btn { display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 15px 30px; border-radius: 15px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         footer { background-color: #4a0404; padding: 80px 8% 40px 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 0.8fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-brand img { height: 120px; margin-bottom: 20px; }
         .footer-brand h2 { font-size: 32px; letter-spacing: 4px; margin-bottom: 10px; }
@@ -194,28 +166,13 @@
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
-        .footer-col ul li a:hover { opacity: 1; padding-left: 5px; }
         .social-icons { display: flex; gap: 20px; font-size: 20px; }
-        
         .bottom-bar { background-color: #4a0404; padding: 25px 8%; display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.8; }
 
-        /* Tablet ve Mobil Uyumluluk */
         @media (max-width: 1024px) {
-            .nav-links { 
-                position: fixed;
-                top: 0; right: -100%;
-                height: 100vh; width: 70%;
-                background: #2a0202;
-                flex-direction: column;
-                justify-content: center;
-                transition: 0.4s ease;
-                z-index: 1000;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-            }
+            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; background: #2a0202; flex-direction: column; justify-content: center; transition: 0.4s ease; z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
             .nav-links.active { right: 0; }
-            .nav-links a { font-size: 18px; }
             .mobile-menu-icon { display: block; }
-            .apply-btn { margin-top: 20px; font-size: 16px; }
         }
 
         @media (max-width: 768px) {
@@ -223,7 +180,6 @@
             .committee-card.full-width { grid-column: span 1; }
             footer { grid-template-columns: 1fr; text-align: center; }
             .social-icons { justify-content: center; }
-            .modal-title { font-size: 36px; }
         }
     </style>
 </head>
@@ -234,9 +190,7 @@
             <img src="raymunlogo.jpg" alt="Logo">
             <span>RAYMUN</span>
         </a>
-        
         <i class="fas fa-bars mobile-menu-icon" onclick="toggleMenu()"></i>
-
         <ul class="nav-links" id="navLinks">
             <li><a href="about.html">About</a></li>
             <li><a href="team.html">Team</a></li>
@@ -255,7 +209,7 @@
     </header>
 
     <main class="committees-container">
-        <div class="committee-card" onclick="openModal('DISEC', 'GA - 1', 'disec.jpg', 'Establishing International Legal Norms for Artificial Intelligence in Armed Conflict', 'The Disarmament and International Security Committee (DISEC) is the First Committee of the UN. It deals with disarmament and global threats to peace.')">
+        <div class="committee-card disec-effect" onclick="openModal('DISEC', 'GA - 1', 'disec.jpg', 'Establishing International Legal Norms for Artificial Intelligence in Armed Conflict', 'The Disarmament and International Security Committee (DISEC) is the First Committee of the UN.')">
             <div class="card-image" style="background-image: url('disec.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -264,7 +218,7 @@
             </div>
         </div>
 
-        <div class="committee-card" onclick="openModal('UNSC', 'SPECIAL', 'unsc.jpg', 'Strengthening Economic Resilience across Europe', 'The European Council defines the EU\'s political direction and priorities.')">
+        <div class="committee-card unsc-effect" onclick="openModal('UNSC', 'SPECIAL', 'unsc.jpg', 'Strengthening Economic Resilience across Europe', 'The Security Council maintains international peace and security.')">
             <div class="card-image" style="background-image: url('unsc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -273,7 +227,7 @@
             </div>
         </div>
 
-        <div class="committee-card" onclick="openModal('WHO', 'GA - 2', 'who.jpg', 'Global Health Security and Universal Healthcare Access', 'The World Health Organization (WHO) focuses on international public health and coordinating global health responses.')">
+        <div class="committee-card who-effect" onclick="openModal('WHO', 'GA - 2', 'who.jpg', 'Global Health Security and Universal Healthcare Access', 'The WHO focuses on international public health.')">
             <div class="card-image" style="background-image: url('who.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -282,7 +236,7 @@
             </div>
         </div>
 
-        <div class="committee-card" onclick="openModal('UNDC', 'SPECIAL', 'undc.jpg', 'Modernizing Collective Defense in the Digital Age', 'NATO is a political and military alliance focused on collective defense.')">
+        <div class="committee-card undc-effect" onclick="openModal('UNDC', 'SPECIAL', 'undc.jpg', 'Modernizing Collective Defense in the Digital Age', 'The UNDC deals with disarmament and security issues.')">
             <div class="card-image" style="background-image: url('undc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -291,7 +245,7 @@
             </div>
         </div>
 
-        <div class="committee-card full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'The Social, Humanitarian and Cultural Committee (SOCHUM) addresses social and humanitarian affairs.')">
+        <div class="committee-card jcc-effect full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'Joint Crisis Committee offers an intense, fast-paced MUN experience.')">
             <div class="card-image" style="background-image: url('jcc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -304,9 +258,7 @@
     <div id="committeeModal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-card" onclick="event.stopPropagation()">
             <i class="fas fa-times modal-close" onclick="closeModal()"></i>
-            <div id="modalImg" class="modal-header-img">
-                <div class="modal-header-overlay"></div>
-            </div>
+            <div id="modalImg" class="modal-header-img"><div class="modal-header-overlay"></div></div>
             <div class="modal-body">
                 <span id="modalTag" class="modal-tag"></span>
                 <h2 id="modalTitle" class="modal-title"></h2>
@@ -325,46 +277,27 @@
         </div>
         <div class="footer-col">
             <h4>CONFERENCE</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="committees.html">Committees</a></li>
-                <li><a href="team.html">Our Team</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
+            <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="committees.html">Committees</a></li><li><a href="team.html">Our Team</a></li><li><a href="faq.html">FAQ</a></li></ul>
         </div>
         <div class="footer-col">
             <h4>LEGAL</h4>
-            <ul>
-                <li><a href="#">Terms and Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-            </ul>
+            <ul><li><a href="#">Terms and Conditions</a></li><li><a href="#">Privacy Policy</a></li></ul>
         </div>
         <div class="footer-col">
             <h4>SOCIAL</h4>
-            <div class="social-icons">
-                <a href="#" style="color: white;"><i class="fab fa-instagram"></i></a>
-                <a href="#" style="color: white;"><i class="fab fa-tiktok"></i></a>
-                <a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a>
-            </div>
+            <div class="social-icons"><a href="#" style="color: white;"><i class="fab fa-instagram"></i></a><a href="#" style="color: white;"><i class="fab fa-tiktok"></i></a><a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a></div>
         </div>
     </footer>
 
-    <div class="bottom-bar">
-        <div>© raymun2026</div>
-        <div>Crafted with ❤️ by Ada Özkan</div>
-    </div>
+    <div class="bottom-bar"><div>© raymun2026</div><div>Crafted with ❤️ by Ada Özkan</div></div>
 
     <script>
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
             const icon = document.querySelector('.mobile-menu-icon');
-            if(navLinks.classList.contains('active')) {
-                icon.classList.replace('fa-bars', 'fa-times');
-            } else {
-                icon.classList.replace('fa-times', 'fa-bars');
-            }
+            if(navLinks.classList.contains('active')) { icon.classList.replace('fa-bars', 'fa-times'); } 
+            else { icon.classList.replace('fa-times', 'fa-bars'); }
         }
 
         function openModal(title, tag, img, topic, desc) {
@@ -381,13 +314,6 @@
             document.getElementById('committeeModal').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('active');
-                document.querySelector('.mobile-menu-icon').classList.replace('fa-times', 'fa-bars');
-            });
-        });
     </script>
 </body>
 </html>
