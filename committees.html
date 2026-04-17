@@ -132,30 +132,47 @@
             transition: 0.4s ease;
         }
 
-        /* Renk Efektleri */
+        /* Komite Kart Renk Efektleri */
         .disec-effect .card-overlay { background: linear-gradient(to top, #781414 10%, rgba(120, 20, 20, 0.4) 100%); }
         .who-effect .card-overlay { background: linear-gradient(to top, #3d7761 10%, rgba(61, 119, 97, 0.4) 100%); }
         .undc-effect .card-overlay { background: linear-gradient(to top, #8c6b3d 10%, rgba(140, 107, 61, 0.4) 100%); }
         .unsc-effect .card-overlay { background: linear-gradient(to top, #b85c38 10%, rgba(184, 92, 56, 0.4) 100%); }
-        .jcc-effect .card-overlay { background: linear-gradient(to top, #53354a 10%, rgba(83, 53, 74, 0.4) 100%); }
+        .jcc-effect .card-overlay { background: linear-gradient(to top, #6a1e55 10%, rgba(106, 30, 85, 0.4) 100%); }
 
         .committee-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.5); }
         .committee-card:hover .card-image { transform: scale(1.1); filter: grayscale(0%); }
+        .committee-card:hover .card-overlay { opacity: 0.8; }
 
         .card-content { position: relative; z-index: 3; padding: 30px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
         .card-top { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: 3px; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .card-title { font-size: 36px; font-weight: bold; margin: 0; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
 
-        /* Modal Yapısı */
+        /* Modal (Açılan Pencere) Yapısı */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(8px); }
-        .modal-card { width: 90%; max-width: 750px; max-height: 85vh; border-radius: 25px; position: relative; overflow-y: auto; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); transition: background-color 0.3s ease; }
+        .modal-card { 
+            width: 90%; 
+            max-width: 750px; 
+            max-height: 85vh; 
+            border-radius: 25px; 
+            position: relative; 
+            overflow-y: auto; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+            transition: background-color 0.4s ease;
+        }
         .modal-header-img { width: 100%; height: 250px; background-size: cover; background-position: center; position: relative; }
-        .modal-header-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)); }
+        .modal-header-overlay { 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)); /* Fotoğraf ve renk geçişi */
+            transition: background 0.4s ease;
+        }
         .modal-close { position: absolute; top: 20px; right: 25px; font-size: 28px; color: white; cursor: pointer; z-index: 10; opacity: 0.8; transition: 0.3s; }
-        .modal-body { padding: 40px; position: relative; margin-top: -40px; }
-        .modal-tag { font-size: 12px; letter-spacing: 3px; opacity: 0.7; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .modal-body { padding: 40px; position: relative; margin-top: -80px; }
+        .modal-tag { font-size: 12px; letter-spacing: 3px; opacity: 0.7; text-transform: uppercase; }
         .modal-title { font-size: 48px; font-weight: bold; margin: 10px 0; letter-spacing: 1px; }
-        .modal-topic { font-size: 17px; font-style: italic; margin-bottom: 25px; color: rgba(255,255,255,0.9); line-height: 1.4; }
+        .modal-topic { font-size: 17px; font-style: italic; margin-bottom: 25px; color: #ffffff; opacity: 0.9; line-height: 1.4; }
         .modal-desc { font-size: 15px; line-height: 1.8; opacity: 0.85; margin-bottom: 35px; text-align: justify; }
         .study-guide-btn { display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 15px 30px; border-radius: 15px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .study-guide-btn:hover { background: white; color: black; }
@@ -246,7 +263,7 @@
             </div>
         </div>
 
-        <div class="committee-card jcc-effect full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'Joint Crisis Committee offers an intense, fast-paced MUN experience.', '#53354a')">
+        <div class="committee-card jcc-effect full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'Joint Crisis Committee offers an intense, fast-paced MUN experience.', '#6a1e55')">
             <div class="card-image" style="background-image: url('jcc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -257,9 +274,11 @@
     </main>
 
     <div id="committeeModal" class="modal-overlay" onclick="closeModal()">
-        <div id="modalCard" class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-card" onclick="event.stopPropagation()">
             <i class="fas fa-times modal-close" onclick="closeModal()"></i>
-            <div id="modalImg" class="modal-header-img"><div class="modal-header-overlay"></div></div>
+            <div id="modalImg" class="modal-header-img">
+                <div class="modal-header-overlay" id="modalGradient"></div>
+            </div>
             <div class="modal-body">
                 <span id="modalTag" class="modal-tag"></span>
                 <h2 id="modalTitle" class="modal-title"></h2>
@@ -302,16 +321,20 @@
         }
 
         function openModal(title, tag, img, topic, desc, color) {
+            const modalCard = document.querySelector('.modal-card');
+            const modalGradient = document.getElementById('modalGradient');
+            
+            // Kartın arka plan rengini komiteye göre ayarla
+            modalCard.style.backgroundColor = color;
+            
+            // Fotoğraf ve renk arasındaki geçişi ayarla
+            modalGradient.style.background = `linear-gradient(to bottom, rgba(0,0,0,0.1), ${color})`;
+
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalTag').innerText = tag + ' | RAYMUN';
             document.getElementById('modalTopic').innerText = topic;
             document.getElementById('modalDesc').innerText = desc;
             document.getElementById('modalImg').style.backgroundImage = "url('" + img + "')";
-            
-            // Renk Güncellemesi
-            const modalCard = document.getElementById('modalCard');
-            modalCard.style.backgroundColor = color;
-            
             document.getElementById('committeeModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
