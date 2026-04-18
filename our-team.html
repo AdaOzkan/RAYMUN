@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | RAYMUN '26</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Ana Stil Dosyandan Gelen Temel Ayarlar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fdfaf5; /* Görseldeki hafif krem rengi arka plan */
+            color: #4a0404;
+            overflow-x: hidden;
+        }
+
+        /* Navigasyon (Ana sayfandaki ile aynı tutuldu) */
+        nav {
+            background-color: #4a0404;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 10px; color: white; }
+        .logo-area img { height: 35px; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 13px; }
+        .apply-btn { background-color: #1a1a1a; color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 13px; }
+
+        /* Team Section Başlık Alanı */
+        .team-header {
+            text-align: center;
+            padding: 150px 20px 60px 20px;
+        }
+
+        .team-header span {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            color: #8a6d6d;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .team-header h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            color: #4a0404;
+            font-weight: 700;
+        }
+
+        /* Kart Konteynırı */
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 0 5% 100px 5%;
+        }
+
+        /* Ekip Kartı Tasarımı */
+        .team-card {
+            background: white;
+            border-radius: 25px; /* Daha yumuşak köşeler */
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05); /* Soft gölge */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(74, 4, 4, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(74, 4, 4, 0.1);
+        }
+
+        /* Fotoğraf Alanı */
+        .member-image {
+            width: 100%;
+            height: 320px; /* Kartları daha uzun yapmak için yükseklik verdik */
+            background-color: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fotoğrafın alanı kaplamasını sağlar */
+            filter: grayscale(20%); /* Daha kurumsal bir hava için hafif gri ton */
+            transition: 0.3s;
+        }
+
+        .team-card:hover .member-image img {
+            filter: grayscale(0%);
+        }
+
+        /* Üye Bilgileri */
+        .member-info {
+            padding: 25px 20px;
+        }
+
+        .member-info h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .member-info p {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a41c1c; /* IAFLMUN kırmızısı tonu */
+            font-weight: 600;
+        }
+
+        /* Footer Ayarları (Görseldeki koyu renk) */
+        footer {
+            background-color: #4a0404;
+            color: white;
+            padding: 60px 8% 40px 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-brand img { height: 120px; margin-bottom: 15px; }
+        .footer-col h4 { opacity: 0.7; font-size: 13px; margin-bottom: 20px; text-transform: uppercase; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.9; }
+        
+        .bottom-bar {
+            background-color: #4a0404;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .team-container { grid-template-columns: 1fr; }
+            .team-header { padding-top: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-area">
+            <img src="raymunlogo.jpg" alt="RAYMUN Logo">
+            <span>RAYMUN</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="committees.html">Committees</a></li> 
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+        <a href="#" class="apply-btn">Apply Now</a>
+    </nav>
+
+    <header class="team-header">
+        <span>OUR TEAM</span>
+        <h1>The Faces Behind RAYMUN</h1>
+    </header>
+
+    <section class="team-container">
+        
+        <div class="team-card">
+            <div class="member-image">
+                <img src="melek.jpg" alt="Melek Mamar"> </div>
+            <div class="member-info">
+                <h3>Melek Mamar</h3>
+                <p>Secretary-General</p>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="member-image">
+                <img src="ada.jpg" alt="Ada Kahraman">
+            </div>
+            <div class="member-info">
+                <h3>Ada Kahraman</h3>
+                <p>Secretary General</p>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="member-image">
+                <img src="berra.jpg" alt="Berra Can">
+            </div>
+            <div class="member-info">
+                <h3>Berra Can</h3>
+                <p>Director General</p>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="member-image">
+                <img src="zeynep.jpg" alt="Zeynep Yıldız">
+            </div>
+            <div class="member-info">
+                <h3>Zeynep Yıldız</h3>
+                <p>Deputy Secretary General</p>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="member-image">
+                <img src="gamze.jpg" alt="Gamze Elif Kanat">
+            </div>
+            <div class="member-info">
+                <h3>Gamze Elif Kanat</h3>
+                <p>Head of Public Relations</p>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="member-image">
+                <img src="begum.jpg" alt="Begüm Tekin">
+            </div>
+            <div class="member-info">
+                <h3>Begüm Tekin</h3>
+                <p>Deputy Head of PR</p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer-brand">
+            <img src="raymunlogo.jpg" alt="RAYMUN Logo">
+            <h2>RAYMUN2026</h2>
+            <p>Where vision becomes voice</p>
+        </div>
+        <div class="footer-col">
+            <h4>CONFERENCE</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="committees.html">Committees</a></li> 
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>SOCIAL</h4>
+            <div style="display: flex; gap: 15px; font-size: 20px;">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-tiktok"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+        </div>
+    </footer>
+
+    <div class="bottom-bar">
+        <div>© raymun2026</div>
+        <div>Crafted with ❤️ by Ada Özkan</div>
+    </div>
+
+</body>
+</html>
