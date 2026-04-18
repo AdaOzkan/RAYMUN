@@ -20,27 +20,42 @@
             overflow-x: hidden;
         }
 
-        /* Navigasyon */
+        /* --- NAVIGASYON (FOTOĞRAFTAKİ GİBİ) --- */
         nav {
-            background: linear-gradient(to bottom, #142948 0%, #1a1a1a 100%);
+            /* Fotoğraftaki lacivert-siyah geçiş */
+            background: linear-gradient(to bottom, #0f1c2e 0%, #000000 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 5%;
+            padding: 15px 5%;
             position: fixed;
             width: 100%;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .logo-area img {
-            height: 35px;
+            height: 32px;
             width: auto;
+        }
+
+        .logo-area span {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
         }
 
         .nav-links {
@@ -50,21 +65,37 @@
         }
 
         .nav-links a {
-            color: white;
+            color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            opacity: 0.85;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
         }
 
         .apply-btn {
-            background-color: #1a1a1a;
+            background-color: #161616;
             color: white;
-            padding: 8px 18px;
-            border-radius: 20px;
+            padding: 10px 22px;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .apply-btn:hover {
+            background-color: #ffffff;
+            color: #000;
         }
 
         /* Hero Bölümü */
@@ -171,11 +202,10 @@
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* --- MOBİL AYARLAR (Responsive) --- */
+        /* --- MOBİL AYARLAR --- */
         @media (max-width: 992px) {
-            footer {
-                grid-template-columns: 1fr 1.2fr;
-            }
+            footer { grid-template-columns: 1fr 1.2fr; }
+            .nav-right { gap: 15px; }
         }
 
         @media (max-width: 768px) {
@@ -184,29 +214,12 @@
                 gap: 15px;
                 padding: 15px 2%;
             }
-
-            .nav-links {
-                gap: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-links a { font-size: 11px; }
-
-            footer {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 50px;
-            }
-
+            .nav-right { flex-direction: column; gap: 10px; }
+            .nav-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
+            footer { grid-template-columns: 1fr; text-align: center; }
             .footer-brand { text-align: center; }
             .social-icons { justify-content: center; }
-
-            .bottom-bar {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
+            .bottom-bar { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -217,16 +230,19 @@
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
             <span>RAYMUN</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="committees.html">Committees</a></li> 
-            <li><a href="venue.html">Venue</a></li>
-            <li><a href="#">Calendar</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <a href="#" class="apply-btn">Apply Now</a>
+        
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
+                <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="venue.html">VENUE</a></li>
+                <li><a href="#">CALENDAR</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+            <a href="#" class="apply-btn">APPLY NOW</a>
+        </div>
     </nav>
 
     <section class="hero">
