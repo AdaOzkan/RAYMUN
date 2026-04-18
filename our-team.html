@@ -6,7 +6,7 @@
     <title>Our Team | RAYMUN '26</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Ana Stil Dosyandan Gelen Temel Ayarlar */
+        /* Ana Stil Ayarları */
         * {
             margin: 0;
             padding: 0;
@@ -15,12 +15,12 @@
         }
 
         body {
-            background-color: #fdfaf5; /* Görseldeki hafif krem rengi arka plan */
+            background-color: #fdfaf5; /* Krem rengi arka plan */
             color: #4a0404;
             overflow-x: hidden;
         }
 
-        /* Navigasyon (Ana sayfandaki ile aynı tutuldu) */
+        /* Navigasyon */
         nav {
             background-color: #4a0404;
             display: flex;
@@ -33,13 +33,13 @@
             z-index: 1000;
         }
 
-        .logo-area { display: flex; align-items: center; gap: 10px; color: white; }
+        .logo-area { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; }
         .logo-area img { height: 35px; }
         .nav-links { list-style: none; display: flex; gap: 20px; }
-        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 13px; }
+        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 13px; font-weight: 500; }
         .apply-btn { background-color: #1a1a1a; color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 13px; }
 
-        /* Team Section Başlık Alanı */
+        /* Başlık Alanı */
         .team-header {
             text-align: center;
             padding: 150px 20px 60px 20px;
@@ -65,17 +65,17 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             padding: 0 5% 100px 5%;
         }
 
-        /* Ekip Kartı Tasarımı */
+        /* Ekip Kartı */
         .team-card {
             background: white;
-            border-radius: 25px; /* Daha yumuşak köşeler */
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05); /* Soft gölge */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
             border: 1px solid rgba(74, 4, 4, 0.05);
@@ -88,10 +88,10 @@
             box-shadow: 0 20px 45px rgba(74, 4, 4, 0.1);
         }
 
-        /* Fotoğraf Alanı */
+        /* Fotoğraf Alanı (Daha Uzun Tasarım) */
         .member-image {
             width: 100%;
-            height: 320px; /* Kartları daha uzun yapmak için yükseklik verdik */
+            height: 380px; /* Fotoğraflar için daha dikey bir alan */
             background-color: #f5f5f5;
             overflow: hidden;
         }
@@ -99,13 +99,12 @@
         .member-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Fotoğrafın alanı kaplamasını sağlar */
-            filter: grayscale(20%); /* Daha kurumsal bir hava için hafif gri ton */
-            transition: 0.3s;
+            object-fit: cover;
+            transition: 0.5s ease;
         }
 
         .team-card:hover .member-image img {
-            filter: grayscale(0%);
+            transform: scale(1.05);
         }
 
         /* Üye Bilgileri */
@@ -123,11 +122,11 @@
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #a41c1c; /* IAFLMUN kırmızısı tonu */
+            color: #a41c1c;
             font-weight: 600;
         }
 
-        /* Footer Ayarları (Görseldeki koyu renk) */
+        /* Footer */
         footer {
             background-color: #4a0404;
             color: white;
@@ -137,12 +136,17 @@
             gap: 40px;
         }
 
-        .footer-brand img { height: 120px; margin-bottom: 15px; }
-        .footer-col h4 { opacity: 0.7; font-size: 13px; margin-bottom: 20px; text-transform: uppercase; }
+        .footer-brand img { height: 100px; margin-bottom: 15px; }
+        .footer-col h4 { opacity: 0.7; font-size: 13px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.9; }
+        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
+        .footer-col ul li a:hover { opacity: 1; }
         
+        .social-icons { display: flex; gap: 15px; font-size: 20px; }
+        .social-icons i { cursor: pointer; transition: 0.3s; }
+        .social-icons i:hover { transform: scale(1.2); }
+
         .bottom-bar {
             background-color: #4a0404;
             color: white;
@@ -150,23 +154,24 @@
             display: flex;
             justify-content: space-between;
             font-size: 11px;
-            opacity: 0.7;
+            opacity: 0.6;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         @media (max-width: 768px) {
             .team-container { grid-template-columns: 1fr; }
             .team-header { padding-top: 120px; }
+            .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-area">
+        <a href="index.html" class="logo-area">
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
             <span>RAYMUN</span>
-        </div>
+        </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -185,7 +190,8 @@
         
         <div class="team-card">
             <div class="member-image">
-                <img src="sGeneral.jpg" alt="Ekin Sezer"> </div>
+                <img src="teamPhotos/sGeneral.jpg" alt="Ekin Sezer">
+            </div>
             <div class="member-info">
                 <h3>Ekin Sezer</h3>
                 <p>Secretary-General</p>
@@ -194,27 +200,27 @@
 
         <div class="team-card">
             <div class="member-image">
-                <img src="dGeneral.jpg" alt="Ulaş Gega">
+                <img src="teamPhotos/dGeneral.jpg" alt="Ulaş Gega">
             </div>
             <div class="member-info">
                 <h3>Ulaş Gega</h3>
-                <p>Secretary General</p>
+                <p>Director General</p>
             </div>
         </div>
 
         <div class="team-card">
             <div class="member-image">
-                <img src="deputy.jpg" alt="Betül Ece Altun">
+                <img src="teamPhotos/deputy.jpg" alt="Betül Ece Altun">
             </div>
             <div class="member-info">
                 <h3>Betül Ece Altun</h3>
-                <p>Deputy General</p>
+                <p>Deputy Secretary General</p>
             </div>
         </div>
 
         <div class="team-card">
             <div class="member-image">
-                <img src="academy.jpg" alt="Defne Yaman">
+                <img src="teamPhotos/academy.jpg" alt="Defne Yaman">
             </div>
             <div class="member-info">
                 <h3>Defne Yaman</h3>
@@ -224,7 +230,7 @@
 
         <div class="team-card">
             <div class="member-image">
-                <img src="hCrisis.jpg" alt="Batu Sönmez">
+                <img src="teamPhotos/hCrisis.jpg" alt="Batu Sönmez">
             </div>
             <div class="member-info">
                 <h3>Batu Sönmez</h3>
@@ -234,7 +240,7 @@
 
         <div class="team-card">
             <div class="member-image">
-                <img src="hPr.jpg" alt="Beyza Gündoğdu">
+                <img src="teamPhotos/hPr.jpg" alt="Beyza Gündoğdu">
             </div>
             <div class="member-info">
                 <h3>Beyza Gündoğdu</h3>
@@ -248,7 +254,7 @@
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
             <h2>RAYMUN2026</h2>
-            <p>Where vision becomes voice</p>
+            <p style="font-style: italic; opacity: 0.8; font-size: 14px;">Where vision becomes voice</p>
         </div>
         <div class="footer-col">
             <h4>CONFERENCE</h4>
@@ -261,7 +267,7 @@
         </div>
         <div class="footer-col">
             <h4>SOCIAL</h4>
-            <div style="display: flex; gap: 15px; font-size: 20px;">
+            <div class="social-icons">
                 <i class="fab fa-instagram"></i>
                 <i class="fab fa-tiktok"></i>
                 <i class="fab fa-linkedin"></i>
