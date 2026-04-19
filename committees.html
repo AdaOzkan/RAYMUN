@@ -81,7 +81,7 @@
             background: #f9f9f9;
         }
         .page-header h4 { 
-            font-family: 'Northwell', cursive; /* Northwell uygulandı */
+            font-family: 'Northwell', cursive; 
             text-transform: none; 
             letter-spacing: 0px; 
             font-size: 90px; 
@@ -91,7 +91,7 @@
             font-weight: normal;
         }
         .page-header h2 { 
-            font-family: 'Antonio', sans-serif; /* Antonio uygulandı */
+            font-family: 'Antonio', sans-serif; 
             font-size: clamp(40px, 7vw, 68px); 
             font-weight: 700; 
             letter-spacing: 2px; 
@@ -117,7 +117,7 @@
             height: 280px;
             border-radius: 25px;
             overflow: hidden;
-            border: 3px solid #142948; /* Renk güncellendi */
+            border: 3px solid #142948; 
             transition: all 0.4s ease;
             cursor: pointer;
         }
@@ -193,15 +193,14 @@
 
         footer { background-color: #1a1a1a; padding: 80px 8% 40px 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 0.8fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-brand img { height: 120px; margin-bottom: 20px; }
-        .footer-brand h2 { font-size: 32px; letter-spacing: 4px; margin-bottom: 10px; }
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 36px; letter-spacing: 4px; margin-bottom: 10px; text-transform: uppercase; }
+        .footer-brand h2 .highlight { color: #27f4d2; }
         .footer-col h4 { font-size: 14px; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.7; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
         .social-icons { display: flex; gap: 20px; font-size: 20px; }
-        .bottom-bar { background-color: #1a1a1a; padding: 25px 8%; display: flex; justify-content: space-between; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.8; }
-        .bottom-bar .brand-name { font-family: 'Antonio', sans-serif; letter-spacing: 1px; font-weight: 700; text-transform: uppercase; }
-        .bottom-bar .year-highlight { color: #27f4d2; }
+        .bottom-bar { background-color: #1a1a1a; padding: 25px 8%; display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.8; }
 
         @media (max-width: 1024px) {
             .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; background: #2a0202; flex-direction: column; justify-content: center; transition: 0.4s ease; z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
@@ -306,7 +305,7 @@
     <footer>
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="Logo">
-            <h2>RAYMUN2026</h2>
+            <h2>RAYMUN<span class="highlight">2026</span></h2>
             <p>Where vision becomes voice</p>
         </div>
         <div class="footer-col">
@@ -323,10 +322,7 @@
         </div>
     </footer>
 
-    <div class="bottom-bar">
-        <div class="brand-name">© RAYMUN<span class="year-highlight">26</span></div>
-        <div>Crafted with ❤️ by Ada Özkan</div>
-    </div>
+    <div class="bottom-bar"><div>© raymun2026</div><div>Crafted with ❤️ by Ada Özkan</div></div>
 
     <script>
         function toggleMenu() {
