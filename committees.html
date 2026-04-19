@@ -4,25 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committees | RAYMUN '26</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        /* --- FONT TANIMLAMA --- */
-        @font-face {
-            font-family: 'Northwell';
-            src: url('Northwell.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
         /* Genel Temeller */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: #000041; color: white; line-height: 1.6; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: radial-gradient(circle at center, #003c6d 0%, #000041 100%); color: white; line-height: 1.6; overflow-x: hidden; }
 
-        /* --- NAVIGASYON --- */
+        /* Navigasyon */
         nav {
             background: linear-gradient(to bottom, #142948 0%, #1a1a1a 100%);
             display: flex;
@@ -34,69 +22,72 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease-in-out; /* Pürüzsüz geçiş */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
-        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-area img { height: 38px; }
-        .logo-area span {
-            font-family: 'Northwell', cursive;
-            font-size: 32px;
-            color: #ffffff;
-            line-height: 1;
-        }
+        .logo-area { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; z-index: 1001; }
+        .logo-area img { height: 50px; width: auto; filter: brightness(1.2); }
+        .logo-area span { font-weight: 600; letter-spacing: 2px; font-size: 18px; text-transform: uppercase; }
 
         .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
         .nav-links a { 
             color: white; 
             text-decoration: none; 
             text-transform: uppercase; 
-            font-size: 11.5px; 
+            font-size: 11px; 
             font-weight: 600; 
-            letter-spacing: 1px; 
-            opacity: 0.85; 
-            transition: all 0.2s ease-in-out; /* Pürüzsüz hover */
+            letter-spacing: 1.2px; 
+            opacity: 0.8; 
+            transition: 0.3s ease; 
         }
-        .nav-links a:hover, .nav-links a.active { opacity: 1; }
+        .nav-links a:hover { opacity: 1; color: #ff9999; }
+
+        .mobile-menu-icon {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
 
         .apply-btn { 
-            background-color: #161616; 
+            background-color: #1a1a1a; 
             color: white; 
-            padding: 10px 22px; 
-            border-radius: 25px; 
+            padding: 8px 20px; 
+            border-radius: 20px; 
             text-decoration: none; 
             font-weight: 700; 
             font-size: 11px; 
             text-transform: uppercase;
+            letter-spacing: 1px;
             border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease-in-out; /* Pürüzsüz buton efekti */
+            transition: 0.3s;
         }
-        .apply-btn:hover { background-color: white; color: black; }
+        .apply-btn:hover { background-color: white; color: black; transform: translateY(-2px); }
 
-        /* --- BAŞLIK BÖLÜMÜ --- */
+        /* Başlık Bölümü */
         .page-header { 
             padding: 180px 5% 60px 5%; 
             text-align: center; 
-            background: linear-gradient(to top, #000041 0%, #003c6d 100%)
+            background: radial-gradient(circle at center, #1a0202 0%, #0b0101 100%);
         }
-        .page-header span { 
-            font-family: 'Northwell', cursive;
-            font-size: 45px;
+        .page-header h4 { 
+            text-transform: uppercase; 
+            letter-spacing: 6px; 
+            font-size: 12px; 
+            opacity: 0.5; 
+            margin-bottom: 20px; 
             color: #ffffff;
-            display: block;
-            margin-bottom: 5px;
         }
         .page-header h2 { 
-            font-family: 'Antonio', sans-serif;
             font-size: clamp(40px, 7vw, 68px); 
             font-weight: 700; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(to bottom, #ffffff 50%, #aaaaaa 100%);
+            letter-spacing: -1px; 
+            background: linear-gradient(to bottom, #ffffff 50%, #888888 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- GRID VE KART TASARIMI --- */
+        /* Grid Sistemi */
         .committees-container {
             max-width: 1200px;
             margin: 0 auto 100px auto;
@@ -106,14 +97,14 @@
             gap: 30px;
         }
 
+        /* Kart Tasarımı */
         .committee-card {
             position: relative;
-            height: 300px;
+            height: 280px;
             border-radius: 25px;
             overflow: hidden;
-            /* İnce çerçeve - f9f9f9 yerine rgba beyaz daha şık durur */
-            border: 1px solid rgba(255, 255, 255, 0.2); 
-            transition: all 0.4s ease-in-out; /* Pürüzsüz kart efekti */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
             cursor: pointer;
         }
         
@@ -130,111 +121,83 @@
             background-size: cover;
             background-position: center;
             z-index: 1;
-            transition: transform 0.6s ease-in-out; /* Pürüzsüz zoom */
+            transition: transform 0.6s ease;
+            filter: grayscale(30%);
         }
 
         .card-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 2;
-            transition: opacity 0.4s ease-in-out; /* Pürüzsüz overlay */
+            transition: 0.4s ease;
         }
 
-        /* Efekt Renkleri */
-        .disec-effect .card-overlay { background: linear-gradient(to top, #781414 20%, rgba(0,0,0,0) 100%); }
-        .who-effect .card-overlay { background: linear-gradient(to top, #3d7761 20%, rgba(0,0,0,0) 100%); }
-        .undc-effect .card-overlay { background: linear-gradient(to top, #8c6b3d 20%, rgba(0,0,0,0) 100%); }
-        .unsc-effect .card-overlay { background: linear-gradient(to top, #b85c38 20%, rgba(0,0,0,0) 100%); }
-        .jcc-effect .card-overlay { background: linear-gradient(to top, #53354a 20%, rgba(0,0,0,0) 100%); }
+        /* Komite Kart Renk Efektleri */
+        .disec-effect .card-overlay { background: linear-gradient(to top, #781414 10%, rgba(120, 20, 20, 0.4) 100%); }
+        .who-effect .card-overlay { background: linear-gradient(to top, #3d7761 10%, rgba(61, 119, 97, 0.4) 100%); }
+        .undc-effect .card-overlay { background: linear-gradient(to top, #8c6b3d 10%, rgba(140, 107, 61, 0.4) 100%); }
+        .unsc-effect .card-overlay { background: linear-gradient(to top, #b85c38 10%, rgba(184, 92, 56, 0.4) 100%); }
+        .jcc-effect .card-overlay { background: linear-gradient(to top, #53354a 10%, rgba(106, 30, 85, 0.4) 100%); }
 
-        .committee-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); border-color: rgba(255, 255, 255, 0.5); }
-        .committee-card:hover .card-image { transform: scale(1.1); }
+        .committee-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.5); }
+        .committee-card:hover .card-image { transform: scale(1.1); filter: grayscale(0%); }
+        .committee-card:hover .card-overlay { opacity: 0.8; }
 
         .card-content { position: relative; z-index: 3; padding: 30px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-top { font-size: 12px; letter-spacing: 3px; font-weight: 700; opacity: 0.9; }
-        .card-title { 
-            font-family: 'Antonio', sans-serif;
-            font-size: 42px; 
-            text-transform: uppercase; 
-        }
+        .card-top { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: 3px; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .card-title { font-size: 36px; font-weight: bold; margin: 0; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
 
-        /* --- MODAL --- */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(8px); transition: opacity 0.3s ease-in-out; }
-        .modal-card { width: 90%; max-width: 750px; border-radius: 25px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); transition: all 0.4s ease-in-out; }
+        /* Modal (Açılan Pencere) Yapısı */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(8px); }
+        .modal-card { 
+            width: 90%; 
+            max-width: 750px; 
+            max-height: 85vh; 
+            border-radius: 25px; 
+            position: relative; 
+            overflow-y: auto; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+            transition: background-color 0.4s ease;
+        }
         .modal-header-img { width: 100%; height: 250px; background-size: cover; background-position: center; position: relative; }
-        .modal-close { position: absolute; top: 20px; right: 25px; font-size: 28px; color: white; cursor: pointer; z-index: 10; transition: opacity 0.2s; }
-        .modal-close:hover { opacity: 0.7; }
-        .modal-body { padding: 40px; }
-        .modal-title { font-family: 'Antonio', sans-serif; font-size: 48px; text-transform: uppercase; margin-bottom: 10px; }
-        .modal-topic { font-size: 17px; font-style: italic; margin-bottom: 20px; color: #27f4d2; }
-        
-        /* --- FOOTER --- */
-        footer {
-            background-color: #1a1a1a;
-            padding: 60px 8% 40px 8%;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
-            gap: 40px;
-            color: white;
-            transition: all 0.3s ease-in-out;
+        .modal-header-overlay { 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)); /* Fotoğraf ve renk geçişi */
+            transition: background 0.4s ease;
         }
+        .modal-close { position: absolute; top: 20px; right: 25px; font-size: 28px; color: white; cursor: pointer; z-index: 10; opacity: 0.8; transition: 0.3s; }
+        .modal-body { padding: 40px; position: relative; margin-top: -80px; }
+        .modal-tag { font-size: 12px; letter-spacing: 3px; opacity: 0.7; text-transform: uppercase; }
+        .modal-title { font-size: 48px; font-weight: bold; margin: 10px 0; letter-spacing: 1px; }
+        .modal-topic { font-size: 17px; font-style: italic; margin-bottom: 25px; color: #ffffff; opacity: 0.9; line-height: 1.4; }
+        .modal-desc { font-size: 15px; line-height: 1.8; opacity: 0.85; margin-bottom: 35px; text-align: justify; }
+        .study-guide-btn { display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 15px 30px; border-radius: 15px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .study-guide-btn:hover { background: white; color: black; }
 
-        /* --- RAYMUN '26 FONT DÜZELTMESİ (ANTONIO) --- */
-        .footer-brand h2 {
-            font-family: 'Antonio', sans-serif; /* RAYMUN kısmı için */
-            font-size: clamp(28px, 5vw, 42px);
-            letter-spacing: 2px;
-            font-weight: 700; /* Kalınlaştırma */
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            color: #ffffff;
-        }
-
-        /* 26 İÇİN ANTONIO FONTU VE STİLİ */
-        .footer-brand h2 .year-special { 
-            font-family: 'Antonio', sans-serif !important; 
-            color: #27f4d2; 
-            font-weight: 700;
-            letter-spacing: 0px; /* Sayı arası boşluğu görselle uyumlu */
-        }
-
-        .footer-brand img { height: 90px; margin-bottom: 20px; }
-        .footer-brand p { font-style: italic; opacity: 0.8; font-size: 14px; }
-
-        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.6; text-transform: uppercase; }
+        footer { background-color: #4a0404; padding: 80px 8% 40px 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 0.8fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-brand img { height: 120px; margin-bottom: 20px; }
+        .footer-brand h2 { font-size: 32px; letter-spacing: 4px; margin-bottom: 10px; }
+        .footer-col h4 { font-size: 14px; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.7; }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: all 0.2s ease-in-out; }
-        .footer-col ul li a:hover { opacity: 1; padding-left: 5px; }
-
-        .social-icons { display: flex; gap: 15px; }
-        .social-icons i { font-size: 22px; opacity: 0.8; transition: all 0.2s ease-in-out; cursor: pointer; }
-        .social-icons i:hover { opacity: 1; transform: scale(1.1); color: #27f4d2; }
-
-        .bottom-bar {
-            background-color: #1a1a1a;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            color: white;
-            opacity: 0.6;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            transition: opacity 0.3s;
-        }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
+        .social-icons { display: flex; gap: 20px; font-size: 20px; }
+        .bottom-bar { background-color: #4a0404; padding: 25px 8%; display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.8; }
 
         @media (max-width: 1024px) {
             .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; background: #2a0202; flex-direction: column; justify-content: center; transition: 0.4s ease; z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
             .nav-links.active { right: 0; }
             .mobile-menu-icon { display: block; }
-            footer { grid-template-columns: 1fr; text-align: center; }
-            .footer-brand, .social-icons { text-align: center; justify-content: center; }
-            .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
         }
 
         @media (max-width: 768px) {
             .committees-container { grid-template-columns: 1fr; }
             .committee-card.full-width { grid-column: span 1; }
+            footer { grid-template-columns: 1fr; text-align: center; }
+            .social-icons { justify-content: center; }
         }
     </style>
 </head>
@@ -249,7 +212,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="about.html">About</a></li>
             <li><a href="team.html">Team</a></li>
-            <li><a href="committees.html" class="active">Committees</a></li>
+            <li><a href="committees.html">Committees</a></li>
             <li><a href="venue.html">Venue</a></li>
             <li><a href="calendar.html">Calendar</a></li>
             <li><a href="faq.html">FAQ</a></li>
@@ -259,52 +222,52 @@
     </nav>
 
     <header class="page-header">
-        <span>Our Agenda</span>
-        <h2>Committees</h2>
+        <h4>Committees</h4>
+        <h2>Our Committees</h2>
     </header>
 
     <main class="committees-container">
-        <div class="committee-card disec-effect" onclick="openModal('DISEC', 'GA - 1', 'disec.jpg', 'Establishing International Legal Norms for AI', 'The Disarmament and International Security Committee (DISEC) is the First Committee of the UN.', '#781414')">
+        <div class="committee-card disec-effect" onclick="openModal('DISEC', 'GA - 1', 'disec.jpg', 'Establishing International Legal Norms for Artificial Intelligence in Armed Conflict', 'The Disarmament and International Security Committee (DISEC) is the First Committee of the UN.', '#781414')">
             <div class="card-image" style="background-image: url('disec.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
-                <div class="card-top">GA - 1 | RAYMUN</div>
+                <div class="card-top"><span>GA - 1</span><span>RAYMUN</span></div>
                 <h3 class="card-title">DISEC</h3>
             </div>
         </div>
 
-        <div class="committee-card unsc-effect" onclick="openModal('UNSC', 'SPECIAL', 'unsc.jpg', 'Strengthening Economic Resilience', 'The Security Council maintains international peace and security.', '#b85c38')">
+        <div class="committee-card unsc-effect" onclick="openModal('UNSC', 'SPECIAL', 'unsc.jpg', 'Strengthening Economic Resilience across Europe', 'The Security Council maintains international peace and security.', '#b85c38')">
             <div class="card-image" style="background-image: url('unsc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
-                <div class="card-top">SPECIAL | RAYMUN</div>
+                <div class="card-top"><span>SPECIAL</span><span>RAYMUN</span></div>
                 <h3 class="card-title">UNSC</h3>
             </div>
         </div>
 
-        <div class="committee-card who-effect" onclick="openModal('WHO', 'GA - 2', 'who.jpg', 'Global Health Security', 'The WHO focuses on international public health.', '#3d7761')">
+        <div class="committee-card who-effect" onclick="openModal('WHO', 'GA - 2', 'who.jpg', 'Global Health Security and Universal Healthcare Access', 'The WHO focuses on international public health.', '#3d7761')">
             <div class="card-image" style="background-image: url('who.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
-                <div class="card-top">GA - 2 | RAYMUN</div>
+                <div class="card-top"><span>GA - 2</span><span>RAYMUN</span></div>
                 <h3 class="card-title">WHO</h3>
             </div>
         </div>
 
-        <div class="committee-card undc-effect" onclick="openModal('UNDC', 'SPECIAL', 'undc.jpg', 'Modernizing Collective Defense', 'The UNDC deals with disarmament and security issues.', '#8c6b3d')">
+        <div class="committee-card undc-effect" onclick="openModal('UNDC', 'SPECIAL', 'undc.jpg', 'Modernizing Collective Defense in the Digital Age', 'The UNDC deals with disarmament and security issues.', '#8c6b3d')">
             <div class="card-image" style="background-image: url('undc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
-                <div class="card-top">SPECIAL | RAYMUN</div>
+                <div class="card-top"><span>SPECIAL</span><span>RAYMUN</span></div>
                 <h3 class="card-title">UNDC</h3>
             </div>
         </div>
 
-        <div class="committee-card jcc-effect full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights', 'Joint Crisis Committee offers an intense, fast-paced MUN experience.', '#6a1e55')">
+        <div class="committee-card jcc-effect full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'Joint Crisis Committee offers an intense, fast-paced MUN experience.', '#6a1e55')">
             <div class="card-image" style="background-image: url('jcc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
-                <div class="card-top">GA - 3 | RAYMUN</div>
+                <div class="card-top"><span>GA - 3</span><span>RAYMUN</span></div>
                 <h3 class="card-title">JCC</h3>
             </div>
         </div>
@@ -313,12 +276,15 @@
     <div id="committeeModal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-card" onclick="event.stopPropagation()">
             <i class="fas fa-times modal-close" onclick="closeModal()"></i>
-            <div id="modalImg" class="modal-header-img"></div>
-            <div class="modal-body" id="modalBody">
+            <div id="modalImg" class="modal-header-img">
+                <div class="modal-header-overlay" id="modalGradient"></div>
+            </div>
+            <div class="modal-body">
+                <span id="modalTag" class="modal-tag"></span>
                 <h2 id="modalTitle" class="modal-title"></h2>
                 <p id="modalTopic" class="modal-topic"></p>
-                <div id="modalDesc" style="margin-bottom: 25px; opacity: 0.8;"></div>
-                <a href="#" class="apply-btn" style="display: inline-block;">View Study Guide</a>
+                <div id="modalDesc" class="modal-desc"></div>
+                <a href="#" class="study-guide-btn"><i class="fas fa-file-pdf"></i> View Study Guide</a>
             </div>
         </div>
     </div>
@@ -326,32 +292,24 @@
     <footer>
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="Logo">
-            <h2>RAYMUN<span class="year-special">26</span></h2>
+            <h2>RAYMUN2026</h2>
             <p>Where vision becomes voice</p>
         </div>
         <div class="footer-col">
             <h4>CONFERENCE</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="committees.html">Committees</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
+            <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="committees.html">Committees</a></li><li><a href="team.html">Our Team</a></li><li><a href="faq.html">FAQ</a></li></ul>
+        </div>
+        <div class="footer-col">
+            <h4>LEGAL</h4>
+            <ul><li><a href="#">Terms and Conditions</a></li><li><a href="#">Privacy Policy</a></li></ul>
         </div>
         <div class="footer-col">
             <h4>SOCIAL</h4>
-            <div class="social-icons">
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-tiktok"></i>
-                <i class="fab fa-linkedin"></i>
-            </div>
+            <div class="social-icons"><a href="#" style="color: white;"><i class="fab fa-instagram"></i></a><a href="#" style="color: white;"><i class="fab fa-tiktok"></i></a><a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a></div>
         </div>
     </footer>
 
-    <div class="bottom-bar">
-        <div>© raymun2026</div>
-        <div>Crafted with ❤️ by Ada Özkan</div>
-    </div>
+    <div class="bottom-bar"><div>© raymun2026</div><div>Crafted with ❤️ by Ada Özkan</div></div>
 
     <script>
         function toggleMenu() {
@@ -363,11 +321,20 @@
         }
 
         function openModal(title, tag, img, topic, desc, color) {
+            const modalCard = document.querySelector('.modal-card');
+            const modalGradient = document.getElementById('modalGradient');
+            
+            // Kartın arka plan rengini komiteye göre ayarla
+            modalCard.style.backgroundColor = color;
+            
+            // Fotoğraf ve renk arasındaki geçişi ayarla
+            modalGradient.style.background = `linear-gradient(to bottom, rgba(0,0,0,0.1), ${color})`;
+
             document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalTag').innerText = tag + ' | RAYMUN';
             document.getElementById('modalTopic').innerText = topic;
             document.getElementById('modalDesc').innerText = desc;
             document.getElementById('modalImg').style.backgroundImage = "url('" + img + "')";
-            document.getElementById('modalBody').parentElement.style.backgroundColor = color;
             document.getElementById('committeeModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
