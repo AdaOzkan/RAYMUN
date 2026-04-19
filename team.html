@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Team | RAYMUN '26</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
+        /* --- FONT TANIMLAMA --- */
+        @font-face {
+            font-family: 'Northwell';
+            src: url('Northwell.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         /* Ana Stil Ayarları */
         * {
             margin: 0;
@@ -15,14 +27,14 @@
         }
 
         body {
-            background-color: #f9f9f9; /* Krem rengi arka plan */
-            color: #4a0404;
+            background-color: #f9f9f9;
+            color: #142948;
             overflow-x: hidden;
         }
 
-        /* --- NAVIGASYON (GÖRSELDEKİ STİL) --- */
+        /* --- NAVIGASYON (Ana Sayfadan Alındı) --- */
         nav {
-            background: linear-gradient(to bottom, #142948  0%, #1a1a1a 100%);
+            background: linear-gradient(to bottom, #142948 0%, #1a1a1a 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -38,19 +50,19 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: white;
             text-decoration: none;
         }
 
         .logo-area img {
-            height: 32px;
+            height: 38px;
             width: auto;
         }
 
         .logo-area span {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-family: 'Northwell', cursive;
+            font-size: 32px;
+            color: #ffffff;
+            line-height: 1;
         }
 
         .nav-right {
@@ -76,8 +88,9 @@
             transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            opacity: 1;
+        .nav-links a:hover, .nav-links a.active { 
+            opacity: 1; 
+            border-bottom: 1px solid white;
         }
 
         .apply-btn {
@@ -99,28 +112,29 @@
             color: #000;
         }
 
-        /* Başlık Alanı */
+        /* --- BAŞLIK ALANI --- */
         .team-header {
             text-align: center;
-            padding: 150px 20px 60px 20px;
+            padding: 160px 20px 60px 20px;
         }
 
         .team-header span {
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             font-size: 14px;
-            color: #000041;
+            color: #142948;
+            opacity: 0.7;
             display: block;
             margin-bottom: 10px;
         }
 
         .team-header h1 {
             font-size: clamp(32px, 5vw, 56px);
-            color: #003c6d;
+            color: #142948;
             font-weight: 700;
         }
 
-        /* Kart Konteynırı */
+        /* --- EKİP KARTLARI --- */
         .team-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -130,7 +144,6 @@
             padding: 0 5% 100px 5%;
         }
 
-        /* Ekip Kartı */
         .team-card {
             background: white;
             border-radius: 25px;
@@ -138,17 +151,16 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
-            border: 1px solid rgba(74, 4, 4, 0.05);
+            border: 1px solid rgba(20, 41, 72, 0.05);
             display: flex;
             flex-direction: column;
         }
 
         .team-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 45px rgba(74, 4, 4, 0.1);
+            box-shadow: 0 20px 45px rgba(20, 41, 72, 0.1);
         }
 
-        /* Fotoğraf Alanı */
         .member-image {
             width: 100%;
             height: 380px;
@@ -167,7 +179,6 @@
             transform: scale(1.05);
         }
 
-        /* Üye Bilgileri */
         .member-info {
             padding: 25px 20px;
         }
@@ -182,49 +193,99 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #000041;
+            color: #142948;
             font-weight: 600;
+            opacity: 0.8;
         }
 
-        /* Footer */
+        /* --- FOOTER (Ana Sayfadan Alındı) --- */
         footer {
             background-color: #1a1a1a;
-            color: white;
             padding: 60px 8% 40px 8%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
             gap: 40px;
+            align-items: start;
+            color: white;
         }
 
-        .footer-brand img { height: 100px; margin-bottom: 15px; }
-        .footer-col h4 { opacity: 0.7; font-size: 13px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-brand { text-align: left; }
+        .footer-brand img {
+            height: clamp(80px, 12vw, 120px);
+            margin-bottom: 20px;
+        }
+
+        .footer-brand h2 {
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(28px, 5vw, 42px);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .footer-brand h2 .year-special {
+            font-family: 'Antonio', sans-serif;
+            color: #27f4d2;
+        }
+
+        .footer-brand p {
+            font-style: italic;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
+        .footer-col ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+            opacity: 0.8;
+        }
+
         .footer-col ul li a:hover { opacity: 1; }
-        
-        .social-icons { display: flex; gap: 15px; font-size: 20px; }
-        .social-icons i { cursor: pointer; transition: 0.3s; }
-        .social-icons i:hover { transform: scale(1.2); }
+
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons i { font-size: 22px; color: white; opacity: 0.8; transition: 0.3s; cursor: pointer; }
+        .social-icons i:hover { opacity: 1; transform: scale(1.1); }
 
         .bottom-bar {
             background-color: #1a1a1a;
-            color: white;
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
+            align-items: center;
             font-size: 11px;
-            opacity: 0.6;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
+        /* --- MOBİL AYARLAR --- */
         @media (max-width: 768px) {
-            nav { flex-direction: column; gap: 15px; padding: 15px 2%; }
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 2%;
+            }
             .nav-right { flex-direction: column; gap: 10px; }
             .nav-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
-            .team-container { grid-template-columns: 1fr; }
             .team-header { padding-top: 180px; }
-            .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
+            footer { grid-template-columns: 1fr; text-align: center; }
+            .footer-brand { text-align: center; }
+            .social-icons { justify-content: center; }
+            .bottom-bar { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -238,12 +299,15 @@
         
         <div class="nav-right">
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="committees.html">Committees</a></li> 
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html" class="active">TEAM</a></li>
+                <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#">CONTACT</a></li>
             </ul>
-            <a href="#" class="apply-btn">Apply Now</a>
+            <a href="#" class="apply-btn">APPLY NOW</a>
         </div>
     </nav>
 
@@ -359,9 +423,10 @@
     <footer>
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
-            <h2>RAYMUN2026</h2>
-            <p style="font-style: italic; opacity: 0.8; font-size: 14px;">Where vision becomes voice</p>
+            <h2>RAYMUN<span class="year-special">26</span></h2>
+            <p>Where vision becomes voice</p>
         </div>
+
         <div class="footer-col">
             <h4>CONFERENCE</h4>
             <ul>
@@ -371,6 +436,7 @@
                 <li><a href="faq.html">FAQ</a></li>
             </ul>
         </div>
+
         <div class="footer-col">
             <h4>SOCIAL</h4>
             <div class="social-icons">
