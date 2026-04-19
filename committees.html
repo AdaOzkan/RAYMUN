@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committees | RAYMUN '26</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
+        /* --- FONT TANIMLAMA --- */
+        @font-face {
+            font-family: 'Northwell';
+            src: url('Northwell.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         /* Genel Temeller */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f9f9f9; color: white; line-height: 1.6; overflow-x: hidden; }
+        body { background-color: #000041; color: white; line-height: 1.6; overflow-x: hidden; }
 
         /* Navigasyon */
         nav {
@@ -42,7 +49,7 @@
             opacity: 0.8; 
             transition: 0.3s ease; 
         }
-        .nav-links a:hover { opacity: 1; color: #27f4d2; }
+        .nav-links a:hover { opacity: 1; color: #ff9999; }
 
         .mobile-menu-icon {
             display: none;
@@ -71,20 +78,23 @@
         .page-header { 
             padding: 180px 5% 60px 5%; 
             text-align: center; 
-            background: linear-gradient(to top, #f9f9f9 0%, #003c6d 70%);
+            background: linear-gradient(to top, #000041 0%, #003c6d 70%);
         }
         .page-header h4 { 
-            text-transform: uppercase; 
-            letter-spacing: 6px; 
-            font-size: 12px; 
-            opacity: 0.5; 
-            margin-bottom: 20px; 
+            font-family: 'Northwell', cursive; /* Northwell uygulandı */
+            text-transform: none; 
+            letter-spacing: 0; 
+            font-size: 48px; /* El yazısı için boyut artırıldı */
+            opacity: 0.8; 
+            margin-bottom: 0; 
             color: #ffffff;
         }
         .page-header h2 { 
+            font-family: 'Antonio', sans-serif; /* Antonio uygulandı */
             font-size: clamp(40px, 7vw, 68px); 
             font-weight: 700; 
-            letter-spacing: -1px; 
+            letter-spacing: 2px; 
+            text-transform: uppercase;
             background: linear-gradient(to bottom, #ffffff 50%, #888888 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -180,36 +190,18 @@
         .study-guide-btn { display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 15px 30px; border-radius: 15px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .study-guide-btn:hover { background: white; color: black; }
 
-        /* Footer Stilleri (GÜNCELLENDİ) */
-        footer { background-color: #1a1a1a; padding: 80px 8% 40px 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 0.8fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-brand img { height: 100px; margin-bottom: 20px; }
-        
-        /* RAYMUN26 Yazı Stili */
-        .footer-brand h2 {
-            font-family: 'Antonio', sans-serif;
-            font-size: clamp(28px, 5vw, 42px);
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            color: #ffffff;
-        }
-        .footer-brand h2 .year-special {
-            font-family: 'Antonio', sans-serif;
-            color: #27f4d2; /* Turkuaz efektli 26 */
-        }
-
-        .footer-brand p { font-style: italic; font-size: 14px; opacity: 0.7; }
-        .footer-col h4 { font-size: 13px; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.5; text-transform: uppercase; }
+        footer { background-color: #4a0404; padding: 80px 8% 40px 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 0.8fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-brand img { height: 120px; margin-bottom: 20px; }
+        .footer-brand h2 { font-size: 32px; letter-spacing: 4px; margin-bottom: 10px; }
+        .footer-col h4 { font-size: 14px; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.7; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
-        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; }
         .social-icons { display: flex; gap: 20px; font-size: 20px; }
-        
-        .bottom-bar { background-color: #1a1a1a; padding: 25px 8%; display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid rgba(255,255,255,0.05); opacity: 0.7; }
+        .bottom-bar { background-color: #4a0404; padding: 25px 8%; display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.8; }
 
         @media (max-width: 1024px) {
-            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; background: #142948; flex-direction: column; justify-content: center; transition: 0.4s ease; z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; background: #2a0202; flex-direction: column; justify-content: center; transition: 0.4s ease; z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
             .nav-links.active { right: 0; }
             .mobile-menu-icon { display: block; }
         }
@@ -243,9 +235,7 @@
     </nav>
 
     <header class="page-header">
-        <h4>Committees</h4>
-        <h2>Our Committees</h2>
-    </header>
+        <h4>Agenda</h4> <h2>Committees</h2> </header>
 
     <main class="committees-container">
         <div class="committee-card disec-effect" onclick="openModal('DISEC', 'GA - 1', 'disec.jpg', 'Establishing International Legal Norms for Artificial Intelligence in Armed Conflict', 'The Disarmament and International Security Committee (DISEC) is the First Committee of the UN.', '#781414')">
@@ -313,40 +303,24 @@
     <footer>
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="Logo">
-            <h2>RAYMUN<span class="year-special">26</span></h2>
+            <h2>RAYMUN2026</h2>
             <p>Where vision becomes voice</p>
         </div>
         <div class="footer-col">
             <h4>CONFERENCE</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="committees.html">Committees</a></li>
-                <li><a href="team.html">Our Team</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
+            <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="committees.html">Committees</a></li><li><a href="team.html">Our Team</a></li><li><a href="faq.html">FAQ</a></li></ul>
         </div>
         <div class="footer-col">
             <h4>LEGAL</h4>
-            <ul>
-                <li><a href="#">Terms and Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-            </ul>
+            <ul><li><a href="#">Terms and Conditions</a></li><li><a href="#">Privacy Policy</a></li></ul>
         </div>
         <div class="footer-col">
             <h4>SOCIAL</h4>
-            <div class="social-icons">
-                <a href="#" style="color: white;"><i class="fab fa-instagram"></i></a>
-                <a href="#" style="color: white;"><i class="fab fa-tiktok"></i></a>
-                <a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a>
-            </div>
+            <div class="social-icons"><a href="#" style="color: white;"><i class="fab fa-instagram"></i></a><a href="#" style="color: white;"><i class="fab fa-tiktok"></i></a><a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a></div>
         </div>
     </footer>
 
-    <div class="bottom-bar">
-        <div>© raymun2026</div>
-        <div>Crafted with ❤️ by Ada Özkan</div>
-    </div>
+    <div class="bottom-bar"><div>© raymun2026</div><div>Crafted with ❤️ by Ada Özkan</div></div>
 
     <script>
         function toggleMenu() {
