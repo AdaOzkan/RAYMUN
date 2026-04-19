@@ -6,12 +6,13 @@
     <title>RAYMUN '26 | Where Vision Becomes Voice</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- FONT TANIMLAMA --- */
+        /* --- FONT TANIMLAMA (Hata düzeltildi: Nortwell -> Northwell) --- */
         @font-face {
-            font-family: 'Nortwell';
+            font-family: 'Northwell';
             src: url('Northwell.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
+            font-display: swap; /* Font yüklenene kadar yedek fontu gösterir */
         }
 
         /* Genel Stiller */
@@ -126,11 +127,12 @@
         }
 
         .hero-content h1 {
-            font-family: 'Nortwell', cursive; /* Nortwell Fontu Uygulandı */
-            font-size: clamp(60px, 15vw, 120px); /* El yazısı için boyut artırıldı */
-            letter-spacing: 2px;
+            font-family: 'Northwell', cursive; /* Yazım hatası düzeltildi */
+            font-size: clamp(80px, 18vw, 160px); /* Görseldeki ihtişamı yakalamak için boyut artırıldı */
+            letter-spacing: normal; /* El yazısı fontlarda harf arası açılmaz, birleşik durmalı */
             margin-bottom: 10px;
-            text-transform: none; /* Fontun orjinal karakteri için büyük harf zorlaması kaldırıldı */
+            text-transform: none; 
+            font-weight: normal; /* Brush fontlar genelde kalınlıktan etkilenmez */
         }
 
         /* Geri Sayım */
@@ -147,7 +149,7 @@
             display: block;
             font-size: clamp(24px, 6vw, 40px);
             font-weight: bold;
-            font-family: 'Segoe UI', sans-serif; /* Rakamlar okunaklı kalsın diye Segoe UI */
+            font-family: 'Segoe UI', sans-serif;
         }
 
         /* Footer */
@@ -161,7 +163,6 @@
         }
 
         .footer-brand { text-align: left; }
-
         .footer-brand img {
             height: clamp(100px, 15vw, 180px);
             margin-bottom: 20px;
@@ -194,7 +195,7 @@
         .footer-col ul li a {
             color: #ffffff;
             text-decoration: none;
-            text-size: 14px;
+            font-size: 14px;
             transition: 0.3s;
         }
 
@@ -215,7 +216,6 @@
         /* --- MOBİL AYARLAR --- */
         @media (max-width: 992px) {
             footer { grid-template-columns: 1fr 1.2fr; }
-            .nav-right { gap: 15px; }
         }
 
         @media (max-width: 768px) {
