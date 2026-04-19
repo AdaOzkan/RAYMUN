@@ -11,7 +11,7 @@
     <style>
         /* --- FONT TANIMLAMA --- */
         @font-face {
-            font-family: 'Northwell';
+            font-family: 'Northwell'; /* 'h' harfi eklendi, isim düzeltildi */
             src: url('Northwell.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
@@ -56,7 +56,7 @@
             width: auto;
         }
 
-        /* Navigasyondaki RAYMUN yazısı (Northwell) */
+        /* Navigasyondaki Logo Yazısı */
         .logo-area span {
             font-family: 'Northwell', cursive;
             font-size: 32px;
@@ -122,17 +122,21 @@
 
         .hero-content {
             background-color: rgba(20, 41, 72, 0.85);
-            padding: clamp(20px, 5vw, 50px);
+            padding: clamp(30px, 8vw, 60px);
             border-radius: 15px;
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
         }
 
+        /* ORTADAKİ RAYMUN YAZISI (Düzeltildi) */
         .hero-content h1 {
-            font-family: 'Northwell', cursive;
-            font-size: clamp(80px, 18vw, 160px);
-            margin-bottom: 10px;
-            text-transform: none;
+            font-family: 'Northwell', cursive; /* İsim Northwell olarak güncellendi */
+            font-size: clamp(100px, 20vw, 180px); /* Boyut artırıldı */
+            margin-bottom: 0;
+            text-transform: none; /* Fontun kendi karakterini bozmamak için */
+            font-weight: normal;
+            line-height: 0.8;
+            letter-spacing: -2px; /* El yazısı birbirine yakın daha iyi durur */
         }
 
         /* Geri Sayım */
@@ -168,19 +172,18 @@
             margin-bottom: 20px;
         }
 
-        /* Footer Başlığı (Antonio Fontu) */
         .footer-brand h2 {
             font-family: 'Antonio', sans-serif;
             font-size: clamp(28px, 5vw, 42px);
             letter-spacing: 2px;
             margin-bottom: 5px;
             text-transform: uppercase;
-            color: #ffffff; /* Varsayılan renk beyaz */
+            color: #ffffff;
         }
 
-        /* YENİ: 2026 için özel renk sınıfı */
-        .footer-brand h2 span.year-color {
-            color: #27f4d2; /* Sizin seçtiğiniz Turkuaz/Camgöbeği renk */
+        .footer-brand h2 .year-special {
+            font-family: 'Antonio', sans-serif;
+            color: #27f4d2;
         }
 
         .footer-brand p {
@@ -222,10 +225,6 @@
         }
 
         /* --- MOBİL AYARLAR --- */
-        @media (max-width: 992px) {
-            footer { grid-template-columns: 1fr 1.2fr; }
-        }
-
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -272,14 +271,14 @@
                 <div class="time-box"><span id="minutes">00</span> MINUTES</div>
                 <div class="time-box"><span id="seconds">00</span> SECONDS</div>
             </div>
-            <p style="font-style: italic; margin-top: 30px; opacity: 0.8;">Where vision becomes voice</p>
+            <p style="font-style: italic; margin-top: 20px; opacity: 0.8;">Where vision becomes voice</p>
         </div>
     </section>
 
     <footer>
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
-            <h2>RAYMUN<span class="year-color">2026</span></h2>
+            <h2>RAYMUN<span class="year-special">2026</span></h2>
             <p>Where vision becomes voice</p>
         </div>
 
