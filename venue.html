@@ -82,7 +82,7 @@
             transition: 0.3s;
         }
 
-        .nav-links a:hover, .nav-links a.active { opacity: 1; border-bottom: 1px solid white; }
+        .nav-links a:hover, .nav-links a.active { opacity: 1; }
 
         .apply-btn {
             background-color: #161616;
@@ -94,7 +94,6 @@
             font-size: 11px;
             text-transform: uppercase;
             border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.3s;
         }
 
         /* --- İÇERİK --- */
@@ -106,17 +105,18 @@
         }
 
         .venue-label {
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 14px;
+            font-family: 'Northwell', cursive;
+            font-size: 40px;
             color: #142948;
-            opacity: 0.7;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             display: block;
         }
 
         .venue-title {
+            font-family: 'Antonio', sans-serif;
             font-size: clamp(30px, 5vw, 45px);
+            text-transform: uppercase;
+            letter-spacing: 2px;
             color: #142948;
             margin-bottom: 40px;
             font-weight: 700;
@@ -169,20 +169,17 @@
         }
 
         .footer-brand h2 {
-            font-family: 'Inter', sans-serif; /* RAYMUN kısmı için */
-            font-size: 38px;
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(28px, 5vw, 42px);
             letter-spacing: 2px;
-            font-weight: 700;
             margin-bottom: 5px;
             text-transform: uppercase;
+            color: #ffffff;
         }
 
-        /* 26 İÇİN ÖZEL ANTONIO FONTU */
-        .footer-brand h2 .year-special { 
-            font-family: 'Antonio', sans-serif !important; 
-            color: #27f4d2; 
-            font-weight: 700;
-            letter-spacing: 0px;
+        .footer-brand h2 .year-special {
+            font-family: 'Antonio', sans-serif;
+            color: #27f4d2;
         }
 
         .footer-brand img { height: 90px; margin-bottom: 20px; }
@@ -192,11 +189,11 @@
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; }
         .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
-        .footer-col ul li a:hover { opacity: 1; padding-left: 5px; }
+        .footer-col ul li a:hover { opacity: 1; }
 
         .social-icons { display: flex; gap: 15px; }
-        .social-icons i { font-size: 22px; opacity: 0.8; transition: 0.3s; cursor: pointer; }
-        .social-icons i:hover { opacity: 1; transform: scale(1.1); }
+        .social-icons i { font-size: 22px; color: white; transition: 0.3s; }
+        .social-icons i:hover { transform: scale(1.1); color: #27f4d2; }
 
         .bottom-bar {
             background-color: #1a1a1a;
@@ -212,8 +209,7 @@
         @media (max-width: 1024px) {
             .nav-right { display: none; }
             footer { grid-template-columns: 1fr; text-align: center; }
-            .footer-brand, .social-icons { text-align: center; justify-content: center; }
-            .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
+            .social-icons { justify-content: center; }
         }
     </style>
 </head>
@@ -239,7 +235,7 @@
     </nav>
 
     <div class="container">
-        <span class="venue-label">VENUE</span>
+        <span class="venue-label">Venue</span>
         <h1 class="venue-title">Our conference will take place in...</h1>
 
         <div class="location-card">
@@ -250,7 +246,7 @@
         <div class="map-wrapper">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.419024419572!2d27.35123497658744!3d41.40847997129661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s1s0x14b350485908b89d%3A0x67341e002660a9f5!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1710000000000!5m2!1str!2str" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.730248729524!2d27.35035!3d41.41165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b4ad470f1a239b%3A0xc47f22687c47d79!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1715456789012!5m2!1str!2str" 
                     allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
