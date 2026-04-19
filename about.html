@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | RAYMUN '26</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
+        /* --- FONT TANIMLAMA --- */
+        @font-face {
+            font-family: 'Northwell';
+            src: url('Northwell.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         /* Genel Stiller */
         * {
             margin: 0;
@@ -18,9 +30,10 @@
             background-color: #f9f9f9; 
             color: #000041; 
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Navigasyon */
+        /* --- NAVIGASYON (Ana Sayfadan Alındı) --- */
         nav {
             background: linear-gradient(to bottom, #142948 0%, #1a1a1a 100%);
             display: flex;
@@ -31,16 +44,32 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: white;
+            gap: 12px;
         }
 
-        .logo-area img { height: 50px; }
+        .logo-area img {
+            height: 38px;
+            width: auto;
+        }
+
+        .logo-area span {
+            font-family: 'Northwell', cursive;
+            font-size: 32px;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
 
         .nav-links {
             list-style: none;
@@ -49,24 +78,41 @@
         }
 
         .nav-links a {
-            color: white;
+            color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            opacity: 0.85;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { 
+            opacity: 1; 
+            border-bottom: 1px solid white;
         }
 
         .apply-btn {
-            background-color: #1a1a1a;
+            background-color: #161616;
             color: white;
-            padding: 8px 18px;
-            border-radius: 20px;
+            padding: 10px 22px;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
         }
 
-        /* About Section */
+        .apply-btn:hover {
+            background-color: #ffffff;
+            color: #000;
+        }
+
+        /* --- ABOUT CONTENT --- */
         .about-section {
             padding: 80px 10%;
             text-align: center;
@@ -79,13 +125,14 @@
             opacity: 0.7;
             margin-bottom: 20px;
             display: block;
+            color: #142948;
         }
 
         .about-title {
             font-size: clamp(32px, 5vw, 60px);
             font-weight: 500;
             margin-bottom: 40px;
-            color: #000041;
+            color: #142948;
         }
 
         .about-description {
@@ -96,15 +143,15 @@
             opacity: 0.9;
         }
 
-        /* Our Story Box */
         .story-container {
-            background-color: #003c6d; 
+            background-color: #142948; 
             color: #fdfcf0;
             padding: 60px;
             border-radius: 40px;
             text-align: left;
             max-width: 1100px;
             margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .story-container h2 {
@@ -119,92 +166,95 @@
             line-height: 1.8;
         }
 
-        /* --- GÜNCELLENEN KOYU FOOTER --- */
+        /* --- FOOTER (Ana Sayfadan Alındı) --- */
         footer {
-            background: linear-gradient(to bottom, #111111 0%, #050505 100%);
-            padding: 80px 8% 40px 8%;
+            background-color: #1a1a1a;
+            padding: 60px 8% 40px 8%;
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
             gap: 40px;
+            align-items: start;
             margin-top: 100px;
             color: white;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        .footer-brand img { 
-            height: 120px; 
+        .footer-brand { text-align: left; }
+        .footer-brand img {
+            height: clamp(80px, 12vw, 120px);
             margin-bottom: 20px;
-            filter: brightness(0.9);
         }
 
         .footer-brand h2 {
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(28px, 5vw, 42px);
+            letter-spacing: 2px;
             margin-bottom: 5px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .footer-brand h2 .year-special {
+            font-family: 'Antonio', sans-serif;
+            color: #27f4d2;
         }
 
         .footer-brand p {
-            font-size: 14px;
-            opacity: 0.5;
             font-style: italic;
+            font-size: 14px;
+            opacity: 0.9;
         }
 
-        .footer-col h4 { 
-            font-size: 12px; 
-            margin-bottom: 25px; 
-            opacity: 0.4; 
+        .footer-col h4 {
+            font-size: 13px;
             letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            opacity: 0.7;
             text-transform: uppercase;
         }
 
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { 
-            color: white; 
-            text-decoration: none; 
-            font-size: 14px; 
-            opacity: 0.6; 
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
             transition: 0.3s;
+            opacity: 0.8;
         }
 
-        .footer-col ul li a:hover {
-            opacity: 1;
-        }
+        .footer-col ul li a:hover { opacity: 1; }
 
-        .social-icons { display: flex; gap: 20px; }
-        .social-icons i { 
-            font-size: 20px; 
-            opacity: 0.6; 
-            transition: 0.3s;
-            cursor: pointer;
-        }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons i { font-size: 22px; color: white; opacity: 0.8; transition: 0.3s; }
         .social-icons i:hover { opacity: 1; }
 
         .bottom-bar {
-            background-color: #050505;
-            padding: 30px 8%;
+            background-color: #1a1a1a;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
-            color: white;
+            align-items: center;
             font-size: 11px;
-            letter-spacing: 0.5px;
-            opacity: 0.4;
+            color: white;
+            opacity: 0.7;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            footer { grid-template-columns: 1fr 1fr; }
-        }
-
+        /* --- MOBİL AYARLAR --- */
         @media (max-width: 768px) {
-            .story-container { padding: 30px; border-radius: 20px; }
-            footer { grid-template-columns: 1fr; text-align: center; padding-top: 50px; }
-            .social-icons { justify-content: center; }
-            nav { flex-direction: column; gap: 15px; }
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 2%;
+            }
+            .nav-right { flex-direction: column; gap: 10px; }
             .nav-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
-            .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
+            .story-container { padding: 30px; border-radius: 20px; }
+            footer { grid-template-columns: 1fr; text-align: center; }
+            .footer-brand { text-align: center; }
+            .social-icons { justify-content: center; }
+            .bottom-bar { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -215,15 +265,19 @@
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
             <span>RAYMUN</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" style="border-bottom: 1px solid white;">About</a></li>
-            <li><a href="committees.html">Committees</a></li> 
-            <li><a href="venue.html">Venue</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <a href="#" class="apply-btn">Apply Now</a>
+        
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html" class="active">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
+                <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="venue.html">VENUE</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+            <a href="#" class="apply-btn">APPLY NOW</a>
+        </div>
     </nav>
 
     <section class="about-section">
@@ -248,9 +302,10 @@
     <footer>
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
-            <h2>RAYMUN2026</h2>
+            <h2>RAYMUN<span class="year-special">26</span></h2>
             <p>Where vision becomes voice</p>
         </div>
+
         <div class="footer-col">
             <h4>CONFERENCE</h4>
             <ul>
@@ -259,8 +314,10 @@
                 <li><a href="committees.html">Committees</a></li> 
                 <li><a href="#">Apply</a></li>
                 <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </div>
+
         <div class="footer-col">
             <h4>LEGAL</h4>
             <ul>
@@ -268,6 +325,7 @@
                 <li><a href="#">Privacy Policy</a></li>
             </ul>
         </div>
+
         <div class="footer-col">
             <h4>SOCIAL</h4>
             <div class="social-icons">
