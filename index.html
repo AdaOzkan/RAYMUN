@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAYMUN '26 | Where Vision Becomes Voice</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* --- FONT TANIMLAMA (Hata düzeltildi: Nortwell -> Northwell) --- */
+        /* --- FONT TANIMLAMA --- */
         @font-face {
             font-family: 'Northwell';
-            src: url('Northwell-Alt.ttf') format('truetype');
+            src: url('Northwell.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
-            font-display: swap; /* Font yüklenene kadar yedek fontu gösterir */
+            font-display: swap;
         }
 
         /* Genel Stiller */
@@ -49,15 +52,16 @@
         }
 
         .logo-area img {
-            height: 32px;
+            height: 38px;
             width: auto;
         }
 
+        /* Navigasyondaki RAYMUN yazısı (Northwell) */
         .logo-area span {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-family: 'Northwell', cursive;
+            font-size: 32px;
             color: #ffffff;
+            line-height: 1;
         }
 
         .nav-right {
@@ -83,9 +87,7 @@
             transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            opacity: 1;
-        }
+        .nav-links a:hover { opacity: 1; }
 
         .apply-btn {
             background-color: #161616;
@@ -127,12 +129,10 @@
         }
 
         .hero-content h1 {
-            font-family: 'Northwell', cursive; /* Yazım hatası düzeltildi */
-            font-size: clamp(80px, 18vw, 160px); /* Görseldeki ihtişamı yakalamak için boyut artırıldı */
-            letter-spacing: normal; /* El yazısı fontlarda harf arası açılmaz, birleşik durmalı */
+            font-family: 'Northwell', cursive;
+            font-size: clamp(80px, 18vw, 160px);
             margin-bottom: 10px;
-            text-transform: none; 
-            font-weight: normal; /* Brush fontlar genelde kalınlıktan etkilenmez */
+            text-transform: none;
         }
 
         /* Geri Sayım */
@@ -164,15 +164,23 @@
 
         .footer-brand { text-align: left; }
         .footer-brand img {
-            height: clamp(100px, 15vw, 180px);
+            height: clamp(80px, 12vw, 120px);
             margin-bottom: 20px;
         }
 
+        /* Footer Başlığı (Antonio Fontu) */
         .footer-brand h2 {
-            font-size: clamp(24px, 5vw, 36px);
-            letter-spacing: 4px;
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(28px, 5vw, 42px);
+            letter-spacing: 2px;
             margin-bottom: 5px;
-            font-weight: 500;
+            text-transform: uppercase;
+            color: #ffffff; /* Varsayılan renk beyaz */
+        }
+
+        /* YENİ: 2026 için özel renk sınıfı */
+        .footer-brand h2 span.year-color {
+            color: #27f4d2; /* Sizin seçtiğiniz Turkuaz/Camgöbeği renk */
         }
 
         .footer-brand p {
@@ -271,7 +279,7 @@
     <footer>
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
-            <h2>RAYMUN2026</h2>
+            <h2>RAYMUN<span class="year-color">2026</span></h2>
             <p>Where vision becomes voice</p>
         </div>
 
