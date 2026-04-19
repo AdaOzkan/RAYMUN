@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venue | RAYMUN '26</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- FONT TANIMLAMA --- */
         @font-face {
             font-family: 'Northwell';
             src: url('Northwell.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
-            font-display: swap;
         }
 
         /* Genel Stiller */
@@ -23,7 +21,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
@@ -43,7 +41,6 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .logo-area {
@@ -53,10 +50,7 @@
             text-decoration: none;
         }
 
-        .logo-area img {
-            height: 38px;
-            width: auto;
-        }
+        .logo-area img { height: 38px; }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
@@ -88,10 +82,7 @@
             transition: 0.3s;
         }
 
-        .nav-links a:hover, .nav-links a.active { 
-            opacity: 1; 
-            border-bottom: 1px solid white;
-        }
+        .nav-links a:hover, .nav-links a.active { opacity: 1; border-bottom: 1px solid white; }
 
         .apply-btn {
             background-color: #161616;
@@ -102,24 +93,11 @@
             font-weight: 700;
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
             border: 1px solid rgba(255,255,255,0.1);
             transition: 0.3s;
         }
 
-        .apply-btn:hover {
-            background-color: #ffffff;
-            color: #000;
-        }
-
-        .mobile-menu-icon {
-            display: none;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-        }
-
-        /* --- İÇERİK ALANI --- */
+        /* --- İÇERİK --- */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -144,7 +122,6 @@
             font-weight: 700;
         }
 
-        /* Konum Kartı */
         .location-card {
             background-color: #142948;
             color: white;
@@ -155,10 +132,6 @@
             box-shadow: 0 15px 35px rgba(20, 41, 72, 0.15);
         }
 
-        .location-card h2 { font-size: 26px; margin-bottom: 10px; }
-        .location-card p { font-size: 16px; opacity: 0.8; }
-
-        /* Harita Alanı */
         .map-wrapper {
             background: #ffffff;
             padding: 15px;
@@ -176,7 +149,6 @@
             border-radius: 30px;
         }
 
-        /* Ulaşım Kartı */
         .info-card {
             background-color: #ffffff;
             padding: 40px;
@@ -184,13 +156,7 @@
             text-align: left;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             margin-bottom: 80px;
-            border: 1px solid rgba(20, 41, 72, 0.05);
         }
-
-        .info-card h3 { color: #142948; font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
-        .info-group { margin-bottom: 20px; }
-        .info-group strong { display: block; color: #142948; margin-bottom: 5px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
-        .info-group p { color: #444; line-height: 1.6; }
 
         /* --- FOOTER --- */
         footer {
@@ -199,32 +165,37 @@
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
             gap: 40px;
-            align-items: start;
             color: white;
         }
 
-        .footer-brand { text-align: left; }
-        .footer-brand img { height: 100px; margin-bottom: 20px; }
         .footer-brand h2 {
-            font-family: 'Antonio', sans-serif;
-            font-size: clamp(28px, 5vw, 42px);
+            font-family: 'Inter', sans-serif; /* RAYMUN kısmı için */
+            font-size: 38px;
             letter-spacing: 2px;
+            font-weight: 700;
             margin-bottom: 5px;
             text-transform: uppercase;
-            color: #ffffff;
         }
 
-        .footer-brand h2 .year-special { color: #27f4d2; }
-        .footer-brand p { font-style: italic; font-size: 14px; opacity: 0.9; }
+        /* 26 İÇİN ÖZEL ANTONIO FONTU */
+        .footer-brand h2 .year-special { 
+            font-family: 'Antonio', sans-serif !important; 
+            color: #27f4d2; 
+            font-weight: 700;
+            letter-spacing: 0px;
+        }
 
-        .footer-col h4 { font-size: 13px; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.7; text-transform: uppercase; }
+        .footer-brand img { height: 90px; margin-bottom: 20px; }
+        .footer-brand p { font-style: italic; opacity: 0.8; font-size: 14px; }
+
+        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.6; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; transition: 0.3s; opacity: 0.8; }
-        .footer-col ul li a:hover { opacity: 1; }
+        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
+        .footer-col ul li a:hover { opacity: 1; padding-left: 5px; }
 
         .social-icons { display: flex; gap: 15px; }
-        .social-icons i { font-size: 22px; color: white; opacity: 0.8; transition: 0.3s; }
+        .social-icons i { font-size: 22px; opacity: 0.8; transition: 0.3s; cursor: pointer; }
         .social-icons i:hover { opacity: 1; transform: scale(1.1); }
 
         .bottom-bar {
@@ -232,21 +203,17 @@
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
-            align-items: center;
             font-size: 11px;
             color: white;
-            opacity: 0.7;
+            opacity: 0.6;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* --- MOBİL --- */
         @media (max-width: 1024px) {
-            .nav-right { display: none; } /* Basitlik için masaüstü menüyü gizle */
-            .mobile-menu-icon { display: block; }
+            .nav-right { display: none; }
             footer { grid-template-columns: 1fr; text-align: center; }
             .footer-brand, .social-icons { text-align: center; justify-content: center; }
-            .bottom-bar { flex-direction: column; gap: 10px; }
-            .location-card { padding: 30px; border-radius: 30px; }
+            .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
         }
     </style>
 </head>
@@ -254,7 +221,7 @@
 
     <nav>
         <a href="index.html" class="logo-area">
-            <img src="raymunlogo.jpg" alt="RAYMUN Logo">
+            <img src="raymunlogo.jpg" alt="Logo">
             <span>RAYMUN</span>
         </a>
 
@@ -269,7 +236,6 @@
             </ul>
             <a href="#" class="apply-btn">APPLY NOW</a>
         </div>
-        <i class="fas fa-bars mobile-menu-icon"></i>
     </nav>
 
     <div class="container">
@@ -284,30 +250,21 @@
         <div class="map-wrapper">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.672808794828!2d27.35032487654523!3d41.402379971297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b4a5944589d713%3A0x6b8054041d89849b!2zTMO8bGVidXJnYXogUmFtYXphbiBZYW1hbiBGZW4gTGlzZXNp!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
-                    allowfullscreen="" 
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.419024419572!2d27.35123497658744!3d41.40847997129661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s1s0x14b350485908b89d%3A0x67341e002660a9f5!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1710000000000!5m2!1str!2str" 
+                    allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
         </div>
 
         <div class="info-card">
             <h3>Public Transportation</h3>
-            <div class="info-group">
-                <strong>Minibus (Dolmuş)</strong>
-                <p>Line 1 and Line 3 minibuses pass through the school district regularly. You can catch them from the main terminal or the town square.</p>
-            </div>
-            <div class="info-group">
-                <strong>Walking</strong>
-                <p>The school is located in a central district of Lüleburgaz, easily accessible from the town center within a 10-15 minute walk.</p>
-            </div>
+            <p style="margin-top:15px; color:#555;">The venue is centrally located in Lüleburgaz and can be reached via local minibuses (Line 1 & 3) or a short walk from the town square.</p>
         </div>
     </div>
 
     <footer>
         <div class="footer-brand">
-            <img src="raymunlogo.jpg" alt="RAYMUN Logo">
+            <img src="raymunlogo.jpg" alt="Logo">
             <h2>RAYMUN<span class="year-special">26</span></h2>
             <p>Where vision becomes voice</p>
         </div>
