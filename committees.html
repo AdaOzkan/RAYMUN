@@ -4,19 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committees | RAYMUN '26</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- FONT TANIMLAMA --- */
-        @font-face {
-            font-family: 'Northwell';
-            src: url('Northwell.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
         /* Genel Temeller */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #000041; color: white; line-height: 1.6; overflow-x: hidden; }
@@ -37,16 +29,7 @@
         }
         .logo-area { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; z-index: 1001; }
         .logo-area img { height: 50px; width: auto; filter: brightness(1.2); }
-        
-        /* Logo Yazısı Northwell Yapıldı */
-        .logo-area span { 
-            font-family: 'Northwell', cursive; 
-            font-size: 32px; 
-            color: #ffffff; 
-            line-height: 1; 
-            text-transform: none; 
-            letter-spacing: 0;
-        }
+        .logo-area span { font-weight: 600; letter-spacing: 2px; font-size: 18px; text-transform: uppercase; }
 
         .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
         .nav-links a { 
@@ -59,7 +42,7 @@
             opacity: 0.8; 
             transition: 0.3s ease; 
         }
-        .nav-links a:hover { opacity: 1; color: #ff9999; }
+        .nav-links a:hover { opacity: 1; color: #27f4d2; }
 
         .mobile-menu-icon {
             display: none;
@@ -98,14 +81,10 @@
             margin-bottom: 20px; 
             color: #ffffff;
         }
-        
-        /* Sayfa Başlığı Antonio Yapıldı */
         .page-header h2 { 
-            font-family: 'Antonio', sans-serif;
-            font-size: clamp(40px, 7vw, 80px); 
+            font-size: clamp(40px, 7vw, 68px); 
             font-weight: 700; 
-            letter-spacing: 2px; 
-            text-transform: uppercase;
+            letter-spacing: -1px; 
             background: linear-gradient(to bottom, #ffffff 50%, #888888 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -169,7 +148,7 @@
 
         .card-content { position: relative; z-index: 3; padding: 30px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
         .card-top { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: 3px; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        .card-title { font-family: 'Antonio', sans-serif; font-size: 36px; font-weight: bold; margin: 0; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
+        .card-title { font-size: 36px; font-weight: bold; margin: 0; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
 
         /* Modal Yapısı */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(8px); }
@@ -195,25 +174,42 @@
         .modal-close { position: absolute; top: 20px; right: 25px; font-size: 28px; color: white; cursor: pointer; z-index: 10; opacity: 0.8; transition: 0.3s; }
         .modal-body { padding: 40px; position: relative; margin-top: -80px; }
         .modal-tag { font-size: 12px; letter-spacing: 3px; opacity: 0.7; text-transform: uppercase; }
-        .modal-title { font-family: 'Antonio', sans-serif; font-size: 48px; font-weight: bold; margin: 10px 0; letter-spacing: 1px; text-transform: uppercase; }
+        .modal-title { font-size: 48px; font-weight: bold; margin: 10px 0; letter-spacing: 1px; }
         .modal-topic { font-size: 17px; font-style: italic; margin-bottom: 25px; color: #ffffff; opacity: 0.9; line-height: 1.4; }
         .modal-desc { font-size: 15px; line-height: 1.8; opacity: 0.85; margin-bottom: 35px; text-align: justify; }
         .study-guide-btn { display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 15px 30px; border-radius: 15px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .study-guide-btn:hover { background: white; color: black; }
 
-        /* Footer Antonio Düzenlemesi */
+        /* Footer Stilleri (GÜNCELLENDİ) */
         footer { background-color: #1a1a1a; padding: 80px 8% 40px 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 0.8fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-brand img { height: 120px; margin-bottom: 20px; }
-        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 32px; letter-spacing: 4px; margin-bottom: 10px; text-transform: uppercase; }
-        .footer-col h4 { font-size: 14px; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.7; }
+        .footer-brand img { height: 100px; margin-bottom: 20px; }
+        
+        /* RAYMUN26 Yazı Stili */
+        .footer-brand h2 {
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(28px, 5vw, 42px);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+        .footer-brand h2 .year-special {
+            font-family: 'Antonio', sans-serif;
+            color: #27f4d2; /* Turkuaz efektli 26 */
+        }
+
+        .footer-brand p { font-style: italic; font-size: 14px; opacity: 0.7; }
+        .footer-col h4 { font-size: 13px; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.5; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
+        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; }
         .social-icons { display: flex; gap: 20px; font-size: 20px; }
-        .bottom-bar { background-color: #1a1a1a; padding: 25px 8%; display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.8; }
+        
+        .bottom-bar { background-color: #1a1a1a; padding: 25px 8%; display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid rgba(255,255,255,0.05); opacity: 0.7; }
 
         @media (max-width: 1024px) {
-            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; background: #2a0202; flex-direction: column; justify-content: center; transition: 0.4s ease; z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; background: #142948; flex-direction: column; justify-content: center; transition: 0.4s ease; z-index: 1000; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
             .nav-links.active { right: 0; }
             .mobile-menu-icon { display: block; }
         }
@@ -288,7 +284,7 @@
             </div>
         </div>
 
-        <div class="committee-card jcc-effect full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict zones', 'Joint Crisis Committee offers an intense, fast-paced MUN experience.', '#6a1e55')">
+        <div class="committee-card jcc-effect full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'Joint Crisis Committee offers an intense, fast-paced MUN experience.', '#6a1e55')">
             <div class="card-image" style="background-image: url('jcc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -317,24 +313,40 @@
     <footer>
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="Logo">
-            <h2>RAYMUN2026</h2>
+            <h2>RAYMUN<span class="year-special">26</span></h2>
             <p>Where vision becomes voice</p>
         </div>
         <div class="footer-col">
             <h4>CONFERENCE</h4>
-            <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="committees.html">Committees</a></li><li><a href="team.html">Our Team</a></li><li><a href="faq.html">FAQ</a></li></ul>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="committees.html">Committees</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
         </div>
         <div class="footer-col">
             <h4>LEGAL</h4>
-            <ul><li><a href="#">Terms and Conditions</a></li><li><a href="#">Privacy Policy</a></li></ul>
+            <ul>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
         </div>
         <div class="footer-col">
             <h4>SOCIAL</h4>
-            <div class="social-icons"><a href="#" style="color: white;"><i class="fab fa-instagram"></i></a><a href="#" style="color: white;"><i class="fab fa-tiktok"></i></a><a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a></div>
+            <div class="social-icons">
+                <a href="#" style="color: white;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: white;"><i class="fab fa-tiktok"></i></a>
+                <a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a>
+            </div>
         </div>
     </footer>
 
-    <div class="bottom-bar"><div>© raymun2026</div><div>Crafted with ❤️ by Ada Özkan</div></div>
+    <div class="bottom-bar">
+        <div>© raymun2026</div>
+        <div>Crafted with ❤️ by Ada Özkan</div>
+    </div>
 
     <script>
         function toggleMenu() {
@@ -348,10 +360,8 @@
         function openModal(title, tag, img, topic, desc, color) {
             const modalCard = document.querySelector('.modal-card');
             const modalGradient = document.getElementById('modalGradient');
-            
             modalCard.style.backgroundColor = color;
             modalGradient.style.background = `linear-gradient(to bottom, rgba(0,0,0,0.1), ${color})`;
-
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalTag').innerText = tag + ' | RAYMUN';
             document.getElementById('modalTopic').innerText = topic;
