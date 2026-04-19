@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committees | RAYMUN '26</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- FONT TANIMLAMA --- */
+        @font-face {
+            font-family: 'Northwell';
+            src: url('Northwell.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         /* Genel Temeller */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #000041; color: white; line-height: 1.6; overflow-x: hidden; }
@@ -26,7 +37,16 @@
         }
         .logo-area { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; z-index: 1001; }
         .logo-area img { height: 50px; width: auto; filter: brightness(1.2); }
-        .logo-area span { font-weight: 600; letter-spacing: 2px; font-size: 18px; text-transform: uppercase; }
+        
+        /* Logo Yazısı Northwell Yapıldı */
+        .logo-area span { 
+            font-family: 'Northwell', cursive; 
+            font-size: 32px; 
+            color: #ffffff; 
+            line-height: 1; 
+            text-transform: none; 
+            letter-spacing: 0;
+        }
 
         .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
         .nav-links a { 
@@ -78,10 +98,14 @@
             margin-bottom: 20px; 
             color: #ffffff;
         }
+        
+        /* Sayfa Başlığı Antonio Yapıldı */
         .page-header h2 { 
-            font-size: clamp(40px, 7vw, 68px); 
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(40px, 7vw, 80px); 
             font-weight: 700; 
-            letter-spacing: -1px; 
+            letter-spacing: 2px; 
+            text-transform: uppercase;
             background: linear-gradient(to bottom, #ffffff 50%, #888888 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -145,9 +169,9 @@
 
         .card-content { position: relative; z-index: 3; padding: 30px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
         .card-top { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: 3px; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        .card-title { font-size: 36px; font-weight: bold; margin: 0; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
+        .card-title { font-family: 'Antonio', sans-serif; font-size: 36px; font-weight: bold; margin: 0; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
 
-        /* Modal (Açılan Pencere) Yapısı */
+        /* Modal Yapısı */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(8px); }
         .modal-card { 
             width: 90%; 
@@ -165,21 +189,22 @@
             position: absolute; 
             top: 0; left: 0; 
             width: 100%; height: 100%; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)); /* Fotoğraf ve renk geçişi */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)); 
             transition: background 0.4s ease;
         }
         .modal-close { position: absolute; top: 20px; right: 25px; font-size: 28px; color: white; cursor: pointer; z-index: 10; opacity: 0.8; transition: 0.3s; }
         .modal-body { padding: 40px; position: relative; margin-top: -80px; }
         .modal-tag { font-size: 12px; letter-spacing: 3px; opacity: 0.7; text-transform: uppercase; }
-        .modal-title { font-size: 48px; font-weight: bold; margin: 10px 0; letter-spacing: 1px; }
+        .modal-title { font-family: 'Antonio', sans-serif; font-size: 48px; font-weight: bold; margin: 10px 0; letter-spacing: 1px; text-transform: uppercase; }
         .modal-topic { font-size: 17px; font-style: italic; margin-bottom: 25px; color: #ffffff; opacity: 0.9; line-height: 1.4; }
         .modal-desc { font-size: 15px; line-height: 1.8; opacity: 0.85; margin-bottom: 35px; text-align: justify; }
         .study-guide-btn { display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 15px 30px; border-radius: 15px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .study-guide-btn:hover { background: white; color: black; }
 
+        /* Footer Antonio Düzenlemesi */
         footer { background-color: #4a0404; padding: 80px 8% 40px 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 0.8fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-brand img { height: 120px; margin-bottom: 20px; }
-        .footer-brand h2 { font-size: 32px; letter-spacing: 4px; margin-bottom: 10px; }
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 32px; letter-spacing: 4px; margin-bottom: 10px; text-transform: uppercase; }
         .footer-col h4 { font-size: 14px; letter-spacing: 3px; margin-bottom: 25px; opacity: 0.7; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
@@ -263,7 +288,7 @@
             </div>
         </div>
 
-        <div class="committee-card jcc-effect full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'Joint Crisis Committee offers an intense, fast-paced MUN experience.', '#6a1e55')">
+        <div class="committee-card jcc-effect full-width" onclick="openModal('JCC', 'GA - 3', 'jcc.jpg', 'Protection of Human Rights in Conflict zones', 'Joint Crisis Committee offers an intense, fast-paced MUN experience.', '#6a1e55')">
             <div class="card-image" style="background-image: url('jcc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -324,10 +349,7 @@
             const modalCard = document.querySelector('.modal-card');
             const modalGradient = document.getElementById('modalGradient');
             
-            // Kartın arka plan rengini komiteye göre ayarla
             modalCard.style.backgroundColor = color;
-            
-            // Fotoğraf ve renk arasındaki geçişi ayarla
             modalGradient.style.background = `linear-gradient(to bottom, rgba(0,0,0,0.1), ${color})`;
 
             document.getElementById('modalTitle').innerText = title;
