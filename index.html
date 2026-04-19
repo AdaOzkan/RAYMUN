@@ -11,7 +11,7 @@
     <style>
         /* --- FONT TANIMLAMA --- */
         @font-face {
-            font-family: 'Northwell'; /* 'h' harfi eklendi, isim düzeltildi */
+            font-family: 'Northwell';
             src: url('Northwell.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
@@ -19,7 +19,7 @@
         }
 
          @font-face {
-            font-family: 'Northwell-Alt'; /* 'h' harfi eklendi, isim düzeltildi */
+            font-family: 'Northwell-Alt';
             src: url('Northwell-Alt.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
@@ -65,7 +65,6 @@
             width: auto;
         }
 
-        /* Navigasyondaki Logo Yazısı */
         .logo-area span {
             font-family: 'Northwell', cursive;
             font-size: 32px;
@@ -137,15 +136,16 @@
             width: 100%;
         }
 
-        /* ORTADAKİ RAYMUN YAZISI (Düzeltildi) */
+        /* ORTADAKİ RAYMUN YAZISI */
         .hero-content h1 {
-            font-family: 'Northwell', cursive; /* İsim Northwell olarak güncellendi */
-            font-size: clamp(100px, 10vw, 150px); /* Boyut artırıldı */
+            font-family: 'Northwell', cursive;
+            font-size: clamp(100px, 10vw, 150px);
             margin-bottom: 0;
-            text-transform: none; /* Fontun kendi karakterini bozmamak için */
+            text-transform: none;
             font-weight: normal;
             line-height: 0.8;
-            letter-spacing: -2px; /* El yazısı birbirine yakın daha iyi durur */
+            letter-spacing: -2px;
+            color: #003c6d; /* İstenen renk uygulandı */
         }
 
         /* Geri Sayım */
@@ -156,6 +156,7 @@
             gap: clamp(10px, 3vw, 30px);
             font-size: clamp(12px, 3vw, 24px);
             margin-top: 20px;
+            color: #003c6d; /* İstenen renk uygulandı */
         }
 
         .time-box span {
@@ -280,7 +281,7 @@
                 <div class="time-box"><span id="minutes">00</span> MINUTES</div>
                 <div class="time-box"><span id="seconds">00</span> SECONDS</div>
             </div>
-            <p style="font-style: italic; margin-top: 20px; opacity: 0.8;">Where vision becomes voice</p>
+            <p style="font-style: italic; margin-top: 20px; opacity: 0.8; color: #003c6d;">Where vision becomes voice</p>
         </div>
     </section>
 
