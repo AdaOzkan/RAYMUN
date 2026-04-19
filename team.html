@@ -20,24 +20,84 @@
             overflow-x: hidden;
         }
 
-        /* Navigasyon */
+        /* --- NAVIGASYON (GÖRSELDEKİ STİL) --- */
         nav {
-            background: linear-gradient(to bottom, #142948 0%, #1a1a1a 100%);
+            background: linear-gradient(to bottom, #0f1c2e 0%, #000000 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 5%;
+            padding: 15px 5%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        .logo-area { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; }
-        .logo-area img { height: 35px; }
-        .nav-links { list-style: none; display: flex; gap: 20px; }
-        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 13px; font-weight: 500; }
-        .apply-btn { background-color: #1a1a1a; color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 13px; }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-area img {
+            height: 32px;
+            width: auto;
+        }
+
+        .logo-area span {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            opacity: 0.85;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .apply-btn {
+            background-color: #161616;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .apply-btn:hover {
+            background-color: #ffffff;
+            color: #000;
+        }
 
         /* Başlık Alanı */
         .team-header {
@@ -159,8 +219,11 @@
         }
 
         @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 15px; padding: 15px 2%; }
+            .nav-right { flex-direction: column; gap: 10px; }
+            .nav-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
             .team-container { grid-template-columns: 1fr; }
-            .team-header { padding-top: 120px; }
+            .team-header { padding-top: 180px; }
             .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
         }
     </style>
@@ -172,13 +235,16 @@
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
             <span>RAYMUN</span>
         </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="committees.html">Committees</a></li> 
-            <li><a href="faq.html">FAQ</a></li>
-        </ul>
-        <a href="#" class="apply-btn">Apply Now</a>
+        
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="committees.html">Committees</a></li> 
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            <a href="#" class="apply-btn">Apply Now</a>
+        </div>
     </nav>
 
     <header class="team-header">
