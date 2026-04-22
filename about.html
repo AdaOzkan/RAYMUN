@@ -33,83 +33,86 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVIGASYON --- */
+        /* --- NAVIGASYON (Görseldeki Stiller Uygulandı) --- */
         nav {
-            background: linear-gradient(to bottom, #142948 0%, #1a1a1a 100%);
+            background: linear-gradient(to bottom, #142948 0%, #0a0a0a 100%); /* Fotoğraftaki koyu geçiş */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 5%;
+            padding: 12px 5%; /* Fotoğraftaki ince yapı için daraltıldı */
             position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .logo-area img {
-            height: 38px;
+            height: 35px; /* Fotoğrafa uygun boyut */
             width: auto;
+            filter: brightness(1.2);
         }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
-            font-size: 32px;
+            font-size: 34px;
             color: #ffffff;
             line-height: 1;
+            letter-spacing: 1px;
         }
 
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 22px;
         }
 
         .nav-links a {
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 11.5px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            opacity: 0.85;
+            font-size: 11px; /* Fotoğraftaki küçük, zarif font */
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            opacity: 0.8;
             transition: 0.3s;
         }
 
         .nav-links a:hover, .nav-links a.active { 
             opacity: 1; 
-            border-bottom: 1px solid white;
         }
 
+        /* Fotoğraftaki Siyah Oval Düğme */
         .apply-btn {
-            background-color: #161616;
+            background-color: #111111;
             color: white;
-            padding: 10px 22px;
-            border-radius: 25px;
+            padding: 10px 28px;
+            border-radius: 30px; /* Tam oval yapı */
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.3s;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
         }
 
         .apply-btn:hover {
             background-color: #ffffff;
             color: #000;
+            transform: translateY(-1px);
         }
 
         /* --- ABOUT CONTENT --- */
@@ -119,8 +122,8 @@
         }
 
         .about-label {
-            font-family: 'Northwell', cursive; /* İsteğin üzerine Northwell yapıldı */
-            font-size: 90px; /* İsteğin üzerine 90px yapıldı */
+            font-family: 'Northwell', cursive; 
+            font-size: 90px; 
             margin-bottom: 10px;
             display: block;
             color: #142948;
@@ -128,8 +131,8 @@
         }
 
         .about-title {
-            font-family: 'Antonio', sans-serif; /* İsteğin üzerine Antonio yapıldı */
-            text-transform: uppercase; /* İsteğin üzerine hepsi büyük harf yapıldı */
+            font-family: 'Antonio', sans-serif; 
+            text-transform: uppercase; 
             font-size: clamp(32px, 5vw, 60px);
             font-weight: 700;
             margin-bottom: 40px;
