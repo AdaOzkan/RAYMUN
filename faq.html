@@ -111,6 +111,12 @@
             transition: 0.3s;
         }
 
+        .apply-btn:hover {
+            background-color: #ffffff;
+            color: #142948;
+            border-color: #ffffff;
+        }
+
         /* --- FAQ HEADER --- */
         .faq-section {
             padding: 160px 5% 100px 5%;
@@ -306,7 +312,7 @@
                 <li><a href="faq.html" class="active">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
-            <a href="#" class="apply-btn">APPLY NOW</a>
+            <a href="apply.html" class="apply-btn">APPLY NOW</a>
         </div>
     </nav>
 
@@ -447,6 +453,14 @@
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.parentElement;
+                
+                // Diğer açık olanları kapatmak isterseniz bu kısmı kullanabilirsiniz:
+                /*
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if(item !== faqItem) item.classList.remove('active');
+                });
+                */
+
                 faqItem.classList.toggle('active');
             });
         });
