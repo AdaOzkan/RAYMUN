@@ -150,7 +150,7 @@
             display: grid;
             grid-template-columns: 1fr 1.5fr;
             gap: 50px;
-            align-items: start;
+            align-items: stretch; /* Kolonların boyunu eşitler */
         }
 
         /* --- INFO CARDS --- */
@@ -227,6 +227,10 @@
             border-radius: 50px;
             color: white;
             box-shadow: 0 30px 60px rgba(20, 41, 72, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .form-group {
@@ -254,6 +258,11 @@
             transition: 0.3s;
         }
 
+        .form-group textarea {
+            resize: none; /* Elle genişletmeyi engeller */
+            min-height: 160px; /* Diğer kutularla hiza dengesi için */
+        }
+
         .form-group input:focus, .form-group textarea:focus {
             border-color: #27f4d2;
             background: rgba(255,255,255,0.1);
@@ -271,6 +280,7 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: 0.3s;
+            margin-top: 10px;
         }
 
         .send-btn:hover { background: #ffffff; transform: scale(1.02); }
@@ -421,7 +431,7 @@
                     </div>
                     <div class="form-group">
                         <label>Your Message</label>
-                        <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                        <textarea name="message" rows="9" placeholder="Write your message here..." required></textarea>
                     </div>
                     <button type="submit" class="send-btn">Send Message</button>
                 </form>
