@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ | RAYMUN '26</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- FONT TANIMLAMA --- */
         @font-face {
             font-family: 'Northwell';
             src: url('Northwell.ttf') format('truetype');
@@ -18,230 +17,243 @@
             font-display: swap;
         }
 
-        /* Genel Stiller */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Outfit', sans-serif;
         }
 
         body {
-            background-color: #f9f9f9; /* Temiz bir arka plan */
+            background-color: #ffffff;
             color: #142948;
             overflow-x: hidden;
         }
 
         /* --- NAVIGASYON --- */
         nav {
-            background: linear-gradient(to bottom, #142948 0%, #1a1a1a 100%);
+            background: linear-gradient(to bottom, #142948 0%, #0a0a0a 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 5%;
+            padding: 12px 5%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
         }
 
-        .logo-area img { height: 38px; }
+        .logo-area img { height: 35px; }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
-            font-size: 32px;
+            font-size: 34px;
             color: #ffffff;
-            line-height: 1;
         }
 
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 22px;
         }
 
         .nav-links a {
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 11.5px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            opacity: 0.85;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            opacity: 0.7;
             transition: 0.3s;
         }
 
-        .nav-links a:hover, .nav-links a.active { opacity: 1; }
+        .nav-links a:hover, .nav-links a.active { 
+            opacity: 1; 
+            color: #27f4d2;
+        }
 
         .apply-btn {
-            background-color: #161616;
+            background-color: #111111;
             color: white;
-            padding: 10px 22px;
-            border-radius: 25px;
+            padding: 10px 28px;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 11px;
             text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.1);
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(255,255,255,0.15);
             transition: 0.3s;
         }
 
-        /* --- FAQ BAŞLIK ALANI --- */
+        /* --- FAQ HEADER --- */
         .faq-section {
-            padding: 160px 10% 80px 10%;
-            max-width: 1100px;
+            padding: 160px 10% 100px 10%;
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .faq-header p.label {
+        .faq-header .label {
             font-family: 'Northwell', cursive;
-            font-size: 90px;
+            font-size: 80px;
             color: #142948;
-            margin-bottom: 10px;
+            margin-bottom: -10px;
+            display: block;
         }
 
         .faq-header h1 {
             font-family: 'Antonio', sans-serif;
             font-size: clamp(36px, 6vw, 60px);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
             color: #142948;
+            line-height: 1;
         }
 
         .faq-header .subtitle {
-            margin-bottom: 60px;
-            font-size: 17px;
-            color: #555;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            font-style: italic;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 80px;
+            font-weight: 300;
         }
 
-        /* --- AKORDİYON TASARIMI --- */
+        /* --- ACCORDION --- */
         .accordion {
             text-align: left;
         }
 
         .faq-item {
-            background: white;
-            border-radius: 20px; 
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            background: #f8f9fa;
+            border-radius: 30px; 
+            margin-bottom: 15px;
             overflow: hidden;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(20, 41, 72, 0.05);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #eee;
         }
 
         .faq-question {
-            padding: 25px 40px;
+            padding: 30px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            font-weight: 700;
-            font-size: 17px;
+            font-weight: 600;
+            font-size: 18px;
             color: #142948;
+            transition: 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #ffffff;
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             padding: 0 40px;
-            line-height: 1.7;
+            line-height: 1.8;
             color: #555;
             font-size: 16px;
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s ease;
         }
 
         .faq-item.active {
-            box-shadow: 0 15px 40px rgba(20, 41, 72, 0.08);
-            border-color: #142948;
+            background: #ffffff;
+            box-shadow: 0 20px 40px rgba(20, 41, 72, 0.08);
+            border-color: #27f4d2;
+            transform: translateY(-5px);
         }
 
         .faq-item.active .faq-answer {
-            max-height: 500px; 
-            padding: 0 40px 30px 40px;
+            max-height: 400px; 
+            padding: 0 40px 35px 40px;
             opacity: 1;
         }
 
-        .icon {
-            font-size: 18px;
-            opacity: 0.5;
-            transition: transform 0.4s ease;
+        .icon-circle {
+            width: 32px;
+            height: 32px;
+            background: #142948;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: 0.4s;
         }
 
-        .faq-item.active .icon {
-            transform: rotate(45deg); 
-            opacity: 1;
+        .faq-item.active .icon-circle {
+            background: #27f4d2;
+            color: #142948;
+            transform: rotate(135deg);
         }
 
         /* --- FOOTER --- */
         footer {
-            background-color: #1a1a1a;
-            padding: 60px 8% 40px 8%;
+            background-color: #0a0a0a;
+            padding: 80px 8% 40px 8%;
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 40px;
             color: white;
         }
 
-        .footer-brand h2 {
-            font-family: 'Antonio', sans-serif;
-            font-size: 38px;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
+        .footer-brand img { height: 100px; margin-bottom: 20px; }
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 32px; text-transform: uppercase; }
+        .footer-brand h2 span { color: #27f4d2; }
+        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; }
 
-        .footer-brand h2 .year-special { 
-            font-family: 'Antonio', sans-serif;
-            color: #27f4d2; 
-        }
-
-        .footer-brand img { height: 90px; margin-bottom: 20px; }
-        .footer-brand p { font-style: italic; opacity: 0.8; font-size: 14px; }
-
-        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.6; text-transform: uppercase; }
+        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
-        .footer-col ul li a:hover { opacity: 1; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 14px; }
+        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
 
-        .social-icons { display: flex; gap: 15px; }
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons i { font-size: 20px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
+        .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
 
         .bottom-bar {
-            background-color: #1a1a1a;
-            padding: 20px 8%;
+            background-color: #0a0a0a;
+            padding: 30px 8%;
             display: flex;
             justify-content: space-between;
-            font-size: 11px;
-            color: white;
-            opacity: 0.6;
             border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
+            footer { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 600px) {
             .nav-right { display: none; }
+            .faq-section { padding-top: 140px; }
+            .faq-header .label { font-size: 60px; }
+            .faq-question { padding: 25px; font-size: 16px; }
             footer { grid-template-columns: 1fr; text-align: center; }
             .social-icons { justify-content: center; }
+            .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
@@ -256,6 +268,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
                 <li><a href="committees.html">COMMITTEES</a></li> 
                 <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html" class="active">FAQ</a></li>
@@ -266,7 +279,7 @@
 
     <section class="faq-section">
         <div class="faq-header">
-            <p class="label">Faq</p>
+            <span class="label">Faq</span>
             <h1>Answers before you pack</h1>
             <p class="subtitle">"Where vision becomes voice"</p>
         </div>
@@ -275,7 +288,7 @@
             <div class="faq-item">
                 <div class="faq-question">
                     What are the official rules of procedure (RoP) of RAYMUN?
-                    <span class="icon"><i class="fas fa-plus"></i></span>
+                    <div class="icon-circle"><i class="fas fa-plus"></i></div>
                 </div>
                 <div class="faq-answer">
                     RAYMUN will follow the HarvardMUN rules of procedure.
@@ -285,7 +298,7 @@
             <div class="faq-item">
                 <div class="faq-question">
                     Is RAYMUN suitable for the non-experienced?
-                    <span class="icon"><i class="fas fa-plus"></i></span>
+                    <div class="icon-circle"><i class="fas fa-plus"></i></div>
                 </div>
                 <div class="faq-answer">
                     Yes, our conference has committees suitable for first-timers. It's up to your choice but many first-timers start with GA’s.
@@ -295,7 +308,7 @@
             <div class="faq-item">
                 <div class="faq-question">
                     Is it mandatory to participate in all the sessions?
-                    <span class="icon"><i class="fas fa-plus"></i></span>
+                    <div class="icon-circle"><i class="fas fa-plus"></i></div>
                 </div>
                 <div class="faq-answer">
                     No, you can be absent for 2 sessions. If you were absent for 3 sessions, you won't be receiving an award; if you were absent for 4 sessions, you won't receive a participation certificate.
@@ -305,7 +318,7 @@
             <div class="faq-item">
                 <div class="faq-question">
                     What is the dress code?
-                    <span class="icon"><i class="fas fa-plus"></i></span>
+                    <div class="icon-circle"><i class="fas fa-plus"></i></div>
                 </div>
                 <div class="faq-answer">
                     Our dress code is Western Business Attire.
@@ -315,7 +328,7 @@
             <div class="faq-item">
                 <div class="faq-question">
                     Where will the conference be held?
-                    <span class="icon"><i class="fas fa-plus"></i></span>
+                    <div class="icon-circle"><i class="fas fa-plus"></i></div>
                 </div>
                 <div class="faq-answer">
                     At Ramazan Yaman Science High School, Lüleburgaz. You can find more information about the address on the venue page.
@@ -325,7 +338,7 @@
             <div class="faq-item">
                 <div class="faq-question">
                     Will there be accommodation provided?
-                    <span class="icon"><i class="fas fa-plus"></i></span>
+                    <div class="icon-circle"><i class="fas fa-plus"></i></div>
                 </div>
                 <div class="faq-answer">
                     No, unfortunately there won’t be any accommodation provided.
@@ -335,7 +348,7 @@
             <div class="faq-item">
                 <div class="faq-question">
                     Are international students allowed to apply?
-                    <span class="icon"><i class="fas fa-plus"></i></span>
+                    <div class="icon-circle"><i class="fas fa-plus"></i></div>
                 </div>
                 <div class="faq-answer">
                     No, unfortunately. We are currently unable to accept applications from outside Türkiye.
@@ -345,7 +358,7 @@
             <div class="faq-item">
                 <div class="faq-question">
                     How can we learn more about the conference?
-                    <span class="icon"><i class="fas fa-plus"></i></span>
+                    <div class="icon-circle"><i class="fas fa-plus"></i></div>
                 </div>
                 <div class="faq-answer">
                     You can contact us via e-mail for any further questions through the e-mail address provided in the contact us section.
@@ -357,7 +370,7 @@
     <footer>
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="Logo">
-            <h2>RAYMUN<span class="year-special">26</span></h2>
+            <h2>RAYMUN<span>26</span></h2>
             <p>Where vision becomes voice</p>
         </div>
         <div class="footer-col">
@@ -380,7 +393,7 @@
     </footer>
 
     <div class="bottom-bar">
-        <div>© raymun2026</div>
+        <div>© RAYMUN 2026. All rights reserved.</div>
         <div>Crafted with ❤️ by Ada Özkan</div>
     </div>
 
@@ -388,6 +401,14 @@
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.parentElement;
+                
+                // Diğer açık olanları kapatmak istersen bu bloğu kullanabilirsin:
+                /*
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if(item !== faqItem) item.classList.remove('active');
+                });
+                */
+                
                 faqItem.classList.toggle('active');
             });
         });
