@@ -153,6 +153,7 @@
             align-items: start;
         }
 
+        /* --- INFO CARDS --- */
         .info-panel {
             display: grid;
             gap: 25px;
@@ -195,13 +196,29 @@
             text-decoration: none;
         }
 
-        .info-item .contact-detail {
-            display: block;
+        .info-item a { font-weight: 600; color: #142948; transition: 0.3s; }
+        .info-item a:hover { color: #27f4d2; }
+
+        .call-detail {
             margin-top: 15px;
-            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .info-item .contact-detail strong { color: #142948; }
+        .call-person {
+            font-size: 14px;
+            border-left: 2px solid #27f4d2;
+            padding-left: 12px;
+        }
+
+        .call-person strong {
+            display: block;
+            color: #142948;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
         /* --- CONTACT FORM --- */
         .form-panel {
@@ -222,7 +239,7 @@
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            opacity: 0.7;
+            opacity: 0.6;
             font-weight: 700;
             padding-left: 5px;
         }
@@ -271,14 +288,11 @@
         .footer-brand img { width: 250px; height: auto; margin-bottom: 25px; }
         .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 36px; text-transform: uppercase; }
         .footer-brand h2 span { color: #27f4d2; font-family: 'Antonio', sans-serif; }
-        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; }
 
         .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { 
-            color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 13px; font-weight: 600; text-transform: uppercase;
-        }
+        .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 13px; font-weight: 600; text-transform: uppercase; }
         .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
 
         .social-icons { display: flex; gap: 20px; }
@@ -313,12 +327,9 @@
                 justify-content: center;
                 transition: 0.4s;
                 z-index: 1000;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
             }
             .nav-right.active { right: 0; }
-            .nav-links { flex-direction: column; align-items: center; gap: 25px; margin-bottom: 30px; }
-            .nav-links a { font-size: 16px; }
-
+            .nav-links { flex-direction: column; align-items: center; gap: 25px; }
             footer { grid-template-columns: 1fr; text-align: center; }
             .footer-brand img { margin: 0 auto 20px auto; }
             .social-icons { justify-content: center; }
@@ -360,17 +371,23 @@
             <div class="info-panel">
                 <div class="info-item">
                     <i class="fas fa-envelope"></i>
-                    <h3>Reach Out</h3>
+                    <h3>Email Us</h3>
                     <p>For all inquiries and support:</p>
-                    <a href="mailto:info@raymun.org" style="display: block; margin: 10px 0 20px 0;">info@raymun.org</a>
-                    
-                    <div class="contact-detail">
-                        <strong>Advisor:</strong> Duygu Yıldız<br>
-                        <a href="tel:+90XXXXXXXXXX">+90 (xxx) xxx xx xx</a>
-                    </div>
-                    <div class="contact-detail" style="margin-top: 10px;">
-                        <strong>Director General:</strong> Kayra Çağlayan<br>
-                        <a href="tel:+90XXXXXXXXXX">+90 (xxx) xxx xx xx</a>
+                    <a href="mailto:info@raymun.org">info@raymun.org</a>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call Us</h3>
+                    <div class="call-detail">
+                        <div class="call-person">
+                            <strong>Advisor: Duygu Yıldız</strong>
+                            <a href="tel:+905000000000">+90 (xxx) xxx xx xx</a>
+                        </div>
+                        <div class="call-person">
+                            <strong>Director General: Kayra Çağlayan</strong>
+                            <a href="tel:+905000000000">+90 (xxx) xxx xx xx</a>
+                        </div>
                     </div>
                 </div>
 
@@ -383,7 +400,7 @@
                 <div class="info-item">
                     <i class="fab fa-instagram"></i>
                     <h3>Follow Us</h3>
-                    <p>Stay updated through our social media channels.</p>
+                    <p>Stay updated on Instagram</p>
                     <a href="https://www.instagram.com/rayfelmun/" target="_blank">@rayfelmun</a>
                 </div>
             </div>
@@ -426,14 +443,13 @@
                 <li><a href="committees.html">COMMITTEES</a></li> 
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
-                <li><a href="apply.html" style="color:#27f4d2;">APPLY NOW</a></li>
             </ul>
         </div>
         <div class="footer-col">
             <h4>LEGAL</h4>
             <ul>
-                <li><a href="#">Terms & Conditions</a></li>
                 <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -441,7 +457,7 @@
             <div class="social-icons">
                 <a href="https://www.instagram.com/rayfelmun/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <i class="fab fa-tiktok"></i>
-                <a href="https://www.linkedin.com/school/ramazan-yaman-fen-lisesi/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
