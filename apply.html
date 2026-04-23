@@ -97,8 +97,8 @@
         }
 
         .apply-btn-nav {
-            background-color: #27f4d2;
-            color: #142948;
+            background-color: #111111;
+            color: white;
             padding: 10px 28px;
             border-radius: 30px;
             text-decoration: none;
@@ -106,7 +106,14 @@
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
+            border: 1px solid rgba(255,255,255,0.15);
             transition: 0.3s;
+        }
+
+        .apply-btn-nav:hover {
+            background: white;
+            color: #142948;
+            transform: translateY(-2px);
         }
 
         /* --- APPLY HEADER --- */
@@ -224,24 +231,59 @@
             background-color: #0a0a0a;
             padding: 80px 8% 40px 8%;
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr; /* Logo alanı genişletildi */
             gap: 40px;
             color: white;
+            align-items: start;
         }
 
-        .footer-brand img { height: 80px; margin-bottom: 20px; }
-        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 32px; text-transform: uppercase; }
-        .footer-brand h2 span { color: #27f4d2; }
-        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; font-size: 14px; }
+        .footer-brand img { 
+            width: 250px; /* Logo 250px yapıldı */
+            height: auto; 
+            margin-bottom: 25px; 
+            display: block;
+        }
 
-        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
+        .footer-brand h2 { 
+            font-family: 'Antonio', sans-serif; 
+            font-size: 36px; 
+            text-transform: uppercase; 
+            line-height: 1.1;
+        }
+
+        .footer-brand h2 span { color: #27f4d2; }
+
+        .footer-brand p { 
+            opacity: 0.6; 
+            font-style: italic; 
+            margin-top: 10px; 
+            font-size: 15px;
+        }
+
+        .footer-col h4 { 
+            font-size: 12px; 
+            letter-spacing: 2px; 
+            margin-bottom: 25px; 
+            color: #27f4d2; 
+            text-transform: uppercase; 
+        }
+
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 14px; }
+        .footer-col ul li a { 
+            color: white; 
+            text-decoration: none; 
+            opacity: 0.6; 
+            transition: 0.3s; 
+            font-size: 13px; 
+            text-transform: uppercase;
+            font-weight: 600;
+        }
         .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
 
         .social-icons { display: flex; gap: 20px; }
-        .social-icons i { font-size: 20px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
+        .social-icons a { color: white; text-decoration: none; }
+        .social-icons i { font-size: 22px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
         .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
 
         .bottom-bar {
@@ -257,6 +299,7 @@
         /* --- MOBILE ADAPTATION --- */
         @media (max-width: 1024px) {
             .apply-grid { grid-template-columns: repeat(2, 1fr); }
+            footer { grid-template-columns: 1.5fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -270,16 +313,19 @@
                 background: #0a0a0a;
                 flex-direction: column;
                 justify-content: center;
+                gap: 40px;
                 transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 z-index: 1000;
                 box-shadow: -10px 0 30px rgba(0,0,0,0.5);
             }
             .nav-right.active { right: 0; }
-            .nav-links { flex-direction: column; align-items: center; gap: 25px; margin-bottom: 30px; }
+            .nav-links { flex-direction: column; align-items: center; gap: 25px; }
             .nav-links a { font-size: 16px; opacity: 1; }
             
             .apply-grid { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
+            
             footer { grid-template-columns: 1fr; text-align: center; }
+            .footer-brand img { margin: 0 auto 20px auto; width: 200px; }
             .social-icons { justify-content: center; }
             .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
         }
@@ -363,18 +409,29 @@
         <div class="footer-col">
             <h4>CONFERENCE</h4>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="committees.html">Committees</a></li> 
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
+                <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="apply.html" style="color:#27f4d2;">APPLY NOW</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>LEGAL</h4>
+            <ul>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
             </ul>
         </div>
         <div class="footer-col">
             <h4>SOCIAL</h4>
             <div class="social-icons">
-                <i class="fab fa-instagram"></i>
+                <a href="https://www.instagram.com/rayfelmun/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <i class="fab fa-tiktok"></i>
-                <i class="fab fa-linkedin"></i>
+                <a href="https://www.linkedin.com/school/ramazan-yaman-fen-lisesi/" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
@@ -395,7 +452,6 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Sayfa dışına tıklandığında menüyü kapat
         document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
