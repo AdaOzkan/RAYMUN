@@ -48,24 +48,16 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             text-decoration: none;
         }
 
-        .logo-area img { height: 30px; }
+        .logo-area img { height: 35px; }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
-            font-size: 28px;
+            font-size: 34px;
             color: #ffffff;
-        }
-
-        /* Mobil Menü Butonu */
-        .menu-toggle {
-            display: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
         }
 
         .nav-right {
@@ -99,7 +91,7 @@
         .apply-btn {
             background-color: #111111;
             color: white;
-            padding: 10px 24px;
+            padding: 10px 28px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 800;
@@ -110,74 +102,79 @@
             transition: 0.3s;
         }
 
+        .apply-btn:hover { background: white; color: black; transform: translateY(-2px); }
+
         /* --- HERO BÖLÜMÜ --- */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             background: linear-gradient(rgba(10, 20, 35, 0.7), rgba(10, 20, 35, 0.7)), 
                         url('rayfelmun.jpg') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 100px 5% 40px 5%;
+            padding: 0 5%;
         }
 
         .hero-content {
             background-color: rgba(255, 255, 255, 0.95);
-            padding: 40px 20px;
-            border-radius: 30px;
+            padding: 60px 40px;
+            border-radius: 40px;
             max-width: 900px;
             width: 100%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .hero-content h1 {
             font-family: 'Northwell', cursive;
-            font-size: clamp(60px, 15vw, 140px);
+            font-size: clamp(80px, 12vw, 160px);
             color: #142948;
-            line-height: 0.9;
-            margin-bottom: 10px;
+            line-height: 0.8;
+            margin-bottom: 20px;
+            font-weight: normal;
         }
 
         .hero-content p.slogan {
-            font-size: clamp(12px, 3vw, 16px);
+            font-size: 18px;
             font-weight: 600;
             color: #142948;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             opacity: 0.8;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         /* --- COUNTDOWN --- */
         .countdown {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 400px;
-            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .time-box {
             background: #f4f7fa;
-            padding: 15px;
-            border-radius: 15px;
+            padding: 20px;
+            border-radius: 20px;
+            min-width: 100px;
             border: 1px solid rgba(20, 41, 72, 0.1);
         }
 
         .time-box span {
             display: block;
             font-family: 'Antonio', sans-serif;
-            font-size: 32px;
+            font-size: 42px;
             font-weight: 700;
             color: #142948;
+            line-height: 1;
         }
 
         .time-box label {
             font-size: 10px;
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: #142948;
             opacity: 0.5;
             text-transform: uppercase;
@@ -186,70 +183,87 @@
         /* --- FOOTER --- */
         footer {
             background-color: #0a0a0a;
-            padding: 60px 8% 40px 8%;
+            padding: 80px 8% 40px 8%;
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 40px;
             color: white;
         }
 
-        .footer-brand img { height: 80px; margin-bottom: 15px; }
-        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 28px; }
+        .footer-brand img { height: 100px; margin-bottom: 20px; }
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 32px; text-transform: uppercase; }
         .footer-brand h2 span { color: #27f4d2; }
+        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; }
 
-        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; color: #27f4d2; }
+        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; font-size: 14px; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 14px; }
+        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
 
         .social-icons { display: flex; gap: 20px; }
-        .social-icons i { font-size: 20px; opacity: 0.7; }
+        .social-icons i { font-size: 20px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
+        .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
 
         .bottom-bar {
             background-color: #0a0a0a;
-            padding: 20px 8%;
+            padding: 30px 8%;
             display: flex;
             justify-content: space-between;
             border-top: 1px solid rgba(255,255,255,0.05);
-            font-size: 11px;
+            font-size: 12px;
             color: rgba(255,255,255,0.5);
         }
 
-        /* --- MOBİL ÖZEL AYARLAR --- */
-        @media (max-width: 850px) {
-            .menu-toggle { display: block; }
+        /* --- MOBIL UYUMLULUK --- */
+        @media (max-width: 768px) {
+            .nav-right { display: none; } /* Mobilde çok geniş olan linkler gizlendi */
             
-            .nav-right {
-                position: fixed;
-                top: 60px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 60px);
-                background: #0a0a0a;
-                flex-direction: column;
-                padding: 40px 0;
-                transition: 0.4s;
-                gap: 40px;
+            .hero-content { 
+                padding: 30px 20px; 
+                border-radius: 30px; 
+                width: 95%;
             }
 
-            .nav-right.active { left: 0; }
-
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 25px;
+            .hero-content h1 {
+                font-size: clamp(55px, 15vw, 85px); /* Mobilde başlığın sığmasını sağlar */
             }
 
-            .nav-links a { font-size: 16px; }
+            .hero-content p.slogan {
+                font-size: 13px;
+                letter-spacing: 2px;
+                margin-bottom: 25px;
+            }
 
-            footer { grid-template-columns: 1fr; text-align: center; }
-            .footer-brand, .footer-col { display: flex; flex-direction: column; align-items: center; }
+            .countdown { 
+                gap: 10px; 
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* Kutuları 2x2 yaparak taşmayı engeller */
+                max-width: 280px;
+                margin: 20px auto 0 auto;
+            }
+
+            .time-box { 
+                min-width: unset; 
+                padding: 15px 10px; 
+            }
+
+            .time-box span { font-size: 28px; }
+            
+            footer { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+                padding: 60px 5% 30px 5%;
+            }
+
+            .footer-brand img { height: 80px; }
             .social-icons { justify-content: center; }
-            .bottom-bar { flex-direction: column; gap: 10px; text-align: center; }
-        }
-
-        @media (min-width: 480px) {
-            .countdown { grid-template-columns: repeat(4, 1fr); max-width: 600px; }
+            
+            .bottom-bar { 
+                flex-direction: column; 
+                gap: 15px; 
+                text-align: center; 
+            }
         }
     </style>
 </head>
@@ -260,10 +274,7 @@
             <img src="raymunlogo.jpg" alt="Logo">
             <span>RAYMUN</span>
         </a>
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="nav-right" id="nav-menu">
+        <div class="nav-right">
             <ul class="nav-links">
                 <li><a href="index.html" class="active">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
@@ -342,18 +353,6 @@
     </div>
 
     <script>
-        // Mobil Menü Açma/Kapama
-        const menuToggle = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
-
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Geri Sayım
         const targetDate = new Date("Jun 14, 2026 09:00:00").getTime();
         
         const timer = setInterval(function() {
