@@ -49,6 +49,7 @@
             align-items: center;
             gap: 15px;
             text-decoration: none;
+            z-index: 1001;
         }
 
         .logo-area img { height: 35px; }
@@ -57,6 +58,15 @@
             font-family: 'Northwell', cursive;
             font-size: 34px;
             color: #ffffff;
+        }
+
+        /* Mobil Menu Butonu */
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
         }
 
         .nav-right {
@@ -103,7 +113,7 @@
 
         /* --- FAQ HEADER --- */
         .faq-section {
-            padding: 160px 10% 100px 10%;
+            padding: 160px 5% 100px 5%;
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
@@ -111,7 +121,7 @@
 
         .faq-header .label {
             font-family: 'Northwell', cursive;
-            font-size: 80px;
+            font-size: clamp(60px, 12vw, 80px);
             color: #142948;
             margin-bottom: -10px;
             display: block;
@@ -119,7 +129,7 @@
 
         .faq-header h1 {
             font-family: 'Antonio', sans-serif;
-            font-size: clamp(36px, 6vw, 60px);
+            font-size: clamp(32px, 8vw, 60px);
             text-transform: uppercase;
             letter-spacing: -1px;
             margin-bottom: 20px;
@@ -128,9 +138,9 @@
         }
 
         .faq-header .subtitle {
-            font-size: 18px;
+            font-size: clamp(14px, 4vw, 18px);
             color: #666;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             font-weight: 300;
         }
 
@@ -141,7 +151,7 @@
 
         .faq-item {
             background: #f8f9fa;
-            border-radius: 30px; 
+            border-radius: 25px; 
             margin-bottom: 15px;
             overflow: hidden;
             transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -149,28 +159,24 @@
         }
 
         .faq-question {
-            padding: 30px 40px;
+            padding: clamp(20px, 5vw, 30px) clamp(20px, 5vw, 40px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             font-weight: 600;
-            font-size: 18px;
+            font-size: clamp(15px, 4vw, 18px);
             color: #142948;
-            transition: 0.3s;
-        }
-
-        .faq-question:hover {
-            background-color: #ffffff;
+            gap: 15px;
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            padding: 0 40px;
+            padding: 0 clamp(20px, 5vw, 40px);
             line-height: 1.8;
             color: #555;
-            font-size: 16px;
+            font-size: clamp(14px, 3.5vw, 16px);
             opacity: 0;
             transition: all 0.5s ease;
         }
@@ -179,16 +185,17 @@
             background: #ffffff;
             box-shadow: 0 20px 40px rgba(20, 41, 72, 0.08);
             border-color: #27f4d2;
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .faq-item.active .faq-answer {
-            max-height: 400px; 
-            padding: 0 40px 35px 40px;
+            max-height: 500px; 
+            padding: 0 clamp(20px, 5vw, 40px) 30px clamp(20px, 5vw, 40px);
             opacity: 1;
         }
 
         .icon-circle {
+            flex-shrink: 0;
             width: 32px;
             height: 32px;
             background: #142948;
@@ -220,17 +227,14 @@
         .footer-brand img { height: 100px; margin-bottom: 20px; }
         .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 32px; text-transform: uppercase; }
         .footer-brand h2 span { color: #27f4d2; }
-        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; }
 
         .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 14px; }
-        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
 
         .social-icons { display: flex; gap: 20px; }
         .social-icons i { font-size: 20px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
-        .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
 
         .bottom-bar {
             background-color: #0a0a0a;
@@ -242,15 +246,40 @@
             color: rgba(255,255,255,0.5);
         }
 
+        /* --- MOBILE ADAPTATION --- */
         @media (max-width: 968px) {
             footer { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 600px) {
-            .nav-right { display: none; }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            
+            .nav-right {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: #0a0a0a;
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            }
+
+            .nav-right.active { right: 0; }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .nav-links a { font-size: 16px; opacity: 1; }
+
             .faq-section { padding-top: 140px; }
-            .faq-header .label { font-size: 60px; }
-            .faq-question { padding: 25px; font-size: 16px; }
             footer { grid-template-columns: 1fr; text-align: center; }
             .social-icons { justify-content: center; }
             .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
@@ -264,7 +293,10 @@
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
             <span>RAYMUN</span>
         </a>
-        <div class="nav-right">
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-right" id="nav-menu">
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
@@ -400,6 +432,18 @@
     </div>
 
     <script>
+        // Hamburger Menu Logic
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // FAQ Accordion Logic
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.parentElement;
