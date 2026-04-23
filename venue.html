@@ -28,6 +28,7 @@
             background-color: #ffffff;
             color: #142948;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* --- NAVIGASYON --- */
@@ -52,7 +53,7 @@
             z-index: 1001;
         }
 
-        .logo-area img { height: 35px; }
+        .logo-area img { height: 35px; filter: brightness(1.2); }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
@@ -225,38 +226,95 @@
         /* --- FOOTER --- */
         footer {
             background-color: #0a0a0a;
-            padding: 80px 8% 40px 8%;
+            padding: 80px 8% 60px 8%;
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 40px;
             color: white;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 60px;
         }
 
-        .footer-brand img { height: 100px; margin-bottom: 20px; }
-        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 32px; text-transform: uppercase; }
+        .footer-brand img { 
+            height: 60px; 
+            margin-bottom: 20px; 
+            filter: brightness(1.2);
+        }
+
+        .footer-brand h2 { 
+            font-family: 'Antonio', sans-serif; 
+            font-size: 28px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+
         .footer-brand h2 span { color: #27f4d2; }
-        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; }
 
-        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
+        .footer-brand p { 
+            opacity: 0.5; 
+            font-size: 14px;
+            margin-top: 10px; 
+            font-weight: 300;
+        }
+
+        .footer-col h4 { 
+            font-size: 13px; 
+            letter-spacing: 2px; 
+            margin-bottom: 25px; 
+            color: #27f4d2; 
+            text-transform: uppercase; 
+            font-weight: 700;
+        }
+
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 14px; }
-        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
+        .footer-col ul li { margin-bottom: 15px; }
 
-        .social-icons { display: flex; gap: 20px; }
+        .footer-col ul li a { 
+            color: white; 
+            text-decoration: none; 
+            opacity: 0.6; 
+            transition: 0.3s ease; 
+            font-size: 14px; 
+        }
+
+        .footer-col ul li a:hover { 
+            opacity: 1; 
+            color: #27f4d2;
+            padding-left: 8px; 
+        }
+
+        .social-icons { 
+            display: flex; 
+            gap: 20px; 
+            margin-top: 10px;
+        }
+
         .social-icons a { color: white; text-decoration: none; }
-        .social-icons i { font-size: 20px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
-        .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
+
+        .social-icons i { 
+            font-size: 20px; 
+            opacity: 0.7; 
+            transition: 0.3s; 
+        }
+
+        .social-icons i:hover { 
+            opacity: 1; 
+            color: #27f4d2; 
+            transform: translateY(-3px); 
+        }
 
         .bottom-bar {
             background-color: #0a0a0a;
-            padding: 30px 8%;
+            padding: 25px 8%;
             display: flex;
             justify-content: space-between;
+            align-items: center;
             border-top: 1px solid rgba(255,255,255,0.05);
             font-size: 12px;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.4);
         }
+
+        .bottom-bar b { color: #27f4d2; font-weight: 600; }
 
         /* --- MOBILE ADAPTATION --- */
         @media (max-width: 968px) {
@@ -336,7 +394,7 @@
         <div class="map-wrapper">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.485554316712!2d27.356625076465494!3d41.40381007129759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b3a5da0678450f%3A0x48577ecac9243e10!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1716382000000!5m2!1str!2str" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d3000.3243232810565!2d27.35165607659553!3d41.40340797129759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b4ad47f975d711%3A0x64704b6b696a60e0!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
                     allowfullscreen="" 
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
@@ -354,9 +412,9 @@
 
     <footer>
         <div class="footer-brand">
-            <img src="raymunlogo.jpg" alt="Logo">
-            <h2>RAYMUN<span>26</span></h2>
-            <p>Where vision becomes voice</p>
+            <img src="raymunlogo.jpg" alt="RAYMUN Logo">
+            <h2>RAYMUN<span>'26</span></h2>
+            <p>Where vision becomes voice.</p>
         </div>
 
         <div class="footer-col">
@@ -371,6 +429,14 @@
         </div>
 
         <div class="footer-col">
+            <h4>LEGAL</h4>
+            <ul>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
             <h4>SOCIAL</h4>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -381,8 +447,8 @@
     </footer>
 
     <div class="bottom-bar">
-        <div>© RAYMUN 2026. All rights reserved.</div>
-        <div>Crafted with ❤️ by Ada Özkan</div>
+        <div>© 2026 <b>RAYMUN</b>. All rights reserved.</div>
+        <div>Crafted with ❤️ by <b>Ada Özkan</b></div>
     </div>
 
     <script>
