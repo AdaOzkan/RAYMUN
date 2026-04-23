@@ -112,7 +112,7 @@
         /* --- APPLY HEADER --- */
         .apply-section {
             padding: 160px 5% 100px 5%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -138,23 +138,24 @@
             line-height: 1;
         }
 
-        /* --- APPLICATION CARDS --- */
+        /* --- APPLICATION CARDS GRID --- */
         .apply-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
         .apply-card {
             background: #f8f9fa;
             border-radius: 40px;
-            padding: 50px 40px;
+            padding: 50px 35px;
             text-align: center;
             border: 1px solid #eee;
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            min-height: 450px;
         }
 
         .apply-card:hover {
@@ -165,15 +166,15 @@
         }
 
         .card-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: #142948;
             color: #27f4d2;
-            border-radius: 25px;
+            border-radius: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 28px;
             margin: 0 auto 30px auto;
             transition: 0.4s;
         }
@@ -186,7 +187,7 @@
 
         .apply-card h3 {
             font-family: 'Antonio', sans-serif;
-            font-size: 24px;
+            font-size: 22px;
             text-transform: uppercase;
             color: #142948;
             margin-bottom: 15px;
@@ -194,7 +195,7 @@
 
         .apply-card p {
             color: #666;
-            font-size: 15px;
+            font-size: 14.5px;
             line-height: 1.6;
             margin-bottom: 30px;
         }
@@ -202,14 +203,15 @@
         .card-btn {
             background: #142948;
             color: white;
-            padding: 18px 30px;
-            border-radius: 20px;
+            padding: 16px 25px;
+            border-radius: 18px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
+            margin-top: auto;
         }
 
         .apply-card:hover .card-btn {
@@ -230,11 +232,17 @@
         .footer-brand img { height: 80px; margin-bottom: 20px; }
         .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 32px; text-transform: uppercase; }
         .footer-brand h2 span { color: #27f4d2; }
+        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; font-size: 14px; }
 
         .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 14px; }
+        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
+
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons i { font-size: 20px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
+        .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
 
         .bottom-bar {
             background-color: #0a0a0a;
@@ -246,10 +254,9 @@
             color: rgba(255,255,255,0.5);
         }
 
-        /* --- MOBILE --- */
-        @media (max-width: 968px) {
-            .apply-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
-            footer { grid-template-columns: 1fr 1fr; }
+        /* --- MOBILE ADAPTATION --- */
+        @media (max-width: 1024px) {
+            .apply-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -263,11 +270,17 @@
                 background: #0a0a0a;
                 flex-direction: column;
                 justify-content: center;
-                transition: 0.4s;
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 z-index: 1000;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
             }
             .nav-right.active { right: 0; }
             .nav-links { flex-direction: column; align-items: center; gap: 25px; margin-bottom: 30px; }
+            .nav-links a { font-size: 16px; opacity: 1; }
+            
+            .apply-grid { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
+            footer { grid-template-columns: 1fr; text-align: center; }
+            .social-icons { justify-content: center; }
             .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
@@ -307,7 +320,7 @@
                 <div>
                     <div class="card-icon"><i class="fas fa-user-tie"></i></div>
                     <h3>Individual Delegate</h3>
-                    <p>Apply as a solo representative. Choose your committee and start your diplomatic journey at RAYMUN '26.</p>
+                    <p>Apply as a solo representative. Choose your preferred committee and start your diplomatic journey at RAYMUN '26.</p>
                 </div>
                 <a href="#" class="card-btn">Apply Now</a>
             </div>
@@ -319,6 +332,15 @@
                     <p>For school groups and clubs. Bring your team together and represent your institution as a collective force.</p>
                 </div>
                 <a href="#" class="card-btn">Register Team</a>
+            </div>
+
+            <div class="apply-card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-camera-retro"></i></div>
+                    <h3>Press Team</h3>
+                    <p>Capture the moments that matter. Join as a journalist, photographer, or social media creator to document the conference.</p>
+                </div>
+                <a href="#" class="card-btn">Apply for Press</a>
             </div>
 
             <div class="apply-card">
@@ -350,8 +372,9 @@
         <div class="footer-col">
             <h4>SOCIAL</h4>
             <div class="social-icons">
-                <i class="fab fa-instagram" style="font-size: 20px; margin-right: 15px; cursor: pointer;"></i>
-                <i class="fab fa-linkedin" style="font-size: 20px; cursor: pointer;"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-tiktok"></i>
+                <i class="fab fa-linkedin"></i>
             </div>
         </div>
     </footer>
@@ -370,6 +393,16 @@
             const icon = menuToggle.querySelector('i');
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-times');
+        });
+
+        // Sayfa dışına tıklandığında menüyü kapat
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
         });
     </script>
 </body>
