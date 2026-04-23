@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply | RAYMUN '26</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @font-face {
+            font-family: 'Northwell';
+            src: url('Northwell.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #142948;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGASYON --- */
+        nav {
+            background: linear-gradient(to bottom, #142948 0%, #0a0a0a 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo-area img { height: 35px; }
+
+        .logo-area span {
+            font-family: 'Northwell', cursive;
+            font-size: 34px;
+            color: #ffffff;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { 
+            opacity: 1; 
+            color: #27f4d2;
+        }
+
+        .apply-btn-nav {
+            background-color: #27f4d2;
+            color: #142948;
+            padding: 10px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+        }
+
+        /* --- APPLY HEADER --- */
+        .apply-section {
+            padding: 160px 5% 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .apply-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .apply-header .label {
+            font-family: 'Northwell', cursive;
+            font-size: clamp(60px, 12vw, 80px);
+            color: #142948;
+            margin-bottom: -10px;
+            display: block;
+        }
+
+        .apply-header h1 {
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(32px, 8vw, 60px);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            color: #142948;
+            line-height: 1;
+        }
+
+        /* --- APPLICATION CARDS --- */
+        .apply-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .apply-card {
+            background: #f8f9fa;
+            border-radius: 40px;
+            padding: 50px 40px;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .apply-card:hover {
+            background: #ffffff;
+            transform: translateY(-15px);
+            border-color: #27f4d2;
+            box-shadow: 0 30px 60px rgba(20, 41, 72, 0.1);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: #142948;
+            color: #27f4d2;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 30px auto;
+            transition: 0.4s;
+        }
+
+        .apply-card:hover .card-icon {
+            background: #27f4d2;
+            color: #142948;
+            transform: rotate(10deg);
+        }
+
+        .apply-card h3 {
+            font-family: 'Antonio', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #142948;
+            margin-bottom: 15px;
+        }
+
+        .apply-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .card-btn {
+            background: #142948;
+            color: white;
+            padding: 18px 30px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .apply-card:hover .card-btn {
+            background: #27f4d2;
+            color: #142948;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0a0a0a;
+            padding: 80px 8% 40px 8%;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            color: white;
+        }
+
+        .footer-brand img { height: 80px; margin-bottom: 20px; }
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 32px; text-transform: uppercase; }
+        .footer-brand h2 span { color: #27f4d2; }
+
+        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 14px; }
+
+        .bottom-bar {
+            background-color: #0a0a0a;
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 968px) {
+            .apply-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            footer { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-right {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: #0a0a0a;
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s;
+                z-index: 1000;
+            }
+            .nav-right.active { right: 0; }
+            .nav-links { flex-direction: column; align-items: center; gap: 25px; margin-bottom: 30px; }
+            .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-area">
+            <img src="raymunlogo.jpg" alt="Logo">
+            <span>RAYMUN</span>
+        </a>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-right" id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
+                <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="venue.html">VENUE</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <a href="apply.html" class="apply-btn-nav">APPLY NOW</a>
+        </div>
+    </nav>
+
+    <section class="apply-section">
+        <div class="apply-header">
+            <span class="label">Apply</span>
+            <h1>Join the voice of vision</h1>
+        </div>
+
+        <div class="apply-grid">
+            <div class="apply-card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>Individual Delegate</h3>
+                    <p>Apply as a solo representative. Choose your committee and start your diplomatic journey at RAYMUN '26.</p>
+                </div>
+                <a href="#" class="card-btn">Apply Now</a>
+            </div>
+
+            <div class="apply-card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
+                    <h3>Delegation</h3>
+                    <p>For school groups and clubs. Bring your team together and represent your institution as a collective force.</p>
+                </div>
+                <a href="#" class="card-btn">Register Team</a>
+            </div>
+
+            <div class="apply-card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Observer / Advisor</h3>
+                    <p>Join us to observe the sessions or accompany your students as a faculty advisor without active participation.</p>
+                </div>
+                <a href="#" class="card-btn">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-brand">
+            <img src="raymunlogo.jpg" alt="Logo">
+            <h2>RAYMUN<span>26</span></h2>
+            <p>Where vision becomes voice</p>
+        </div>
+        <div class="footer-col">
+            <h4>CONFERENCE</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="committees.html">Committees</a></li> 
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>SOCIAL</h4>
+            <div class="social-icons">
+                <i class="fab fa-instagram" style="font-size: 20px; margin-right: 15px; cursor: pointer;"></i>
+                <i class="fab fa-linkedin" style="font-size: 20px; cursor: pointer;"></i>
+            </div>
+        </div>
+    </footer>
+
+    <div class="bottom-bar">
+        <div>© RAYMUN 2026. All rights reserved.</div>
+        <div>Crafted with ❤️ by Ada Özkan</div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>
