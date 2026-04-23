@@ -60,6 +60,14 @@
             color: #ffffff;
         }
 
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
         .nav-right {
             display: flex;
             align-items: center;
@@ -104,16 +112,7 @@
 
         .apply-btn:hover {
             background-color: #ffffff;
-            color: #142948;
-            transform: translateY(-2px);
-        }
-
-        .menu-toggle {
-            display: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1001;
+            color: #000;
         }
 
         /* --- İÇERİK --- */
@@ -151,6 +150,8 @@
             margin-bottom: 40px;
             text-align: center;
             box-shadow: 0 30px 60px rgba(20, 41, 72, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
         .location-card h2 {
@@ -176,6 +177,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.08);
             margin-bottom: 40px;
             border: 1px solid #f0f0f0;
+            transition: 0.4s ease;
         }
 
         .map-container iframe {
@@ -198,6 +200,7 @@
             border-radius: 30px;
             text-align: left;
             border: 1px solid #eee;
+            transition: 0.3s;
         }
 
         .info-card h3 {
@@ -242,7 +245,7 @@
 
         .social-icons { display: flex; gap: 20px; }
         .social-icons a { color: white; text-decoration: none; }
-        .social-icons i { font-size: 20px; opacity: 0.7; transition: 0.3s; }
+        .social-icons i { font-size: 20px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
         .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
 
         .bottom-bar {
@@ -255,9 +258,15 @@
             color: rgba(255,255,255,0.5);
         }
 
-        /* --- MOBİL UYUM --- */
+        /* --- MOBILE ADAPTATION --- */
+        @media (max-width: 968px) {
+            .container { padding-top: 140px; }
+            footer { grid-template-columns: 1fr 1fr; }
+        }
+
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
+            
             .nav-right {
                 position: fixed;
                 top: 0;
@@ -267,14 +276,22 @@
                 background: #0a0a0a;
                 flex-direction: column;
                 justify-content: center;
-                gap: 40px;
                 transition: 0.4s ease-in-out;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
                 z-index: 1000;
             }
+
             .nav-right.active { right: 0; }
-            .nav-links { flex-direction: column; align-items: center; gap: 25px; }
-            .nav-links a { font-size: 16px; opacity: 1; }
-            .container { padding-top: 140px; }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+
+            .nav-links a { font-size: 16px; }
+
             footer { grid-template-columns: 1fr; text-align: center; }
             .social-icons { justify-content: center; }
             .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
@@ -319,9 +336,9 @@
         <div class="map-wrapper">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.733560527376!2d27.3486111!3d41.4122222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b3a5da0678450f%3A0x48577ecac7243e90!2sRamazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.7583626244455!2d27.351865376579294!3d41.40105309514732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b395da0678450f%3A0x48577ecac9243e90!2sRamazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1708000000000!5m2!1str!2str" 
                     allowfullscreen="" 
-                    loading="lazy" 
+                    loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
@@ -349,6 +366,7 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="committees.html">Committees</a></li> 
                 <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
 
@@ -368,6 +386,7 @@
     </div>
 
     <script>
+        // Hamburger Menu Logic
         const menuToggle = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
@@ -378,11 +397,12 @@
             icon.classList.toggle('fa-times');
         });
 
+        // Sayfa tıklandığında menüyü kapatma
         document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
                 const icon = menuToggle.querySelector('i');
-                if (icon) {
+                if(icon) {
                     icon.classList.add('fa-bars');
                     icon.classList.remove('fa-times');
                 }
