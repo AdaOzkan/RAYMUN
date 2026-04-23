@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venue | RAYMUN '26</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -14,202 +14,274 @@
             src: url('Northwell.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
+            font-display: swap;
         }
 
-        /* Genel Stiller */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Outfit', sans-serif;
         }
 
         body {
-            background-color: #f9f9f9;
-            color: #f9f9f9;
+            background-color: #ffffff;
+            color: #142948;
             overflow-x: hidden;
         }
 
         /* --- NAVIGASYON --- */
         nav {
-            background: linear-gradient(to bottom, #142948 0%, #1a1a1a 100%);
+            background: linear-gradient(to bottom, #142948 0%, #0a0a0a 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 5%;
+            padding: 12px 5%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
         }
 
-        .logo-area img { height: 38px; }
+        .logo-area img { height: 35px; }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
-            font-size: 32px;
+            font-size: 34px;
             color: #ffffff;
-            line-height: 1;
         }
 
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 22px;
         }
 
         .nav-links a {
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 11.5px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            opacity: 0.85;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            opacity: 0.7;
             transition: 0.3s;
         }
 
-        .nav-links a:hover, .nav-links a.active { opacity: 1; }
+        .nav-links a:hover, .nav-links a.active { 
+            opacity: 1; 
+            color: #27f4d2;
+        }
 
         .apply-btn {
-            background-color: #161616;
+            background-color: #111111;
             color: white;
-            padding: 10px 22px;
-            border-radius: 25px;
+            padding: 10px 28px;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 11px;
             text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.1);
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: 0.3s;
+        }
+
+        .apply-btn:hover {
+            background-color: #ffffff;
+            color: #000;
         }
 
         /* --- İÇERİK --- */
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 160px 20px 80px 20px;
+            padding: 160px 20px 100px 20px;
             text-align: center;
         }
 
         .venue-label {
             font-family: 'Northwell', cursive;
-            font-size: 90px;
+            font-size: 80px;
             color: #142948;
-            margin-bottom: 5px;
+            margin-bottom: -10px;
             display: block;
         }
 
         .venue-title {
             font-family: 'Antonio', sans-serif;
-            font-size: clamp(30px, 5vw, 45px);
+            font-size: clamp(30px, 5vw, 55px);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: -1px;
             color: #142948;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             font-weight: 700;
+            line-height: 1.1;
         }
 
         .location-card {
-            background-color: #142948;
+            background: linear-gradient(135deg, #142948 0%, #0a1526 100%);
             color: white;
-            padding: 45px;
-            border-radius: 40px;
+            padding: 60px 40px;
+            border-radius: 50px;
             margin-bottom: 40px;
-            text-align: left;
-            box-shadow: 0 15px 35px rgba(20, 41, 72, 0.15);
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(20, 41, 72, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card::after {
+            content: '\f3c5';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 150px;
+            opacity: 0.05;
+        }
+
+        .location-card h2 {
+            font-family: 'Antonio', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .location-card p {
+            font-size: 18px;
+            opacity: 0.8;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .map-wrapper {
             background: #ffffff;
-            padding: 15px;
-            border-radius: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 20px;
+            border-radius: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
             margin-bottom: 40px;
-            overflow: hidden;
-            border: 1px solid rgba(20, 41, 72, 0.1);
+            border: 1px solid #f0f0f0;
+            transition: 0.4s ease;
+        }
+
+        .map-wrapper:hover {
+            transform: scale(1.01);
+            border-color: #27f4d2;
         }
 
         .map-container iframe {
             width: 100%;
             height: 500px;
             border: 0;
-            border-radius: 30px;
+            border-radius: 35px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 20px;
         }
 
         .info-card {
-            background-color: #003c6d;
+            background-color: #f8f9fa;
             padding: 40px;
             border-radius: 40px;
             text-align: left;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom: 80px;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            background-color: #ffffff;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+
+        .info-card h3 {
+            font-family: 'Antonio', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #142948;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-card h3 i { color: #27f4d2; }
+
+        .info-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
         }
 
         /* --- FOOTER --- */
         footer {
-            background-color: #1a1a1a;
-            padding: 60px 8% 40px 8%;
+            background-color: #0a0a0a;
+            padding: 80px 8% 40px 8%;
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 40px;
             color: white;
         }
 
-        .footer-brand h2 {
-            font-family: 'Antonio', sans-serif;
-            font-size: clamp(28px, 5vw, 42px);
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            color: #ffffff;
-        }
+        .footer-brand img { height: 100px; margin-bottom: 20px; }
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 32px; text-transform: uppercase; }
+        .footer-brand h2 span { color: #27f4d2; }
+        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; }
 
-        .footer-brand h2 .year-special {
-            font-family: 'Antonio', sans-serif;
-            color: #27f4d2;
-        }
-
-        .footer-brand img { height: 90px; margin-bottom: 20px; }
-        .footer-brand p { font-style: italic; opacity: 0.8; font-size: 14px; }
-
-        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.6; text-transform: uppercase; }
+        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: 0.3s; }
-        .footer-col ul li a:hover { opacity: 1; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 14px; }
+        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
 
-        .social-icons { display: flex; gap: 15px; }
-        .social-icons i { font-size: 22px; color: white; transition: 0.3s; }
-        .social-icons i:hover { transform: scale(1.1); color: #27f4d2; }
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons i { font-size: 20px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
+        .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
 
         .bottom-bar {
-            background-color: #1a1a1a;
-            padding: 20px 8%;
+            background-color: #0a0a0a;
+            padding: 30px 8%;
             display: flex;
             justify-content: space-between;
-            font-size: 11px;
-            color: white;
-            opacity: 0.6;
             border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 968px) {
+            .container { padding-top: 140px; }
+            footer { grid-template-columns: 1fr 1fr; }
+            .location-card { padding: 40px 25px; }
+        }
+
+        @media (max-width: 600px) {
             .nav-right { display: none; }
+            .venue-label { font-size: 60px; }
+            .map-container iframe { height: 350px; }
             footer { grid-template-columns: 1fr; text-align: center; }
             .social-icons { justify-content: center; }
+            .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
@@ -229,6 +301,7 @@
                 <li><a href="committees.html">COMMITTEES</a></li> 
                 <li><a href="venue.html" class="active">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#">CONTACT</a></li>
             </ul>
             <a href="#" class="apply-btn">APPLY NOW</a>
         </div>
@@ -246,22 +319,24 @@
         <div class="map-wrapper">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.730248729524!2d27.35035!3d41.41165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b4ad470f1a239b%3A0xc47f22687c47d79!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1715456789012!5m2!1str!2str" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.544253328514!2d27.3533423765545!3d41.41113649350616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b4ad4821a8d011%3A0x6b74e14f6b216497!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1710000000000!5m2!1str!2str" 
                     allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
         </div>
 
-        <div class="info-card">
-            <h3>Public Transportation</h3>
-            <p style="margin-top:15px; color:#b9ced8;">The venue is centrally located in Lüleburgaz and can be reached via local minibuses (Line 1 & 3) or a short walk from the town square.</p>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3><i class="fas fa-bus"></i> Public Transportation</h3>
+                <p>The venue is centrally located in Lüleburgaz and can be easily reached via local minibuses (Line 1 & 3). If you are coming from the town square, it is just a pleasant 10-minute walk through the heart of the city.</p>
+            </div>
         </div>
     </div>
 
     <footer>
         <div class="footer-brand">
             <img src="raymunlogo.jpg" alt="Logo">
-            <h2>RAYMUN<span class="year-special">26</span></h2>
+            <h2>RAYMUN<span>26</span></h2>
             <p>Where vision becomes voice</p>
         </div>
 
@@ -286,7 +361,7 @@
     </footer>
 
     <div class="bottom-bar">
-        <div>© raymun2026</div>
+        <div>© RAYMUN 2026. All rights reserved.</div>
         <div>Crafted with ❤️ by Ada Özkan</div>
     </div>
 
