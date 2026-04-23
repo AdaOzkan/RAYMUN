@@ -150,7 +150,7 @@
             display: grid;
             grid-template-columns: 1fr 1.5fr;
             gap: 50px;
-            align-items: stretch; /* Her iki paneli de aynı boya uzatır */
+            align-items: stretch;
         }
 
         /* --- INFO CARDS --- */
@@ -199,27 +199,6 @@
         .info-item a { font-weight: 600; color: #142948; transition: 0.3s; }
         .info-item a:hover { color: #27f4d2; }
 
-        .call-detail {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .call-person {
-            font-size: 14px;
-            border-left: 2px solid #27f4d2;
-            padding-left: 12px;
-        }
-
-        .call-person strong {
-            display: block;
-            color: #142948;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
         /* --- CONTACT FORM --- */
         .form-panel {
             background: linear-gradient(135deg, #142948 0%, #0a1526 100%);
@@ -256,19 +235,19 @@
             transition: 0.3s;
         }
 
-        /* Yazı yazılan kutuların büyüklük ayarı */
         .form-group input {
-            padding: 22px 25px; /* İç boşluğu artırılarak kutu büyütüldü */
+            padding: 20px 25px;
             border-radius: 18px;
             font-size: 14px;
         }
 
         .form-group textarea {
-            padding: 22px 25px;
+            padding: 15px 25px; /* Yazının yukarıdan basık kalmaması için optimize edildi */
             border-radius: 22px;
-            resize: none; /* Elle genişletip daraltmayı kapatır */
-            min-height: 220px; /* Soldaki panel ile hiza sağlaması için yükseklik artırıldı */
-            font-size: 15px;
+            resize: none; 
+            min-height: 280px; /* Kutu boyutu sol tarafla eşleşecek şekilde büyütüldü */
+            font-size: 16px;
+            line-height: 1.5;
         }
 
         .form-group input:focus, .form-group textarea:focus {
@@ -288,7 +267,6 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: 0.3s;
-            margin-top: 10px;
         }
 
         .send-btn:hover { background: #ffffff; transform: scale(1.02); }
