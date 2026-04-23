@@ -52,12 +52,14 @@
             width: 100%;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
 
         .logo-area {
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
         }
 
         .logo-area img {
@@ -72,36 +74,39 @@
             line-height: 1;
         }
 
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
         .nav-links {
             list-style: none;
             display: flex;
             gap: 20px;
+            align-items: center;
         }
 
         .nav-links a {
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 600;
-            letter-spacing: 1px;
-            opacity: 0.85;
+            letter-spacing: 1.2px;
+            opacity: 0.8;
             transition: 0.3s;
         }
 
-        .nav-links a:hover { opacity: 1; }
+        .nav-links a:hover { opacity: 1; color: #ff9999; }
+
+        .mobile-menu-icon {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
 
         .apply-btn {
             background-color: #161616;
             color: white;
-            padding: 10px 22px;
-            border-radius: 25px;
+            padding: 8px 20px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: 700;
             font-size: 11px;
@@ -114,6 +119,7 @@
         .apply-btn:hover {
             background-color: #ffffff;
             color: #000;
+            transform: translateY(-2px);
         }
 
         /* Hero Bölümü */
@@ -145,7 +151,7 @@
             font-weight: normal;
             line-height: 0.8;
             letter-spacing: -2px;
-            color: #003c6d; /* İstenen renk uygulandı */
+            color: #003c6d; 
         }
 
         /* Geri Sayım */
@@ -156,7 +162,7 @@
             gap: clamp(10px, 3vw, 30px);
             font-size: clamp(12px, 3vw, 24px);
             margin-top: 20px;
-            color: #003c6d; /* İstenen renk uygulandı */
+            color: #003c6d; 
         }
 
         .time-box span {
@@ -235,14 +241,25 @@
         }
 
         /* --- MOBİL AYARLAR --- */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px 2%;
+        @media (max-width: 1024px) {
+            .nav-links { 
+                position: fixed; 
+                top: 0; 
+                right: -100%; 
+                height: 100vh; 
+                width: 70%; 
+                background: #142948; 
+                flex-direction: column; 
+                justify-content: center; 
+                transition: 0.4s ease; 
+                z-index: 1000; 
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5); 
             }
-            .nav-right { flex-direction: column; gap: 10px; }
-            .nav-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
+            .nav-links.active { right: 0; }
+            .mobile-menu-icon { display: block; }
+        }
+
+        @media (max-width: 768px) {
             footer { grid-template-columns: 1fr; text-align: center; }
             .footer-brand { text-align: center; }
             .social-icons { justify-content: center; }
@@ -253,23 +270,23 @@
 <body>
 
     <nav>
-        <div class="logo-area">
+        <a href="index.html" class="logo-area">
             <img src="raymunlogo.jpg" alt="RAYMUN Logo">
             <span>RAYMUN</span>
-        </div>
+        </a>
         
-        <div class="nav-right">
-            <ul class="nav-links">
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="team.html">TEAM</a></li>
-                <li><a href="committees.html">COMMITTEES</a></li> 
-                <li><a href="venue.html">VENUE</a></li>
-                <li><a href="#">CALENDAR</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="#">CONTACT</a></li>
-            </ul>
-            <a href="#" class="apply-btn">APPLY NOW</a>
-        </div>
+        <i class="fas fa-bars mobile-menu-icon" onclick="toggleMenu()"></i>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="about.html">About</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="committees.html">Committees</a></li>
+            <li><a href="venue.html">Venue</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" class="apply-btn">Apply Now</a></li>
+        </ul>
     </nav>
 
     <section class="hero">
@@ -328,6 +345,14 @@
     </div>
 
     <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+            const icon = document.querySelector('.mobile-menu-icon');
+            if(navLinks.classList.contains('active')) { icon.classList.replace('fa-bars', 'fa-times'); } 
+            else { icon.classList.replace('fa-times', 'fa-bars'); }
+        }
+
         const targetDate = new Date("Jun 14, 2026 09:00:00").getTime();
         const timer = setInterval(function() {
             const now = new Date().getTime();
