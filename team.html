@@ -37,7 +37,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 5%;
+            padding: 8px 5%; /* Standart padding */
             position: fixed;
             width: 100%;
             top: 0;
@@ -53,7 +53,10 @@
             z-index: 1001;
         }
 
-        .logo-area img { height: 35px; }
+        .logo-area img { 
+            height: 50px; /* Standart 50px yükseklik */
+            width: auto;
+        }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
@@ -64,13 +67,13 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 22px;
+            gap: 18px;
         }
 
         .nav-links a {
@@ -92,7 +95,7 @@
         .apply-btn {
             background-color: #111111;
             color: white;
-            padding: 10px 28px;
+            padding: 10px 24px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 800;
@@ -222,12 +225,13 @@
             grid-template-columns: 1.8fr 1fr 1fr 1fr;
             gap: 40px;
             color: white;
+            align-items: start;
         }
 
-        .footer-brand img { width: 250px; height: auto; margin-bottom: 25px; }
-        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 36px; text-transform: uppercase; }
+        .footer-brand img { width: 250px; height: auto; margin-bottom: 25px; display: block; }
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 36px; text-transform: uppercase; line-height: 1.1; }
         .footer-brand h2 span { color: #27f4d2; font-family: 'Antonio', sans-serif; }
-        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; }
+        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; font-size: 15px; }
 
         .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
@@ -252,7 +256,7 @@
             color: rgba(255,255,255,0.5);
         }
 
-        /* --- MOBILE ADAPTATION --- */
+        /* --- MOBILE --- */
         @media (max-width: 968px) {
             footer { grid-template-columns: 1.5fr 1fr; }
         }
@@ -276,20 +280,12 @@
             }
 
             .nav-right.active { right: 0; }
-
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 25px;
-            }
-
+            .nav-links { flex-direction: column; align-items: center; gap: 25px; }
             .nav-links a { font-size: 16px; opacity: 1; }
-
             .team-header { padding-top: 140px; }
             .team-container { grid-template-columns: 1fr; max-width: 400px; padding-bottom: 60px; }
-            
             footer { grid-template-columns: 1fr; text-align: center; }
-            .footer-brand img { margin: 0 auto 20px auto; }
+            .footer-brand img { margin: 0 auto 20px auto; width: 200px; }
             .social-icons { justify-content: center; }
             .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
         }
@@ -313,6 +309,7 @@
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="team.html" class="active">TEAM</a></li>
                 <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="calendar.html">CALENDAR</a></li>
                 <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
@@ -439,7 +436,10 @@
             <ul>
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
                 <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="calendar.html">CALENDAR</a></li>
+                <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
                 <li><a href="apply.html" style="color:#27f4d2;">APPLY NOW</a></li>
@@ -448,8 +448,8 @@
         <div class="footer-col">
             <h4>LEGAL</h4>
             <ul>
-                <li><a href="#">Terms & Conditions</a></li>
                 <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -468,7 +468,6 @@
     </div>
 
     <script>
-        // Hamburger Menu Logic
         const menuToggle = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
@@ -479,7 +478,6 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
