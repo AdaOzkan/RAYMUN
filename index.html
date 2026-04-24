@@ -37,7 +37,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 5%;
+            padding: 8px 5%; /* Logo büyüdüğü için padding daraltıldı */
             position: fixed;
             width: 100%;
             top: 0;
@@ -53,7 +53,10 @@
             z-index: 1001;
         }
 
-        .logo-area img { height: 35px; }
+        .logo-area img { 
+            height: 50px; /* 35px'den 50px'e çıkarıldı */
+            width: auto;
+        }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
@@ -64,13 +67,13 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 22px;
+            gap: 18px; /* Daha fazla link sığması için gap biraz azaltıldı */
         }
 
         .nav-links a {
@@ -92,7 +95,7 @@
         .apply-btn {
             background-color: #111111;
             color: white;
-            padding: 10px 28px;
+            padding: 10px 24px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 800;
@@ -198,14 +201,14 @@
             background-color: #0a0a0a;
             padding: 80px 8% 40px 8%;
             display: grid;
-            grid-template-columns: 1.8fr 1fr 1fr 1fr; /* Logo alanı genişletildi */
+            grid-template-columns: 1.8fr 1fr 1fr 1fr;
             gap: 40px;
             color: white;
             align-items: start;
         }
 
         .footer-brand img { 
-            width: 250px; /* Logo 250px yapıldı */
+            width: 250px; 
             height: auto; 
             margin-bottom: 25px; 
             display: block;
@@ -334,7 +337,7 @@
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="team.html">TEAM</a></li>
                 <li><a href="committees.html">COMMITTEES</a></li> 
-                <li><a href="venue.html">VENUE</a></li>
+                <li><a href="calendar.html">CALENDAR</a></li> <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
@@ -381,7 +384,7 @@
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="team.html">TEAM</a></li>
                 <li><a href="committees.html">COMMITTEES</a></li> 
-                <li><a href="venue.html">VENUE</a></li>
+                <li><a href="calendar.html">CALENDAR</a></li> <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
                 <li><a href="apply.html" style="color:#27f4d2;">APPLY NOW</a></li>
