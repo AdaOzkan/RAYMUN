@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar | RAYMUN '26</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @font-face {
+            font-family: 'Northwell';
+            src: url('Northwell.ttf') format('truetype');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #142948;
+        }
+
+        /* --- NAVIGASYON --- */
+        nav {
+            background: linear-gradient(to bottom, #142948 0%, #0a0a0a 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-area img { height: 50px; }
+
+        .logo-area span {
+            font-family: 'Northwell', cursive;
+            font-size: 34px;
+            color: #ffffff;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 18px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .nav-links a.active { opacity: 1; color: #27f4d2; }
+
+        /* --- TAKVİM İÇERİĞİ --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 160px 20px 100px 20px;
+        }
+
+        .calendar-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .calendar-label {
+            font-family: 'Northwell', cursive;
+            font-size: 70px;
+            color: #142948;
+            display: block;
+            margin-bottom: -15px;
+        }
+
+        .calendar-title {
+            font-family: 'Antonio', sans-serif;
+            font-size: 45px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            color: #142948;
+        }
+
+        /* Günler Arası Geçiş */
+        .day-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .day-tab {
+            padding: 12px 30px;
+            background: #f0f2f5;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.3s;
+            border: none;
+            color: #142948;
+        }
+
+        .day-tab.active {
+            background: #142948;
+            color: #27f4d2;
+            box-shadow: 0 10px 20px rgba(20,41,72,0.2);
+        }
+
+        /* Zaman Çizelgesi */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: #eee;
+            top: 0;
+            bottom: 0;
+            left: 120px;
+        }
+
+        .event-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .event-time {
+            width: 100px;
+            font-family: 'Antonio', sans-serif;
+            font-size: 18px;
+            text-align: right;
+            padding-right: 40px;
+            color: #142948;
+            font-weight: 700;
+            padding-top: 5px;
+        }
+
+        .event-dot {
+            position: absolute;
+            left: 114px;
+            width: 14px;
+            height: 14px;
+            background: #27f4d2;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 0 4px #f0f2f5;
+        }
+
+        .event-content {
+            padding-left: 50px;
+            flex: 1;
+        }
+
+        .event-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #142948;
+            margin-bottom: 5px;
+        }
+
+        .event-content p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0a0a0a;
+            padding: 80px 8% 40px 8%;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr;
+            gap: 40px;
+            color: white;
+        }
+
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 36px; }
+        .footer-brand h2 span { color: #27f4d2; }
+
+        .bottom-bar {
+            background-color: #0a0a0a;
+            padding: 20px 8%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .event-time { text-align: left; width: auto; padding-right: 0; margin-bottom: 10px; padding-left: 45px; }
+            .event-dot { left: 14px; }
+            .event-item { flex-direction: column; }
+            .event-content { padding-left: 45px; }
+            footer { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-area">
+            <img src="raymunlogo.jpg" alt="Logo">
+            <span>RAYMUN</span>
+        </a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
+                <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="calendar.html" class="active">CALENDAR</a></li>
+                <li><a href="venue.html">VENUE</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="calendar-header">
+            <span class="calendar-label">Schedule</span>
+            <h1 class="calendar-title">The Three Days of Diplomacy</h1>
+        </header>
+
+        <div class="day-tabs">
+            <button class="day-tab active">DAY 1</button>
+            <button class="day-tab">DAY 2</button>
+            <button class="day-tab">DAY 3</button>
+        </div>
+
+        <div class="timeline">
+            <div class="event-item">
+                <div class="event-time">09:00</div>
+                <div class="event-dot"></div>
+                <div class="event-content">
+                    <h3>Registration & Opening Ceremony</h3>
+                    <p>Welcoming all delegates and official commencement of RAYMUN '26 at the main hall.</p>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-time">11:00</div>
+                <div class="event-dot"></div>
+                <div class="event-content">
+                    <h3>Session I</h3>
+                    <p>First committee meetings. Setting the agenda and opening speeches.</p>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-time">13:00</div>
+                <div class="event-dot"></div>
+                <div class="event-content">
+                    <h3>Lunch Break</h3>
+                    <p>Time to network and recharge for the afternoon sessions.</p>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-time">14:30</div>
+                <div class="event-dot"></div>
+                <div class="event-content">
+                    <h3>Session II</h3>
+                    <p>Formal and informal consultations. Drafting working papers.</p>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-time">17:00</div>
+                <div class="event-dot"></div>
+                <div class="event-content">
+                    <h3>Coffee Break & Social</h3>
+                    <p>End of day one discussions and informal socializing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-brand">
+            <h2>RAYMUN<span>26</span></h2>
+            <p>Where vision becomes voice</p>
+        </div>
+        <div class="footer-col">
+            <h4>CONFERENCE</h4>
+            <p>Lüleburgaz Ramazan Yaman Fen Lisesi</p>
+        </div>
+    </footer>
+
+    <div class="bottom-bar">
+        © RAYMUN 2026. Crafted with ❤️ by Ada Özkan
+    </div>
+
+</body>
+</html>
