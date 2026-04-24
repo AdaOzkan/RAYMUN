@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar | RAYMUN '26</title>
     
+    <link rel="icon" type="image/x-icon" href="raymunlogo.ico">
+    
     <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -12,6 +14,9 @@
         @font-face {
             font-family: 'Northwell';
             src: url('Northwell.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
         }
 
         * {
@@ -24,6 +29,7 @@
         body {
             background-color: #ffffff;
             color: #142948;
+            overflow-x: hidden;
         }
 
         /* --- NAVIGASYON --- */
@@ -45,14 +51,23 @@
             align-items: center;
             gap: 15px;
             text-decoration: none;
+            z-index: 1001;
         }
 
-        .logo-area img { height: 50px; }
+        .logo-area img { height: 50px; width: auto; }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
             font-size: 34px;
             color: #ffffff;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
         }
 
         .nav-right {
@@ -78,7 +93,27 @@
             transition: 0.3s;
         }
 
-        .nav-links a.active { opacity: 1; color: #27f4d2; }
+        .nav-links a:hover, .nav-links a.active { opacity: 1; color: #27f4d2; }
+
+        .apply-btn {
+            background-color: #111111;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: 0.3s;
+        }
+
+        .apply-btn:hover {
+            background-color: #ffffff;
+            color: #000;
+            transform: translateY(-2px);
+        }
 
         /* --- TAKVİM İÇERİĞİ --- */
         .container {
@@ -94,47 +129,58 @@
 
         .calendar-label {
             font-family: 'Northwell', cursive;
-            font-size: 70px;
+            font-size: clamp(50px, 10vw, 80px);
             color: #142948;
             display: block;
-            margin-bottom: -15px;
+            margin-bottom: -10px;
         }
 
         .calendar-title {
             font-family: 'Antonio', sans-serif;
-            font-size: 45px;
+            font-size: clamp(30px, 5vw, 55px);
             text-transform: uppercase;
             letter-spacing: -1px;
             color: #142948;
+            font-weight: 700;
         }
 
-        /* Günler Arası Geçiş */
         .day-tabs {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 50px;
         }
 
         .day-tab {
-            padding: 12px 30px;
+            padding: 12px 35px;
             background: #f0f2f5;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 700;
             font-size: 14px;
             transition: 0.3s;
-            border: none;
+            border: 2px solid transparent;
             color: #142948;
         }
 
         .day-tab.active {
             background: #142948;
             color: #27f4d2;
-            box-shadow: 0 10px 20px rgba(20,41,72,0.2);
+            box-shadow: 0 10px 20px rgba(20,41,72,0.15);
         }
 
-        /* Zaman Çizelgesi */
+        .timeline-container {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .timeline-container.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .timeline {
             position: relative;
             max-width: 800px;
@@ -177,25 +223,28 @@
             border: 3px solid #fff;
             border-radius: 50%;
             z-index: 2;
-            box-shadow: 0 0 0 4px #f0f2f5;
+            box-shadow: 0 0 0 4px #f8f9fa;
         }
 
         .event-content {
             padding-left: 50px;
             flex: 1;
+            text-align: left;
         }
 
         .event-content h3 {
-            font-size: 20px;
+            font-size: clamp(18px, 4vw, 22px);
             font-weight: 700;
             color: #142948;
             margin-bottom: 5px;
+            text-transform: uppercase;
+            font-family: 'Antonio', sans-serif;
         }
 
         .event-content p {
             color: #666;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
         /* --- FOOTER --- */
@@ -206,27 +255,53 @@
             grid-template-columns: 1.8fr 1fr 1fr 1fr;
             gap: 40px;
             color: white;
+            align-items: start;
         }
 
-        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 36px; }
+        .footer-brand img { width: 250px; height: auto; margin-bottom: 25px; display: block; }
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 36px; text-transform: uppercase; line-height: 1.1; }
         .footer-brand h2 span { color: #27f4d2; }
+        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; font-size: 15px; }
+
+        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 13px; text-transform: uppercase; font-weight: 600; }
+        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
+
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons a { color: white; text-decoration: none; }
+        .social-icons i { font-size: 22px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
+        .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
 
         .bottom-bar {
             background-color: #0a0a0a;
-            padding: 20px 8%;
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
             border-top: 1px solid rgba(255,255,255,0.05);
             font-size: 12px;
             color: rgba(255,255,255,0.5);
-            text-align: center;
         }
 
         @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-right {
+                position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+                background: #0a0a0a; flex-direction: column; justify-content: center;
+                transition: 0.4s ease-in-out; z-index: 1000;
+            }
+            .nav-right.active { right: 0; }
+            .nav-links { flex-direction: column; align-items: center; gap: 30px; margin-bottom: 40px; }
             .timeline::before { left: 20px; }
-            .event-time { text-align: left; width: auto; padding-right: 0; margin-bottom: 10px; padding-left: 45px; }
+            .event-time { text-align: left; width: auto; padding-left: 45px; margin-bottom: 5px; }
             .event-dot { left: 14px; }
             .event-item { flex-direction: column; }
             .event-content { padding-left: 45px; }
             footer { grid-template-columns: 1fr; text-align: center; }
+            .footer-brand img { margin: 0 auto 20px auto; }
+            .social-icons { justify-content: center; }
+            .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
@@ -237,7 +312,10 @@
             <img src="raymunlogo.jpg" alt="Logo">
             <span>RAYMUN</span>
         </a>
-        <div class="nav-right">
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-right" id="nav-menu">
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
@@ -248,6 +326,7 @@
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
+            <a href="apply.html" class="apply-btn">APPLY NOW</a>
         </div>
     </nav>
 
@@ -258,54 +337,86 @@
         </header>
 
         <div class="day-tabs">
-            <button class="day-tab active">DAY 1</button>
-            <button class="day-tab">DAY 2</button>
-            <button class="day-tab">DAY 3</button>
+            <button class="day-tab active" onclick="showDay(1)">DAY 1</button>
+            <button class="day-tab" onclick="showDay(2)">DAY 2</button>
+            <button class="day-tab" onclick="showDay(3)">DAY 3</button>
         </div>
 
-        <div class="timeline">
-            <div class="event-item">
-                <div class="event-time">09:00</div>
-                <div class="event-dot"></div>
-                <div class="event-content">
-                    <h3>Registration & Opening Ceremony</h3>
-                    <p>Welcoming all delegates and official commencement of RAYMUN '26 at the main hall.</p>
+        <div id="day1" class="timeline-container active">
+            <div class="timeline">
+                <div class="event-item">
+                    <div class="event-time">09:00</div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <h3>Registration & Opening Ceremony</h3>
+                        <p>Welcoming all delegates and official commencement of RAYMUN '26 at the main hall.</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">11:00</div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <h3>Session I</h3>
+                        <p>First committee meetings. Setting the agenda and opening speeches.</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">13:00</div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <h3>Lunch Break</h3>
+                        <p>Time to network and recharge for the afternoon sessions.</p>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="event-item">
-                <div class="event-time">11:00</div>
-                <div class="event-dot"></div>
-                <div class="event-content">
-                    <h3>Session I</h3>
-                    <p>First committee meetings. Setting the agenda and opening speeches.</p>
+        <div id="day2" class="timeline-container">
+            <div class="timeline">
+                <div class="event-item">
+                    <div class="event-time">09:30</div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <h3>Session III</h3>
+                        <p>Intensive lobbying and resolution drafting begins.</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">14:00</div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <h3>Session IV</h3>
+                        <p>Debating the clauses and working on amendments.</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">19:00</div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <h3>Delegate Social</h3>
+                        <p>A night to remember! Fun, music, and social bonding.</p>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="event-item">
-                <div class="event-time">13:00</div>
-                <div class="event-dot"></div>
-                <div class="event-content">
-                    <h3>Lunch Break</h3>
-                    <p>Time to network and recharge for the afternoon sessions.</p>
+        <div id="day3" class="timeline-container">
+            <div class="timeline">
+                <div class="event-item">
+                    <div class="event-time">10:00</div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <h3>Session V</h3>
+                        <p>Final voting on resolutions and concluding remarks.</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="event-item">
-                <div class="event-time">14:30</div>
-                <div class="event-dot"></div>
-                <div class="event-content">
-                    <h3>Session II</h3>
-                    <p>Formal and informal consultations. Drafting working papers.</p>
-                </div>
-            </div>
-
-            <div class="event-item">
-                <div class="event-time">17:00</div>
-                <div class="event-dot"></div>
-                <div class="event-content">
-                    <h3>Coffee Break & Social</h3>
-                    <p>End of day one discussions and informal socializing.</p>
+                <div class="event-item">
+                    <div class="event-time">14:30</div>
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <h3>Closing Ceremony</h3>
+                        <p>Awarding ceremony and official adjournment of the conference.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -313,18 +424,59 @@
 
     <footer>
         <div class="footer-brand">
+            <img src="raymunlogo.jpg" alt="Logo">
             <h2>RAYMUN<span>26</span></h2>
             <p>Where vision becomes voice</p>
         </div>
         <div class="footer-col">
             <h4>CONFERENCE</h4>
-            <p>Lüleburgaz Ramazan Yaman Fen Lisesi</p>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
+                <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="calendar.html">CALENDAR</a></li>
+                <li><a href="venue.html">VENUE</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="apply.html" style="color:#27f4d2;">APPLY NOW</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>LEGAL</h4>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>SOCIAL</h4>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/rayfelmun/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/school/ramazan-yaman-fen-lisesi/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
         </div>
     </footer>
 
     <div class="bottom-bar">
-        © RAYMUN 2026. Crafted with ❤️ by Ada Özkan
+        <div>© RAYMUN 2026. All rights reserved.</div>
+        <div>Crafted with ❤️ by Ada Özkan</div>
     </div>
 
+    <script>
+        function showDay(dayNumber) {
+            document.querySelectorAll('.timeline-container').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.day-tab').forEach(el => el.classList.remove('active'));
+            document.getElementById('day' + dayNumber).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
