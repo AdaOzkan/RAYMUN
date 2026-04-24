@@ -36,7 +36,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 5%;
+            padding: 8px 5%; /* Yükseklik logo için optimize edildi */
             position: fixed;
             width: 100%;
             top: 0;
@@ -52,7 +52,10 @@
             z-index: 1001;
         }
 
-        .logo-area img { height: 35px; }
+        .logo-area img { 
+            height: 50px; /* Logo 50px yapıldı */
+            width: auto;
+        }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
@@ -71,13 +74,13 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 22px;
+            gap: 18px;
         }
 
         .nav-links a {
@@ -99,7 +102,7 @@
         .apply-btn-nav {
             background-color: #111111;
             color: white;
-            padding: 10px 28px;
+            padding: 10px 24px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 800;
@@ -199,6 +202,9 @@
         .info-item a { font-weight: 600; color: #142948; transition: 0.3s; }
         .info-item a:hover { color: #27f4d2; }
 
+        .call-person { margin-bottom: 15px; }
+        .call-person strong { display: block; font-size: 13px; color: #142948; margin-bottom: 3px; }
+
         /* --- CONTACT FORM --- */
         .form-panel {
             background: linear-gradient(135deg, #142948 0%, #0a1526 100%);
@@ -242,10 +248,10 @@
         }
 
         .form-group textarea {
-            padding: 15px 25px; /* Yazının yukarıdan basık kalmaması için optimize edildi */
+            padding: 20px 25px;
             border-radius: 22px;
             resize: none; 
-            min-height: 280px; /* Kutu boyutu sol tarafla eşleşecek şekilde büyütüldü */
+            min-height: 280px; 
             font-size: 16px;
             line-height: 1.5;
         }
@@ -279,11 +285,13 @@
             grid-template-columns: 1.8fr 1fr 1fr 1fr;
             gap: 40px;
             color: white;
+            align-items: start;
         }
 
-        .footer-brand img { width: 250px; height: auto; margin-bottom: 25px; }
-        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 36px; text-transform: uppercase; }
+        .footer-brand img { width: 250px; height: auto; margin-bottom: 25px; display: block; }
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 36px; text-transform: uppercase; line-height: 1.1; }
         .footer-brand h2 span { color: #27f4d2; font-family: 'Antonio', sans-serif; }
+        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; font-size: 15px; }
 
         .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
@@ -321,13 +329,17 @@
                 background: #0a0a0a;
                 flex-direction: column;
                 justify-content: center;
+                gap: 40px;
                 transition: 0.4s;
                 z-index: 1000;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
             }
             .nav-right.active { right: 0; }
             .nav-links { flex-direction: column; align-items: center; gap: 25px; }
+            .nav-links a { font-size: 16px; }
+            
             footer { grid-template-columns: 1fr; text-align: center; }
-            .footer-brand img { margin: 0 auto 20px auto; }
+            .footer-brand img { margin: 0 auto 20px auto; width: 200px; }
             .social-icons { justify-content: center; }
             .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
         }
@@ -349,7 +361,7 @@
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="team.html">TEAM</a></li>
                 <li><a href="committees.html">COMMITTEES</a></li> 
-                <li><a href="venue.html">VENUE</a></li>
+                <li><a href="calendar.html">CALENDAR</a></li> <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html" class="active">CONTACT</a></li>
             </ul>
@@ -436,9 +448,13 @@
             <ul>
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
                 <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="calendar.html">CALENDAR</a></li>
+                <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="apply.html" style="color:#27f4d2;">APPLY NOW</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -453,7 +469,7 @@
             <div class="social-icons">
                 <a href="https://www.instagram.com/rayfelmun/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <i class="fab fa-tiktok"></i>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/school/ramazan-yaman-fen-lisesi/" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
