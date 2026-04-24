@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        /* --- FONT TANIMLAMA --- */
         @font-face {
             font-family: 'Northwell';
             src: url('Northwell.ttf') format('truetype');
@@ -36,7 +37,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 5%;
+            padding: 8px 5%; /* Standart padding */
             position: fixed;
             width: 100%;
             top: 0;
@@ -52,7 +53,10 @@
             z-index: 1001;
         }
 
-        .logo-area img { height: 35px; }
+        .logo-area img { 
+            height: 50px; /* Standart logo boyutu */
+            width: auto;
+        }
 
         .logo-area span {
             font-family: 'Northwell', cursive;
@@ -60,24 +64,16 @@
             color: #ffffff;
         }
 
-        .menu-toggle {
-            display: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 22px;
+            gap: 18px;
         }
 
         .nav-links a {
@@ -99,7 +95,7 @@
         .apply-btn {
             background-color: #111111;
             color: white;
-            padding: 10px 28px;
+            padding: 10px 24px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 800;
@@ -110,9 +106,18 @@
             transition: 0.3s;
         }
 
-        .apply-btn:hover {
-            background-color: #ffffff;
-            color: #000;
+        .apply-btn:hover { 
+            background: white; 
+            color: #142948; 
+            transform: translateY(-2px); 
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
         }
 
         /* --- İÇERİK --- */
@@ -177,7 +182,6 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.08);
             margin-bottom: 40px;
             border: 1px solid #f0f0f0;
-            transition: 0.4s ease;
         }
 
         .map-container iframe {
@@ -200,7 +204,6 @@
             border-radius: 30px;
             text-align: left;
             border: 1px solid #eee;
-            transition: 0.3s;
         }
 
         .info-card h3 {
@@ -222,7 +225,7 @@
             color: #555;
         }
 
-        /* --- FOOTER (INDEX.HTML İLE AYNI) --- */
+        /* --- FOOTER --- */
         footer {
             background-color: #0a0a0a;
             padding: 80px 8% 40px 8%;
@@ -233,47 +236,16 @@
             align-items: start;
         }
 
-        .footer-brand img { 
-            width: 250px; 
-            height: auto; 
-            margin-bottom: 25px; 
-            display: block;
-        }
-
-        .footer-brand h2 { 
-            font-family: 'Antonio', sans-serif; 
-            font-size: 36px; 
-            text-transform: uppercase; 
-            line-height: 1.1;
-        }
-
+        .footer-brand img { width: 250px; height: auto; margin-bottom: 25px; display: block; }
+        .footer-brand h2 { font-family: 'Antonio', sans-serif; font-size: 36px; text-transform: uppercase; line-height: 1.1; }
         .footer-brand h2 span { color: #27f4d2; }
+        .footer-brand p { opacity: 0.6; font-style: italic; margin-top: 10px; font-size: 15px; }
 
-        .footer-brand p { 
-            opacity: 0.6; 
-            font-style: italic; 
-            margin-top: 10px; 
-            font-size: 15px;
-        }
-
-        .footer-col h4 { 
-            font-size: 12px; 
-            letter-spacing: 2px; 
-            margin-bottom: 25px; 
-            color: #27f4d2; 
-            text-transform: uppercase; 
-        }
-
+        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { 
-            color: white; 
-            text-decoration: none; 
-            opacity: 0.6; 
-            transition: 0.3s; 
-            font-size: 13px; 
-            text-transform: uppercase;
-            font-weight: 600;
+            color: white; text-decoration: none; opacity: 0.6; transition: 0.3s; font-size: 13px; font-weight: 600; text-transform: uppercase;
         }
         .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
 
@@ -292,14 +264,13 @@
             color: rgba(255,255,255,0.5);
         }
 
-        /* --- MOBIL UYUMLULUK --- */
+        /* --- MOBILE --- */
         @media (max-width: 992px) {
             footer { grid-template-columns: 1.5fr 1fr; gap: 50px; }
         }
 
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
-            
             .nav-right {
                 position: fixed;
                 top: 0;
@@ -309,22 +280,14 @@
                 background: #0a0a0a;
                 flex-direction: column;
                 justify-content: center;
+                gap: 40px;
                 transition: 0.4s ease-in-out;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
                 z-index: 1000;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
             }
-
             .nav-right.active { right: 0; }
-
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-                margin-bottom: 40px;
-            }
-
-            .nav-links a { font-size: 16px; }
-
+            .nav-links { flex-direction: column; align-items: center; gap: 30px; }
+            .nav-links a { font-size: 16px; opacity: 1; }
             footer { grid-template-columns: 1fr; text-align: center; }
             .footer-brand img { margin: 0 auto 20px auto; width: 200px; }
             .social-icons { justify-content: center; }
@@ -350,6 +313,7 @@
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="team.html">TEAM</a></li>
                 <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="calendar.html">CALENDAR</a></li>
                 <li><a href="venue.html" class="active">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
@@ -370,9 +334,9 @@
         <div class="map-wrapper">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.413727402685!2d27.351740976587373!3d41.408544994711585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b49042b415a77f%3A0xc3f95e54d65cc4e8!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1700000000000" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m14!1m3!1d3000.320498305711!2d27.346369376602334!3d41.40321287129759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b34ca0f52d9a6f%3A0x6b09339e83f2a89b!2sL%C3%BCleburgaz%20Ramazan%20Yaman%20Fen%20Lisesi!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
                     allowfullscreen="" 
-                    loading="lazy"
+                    loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
@@ -399,6 +363,7 @@
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="team.html">TEAM</a></li>
                 <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="calendar.html">CALENDAR</a></li>
                 <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
@@ -408,15 +373,15 @@
         <div class="footer-col">
             <h4>LEGAL</h4>
             <ul>
-                <li><a href="#">Terms & Conditions</a></li>
                 <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
             </ul>
         </div>
         <div class="footer-col">
             <h4>SOCIAL</h4>
             <div class="social-icons">
                 <a href="https://www.instagram.com/rayfelmun/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <i class="fab fa-tiktok"></i>
                 <a href="https://www.linkedin.com/school/ramazan-yaman-fen-lisesi/" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
@@ -428,7 +393,6 @@
     </div>
 
     <script>
-        // Hamburger Menu Logic
         const menuToggle = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
@@ -439,7 +403,6 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Sayfa tıklandığında menüyü kapatma
         document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
