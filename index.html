@@ -144,7 +144,7 @@
             backdrop-filter: blur(0px);
             border: 1px solid rgba(255,255,255,0.2);
             position: relative;
-            margin-top: 80px; 
+            margin-top: 150px; /* Kartalın ayağının temas etmesi için aşağı kaydırıldı */
         }
 
         /* Kartal Ayarlamaları - Biraz daha sola kaydırıldı */
@@ -152,10 +152,10 @@
             content: "";
             position: absolute;
             top: -245px; 
-            left: -80px; /* Daha fazla sola kaydırıldı (-30px -> -80px) */
+            left: -80px; 
             width: 280px; 
             height: 280px; 
-            background: url('maskot2 - Kopya.png') no-repeat center bottom/contain;
+            background: url('maskot2.png') no-repeat center bottom/contain;
             z-index: 10;
             pointer-events: none;
             transform: translateY(15px); 
@@ -317,14 +317,14 @@
 
             .nav-links a { font-size: 16px; opacity: 1; }
 
-            .hero-content { padding: 30px 20px; width: 92%; margin-top: 100px; }
+            .hero-content { padding: 30px 20px; width: 92%; margin-top: 130px; }
             .hero-content h1 { font-size: clamp(50px, 12vw, 75px); }
 
             .hero-content::before {
                 width: 190px; 
                 height: 190px; 
                 top: -160px; 
-                left: -40px; /* Mobilde de biraz daha sola çekildi */
+                left: -40px; 
                 transform: translateY(15px);
             }
 
