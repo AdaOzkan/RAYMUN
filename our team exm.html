@@ -657,175 +657,181 @@
     </div>
 
     <script>
-        // Orijinal Mobil Menü Kodları
-        const menuToggle = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
+    // Orijinal Mobil Menü Kodları
+    const menuToggle = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
 
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            navMenu.classList.remove('active');
             const icon = menuToggle.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                if (icon) {
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                }
+            if (icon) {
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
             }
-        });
-
-        // --- POPUP MODAL VERİ YAPISI VE MANTIĞI ---
-        const teamData = {
-            academy: {
-                title: "Academy Team",
-                img: "teamPhotos/teamMembers/academyTeam.jpg", 
-                members: [
-                    { name: "Defne Yaman", role: "Head of Academy" },
-                    { name: "Ahmet Yılmaz", role: "Academy Member" },
-                    { name: "Zeynep Kaya", role: "Academy Member" }
-                ]
-            },
-            crisis: {
-                title: "Crisis Team",
-                img: "teamPhotos/teamMembers/crisisTeam.jpg", 
-                members: [
-                    { name: "Batu Sönmez", role: "Head of Crisis" },
-                    { name: "Can Demir", role: "Crisis Member" },
-                    { name: "Ece Yıldız", role: "Crisis Member" }
-                ]
-            },
-            pr: {
-                title: "PR Team",
-                img: "teamPhotos/teamMembers/prTeam.jpg",
-                members: [
-                    { name: "Beyza Gündoğdu", role: "Head of PR" },
-                    { name: "Ali Şahin", role: "PR Member" },
-                    { name: "Merve Aydın", role: "PR Member" }
-                ]
-            },
-            admin: {
-                title: "Admin & Logistics Team",
-                img: "teamPhotos/teamMembers/adminTeam.jpg",
-                members: [
-                    { name: "Mehmet Kalaycı", role: "Head of Admin & Logistics" },
-                    { name: "Burak Çelik", role: "Logistics Member" },
-                    { name: "Selin Öztürk", role: "Admin Member" }
-                ]
-            },
-            it: {
-                title: "IT Team",
-                img: "teamPhotos/teamMembers/itTeam.jpg",
-                members: [
-                    { name: "Çağan Kota", role: "Head of IT" },
-                    { name: "Deniz Arslan", role: "IT Member" }
-                ]
-            },
-            media: {
-                title: "Media Team",
-                img: "teamPhotos/teamMembers/itTeam.jpg",
-                members: [
-                    { name: "Eren Kılıç", role: "Head of Media" },
-                    { name: "Deniz Arslan", role: "Media Member" } 
-                ]
-            },
-            press: {
-                title: "Press Team",
-                img: "teamPhotos/teamMembers/pressTeam.jpg",
-                members: [
-                    { name: "Kerem Tınmaz", role: "Head of Press" },
-                    { name: "Gamze Bulut", role: "Press Writer" },
-                    { name: "Okan Yurt", role: "Photographer" }
-                ]
-            },
-            entertainment: {
-                title: "Entertainment Team",
-                img: "teamPhotos/teamMembers/entertainmentTeam.jpg",
-                members: [
-                    { name: "Minel Kanık", role: "Head of Entertainment" },
-                    { name: "Seda Aksoy", role: "Entertainment Member" },
-                    { name: "Mert Güler", role: "Entertainment Member" }
-                ]
-            }
-        };
-
-        const modalOverlay = document.getElementById('teamModal');
-        const modalCard = document.getElementById('modalCard');
-        const modalClose = document.getElementById('modalClose');
-        const modalBodyWrapper = document.getElementById('modalBodyWrapper');
-        const interactiveCards = document.querySelectorAll('.team-card.interactive');
-
-        // Tek bir takım kartı HTML şablonu oluşturan fonksiyon
-        function createCardHTML(data) {
-            let membersHTML = '';
-            data.members.forEach(member => {
-                membersHTML += `<li><span>${member.name}</span><span class="member-role">${member.role}</span></li>`;
-            });
-
-            return `
-                <div class="modal-img-area">
-                    <img src="${data.img}" alt="${data.title}">
-                </div>
-                <div class="modal-content">
-                    <h2>${data.title}</h2>
-                    <ul class="modal-member-list">
-                        ${membersHTML}
-                    </ul>
-                </div>
-            `;
         }
+    });
 
-        interactiveCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const teamKey = card.getAttribute('data-team');
+    // --- POPUP MODAL VERİ YAPISI VE MANTIĞI ---
+    const teamData = {
+        academy: {
+            title: "Academy Team",
+            img: "teamPhotos/teamMembers/academyTeam.jpg", 
+            members: [
+                { name: "Defne Yaman", role: "Head of Academy" },
+                { name: "Ahmet Yılmaz", role: "Academy Member" },
+                { name: "Zeynep Kaya", role: "Academy Member" }
+            ]
+        },
+        crisis: {
+            title: "Crisis Team",
+            img: "teamPhotos/teamMembers/crisisTeam.jpg", 
+            members: [
+                { name: "Batu Sönmez", role: "Head of Crisis" },
+                { name: "Can Demir", role: "Crisis Member" },
+                { name: "Ece Yıldız", role: "Crisis Member" }
+            ]
+        },
+        pr: {
+            title: "PR Team",
+            img: "teamPhotos/teamMembers/prTeam.jpg",
+            members: [
+                { name: "Beyza Gündoğdu", role: "Head of PR" },
+                { name: "Ali Şahin", role: "PR Member" },
+                { name: "Merve Aydın", role: "PR Member" }
+            ]
+        },
+        admin: {
+            title: "Admin Team",
+            img: "teamPhotos/teamMembers/adminTeam.jpg",
+            members: [
+                { name: "Mehmet Kalaycı", role: "Head of Admin & Logistics" },
+                { name: "Selin Öztürk", role: "Admin Member" }
+            ]
+        },
+        logistics: {
+            title: "Logistics Team",
+            img: "teamPhotos/teamMembers/logisticTeam.jpg",
+            members: [
+                { name: "Burak Çelik", role: "Logistics Member" }
+            ]
+        },
+        it: {
+            title: "IT Team",
+            img: "teamPhotos/teamMembers/itTeam.jpg",
+            members: [
+                { name: "Çağan Kota", role: "Head of IT" },
+                { name: "Deniz Arslan", role: "IT Member" }
+            ]
+        },
+        media: {
+            title: "Media Team",
+            img: "teamPhotos/teamMembers/mediaTeam.jpg",
+            members: [
+                { name: "Eren Kılıç", role: "Head of Media" },
+                { name: "Deniz Arslan", role: "Media Member" } 
+            ]
+        },
+        press: {
+            title: "Press Team",
+            img: "teamPhotos/teamMembers/pressTeam.jpg",
+            members: [
+                { name: "Kerem Tınmaz", role: "Head of Press" },
+                { name: "Gamze Bulut", role: "Press Writer" },
+                { name: "Okan Yurt", role: "Photographer" }
+            ]
+        },
+        entertainment: {
+            title: "Entertainment Team",
+            img: "teamPhotos/teamMembers/entertainmentTeam.jpg",
+            members: [
+                { name: "Minel Kanık", role: "Head of Entertainment" },
+                { name: "Seda Aksoy", role: "Entertainment Member" },
+                { name: "Mert Güler", role: "Entertainment Member" }
+            ]
+        }
+    };
+
+    const modalOverlay = document.getElementById('teamModal');
+    const modalCard = document.getElementById('modalCard');
+    const modalClose = document.getElementById('modalClose');
+    const modalBodyWrapper = document.getElementById('modalBodyWrapper');
+    const interactiveCards = document.querySelectorAll('.team-card.interactive');
+
+    // Tek bir takım kartı HTML şablonu oluşturan fonksiyon
+    function createCardHTML(data) {
+        let membersHTML = '';
+        data.members.forEach(member => {
+            membersHTML += `<li><span>${member.name}</span><span class="member-role">${member.role}</span></li>`;
+        });
+
+        return `
+            <div class="modal-img-area">
+                <img src="${data.img}" alt="${data.title}">
+            </div>
+            <div class="modal-content">
+                <h2>${data.title}</h2>
+                <ul class="modal-member-list">
+                    ${membersHTML}
+                </ul>
+            </div>
+        `;
+    }
+
+    interactiveCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const teamKey = card.getAttribute('data-team');
+            
+            // Çiftli layout kontrolü (Admin tıklanınca Admin/Logistics, IT tıklanınca IT/Media yan yana)
+            if (teamKey === 'admin' || teamKey === 'it') {
+                modalCard.classList.add('double-layout');
                 
-                // Eğer tıklanan kart admin veya it ise ikisini (Admin/Logistics ve IT, veya IT ve Media) yan yana aç
-                if (teamKey === 'admin' || teamKey === 'it') {
-                    modalCard.classList.add('double-layout');
-                    
-                    let leftData, rightData;
-                    if (teamKey === 'admin') {
-                        leftData = teamData['admin'];
-                        rightData = teamData['it']; // Admin'e basılınca IT ile birlikte açılması için orijinal mantık korundu
-                    } else if (teamKey === 'it') {
-                        leftData = teamData['it'];     // Bitişik kartlardan biri IT
-                        rightData = teamData['media'];  // Diğeri Media Team olacak
-                    }
-                    
-                    if (leftData && rightData) {
-                        modalBodyWrapper.innerHTML = `
-                            <div class="modal-column">${createCardHTML(leftData)}</div>
-                            <div class="modal-column">${createCardHTML(rightData)}</div>
-                        `;
-                        modalOverlay.classList.add('active');
-                    }
-                } else {
-                    // Diğer kartlar için orijinal tekli yapıyı koru
-                    modalCard.classList.remove('double-layout');
-                    const data = teamData[teamKey];
-                    
-                    if (data) {
-                        modalBodyWrapper.innerHTML = createCardHTML(data);
-                        modalOverlay.classList.add('active');
-                    }
+                let leftData, rightData;
+                if (teamKey === 'admin') {
+                    leftData = teamData['admin'];
+                    rightData = teamData['logistics']; // Artık IT yerine Logistics Team açılıyor
+                } else if (teamKey === 'it') {
+                    leftData = teamData['it'];
+                    rightData = teamData['media'];
                 }
-            });
-        });
-
-        modalClose.addEventListener('click', () => {
-            modalOverlay.classList.remove('active');
-        });
-
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                modalOverlay.classList.remove('active');
+                
+                if (leftData && rightData) {
+                    modalBodyWrapper.innerHTML = `
+                        <div class="modal-column">${createCardHTML(leftData)}</div>
+                        <div class="modal-column">${createCardHTML(rightData)}</div>
+                    `;
+                    modalOverlay.classList.add('active');
+                }
+            } else {
+                // Diğer kartlar için orijinal tekli yapı
+                modalCard.classList.remove('double-layout');
+                const data = teamData[teamKey];
+                
+                if (data) {
+                    modalBodyWrapper.innerHTML = createCardHTML(data);
+                    modalOverlay.classList.add('active');
+                }
             }
         });
-    </script>
+    });
+
+    modalClose.addEventListener('click', () => {
+        modalOverlay.classList.remove('active');
+    });
+
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            modalOverlay.classList.remove('active');
+        }
+    });
+</script>
 
 </body>
 </html>
