@@ -38,7 +38,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 5%; /* Standart padding */
+            padding: 8px 5%;
             position: fixed;
             width: 100%;
             top: 0;
@@ -55,7 +55,7 @@
         }
 
         .logo-area img { 
-            height: 50px; /* Standart 50px yükseklik */
+            height: 50px;
             width: auto;
         }
 
@@ -249,7 +249,7 @@
             overflow: hidden;
             border: 1px solid #f0f0f0;
             box-shadow: 0 30px 60px rgba(20, 41, 72, 0.25);
-            transform: translateY(-70px) scale(0.95); /* Yukarıdan süzülme başlangıcı */
+            transform: translateY(-70px) scale(0.95);
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), max-width 0.5s ease;
             position: relative;
             max-height: 85vh;
@@ -257,7 +257,6 @@
             flex-direction: column;
         }
 
-        /* Admin/IT tıklandığında yan yana çift kart görünümü için özel sınıf */
         .modal-card.double-layout {
             max-width: 1000px;
         }
@@ -273,7 +272,6 @@
             flex-direction: row;
         }
 
-        /* Çift kart düzeninde sütunlar */
         .modal-column {
             flex: 1;
             display: flex;
@@ -286,7 +284,7 @@
         }
 
         .modal-overlay.active .modal-card {
-            transform: translateY(0) scale(1); /* Aktif olduğunda yerine oturma efekti */
+            transform: translateY(0) scale(1);
         }
 
         .modal-close {
@@ -449,7 +447,6 @@
             .social-icons { justify-content: center; }
             .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
             
-            /* Mobilde çift layout alt alta düzgünce aksın */
             .modal-card.double-layout .modal-body-wrapper {
                 flex-direction: column;
             }
@@ -518,15 +515,14 @@
 
         <div class="team-card">
             <div class="member-image">
-                <img src="teamPhotos/deputy.jpg" alt="Betül Ece Altun">
+                <img src="teamPhotos/deputy.jpeg" alt="Eylül Su Çuvalcıoğlu">
             </div>
             <div class="member-info">
-                <h3>Betül Ece Altun</h3>
-                <p>Deputy Secretary General</p>
+                <h3>Eylül Su Çuvalcıoğlu</h3>
+                <p>Deputy General</p>
             </div>
         </div>
 
-        <!-- Academy Card (Interactive) -->
         <div class="team-card interactive" data-team="academy">
             <div class="member-image">
                 <img src="teamPhotos/academy.jpg" alt="Defne Yaman">
@@ -537,10 +533,9 @@
             </div>
         </div>
 
-        <!-- Crisis Card (Interactive) -->
         <div class="team-card interactive" data-team="crisis">
             <div class="member-image">
-                <img src="teamPhotos/hCrisis.jpg" alt="Batu Sönmez">
+                <img src="teamPhotos/hCrisis.jpeg" alt="Batu Sönmez">
             </div>
             <div class="member-info">
                 <h3>Batu Sönmez</h3>
@@ -548,10 +543,9 @@
             </div>
         </div>
 
-        <!-- PR Card (Interactive) -->
         <div class="team-card interactive" data-team="pr">
             <div class="member-image">
-                <img src="teamPhotos/hPr.jpg" alt="Beyza Gündoğdu">
+                <img src="teamPhotos/hPr.jpeg" alt="Beyza Gündoğdu">
             </div>
             <div class="member-info">
                 <h3>Beyza Gündoğdu</h3>
@@ -559,7 +553,6 @@
             </div>
         </div>
 
-        <!-- Admin & Logistics Card (Interactive) -->
         <div class="team-card interactive" data-team="admin">
             <div class="member-image">
                 <img src="teamPhotos/hAdmin.jpg" alt="Mehmet Kalaycı">
@@ -570,29 +563,36 @@
             </div>
         </div>
 
-        <!-- IT & Media Card (Interactive) -->
         <div class="team-card interactive" data-team="it">
             <div class="member-image">
-                <img src="teamPhotos/hIt.jpg" alt="Çağan Kota">
+                <img src="teamPhotos/hIt.jpg" alt="Ada Özkan & Kerem İnce">
             </div>
             <div class="member-info">
-                <h3>Çağan Kota</h3>
-                <p>Head of IT & Media</p>
+                <h3>Ada Özkan & Kerem İnce</h3>
+                <p>Co Heads of IT</p>
             </div>
         </div>
 
-        <!-- Press Card (Interactive) -->
+        <div class="team-card interactive" data-team="media">
+            <div class="member-image">
+                <img src="teamPhotos/hMedia.jpeg" alt="Duru Sınar">
+            </div>
+            <div class="member-info">
+                <h3>Duru Sınar</h3>
+                <p>Head of Media</p>
+            </div>
+        </div>
+
         <div class="team-card interactive" data-team="press">
             <div class="member-image">
                 <img src="teamPhotos/hPress.jpg" alt="Kerem Tınmaz">
             </div>
             <div class="member-info">
-                <h3>Kerem Tınmaz</h3>
+                <h3>Kaan Kurt</h3>
                 <p>Head of Press</p>
             </div>
         </div>
 
-        <!-- Entertainment Card (Interactive) -->
         <div class="team-card interactive" data-team="entertainment">
             <div class="member-image">
                 <img src="teamPhotos/hEntertainment.jpg" alt="Minel Kanık">
@@ -604,13 +604,10 @@
         </div>
     </section>
 
-    <!-- --- TEAM DETAILS POPUP MODAL --- -->
     <div class="modal-overlay" id="teamModal">
         <div class="modal-card" id="modalCard">
             <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
-            <div class="modal-body-wrapper" id="modalBodyWrapper">
-                <!-- İçerik JavaScript ile dinamik olarak tek veya çift sütun halinde buraya dolacak -->
-            </div>
+            <div class="modal-body-wrapper" id="modalBodyWrapper"></div>
         </div>
     </div>
 
@@ -657,7 +654,6 @@
     </div>
 
     <script>
-    // Orijinal Mobil Menü Kodları
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
 
@@ -679,7 +675,6 @@
         }
     });
 
-    // --- POPUP MODAL VERİ YAPISI VE MANTIĞI ---
     const teamData = {
         academy: {
             title: "Academy Team",
@@ -701,7 +696,7 @@
         },
         pr: {
             title: "PR Team",
-            img: "teamPhotos/teamMembers/prTeam.jpg",
+            img: "teamPhotos/teamMembers/prTeam.jpeg",
             members: [
                 { name: "Beyza Gündoğdu", role: "Head of PR" },
                 { name: "Ali Şahin", role: "PR Member" },
@@ -727,15 +722,16 @@
             title: "IT Team",
             img: "teamPhotos/teamMembers/itTeam.jpg",
             members: [
-                { name: "Çağan Kota", role: "Head of IT" },
-                { name: "Deniz Arslan", role: "IT Member" }
+                { name: "Ada Özkan", role: "Co Head of IT" },
+                { name: "Kerem İnce", role: "Co Head of IT" },
+                { name: "Eylül Duru Başaran", role: "IT Member" }
             ]
         },
         media: {
             title: "Media Team",
-            img: "teamPhotos/teamMembers/mediaTeam.jpg",
+            img: "teamPhotos/teamMembers/mediaTeam.jpeg",
             members: [
-                { name: "Eren Kılıç", role: "Head of Media" },
+                { name: "Duru Sınar", role: "Head of Media" },
                 { name: "Deniz Arslan", role: "Media Member" } 
             ]
         },
@@ -765,7 +761,6 @@
     const modalBodyWrapper = document.getElementById('modalBodyWrapper');
     const interactiveCards = document.querySelectorAll('.team-card.interactive');
 
-    // Tek bir takım kartı HTML şablonu oluşturan fonksiyon
     function createCardHTML(data) {
         let membersHTML = '';
         data.members.forEach(member => {
@@ -789,18 +784,11 @@
         card.addEventListener('click', () => {
             const teamKey = card.getAttribute('data-team');
             
-            // Çiftli layout kontrolü (Admin tıklanınca Admin/Logistics, IT tıklanınca IT/Media yan yana)
-            if (teamKey === 'admin' || teamKey === 'it') {
+            // Sadece Admin ikili kalsın
+            if (teamKey === 'admin') {
                 modalCard.classList.add('double-layout');
-                
-                let leftData, rightData;
-                if (teamKey === 'admin') {
-                    leftData = teamData['admin'];
-                    rightData = teamData['logistics']; // Artık IT yerine Logistics Team açılıyor
-                } else if (teamKey === 'it') {
-                    leftData = teamData['it'];
-                    rightData = teamData['media'];
-                }
+                let leftData = teamData['admin'];
+                let rightData = teamData['logistics'];
                 
                 if (leftData && rightData) {
                     modalBodyWrapper.innerHTML = `
@@ -810,10 +798,9 @@
                     modalOverlay.classList.add('active');
                 }
             } else {
-                // Diğer kartlar için orijinal tekli yapı
+                // IT ve Media dahil diğerleri tekli açılır
                 modalCard.classList.remove('double-layout');
                 const data = teamData[teamKey];
-                
                 if (data) {
                     modalBodyWrapper.innerHTML = createCardHTML(data);
                     modalOverlay.classList.add('active');
