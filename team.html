@@ -602,6 +602,16 @@
                 <p>Head of Entertaınment</p>
             </div>
         </div>
+
+        <div class="team-card interactive" data-team="security">
+            <div class="member-image">
+                <img src="teamPhotos/hSecurity.jpg" alt="Göktüğ Güncan">
+            </div>
+            <div class="member-info">
+                <h3>Göktüğ Güncan</h3>
+                <p>Head of Security</p>
+            </div>
+        </div>
     </section>
 
     <div class="modal-overlay" id="teamModal">
@@ -704,17 +714,11 @@
             ]
         },
         admin: {
-            title: "Admin Team",
-            img: "teamPhotos/teamMembers/adminTeam.jpg",
+            title: "Admin & Logistics Team",
+            img: "teamPhotos/hAdmin.jpg",
             members: [
                 { name: "Mehmet Kalaycı", role: "Head of Admin & Logistics" },
-                { name: "Selin Öztürk", role: "Admin Member" }
-            ]
-        },
-        logistics: {
-            title: "Logistics Team",
-            img: "teamPhotos/teamMembers/logisticTeam.jpg",
-            members: [
+                { name: "Selin Öztürk", role: "Admin Member" },
                 { name: "Burak Çelik", role: "Logistics Member" }
             ]
         },
@@ -752,6 +756,13 @@
                 { name: "Seda Aksoy", role: "Entertainment Member" },
                 { name: "Mert Güler", role: "Entertainment Member" }
             ]
+        },
+        security: {
+            title: "Security Team",
+            img: "teamPhotos/teamMembers/securityTeam.jpeg",
+            members: [
+                { name: "Göktüğ Güncan", role: "Head of Security" }
+            ]
         }
     };
 
@@ -784,27 +795,12 @@
         card.addEventListener('click', () => {
             const teamKey = card.getAttribute('data-team');
             
-            // Sadece Admin ikili kalsın
-            if (teamKey === 'admin') {
-                modalCard.classList.add('double-layout');
-                let leftData = teamData['admin'];
-                let rightData = teamData['logistics'];
-                
-                if (leftData && rightData) {
-                    modalBodyWrapper.innerHTML = `
-                        <div class="modal-column">${createCardHTML(leftData)}</div>
-                        <div class="modal-column">${createCardHTML(rightData)}</div>
-                    `;
-                    modalOverlay.classList.add('active');
-                }
-            } else {
-                // IT ve Media dahil diğerleri tekli açılır
-                modalCard.classList.remove('double-layout');
-                const data = teamData[teamKey];
-                if (data) {
-                    modalBodyWrapper.innerHTML = createCardHTML(data);
-                    modalOverlay.classList.add('active');
-                }
+            // Bütün kartlar artık tekli ve temiz bir düzen ile açılıyor
+            modalCard.classList.remove('double-layout');
+            const data = teamData[teamKey];
+            if (data) {
+                modalBodyWrapper.innerHTML = createCardHTML(data);
+                modalOverlay.classList.add('active');
             }
         });
     });
