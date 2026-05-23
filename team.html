@@ -555,10 +555,10 @@
 
         <div class="team-card interactive" data-team="admin">
             <div class="member-image">
-                <img src="teamPhotos/hAdmin.jpg" alt="Mehmet Kalaycı">
+                <img src="teamPhotos/hAdmin.jpg" alt="Beren Karabayır">
             </div>
             <div class="member-info">
-                <h3>Mehmet Kalaycı</h3>
+                <h3>Beren Karabayır</h3>
                 <p>Head of Admın & Logıstıcs</p>
             </div>
         </div>
@@ -608,7 +608,7 @@
                 <img src="teamPhotos/hSecurity.JPG" alt="Göktüğ Güncan">
             </div>
             <div class="member-info">
-                <h3>Göktüğ Güncan</h3>
+                <h3>Göktuğ Güncan</h3>
                 <p>Head of Security</p>
             </div>
         </div>
@@ -691,17 +691,15 @@
             img: "teamPhotos/teamMembers/academyTeam.jpg", 
             members: [
                 { name: "Defne Yaman", role: "Head of Academy" },
-                { name: "Ahmet Yılmaz", role: "Academy Member" },
-                { name: "Zeynep Kaya", role: "Academy Member" }
+                
             ]
         },
         crisis: {
             title: "Crisis Team",
             img: "teamPhotos/teamMembers/crisisTeam.jpg", 
             members: [
-                { name: "Batu Sönmez", role: "Head of Crisis" },
-                { name: "Can Demir", role: "Crisis Member" },
-                { name: "Ece Yıldız", role: "Crisis Member" }
+                { name: "Eren Kiniş", role: "Head of Crisis" },
+                
             ]
         },
         pr: {
@@ -709,17 +707,15 @@
             img: "teamPhotos/teamMembers/prTeam.jpeg",
             members: [
                 { name: "Beyza Gündoğdu", role: "Head of PR" },
-                { name: "Ali Şahin", role: "PR Member" },
-                { name: "Merve Aydın", role: "PR Member" }
+                
             ]
         },
         admin: {
             title: "Admin & Logistics Team",
             img: "teamPhotos/teamMembers/adminTeam.JPG",
             members: [
-                { name: "Mehmet Kalaycı", role: "Head of Admin & Logistics" },
-                { name: "Selin Öztürk", role: "Admin Member" },
-                { name: "Burak Çelik", role: "Logistics Member" }
+                { name: "Beren Karabayır", role: "Head of Admin & Logistics" },
+                
             ]
         },
         it: {
@@ -736,7 +732,7 @@
             img: "teamPhotos/teamMembers/mediaTeam.jpeg",
             members: [
                 { name: "Duru Sınar", role: "Head of Media" },
-                { name: "Deniz Arslan", role: "Media Member" } 
+
             ]
         },
         press: {
@@ -744,8 +740,8 @@
             img: "teamPhotos/teamMembers/pressTeam.JPG",
             members: [
                 { name: "Kaan Kurt", role: "Head of Press" },
-                { name: "Gamze Bulut", role: "Press Writer" },
-                { name: "Okan Yurt", role: "Photographer" }
+                { name: "Derya Mikail Tokmak", role: "The Hottest Press" },
+
             ]
         },
         entertainment: {
@@ -753,8 +749,7 @@
             img: "teamPhotos/teamMembers/entertaimentTeam.JPG",
             members: [
                 { name: "Minel Kanık", role: "Head of Entertainment" },
-                { name: "Seda Aksoy", role: "Entertainment Member" },
-                { name: "Mert Güler", role: "Entertainment Member" }
+                
             ]
         },
         security: {
@@ -795,7 +790,7 @@
         card.addEventListener('click', () => {
             const teamKey = card.getAttribute('data-team');
             
-            // Bütün kartlar artık tekli ve temiz bir düzen ile açılıyor
+
             modalCard.classList.remove('double-layout');
             const data = teamData[teamKey];
             if (data) {
