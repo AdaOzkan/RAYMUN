@@ -37,7 +37,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 5%; /* Logo yüksekliği için optimize edildi */
+            padding: 8px 5%;
             position: fixed;
             width: 100%;
             top: 0;
@@ -54,7 +54,7 @@
         }
 
         .logo-area img { 
-            height: 50px; /* Logo 50px yapıldı */
+            height: 50px;
             width: auto;
         }
 
@@ -274,7 +274,59 @@
         .modal-tag { font-size: 12px; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; color: #666; margin-bottom: 10px; display: block; }
         .modal-title { font-family: 'Antonio', sans-serif; font-size: 56px; margin-bottom: 15px; color: #142948; line-height: 1; }
         .modal-topic { font-size: 18px; font-weight: 600; margin-bottom: 25px; line-height: 1.4; color: #333; border-left: 4px solid #27f4d2; padding-left: 20px; }
-        .modal-desc { font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 40px; }
+        .modal-desc { font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 30px; }
+
+        /* --- MODAL TEAM CARDS SECTION --- */
+        .modal-team-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .modal-team-card {
+            text-align: center;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: 0.3s;
+        }
+
+        .modal-team-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin: 0 auto 12px auto;
+            border: 2px solid #27f4d2;
+        }
+
+        .modal-team-role {
+            font-size: 11px;
+            font-weight: 800;
+            color: #142948;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .modal-team-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        /* JCC ÖZEL STİLLER */
+        .jcc-card-top .modal-team-img { border-color: #27f4d2 !important; }
+        .jcc-card-top .modal-team-role, .jcc-card-top .modal-team-name { color: #ffffff !important; }
+        .jcc-card-top { background: #142948 !important; }
+
+        .jcc-card-bottom { background: #5c0012 !important; }
+        .jcc-card-bottom .modal-team-img { border-color: #e8002d !important; }
+        .jcc-card-bottom .modal-team-role { color: #FFF400 !important; }
+        .jcc-card-bottom .modal-team-name { color: #ffffff !important; }
 
         .study-guide-btn { 
             display: inline-flex; 
@@ -335,7 +387,6 @@
             color: rgba(255,255,255,0.5);
         }
 
-        /* --- MOBILE ADAPTATION --- */
         @media (max-width: 968px) {
             .committees-container { grid-template-columns: 1fr; }
             .committee-card.full-width { grid-column: span 1; }
@@ -359,14 +410,13 @@
             .nav-right.active { right: 0; }
             .nav-links { flex-direction: column; align-items: center; gap: 25px; }
             .nav-links a { font-size: 16px; }
-
             .page-header { padding-top: 120px; }
             .page-header .label { font-size: 60px; }
-
             footer { grid-template-columns: 1fr; text-align: center; }
             .footer-brand img { margin: 0 auto 20px auto; width: 200px; }
             .social-icons { justify-content: center; }
             .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
+            .modal-team-section { grid-template-columns: 1fr; gap: 15px; }
         }
     </style>
 </head>
@@ -400,7 +450,7 @@
     </header>
 
     <main class="committees-container">
-        <div class="committee-card" onclick="openModal('DISEC', 'GA-1', 'disec.jpg', 'Establishing International Legal Norms for Artificial Intelligence in Armed Conflict', 'The Disarmament and International Security Committee (DISEC) is the First Committee of the UN General Assembly. It deals with disarmament, global challenges and threats to peace that affect the international community.')">
+        <div class="committee-card" onclick="openModal('DISEC', 'GA-1', 'disec.jpg', 'Establishing International Legal Norms for Artificial Intelligence in Armed Conflict', 'The Disarmament and International Security Committee (DISEC) is the First Committee of the UN General Assembly. It deals with disarmament, global challenges and threats to peace that affect the international community.', ['usgDisec.webp', 'İsim Soyisim'], ['chairDisec.webp', 'İsim Soyisim'], ['acasDisec.webp', 'İsim Soyisim'])">
             <div class="card-image" style="background-image: url('disec.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -409,7 +459,7 @@
             </div>
         </div>
 
-        <div class="committee-card" onclick="openModal('UNSC', 'SPECIAL', 'unsc.jpg', 'Strengthening Economic Resilience across Europe', 'The United Nations Security Council (UNSC) is charged with ensuring international peace and security. This committee will focus on the complex intersections of economic stability and geopolitical safety.')">
+        <div class="committee-card" onclick="openModal('UNSC', 'SPECIAL', 'unsc.jpg', 'Strengthening Economic Resilience across Europe', 'The United Nations Security Council (UNSC) is charged with ensuring international peace and security. This committee will focus on the complex intersections of economic stability and geopolitical safety.', ['usgUnsc.webp', 'İsim Soyisim'], ['chairUnsc.webp', 'İsim Soyisim'], ['acasUnsc.webp', 'İsim Soyisim'])">
             <div class="card-image" style="background-image: url('unsc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -418,7 +468,7 @@
             </div>
         </div>
 
-        <div class="committee-card" onclick="openModal('WHO', 'GA-2', 'who.jpg', 'Global Health Security and Universal Healthcare Access', 'The World Health Organization (WHO) is a specialized agency of the UN responsible for international public health. This session will dive into the necessity of building resilient health systems.')">
+        <div class="committee-card" onclick="openModal('WHO', 'GA-2', 'who.jpg', 'Global Health Security and Universal Healthcare Access', 'The World Health Organization (WHO) is a specialized agency of the UN responsible for international public health. This session will dive into the necessity of building resilient health systems.', ['usgWho.webp', 'İsim Soyisim'], ['chairWho.webp', 'İsim Soyisim'], ['acasWho.webp', 'İsim Soyisim'])">
             <div class="card-image" style="background-image: url('who.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -427,7 +477,7 @@
             </div>
         </div>
 
-        <div class="committee-card" onclick="openModal('UNDC', 'SPECIAL', 'undc.jpg', 'Modernizing Collective Defense in the Digital Age', 'The United Nations Disarmament Commission (UNDC) focuses on the reduction of military forces and armaments, extending to cybersecurity in the digital age.')">
+        <div class="committee-card" onclick="openModal('UNDC', 'SPECIAL', 'undc.jpg', 'Modernizing Collective Defense in the Digital Age', 'The United Nations Disarmament Commission (UNDC) focuses on the reduction of military forces and armaments, extending to cybersecurity in the digital age.', ['usgUndc.webp', 'İsim Soyisim'], ['chairUndc.webp', 'İsim Soyisim'], ['acasUndc.webp', 'İsim Soyisim'])">
             <div class="card-image" style="background-image: url('undc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -436,7 +486,7 @@
             </div>
         </div>
 
-        <div class="committee-card full-width" onclick="openModal('JCC', 'CRISIS', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'Joint Crisis Committees (JCC) are designed for delegates who want an intense, fast-paced environment where decisions made by one side directly impact the other.')">
+        <div class="committee-card full-width" onclick="openModal('JCC', 'CRISIS', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'Joint Crisis Committees (JCC) are designed for delegates who want an intense, fast-paced environment where decisions made by one side directly impact the other.', ['usgJcc1.webp', 'İsim Soyisim 1'], ['chairJcc1.webp', 'İsim Soyisim 1'], ['acasJcc1.webp', 'İsim Soyisim 1'], ['usgJcc2.webp', 'İsim Soyisim 2'], ['chairJcc2.webp', 'İsim Soyisim 2'], ['acasJcc2.webp', 'İsim Soyisim 2'])">
             <div class="card-image" style="background-image: url('jcc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -455,6 +505,9 @@
                 <h2 id="modalTitle" class="modal-title"></h2>
                 <p id="modalTopic" class="modal-topic"></p>
                 <div id="modalDesc" class="modal-desc"></div>
+                
+                <div id="modalTeamSection" class="modal-team-section"></div>
+
                 <a href="#" class="study-guide-btn"><i class="fas fa-file-pdf"></i> VIEW STUDY GUIDE</a>
             </div>
         </div>
@@ -512,12 +565,53 @@
             icon.classList.toggle('fa-times');
         });
 
-        function openModal(title, tag, img, topic, desc) {
+        function openModal(title, tag, img, topic, desc, usg1, chair1, acas1, usg2, chair2, acas2) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalTag').innerText = tag + ' | Rayfel Mun';
             document.getElementById('modalTopic').innerText = topic;
             document.getElementById('modalDesc').innerText = desc;
             document.getElementById('modalImg').style.backgroundImage = "url('" + img + "')";
+            
+            const teamSection = document.getElementById('modalTeamSection');
+            teamSection.innerHTML = '';
+            
+            if (title === 'JCC') {
+                const members = [
+                    { role: 'USG', img: usg1[0], name: usg1[1], class: 'jcc-card-top' },
+                    { role: 'CHAIR', img: chair1[0], name: chair1[1], class: 'jcc-card-top' },
+                    { role: 'ACAS', img: acas1[0], name: acas1[1], class: 'jcc-card-top' },
+                    { role: 'USG', img: usg2[0], name: usg2[1], class: 'jcc-card-bottom' },
+                    { role: 'CHAIR', img: chair2[0], name: chair2[1], class: 'jcc-card-bottom' },
+                    { role: 'ACAS', img: acas2[0], name: acas2[1], class: 'jcc-card-bottom' }
+                ];
+                
+                members.forEach(m => {
+                    teamSection.innerHTML += `
+                        <div class="modal-team-card ${m.class}">
+                            <div class="modal-team-img" style="background-image: url('${m.img}')"></div>
+                            <div class="modal-team-role">${m.role}</div>
+                            <div class="modal-team-name">${m.name}</div>
+                        </div>
+                    `;
+                });
+            } else {
+                const members = [
+                    { role: 'USG', img: usg1[0], name: usg1[1] },
+                    { role: 'CHAIR', img: chair1[0], name: chair1[1] },
+                    { role: 'ACAS', img: acas1[0], name: acas1[1] }
+                ];
+                
+                members.forEach(m => {
+                    teamSection.innerHTML += `
+                        <div class="modal-team-card">
+                            <div class="modal-team-img" style="background-image: url('${m.img}')"></div>
+                            <div class="modal-team-role">${m.role}</div>
+                            <div class="modal-team-name">${m.name}</div>
+                        </div>
+                    `;
+                });
+            }
+            
             document.getElementById('committeeModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
