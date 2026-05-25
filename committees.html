@@ -382,7 +382,7 @@
             padding: 30px 8%;
             display: flex;
             justify-content: space-between;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             font-size: 12px;
             color: rgba(255,255,255,0.5);
         }
@@ -450,6 +450,7 @@
     </header>
 
     <main class="committees-container">
+        <!-- DISEC -->
         <div class="committee-card" onclick="openModal('DISEC', 'GA-1', 'disec.jpg', 'Establishing International Legal Norms for Artificial Intelligence in Armed Conflict', 'The Disarmament and International Security Committee (DISEC) is the First Committee of the UN General Assembly. It deals with disarmament, global challenges and threats to peace that affect the international community.', ['usgDisec.webp', 'İsim Soyisim'], ['chairDisec.webp', 'İsim Soyisim'], ['acasDisec.webp', 'İsim Soyisim'])">
             <div class="card-image" style="background-image: url('disec.jpg');"></div>
             <div class="card-overlay"></div>
@@ -459,15 +460,17 @@
             </div>
         </div>
 
-        <div class="committee-card" onclick="openModal('UNSC', 'SPECIAL', 'unsc.jpg', 'Strengthening Economic Resilience across Europe', 'The United Nations Security Council (UNSC) is charged with ensuring international peace and security. This committee will focus on the complex intersections of economic stability and geopolitical safety.', ['usgUnsc.webp', 'İsim Soyisim'], ['chairUnsc.webp', 'İsim Soyisim'], ['acasUnsc.webp', 'İsim Soyisim'])">
-            <div class="card-image" style="background-image: url('unsc.jpg');"></div>
+        <!-- SOCHUM -->
+        <div class="committee-card" onclick="openModal('SOCHUM', 'GA-3', 'sochum.jpg', 'Strengthening Economic Resilience across Europe', 'The Social, Humanitarian and Cultural Committee (SOCHUM) addresses a range of social, humanitarian affairs and human rights issues that affect people all over the world.', ['usgSochum.webp', 'İsim Soyisim'], ['chairSochum.webp', 'İsim Soyisim'], ['acasSochum.webp', 'İsim Soyisim'])">
+            <div class="card-image" style="background-image: url('sochum.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
-                <div class="card-top"><span>SPECIAL</span><span>Rayfel Mun '26</span></div>
-                <h3 class="card-title">UNSC</h3>
+                <div class="card-top"><span>GA-3</span><span>Rayfel Mun '26</span></div>
+                <h3 class="card-title">SOCHUM</h3>
             </div>
         </div>
 
+        <!-- WHO -->
         <div class="committee-card" onclick="openModal('WHO', 'GA-2', 'who.jpg', 'Global Health Security and Universal Healthcare Access', 'The World Health Organization (WHO) is a specialized agency of the UN responsible for international public health. This session will dive into the necessity of building resilient health systems.', ['usgWho.webp', 'İsim Soyisim'], ['chairWho.webp', 'İsim Soyisim'], ['acasWho.webp', 'İsim Soyisim'])">
             <div class="card-image" style="background-image: url('who.jpg');"></div>
             <div class="card-overlay"></div>
@@ -477,16 +480,28 @@
             </div>
         </div>
 
-        <div class="committee-card" onclick="openModal('UNDC', 'SPECIAL', 'undc.jpg', 'Modernizing Collective Defense in the Digital Age', 'The United Nations Disarmament Commission (UNDC) focuses on the reduction of military forces and armaments, extending to cybersecurity in the digital age.', ['usgUndc.webp', 'İsim Soyisim'], ['chairUndc.webp', 'İsim Soyisim'], ['acasUndc.webp', 'İsim Soyisim'])">
-            <div class="card-image" style="background-image: url('undc.jpg');"></div>
+        <!-- UNODC -->
+        <div class="committee-card" onclick="openModal('UNODC', 'SPECIAL', 'unodc.jpg', 'Modernizing Collective Defense in the Digital Age', 'The United Nations Office on Drugs and Crime (UNODC) is a global leader in the fight against illicit drugs, international crime, and terrorism.', ['usgUnodc.webp', 'İsim Soyisim'], ['chairUnodc.webp', 'İsim Soyisim'], ['acasUnodc.webp', 'İsim Soyisim'])">
+            <div class="card-image" style="background-image: url('unodc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
                 <div class="card-top"><span>SPECIAL</span><span>Rayfel Mun '26</span></div>
-                <h3 class="card-title">UNDC</h3>
+                <h3 class="card-title">UNODC</h3>
             </div>
         </div>
 
-        <div class="committee-card full-width" onclick="openModal('JCC', 'CRISIS', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'Joint Crisis Committees (JCC) are designed for delegates who want an intense, fast-paced environment where decisions made by one side directly impact the other.', ['usgJcc1.webp', 'İsim Soyisim 1'], ['chairJcc1.webp', 'İsim Soyisim 1'], ['acasJcc1.webp', 'İsim Soyisim 1'], ['usgJcc2.webp', 'İsim Soyisim 2'], ['chairJcc2.webp', 'İsim Soyisim 2'], ['acasJcc2.webp', 'İsim Soyisim 2'])">
+        <!-- LEGAL -->
+        <div class="committee-card" onclick="openModal('LEGAL', 'GA-6', 'legal.jpg', 'Codification and Progressive Development of International Law', 'The Legal Committee (Sixth Committee) is the primary forum for the consideration of legal questions in the General Assembly, dealing with international law framework.', ['usgLegal.webp', 'İsim Soyisim'], ['chairLegal.webp', 'İsim Soyisim'], ['acasLegal.webp', 'İsim Soyisim'])">
+            <div class="card-image" style="background-image: url('legal.jpg');"></div>
+            <div class="card-overlay"></div>
+            <div class="card-content">
+                <div class="card-top"><span>GA-6</span><span>Rayfel Mun '26</span></div>
+                <h3 class="card-title">LEGAL</h3>
+            </div>
+        </div>
+
+        <!-- JCC -->
+        <div class="committee-card" onclick="openModal('JCC', 'CRISIS', 'jcc.jpg', 'Protection of Human Rights in Conflict Zones', 'Joint Crisis Committees (JCC) are designed for delegates who want an intense, fast-paced environment where decisions made by one side directly impact the other.', ['usgJcc1.webp', 'İsim Soyisim 1'], ['chairJcc1.webp', 'İsim Soyisim 1'], ['acasJcc1.webp', 'İsim Soyisim 1'], ['usgJcc2.webp', 'İsim Soyisim 2'], ['chairJcc2.webp', 'İsim Soyisim 2'], ['acasJcc2.webp', 'İsim Soyisim 2'])">
             <div class="card-image" style="background-image: url('jcc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
