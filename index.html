@@ -32,19 +32,17 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Rayfel Mun '26 | Your Voice Can Change The World.">
     <meta property="og:description" content="Diplomasi ve liderlik yolculuğuna Rayfel Mun ile başla. Başvurular devam ediyor!">
-    <meta property="og:image" content="https://rayfelmun.org/rayfelmunLogo.png"> 
+    <meta property="og:image" content="https://rayfelmun.org/rayfelmunLogo.jpg"> 
     <meta property="og:url" content="https://rayfelmun.org">
     <meta property="og:site_name" content="Rayfel Mun '26">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Rayfel Mun '26 | Your Voice Can Change The World.">
     <meta name="twitter:description" content="Diplomasi ve liderlik yolculuğuna Rayfel Mun ile başla. Başvurular devam ediyor!">
-    <meta name="twitter:image" content="https://rayfelmun.org/rayfelmunLogo.png">
+    <meta name="twitter:image" content="https://rayfelmun.org/rayfelmunLogo.jpg">
 
-    <link rel="icon" type="image/png" sizes="256x256" href="rayfelmunLogo.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="rayfelmunLogo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="rayfelmunLogo.png">
-    <link rel="apple-touch-icon" href="rayfelmunLogo.png">
+    <link rel="icon" href="https://rayfelmun.org/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://rayfelmun.org/favicon.ico">
     
     <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -56,7 +54,7 @@
     <header>
         <nav>
             <a href="/" class="logo-area">
-                <img src="rayfelmunLogo.png" alt="Rayfel MUN 2026 Logo">
+                <img src="rayfelmunLogo.jpg" alt="Rayfel MUN 2026 Logo">
                 <span>Rayfel Mun</span>
             </a>
             
@@ -110,7 +108,7 @@
 
     <footer>
         <div class="footer-brand">
-            <img src="rayfelmunLogo.png" alt="Rayfel MUN 2026 Footer Logo">
+            <img src="rayfelmunLogo.jpg" alt="Rayfel MUN 2026 Footer Logo">
             <h2>Rayfel Mun<span style="font-family: 'Antonio', sans-serif;">26</span></h2>
             <p>Your voice can change the world.</p>
         </div>
@@ -151,6 +149,7 @@
     </div>
 
     <script>
+        // Mobil Menü Kontrolü
         const menuToggle = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
@@ -161,6 +160,7 @@
             icon.classList.toggle('fa-times');
         });
 
+        // Countdown (Geri Sayım) Mantığı
         const targetDate = new Date("Jun 15, 2026 11:00:00").getTime();
         const timer = setInterval(function() {
             const now = new Date().getTime();
