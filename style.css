@@ -266,7 +266,7 @@
         .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
 
         .bottom-bar {
-            background-color: #0a0a0a;
+            background-color: #65001a;
             padding: 30px 8%;
             display: flex;
             justify-content: space-between;
