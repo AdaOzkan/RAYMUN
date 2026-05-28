@@ -251,6 +251,92 @@
             font-weight: 400;
         }
 
+        /* --- PRESTİJLİ SANSÜR & GERİ SAYIM TASARIMI --- */
+        .countdown-overlay {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #142948 0%, #0a0a0a 100%);
+            border-radius: 24px;
+            max-width: 750px;
+            margin: 40px auto;
+            color: #ffffff;
+            box-shadow: 0 20px 40px rgba(20,41,72,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .countdown-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(to right, #27f4d2, #142948);
+        }
+
+        .countdown-overlay i.lock-icon {
+            font-size: 42px;
+            color: #27f4d2;
+            margin-bottom: 20px;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(39, 244, 210, 0.4);
+        }
+
+        .countdown-overlay h2 {
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(22px, 4vw, 32px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .countdown-overlay p {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 35px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .timer-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 15px 0;
+            width: 100px;
+            border-radius: 14px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+
+        .timer-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(39, 244, 210, 0.3);
+        }
+
+        .timer-num {
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(32px, 5vw, 44px);
+            color: #27f4d2;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .timer-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-top: 8px;
+            font-weight: 700;
+        }
+
         /* --- FOOTER --- */
         footer {
             background-color: #0a0a0a;
@@ -312,6 +398,7 @@
             .footer-brand img { margin: 0 auto 20px auto; }
             .social-icons { justify-content: center; }
             .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
+            .timer-box { width: 75px; padding: 10px 0; }
         }
     </style>
 </head>
@@ -346,158 +433,186 @@
             <h1 class="calendar-title">The Three Days of Dıplomacy</h1>
         </header>
 
-        <div class="day-tabs">
-            <button class="day-tab active" onclick="showDay(1)">DAY 1</button>
-            <button class="day-tab" onclick="showDay(2)">DAY 2</button>
-            <button class="day-tab" onclick="showDay(3)">DAY 3</button>
-        </div>
-
-        <div id="day1" class="timeline-container active">
-            <div class="timeline">
-                <div class="event-item">
-                    <div class="event-time">09:00 - 10:00</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Regıstratıon</h3>
-                        <p>Welcome to Rayfelmun '26! Delegates collect their conference kits, badges, and placards at the main entrance of the Rectorate Building.</p>
-                    </div>
+        <!-- YENİ PRESTİJLİ GERİ SAYIM ALANI -->
+        <div id="countdown-area" class="countdown-overlay">
+            <i class="fas fa-clock-solid fas fa-clock lock-icon"></i>
+            <h2>Schedule Will Be Revealed Soon</h2>
+            <p>The conference timeline is being finalized. Stay tuned for the official release.</p>
+            <div class="timer-grid">
+                <div class="timer-box">
+                    <div id="days-num" class="timer-num">00</div>
+                    <div class="timer-label">Days</div>
                 </div>
-                <div class="event-item">
-                    <div class="event-time">10:00 - 11:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Openıng Ceremony</h3>
-                        <p>Official commencement of the conference featuring keynote speakers, secretariat introductions, and the ceremonial strike of the gavel.</p>
-                    </div>
+                <div class="timer-box">
+                    <div id="hours-num" class="timer-num">00</div>
+                    <div class="timer-label">Hours</div>
                 </div>
-                <div class="event-item">
-                    <div class="event-time">11:30 - 12:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>SESSION 1</h3>
-                        <p>Establishing the agenda and opening the General Speakers List. Committees begin their initial formal debates on the chosen topics.</p>
-                    </div>
+                <div class="timer-box">
+                    <div id="mins-num" class="timer-num">00</div>
+                    <div class="timer-label">Mins</div>
                 </div>
-                <div class="event-item">
-                    <div class="event-time">12:30 - 13:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Lunch Break 1</h3>
-                        <p>A chance to recharge and meet fellow delegates before the first session begins in our designated dining area.</p>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-time">14:00 - 15:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 2</h3>
-                        <p>Transitioning into moderated caucuses. Delegates start identifying allies and discussing policy frameworks for potential resolutions.</p>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-time">17:00 - 18:00</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 3</h3>
-                        <p>Focusing on sub-topics and specific challenges. Delegates begin drafting initial working papers to outline their proposed solutions.</p>
-                    </div>
+                <div class="timer-box">
+                    <div id="secs-num" class="timer-num">00</div>
+                    <div class="timer-label">Secs</div>
                 </div>
             </div>
         </div>
 
-        <div id="day2" class="timeline-container">
-            <div class="timeline">
-                <div class="event-item">
-                    <div class="event-time">09:00 - 10:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 4</h3>
-                        <p>Productive unmoderated caucuses aimed at merging working papers. Intense diplomatic negotiations take center stage.</p>
+        <!-- TAKVİM İÇERİĞİ -->
+        <div id="calendar-content" style="display: none;">
+            <div class="day-tabs">
+                <button class="day-tab active" onclick="showDay(1)">DAY 1</button>
+                <button class="day-tab" onclick="showDay(2)">DAY 2</button>
+                <button class="day-tab" onclick="showDay(3)">DAY 3</button>
+            </div>
+
+            <div id="day1" class="timeline-container active">
+                <div class="timeline">
+                    <div class="event-item">
+                        <div class="event-time">09:00 - 10:00</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Regıstratıon</h3>
+                            <p>Welcome to Rayfelmun '26! Delegates collect their conference kits, badges, and placards at the main entrance of the Rectorate Building.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-time">11:00 - 12:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 5</h3>
-                        <p>Formalizing ideas into Draft Resolutions. Chairs provide feedback on the legal and technical structure of the documents.</p>
+                    <div class="event-item">
+                        <div class="event-time">10:00 - 11:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Openıng Ceremony</h3>
+                            <p>Official commencement of the conference featuring keynote speakers, secretariat introductions, and the ceremonial strike of the gavel.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-time">13:30 - 14:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 6</h3>
-                        <p>Unexpected developments may be introduced to test the delegates' adaptability and quick-thinking under pressure.</p>
+                    <div class="event-item">
+                        <div class="event-time">11:30 - 12:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>SESSION 1</h3>
+                            <p>Establishing the agenda and opening the General Speakers List. Committees begin their initial formal debates on the chosen topics.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-time">15:00 - 16:00</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 7</h3>
-                        <p>Introduction of Draft Resolutions to the floor followed by rigorous questioning and debate on specific clauses.</p>
+                    <div class="event-item">
+                        <div class="event-time">12:30 - 13:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Lunch Break 1</h3>
+                            <p>A chance to recharge and meet fellow delegates before the first session begins in our designated dining area.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-time">16:30 - 17:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 8</h3>
-                        <p>Final discussions on resolutions and starting the technical preparations for the voting process.</p>
+                    <div class="event-item">
+                        <div class="event-time">14:00 - 15:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 2</h3>
+                            <p>Transitioning into moderated caucuses. Delegates start identifying allies and discussing policy frameworks for potential resolutions.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-time">19:30 - 21:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Social Party</h3>
-                        <p>Time to put the placards aside! An evening of music, networking, and celebration with all participants of Rayfelmun '26.</p>
+                    <div class="event-item">
+                        <div class="event-time">17:00 - 18:00</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 3</h3>
+                            <p>Focusing on sub-topics and specific challenges. Delegates begin drafting initial working papers to outline their proposed solutions.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="day3" class="timeline-container">
-            <div class="timeline">
-                <div class="event-item">
-                    <div class="event-time">09:00 - 10:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 9</h3>
-                        <p>The last opportunity to refine resolutions. Delegates work on friendly and amendments to ensure global consensus.</p>
+            <div id="day2" class="timeline-container">
+                <div class="timeline">
+                    <div class="event-item">
+                        <div class="event-time">09:00 - 10:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 4</h3>
+                            <p>Productive unmoderated caucuses aimed at merging working papers. Intense diplomatic negotiations take center stage.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-time">11:00 - 12:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 5</h3>
+                            <p>Formalizing ideas into Draft Resolutions. Chairs provide feedback on the legal and technical structure of the documents.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-time">13:30 - 14:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 6</h3>
+                            <p>Unexpected developments may be introduced to test the delegates' adaptability and quick-thinking under pressure.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-time">15:00 - 16:00</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 7</h3>
+                            <p>Introduction of Draft Resolutions to the floor followed by rigorous questioning and debate on specific clauses.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-time">16:30 - 17:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 8</h3>
+                            <p>Final discussions on resolutions and starting the technical preparations for the voting process.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-time">19:30 - 21:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Social Party</h3>
+                            <p>Time to put the placards aside! An evening of music, networking, and celebration with all participants of Rayfelmun '26.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="event-item">
-                    <div class="event-time">11:00 - 12:00</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 10</h3>
-                        <p>Preparing for the final voting block and addressing the last set of parliamentary inquiries.</p>
+            </div>
+
+            <div id="day3" class="timeline-container">
+                <div class="timeline">
+                    <div class="event-item">
+                        <div class="event-time">09:00 - 10:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 9</h3>
+                            <p>The last opportunity to refine resolutions. Delegates work on friendly and amendments to ensure global consensus.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-time">13:00 - 14:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 11</h3>
-                        <p>The moment of truth. Committees enter the formal voting procedure to decide the final outcome of their three-day journey.</p>
+                    <div class="event-item">
+                        <div class="event-time">11:00 - 12:00</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 10</h3>
+                            <p>Preparing for the final voting block and addressing the last set of parliamentary inquiries.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-time">15:00 - 16:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Sessıon 12</h3>
-                        <p>Final committee reviews, chair evaluations, and feedback sessions before heading to the grand finale.</p>
+                    <div class="event-item">
+                        <div class="event-time">13:00 - 14:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 11</h3>
+                            <p>The moment of truth. Committees enter the formal voting procedure to decide the final outcome of their three-day journey.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-time">17:00 - 18:30</div>
-                    <div class="event-dot"></div>
-                    <div class="event-content">
-                        <h3>Closing Ceremony</h3>
-                        <p>Recognition of outstanding performances, award distributions, and the official closing remarks by the Secretary-General.</p>
+                    <div class="event-item">
+                        <div class="event-time">15:00 - 16:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Sessıon 12</h3>
+                            <p>Final committee reviews, chair evaluations, and feedback sessions before heading to the grand finale.</p>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-time">17:00 - 18:30</div>
+                        <div class="event-dot"></div>
+                        <div class="event-content">
+                            <h3>Closing Ceremony</h3>
+                            <p>Recognition of outstanding performances, award distributions, and the official closing remarks by the Secretary-General.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -559,6 +674,30 @@
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
+
+        // --- GERİ SAYIM SCRIPTİ ---
+        const targetDate = new Date("June 8, 2026 15:00:00").getTime();
+
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown-area").style.display = "none";
+                document.getElementById("calendar-content").style.display = "block";
+            } else {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("days-num").innerHTML = (days < 10 ? "0" : "") + days;
+                document.getElementById("hours-num").innerHTML = (hours < 10 ? "0" : "") + hours;
+                document.getElementById("mins-num").innerHTML = (minutes < 10 ? "0" : "") + minutes;
+                document.getElementById("secs-num").innerHTML = (seconds < 10 ? "0" : "") + seconds;
+            }
+        }, 1000);
     </script>
 </body>
 </html>
