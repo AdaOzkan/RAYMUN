@@ -11,6 +11,8 @@
     <link rel="apple-touch-icon" href="rayfelmunLogo.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Kapatma logosu (X ikonu) ve menü ikonları için gerekli Font Awesome kütüphanesi eklendi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         @font-face {
@@ -498,7 +500,7 @@
             </div>
         </div>
 
-        <div class="committee-card" onclick="openModal('JCC', 'CRISIS', 'jcc.jpg', 'Simulating the Cold War Period in the 1980s to solve political challenges', 'Joint Crisis Committees (JCC) are designed for delegates who want an intense, fast-paced environment.', ['committieePhotos/jcc/usgJcc1.webp', 'USG Team A'], ['committieePhotos/jcc/chairJcc (1).webp', 'Dila Asya Topçu'], ['committieePhotos/jcc/acasJcc1.webp', 'Acas Team A'], ['committieePhotos/jcc/usgJcc2.webp', 'USG Team B'], ['committieePhotos/jcc/chairJcc (2).webp', 'İda Ceren Geyik'], ['committieePhotos/jcc/acasJcc2.webp', 'Acas Team B'])">
+        <div class="committee-card" onclick="openModal('JCC', 'CRISIS', 'jcc.jpg', 'Simulating the Cold War Period in the 1980s to solve political challenges', 'Joint Crisis Committees (JCC) are designed for delegates who want an intense, fast-paced environment.', ['committieePhotos/jcc/usgCrisis.jpg', 'Eren Kiniş'], ['committieePhotos/jcc/chairJcc (1).webp', 'Dila Asya Topçu'], ['committieePhotos/jcc/acasJcc1.webp', 'Acas Team A'], ['committieePhotos/jcc/usgCrisis.jpg', 'Eren Kiniş'], ['committieePhotos/jcc/chairJcc (2).webp', 'İda Ceren Geyik'], ['committieePhotos/jcc/acasJcc2.webp', 'Acas Team B'])">
             <div class="card-image" style="background-image: url('jcc.jpg');"></div>
             <div class="card-overlay"></div>
             <div class="card-content">
@@ -588,13 +590,14 @@
             teamSection.innerHTML = '';
             
             if (title === 'JCC') {
+                // JCC için ACAS rolleri CHAIR olarak değiştirildi
                 const members = [
                     { role: 'USG', img: usg1[0], name: usg1[1], class: 'jcc-card-top' },
                     { role: 'CHAIR', img: chair1[0], name: chair1[1], class: 'jcc-card-top' },
-                    { role: 'ACAS', img: acas1[0], name: acas1[1], class: 'jcc-card-top' },
+                    { role: 'CHAIR', img: acas1[0], name: acas1[1], class: 'jcc-card-top' },
                     { role: 'USG', img: usg2[0], name: usg2[1], class: 'jcc-card-bottom' },
                     { role: 'CHAIR', img: chair2[0], name: chair2[1], class: 'jcc-card-bottom' },
-                    { role: 'ACAS', img: acas2[0], name: acas2[1], class: 'jcc-card-bottom' }
+                    { role: 'CHAIR', img: acas2[0], name: acas2[1], class: 'jcc-card-bottom' }
                 ];
                 
                 members.forEach(m => {
