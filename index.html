@@ -13,77 +13,59 @@
     <meta name="author" content="Ada Özkan">
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://rayfelmun.org/#website",
-          "url": "https://rayfelmun.org/",
-          "name": "Rayfelmun '26",
-          "alternateName": "RAYMUN",
-          "publisher": {
-            "@type": "Organization",
-            "name": "Rayfelmun",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://rayfelmun.org/rayfelmunLogo.png"
-            }
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Rayfelmun '26",
+        "alternateName": "RAYMUN",
+        "url": "https://rayfelmun.org/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Rayfelmun",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rayfelmun.org/rayfelmunLogo.png"
           }
-        },
-        {
-          "@type": "ItemList",
-          "name": "Main Navigation",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "item": {
-                "@type": "WebPage",
-                "name": "About",
-                "url": "https://rayfelmun.org/about.html"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "item": {
-                "@type": "WebPage",
-                "name": "Team",
-                "url": "https://rayfelmun.org/team.html"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "item": {
-                "@type": "WebPage",
-                "name": "Committees",
-                "url": "https://rayfelmun.org/committees.html"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 4,
-              "item": {
-                "@type": "WebPage",
-                "name": "Calendar",
-                "url": "https://rayfelmun.org/calendar.html"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 5,
-              "item": {
-                "@type": "WebPage",
-                "name": "FAQ",
-                "url": "https://rayfelmun.org/faq.html"
-              }
-            }
-          ]
         }
-      ]
-    }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "About",
+            "item": "https://rayfelmun.org/about.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Team",
+            "item": "https://rayfelmun.org/team.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Committees",
+            "item": "https://rayfelmun.org/committees.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Calendar",
+            "item": "https://rayfelmun.org/calendar.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "FAQ",
+            "item": "https://rayfelmun.org/faq.html"
+          }
+        ]
+      }
+    ]
     </script>
 
     <meta property="og:type" content="website">
