@@ -15,16 +15,73 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Rayfelmun '26",
-      "alternateName": "RAYMUN",
-      "url": "https://rayfelmun.org/",
-      "hasPart": [
-        { "@type": "WebPage", "name": "About", "url": "https://rayfelmun.org/about.html" },
-        { "@type": "WebPage", "name": "Team", "url": "https://rayfelmun.org/team.html" },
-        { "@type": "WebPage", "name": "Committees", "url": "https://rayfelmun.org/committees.html" },
-        { "@type": "WebPage", "name": "Calendar", "url": "https://rayfelmun.org/calendar.html" },
-        { "@type": "WebPage", "name": "FAQ", "url": "https://rayfelmun.org/faq.html" }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://rayfelmun.org/#website",
+          "url": "https://rayfelmun.org/",
+          "name": "Rayfelmun '26",
+          "alternateName": "RAYMUN",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Rayfelmun",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://rayfelmun.org/rayfelmunLogo.png"
+            }
+          }
+        },
+        {
+          "@type": "ItemList",
+          "name": "Main Navigation",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "WebPage",
+                "name": "About",
+                "url": "https://rayfelmun.org/about.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "WebPage",
+                "name": "Team",
+                "url": "https://rayfelmun.org/team.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "WebPage",
+                "name": "Committees",
+                "url": "https://rayfelmun.org/committees.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "item": {
+                "@type": "WebPage",
+                "name": "Calendar",
+                "url": "https://rayfelmun.org/calendar.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "item": {
+                "@type": "WebPage",
+                "name": "FAQ",
+                "url": "https://rayfelmun.org/faq.html"
+              }
+            }
+          ]
+        }
       ]
     }
     </script>
