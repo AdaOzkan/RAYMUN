@@ -3,241 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayfelmun '26 | Your Voice Can Change The World.</title>
-    
-    <link rel="canonical" href="https://rayfelmun.org/" />
-    
-    <meta name="description" content="Rayfel Model United Nations 2026 (Rayfelmun '26) resmi web sitesi. Komitelerimizi keşfedin ve başvurunuzu yaparak diplomasi dünyasına adım atın.">
-    <meta name="keywords" content="Rayfelmun, Rayfelmun 2026, MUN Türkiye, Model United Nations, MUN başvuruları, Ramazan Yaman Fen Lisesi MUN, Rayfel">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Ada Özkan">
+    <title>Rayfelmun Parlamento Paneli - 45 Derece</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://rayfelmun.org/#website",
-          "url": "https://rayfelmun.org/",
-          "name": "Rayfelmun '26",
-          "alternateName": "RAYMUN",
-          "publisher": {
-            "@type": "Organization",
-            "name": "Rayfelmun",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://rayfelmun.org/rayfelmunLogo.png"
-            }
-          }
-        },
-        {
-          "@type": "ItemList",
-          "name": "Main Navigation",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "item": {
-                "@type": "WebPage",
-                "name": "About",
-                "url": "https://rayfelmun.org/about.html"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "item": {
-                "@type": "WebPage",
-                "name": "Team",
-                "url": "https://rayfelmun.org/team.html"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "item": {
-                "@type": "WebPage",
-                "name": "Committees",
-                "url": "https://rayfelmun.org/committees.html"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 4,
-              "item": {
-                "@type": "WebPage",
-                "name": "Calendar",
-                "url": "https://rayfelmun.org/calendar.html"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 5,
-              "item": {
-                "@type": "WebPage",
-                "name": "FAQ",
-                "url": "https://rayfelmun.org/faq.html"
-              }
-            }
-          ]
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-      ]
-    }
-    </script>
 
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Rayfelmun '26 | Your Voice Can Change The World.">
-    <meta property="og:description" content="Diplomasi ve liderlik yolculuğuna Rayfelmun ile başla. Başvurular devam ediyor!">
-    <meta property="og:image" content="https://rayfelmun.org/rayfelmunLogo.png"> 
-    <meta property="og:url" content="https://rayfelmun.org">
-    <meta property="og:site_name" content="Rayfelmun '26">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Rayfelmun '26 | Your Voice Can Change The World.">
-    <meta name="twitter:description" content="Diplomasi ve liderlik yolculuğuna Rayfelmun ile başla. Başvurular devam ediyor!">
-    <meta name="twitter:image" content="https://rayfelmun.org/rayfelmunLogo.png">
+        .main-card {
+            background-color: #142948;
+            width: 850px;
+            height: 550px;
+            border-radius: 24px;
+            display: flex;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
 
-    <link rel="icon" type="image/png" sizes="256x256" href="rayfelmunLogo.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="rayfelmunLogo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="rayfelmunLogo.png">
-    <link rel="apple-touch-icon" href="rayfelmunLogo.png">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
+        /* Sol Panel */
+        .sidebar {
+            width: 260px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            z-index: 2;
+        }
+
+        .sidebar h2 {
+            font-size: 20px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            border-left: 4px solid #e74c3c;
+            padding-left: 15px;
+            text-transform: uppercase;
+        }
+
+        .stat-item {
+            margin-bottom: 25px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Sağ Panel (Parlamento Alanı) */
+        .content {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, transparent 70%);
+        }
+
+        /* Oturma planını komple 45 derece döndüren ana kapsayıcı */
+        .parliament-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            transform: rotate(-45deg); /* Tüm yapıyı 45 derece sola yatırdık */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .parliament-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .podium {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 12px;
+            background-color: #ffffff;
+            border-radius: 2px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+
+        .seat {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .seat.marked {
+            background-color: #e74c3c;
+            box-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+        }
+
+        .seat:hover {
+            transform: scale(1.8) !important;
+            z-index: 100;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255,255,255,0.6);
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="/" class="logo-area">
-                <img src="rayfelmunLogo.png" alt="Rayfelmun 2026 Logo">
-                <span>Rayfelmun</span>
-            </a>
-            
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fas fa-bars"></i>
+    <div class="main-card">
+        <div class="sidebar">
+            <h2>RAYFELMUN</h2>
+            <div class="stat-item">
+                <span class="stat-label">TOPLAM DELEGE</span>
+                <span class="stat-value" id="total-seats">0</span>
             </div>
-
-            <div class="nav-right" id="nav-menu">
-                <ul class="nav-links">
-                    <li><a href="/" class="active">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="team.html">TEAM</a></li>
-                    <li><a href="committees.html">COMMITTEES</a></li> 
-                    <li><a href="calendar.html">CALENDAR</a></li> 
-                    <li><a href="venue.html">VENUE</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                </ul>
-                <a href="apply.html" class="apply-btn">APPLY NOW</a>
+            <div class="stat-item">
+                <span class="stat-label">DOLU KOLTUK</span>
+                <span class="stat-value" style="color: #e74c3c;">25</span>
             </div>
-        </nav>
-    </header>
+            <div class="stat-item" style="margin-top: auto;">
+                <span class="stat-label">SİSTEM DURUMU</span>
+                <span class="stat-value" style="font-size: 14px; color: #2ecc71;">● CANLI BAĞLANTI</span>
+            </div>
+        </div>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Rayfelmun</h1>
-                <p class="slogan">Your voice can change the world.</p>
-                
-                <div class="countdown">
-                    <div class="time-box">
-                        <span id="days">00</span>
-                        <label>Days</label>
-                    </div>
-                    <div class="time-box">
-                        <span id="hours">00</span>
-                        <label>Hours</label>
-                    </div>
-                    <div class="time-box">
-                        <span id="minutes">00</span>
-                        <label>Mins</label>
-                    </div>
-                    <div class="time-box">
-                        <span id="seconds">00</span>
-                        <label>Secs</label>
-                    </div>
+        <div class="content">
+            <!-- 45 derece dönen wrapper -->
+            <div class="parliament-wrapper">
+                <div class="parliament-container" id="parliament">
+                    <div class="podium"></div>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-brand">
-            <img src="rayfelmunLogo.png" alt="Rayfelmun 2026 Footer Logo">
-            <h2>Rayfelmun<span style="font-family: 'Antonio', sans-serif;">26</span></h2>
-            <p>Your voice can change the world.</p>
         </div>
-        <div class="footer-col">
-            <h4>CONFERENCE</h4>
-            <ul>
-                <li><a href="/">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="team.html">TEAM</a></li>
-                <li><a href="committees.html">COMMITTEES</a></li> 
-                <li><a href="calendar.html">CALENDAR</a></li> 
-                <li><a href="venue.html">VENUE</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-                <li><a href="apply.html" style="color:#27f4d2;">APPLY NOW</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>LEGAL</h4>
-            <ul>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>SOCIAL</h4>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/rayfelmun/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.linkedin.com/school/ramazan-yaman-fen-lisesi/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <div class="bottom-bar">
-        <div>© Rayfelmun 2026. All rights reserved.</div>
-        <div>Crafted with ❤️ by Ada Özkan</div>
     </div>
 
     <script>
-        const menuToggle = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
+        const container = document.getElementById('parliament');
+        const rows = 4; 
+        const seatsPerRow = 10; 
+        const centerX = 200; // Wrapper merkezine göre
+        const centerY = 200; 
+        
+        let markedCount = 0;
+        let totalCreated = 0;
 
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
+        for (let row = 0; row < rows; row++) {
+            const radius = 70 + (row * 30); 
+            const seatCount = seatsPerRow + (row * 2); 
 
-        const targetDate = new Date("Jun 15, 2026 11:00:00").getTime();
-        const timer = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+            for (let i = 0; i <= seatCount; i++) {
+                const seat = document.createElement('div');
+                seat.className = 'seat';
 
-            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((distance % (1000 * 60)) / 1000);
+                if (markedCount < 25) {
+                    seat.classList.add('marked');
+                    markedCount++;
+                }
 
-            document.getElementById("days").innerText = d < 10 ? "0"+d : d;
-            document.getElementById("hours").innerText = h < 10 ? "0"+h : h;
-            document.getElementById("minutes").innerText = m < 10 ? "0"+m : m;
-            document.getElementById("seconds").innerText = s < 10 ? "0"+s : s;
+                // Yarım daire (180 derece) açısını hesapla
+                const angleRad = (Math.PI / seatCount) * i;
+                const angleDeg = (angleRad * 180) / Math.PI;
 
-            if (distance < 0) {
-                clearInterval(timer);
-                document.querySelector(".countdown").innerHTML = "<h3 style='color:#142948; letter-spacing:2px;'>CONFERENCE LIVE</h3>";
+                const x = centerX - (radius * Math.cos(angleRad));
+                const y = centerY - (radius * Math.sin(angleRad));
+
+                seat.style.left = `${x}px`;
+                seat.style.top = `${y}px`;
+                
+                // Koltukların kendi etrafında dönmesi (kürsüye bakış) + ana wrapper'ın -45'ini kompanse etme gerekebilir
+                // Ancak wrapper döndüğü için sadece yerel "merkeze bakış" açısı yeterlidir.
+                seat.style.transform = `translate(-50%, -50%) rotate(${270 + angleDeg}deg)`;
+
+                container.appendChild(seat);
+                totalCreated++;
             }
-        }, 1000);
+        }
+        document.getElementById('total-seats').innerText = totalCreated;
     </script>
+
 </body>
 </html>

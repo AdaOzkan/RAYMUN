@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply | Rayfelmun '26</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="256x256" href="rayfelmunLogo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        @font-face {
+            font-family: 'Northwell';
+            src: url('Northwell.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #142948;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGASYON --- */
+        nav {
+            background: linear-gradient(to bottom, #142948 0%, #0a0a0a 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo-area img { height: 50px; width: auto; }
+        .logo-area span {
+            font-family: 'Northwell', cursive;
+            font-size: 34px;
+            color: #ffffff;
+        }
+
+        .nav-right { display: flex; align-items: center; gap: 25px; }
+        .nav-links { list-style: none; display: flex; gap: 18px; }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { opacity: 1; color: #27f4d2; }
+
+        .apply-btn-nav {
+            background-color: #111111;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: 0.3s;
+        }
+
+        /* --- SELECTION SECTION --- */
+        .apply-section {
+            padding: 140px 5% 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .apply-header .label {
+            font-family: 'Northwell', cursive;
+            font-size: clamp(60px, 12vw, 80px);
+            color: #142948;
+        }
+
+        /* --- COMMITTEE SELECTOR --- */
+        .committee-box {
+            margin: 40px auto;
+            max-width: 500px;
+        }
+
+        select {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #142948;
+            font-size: 16px;
+            font-weight: 600;
+            color: #142948;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* --- UN PARLIAMENT SEATING CHART --- */
+        .parliament-container {
+            margin-top: 50px;
+            background: #f4f7f6;
+            padding: 60px 20px;
+            border-radius: 50% 50% 20px 20px; /* Yarım ay şekli */
+            border: 1px solid #ddd;
+            position: relative;
+            overflow: hidden;
+            display: none; /* Komite seçilince açılacak */
+        }
+
+        .podium {
+            width: 150px;
+            height: 40px;
+            background: #142948;
+            margin: 0 auto 50px auto;
+            border-radius: 5px;
+            color: white;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .seating-chart {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .seat {
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            border: 2px solid #142948;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .seat:hover {
+            background: #27f4d2;
+            transform: scale(1.1);
+        }
+
+        .seat.selected {
+            background: #27f4d2;
+            color: #142948;
+            border-color: #142948;
+        }
+
+        .seat::after {
+            content: attr(data-country);
+            position: absolute;
+            bottom: -25px;
+            font-size: 9px;
+            white-space: nowrap;
+            color: #666;
+            display: none;
+        }
+
+        .seat:hover::after { display: block; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0a0a0a;
+            padding: 80px 8% 40px 8%;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr;
+            gap: 40px;
+            color: white;
+        }
+
+        .footer-brand img { width: 200px; margin-bottom: 20px; }
+        .footer-col h4 { font-size: 12px; color: #27f4d2; margin-bottom: 20px; letter-spacing: 2px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: white; text-decoration: none; opacity: 0.6; font-size: 13px; }
+
+        .bottom-bar {
+            background-color: #65001a;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        #selection-info {
+            margin-top: 30px;
+            font-weight: 700;
+            color: #142948;
+            font-size: 18px;
+        }
+
+        .final-apply-btn {
+            display: none;
+            margin: 20px auto;
+            background: #27f4d2;
+            color: #142948;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-area">
+            <img src="rayfelmunLogo.jpg" alt="Logo">
+            <span>Rayfelmun</span>
+        </a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
+                <li><a href="committees.html">COMMITTEES</a></li> 
+                <li><a href="calendar.html">CALENDAR</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <a href="apply.html" class="apply-btn-nav">APPLY NOW</a>
+        </div>
+    </nav>
+
+    <section class="apply-section">
+        <div class="apply-header">
+            <span class="label">Apply</span>
+            <h1>CHOOSE YOUR SEAT</h1>
+            <p style="margin-top: 15px; opacity: 0.7;">Select your committee first, then pick your country from the UN seating plan.</p>
+        </div>
+
+        <div class="committee-box">
+            <select id="committeeSelect" onchange="showSeatingChart()">
+                <option value="" disabled selected>-- Select a Committee --</option>
+                <option value="DISEC">DISEC (Disarmament & International Security)</option>
+                <option value="UNHCR">UNHCR (Refugee Agency)</option>
+                <option value="SOCHUM">SOCHUM (Social & Humanitarian)</option>
+                <option value="WHO">WHO (World Health Organization)</option>
+                <option value="CRISIS">Special Crisis Cabinet</option>
+            </select>
+        </div>
+
+        <div class="parliament-container" id="parliamentContainer">
+            <div class="podium">United Nations Podium</div>
+            <div class="seating-chart" id="seatingChart">
+                </div>
+        </div>
+
+        <div id="selection-info"></div>
+        <a href="#" class="final-apply-btn" id="finalBtn">COMPLETE REGISTRATION</a>
+    </section>
+
+    <footer>
+        <div class="footer-brand">
+            <img src="rayfelmunLogo.jpg" alt="Logo">
+            <p>Your voice can change the world</p>
+        </div>
+        <div class="footer-col">
+            <h4>CONFERENCE</h4>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="committees.html">COMMITTEES</a></li>
+                <li><a href="apply.html">APPLY NOW</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>SOCIAL</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="bottom-bar">
+        <div>© Rayfelmun 2026.</div>
+        <div>Crafted with ❤️ by Ada Özkan</div>
+    </div>
+
+    <script>
+        const countries = [
+            "USA", "UK", "France", "China", "Russia", "Germany", "Japan", "Turkey", 
+            "Brazil", "India", "Canada", "Italy", "South Africa", "Egypt", "Mexico", 
+            "Norway", "Spain", "South Korea", "Argentina", "Australia", "Saudi Arabia",
+            "Netherlands", "Sweden", "Switzerland", "Greece", "Pakistan", "Belgium"
+        ];
+
+        function showSeatingChart() {
+            const container = document.getElementById('parliamentContainer');
+            const chart = document.getElementById('seatingChart');
+            const committee = document.getElementById('committeeSelect').value;
+            
+            container.style.display = 'block';
+            chart.innerHTML = ''; // Temizle
+            
+            // Koltukları Oluştur
+            countries.forEach(country => {
+                const seat = document.createElement('div');
+                seat.className = 'seat';
+                seat.setAttribute('data-country', country);
+                seat.innerHTML = `<i class="fas fa-chair"></i>`;
+                
+                seat.onclick = function() {
+                    document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    const info = document.getElementById('selection-info');
+                    info.innerHTML = `Selected: ${country} in ${committee}`;
+                    
+                    const btn = document.getElementById('finalBtn');
+                    btn.style.display = 'inline-block';
+                    btn.href = `https://forms.gle/jazNhh69TMwqDSrU8?entry.1=Selected_${country}_${committee}`;
+                };
+                
+                chart.appendChild(seat);
+            });
+
+            // Sayfayı oraya kaydır
+            window.scrollTo({ top: container.offsetTop - 100, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
