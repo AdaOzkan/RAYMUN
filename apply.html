@@ -153,39 +153,10 @@
             line-height: 1;
         }
 
-        /* --- TIMER --- */
-        #countdown-container {
-            text-align: center;
-            margin-bottom: 60px;
-            background: #142948;
-            color: white;
-            padding: 20px;
-            border-radius: 20px;
-            display: inline-block;
-            left: 50%;
-            position: relative;
-            transform: translateX(-50%);
-        }
-
-        #timer {
-            font-family: 'Antonio', sans-serif;
-            font-size: 24px;
-            letter-spacing: 2px;
-            color: #27f4d2;
-        }
-
-        .timer-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-            margin-bottom: 5px;
-        }
-
         /* --- APPLICATION CARDS GRID --- */
         .apply-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            justify-content: center;
             gap: 30px;
         }
 
@@ -200,6 +171,8 @@
             flex-direction: column;
             justify-content: space-between;
             min-height: 450px;
+            width: 100%;
+            max-width: 350px;
         }
 
         .apply-card:hover {
@@ -233,7 +206,7 @@
         }
 
         .apply-card:hover .card-icon img {
-            filter: none; /* Icon rengi orijinal kalsın */
+            filter: none;
         }
 
         .apply-card h3 {
@@ -265,20 +238,7 @@
             margin-top: auto;
         }
 
-        /* --- KİLİT STİLİ --- */
-        .card-btn.locked {
-            background: #ccc !important;
-            cursor: not-allowed;
-            pointer-events: none;
-            opacity: 0.7;
-        }
-
-        .card-btn.locked::after {
-            content: ' (LOCKED)';
-            font-size: 10px;
-        }
-
-        .apply-card:hover .card-btn:not(.locked) {
+        .apply-card:hover .card-btn {
             background: #27f4d2;
             color: #142948;
         }
@@ -357,11 +317,6 @@
         }
 
         /* --- MOBILE ADAPTATION --- */
-        @media (max-width: 1024px) {
-            .apply-grid { grid-template-columns: repeat(2, 1fr); }
-            footer { grid-template-columns: 1.5fr 1fr; }
-        }
-
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav-right {
@@ -382,7 +337,7 @@
             .nav-links { flex-direction: column; align-items: center; gap: 25px; }
             .nav-links a { font-size: 16px; opacity: 1; }
             
-            .apply-grid { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
+            .apply-grid { flex-direction: column; align-items: center; }
             
             footer { grid-template-columns: 1fr; text-align: center; }
             .footer-brand img { margin: 0 auto 20px auto; width: 200px; }
@@ -411,8 +366,7 @@
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
-            <a href="apply.html" target="_blank" class="apply-btn-nav locked-btn">APPLY NOW</a>
-
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSekvafFzcfw0Nx73vp8O_ATNA8Ui5N3MvDcb8KZ_Nv-pGQrQw/viewform?usp=dialog" target="_blank" class="apply-btn-nav">APPLY NOW</a>
         </div>
     </nav>
 
@@ -422,13 +376,7 @@
             <h1>Joın the voıce of vısıon</h1>
         </div>
 
-        <div id="countdown-container">
-            <div class="timer-label">Applications Open In</div>
-            <div id="timer">00d 00h 00m 00s</div>
-        </div>
-
         <div class="apply-grid">
-
             <div class="apply-card">
                 <div>
                     <div class="card-icon">
@@ -437,29 +385,7 @@
                     <h3>Delegatıon</h3>
                     <p>For school groups and clubs. Bring your team together and represent your institution as a collective force.</p>
                 </div>
-                <a href="https://forms.gle/jazNhh69TMwqDSrU8" target="_blank" class="card-btn locked-btn">Regıster Team</a>
-            </div>
-
-            <div class="apply-card">
-                <div>
-                    <div class="card-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="white"><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
-                    </div>
-                    <h3>Press Team</h3>
-                    <p>Capture the moments that matter. Join as a journalist, photographer, or social media creator to document the conference.</p>
-                </div>
-                <a href="https://forms.gle/ESsro6krRAHKuvTi9" target="_blank" class="card-btn locked-btn">Apply for Press</a>
-            </div>
-
-            <div class="apply-card">
-                <div>
-                    <div class="card-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="white"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                    </div>
-                    <h3>Observer / Advısor</h3>
-                    <p>Join us to observe the sessions or accompany your students as a faculty advisor without active participation.</p>
-                </div>
-                <a href="https://forms.gle/jazNhh69TMwqDSrU8" target="_blank" class="card-btn locked-btn">Regıster Now</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSekvafFzcfw0Nx73vp8O_ATNA8Ui5N3MvDcb8KZ_Nv-pGQrQw/viewform?usp=dialog" target="_blank" class="card-btn">Regıster Team</a>
             </div>
         </div>
     </section>
@@ -480,7 +406,7 @@
                 <li><a href="calendar.html">CALENDAR</a></li> <li><a href="venue.html">VENUE</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
-                <li><a href="https://forms.gle/jazNhh69TMwqDSrU8" target="_blank" style="color:#27f4d2;">APPLY NOW</a></li>
+                <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSekvafFzcfw0Nx73vp8O_ATNA8Ui5N3MvDcb8KZ_Nv-pGQrQw/viewform?usp=dialog" target="_blank" style="color:#27f4d2;">APPLY NOW</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -506,7 +432,6 @@
     </div>
 
     <script>
-        // MOBILE MENU LOGIC
         const menuToggle = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
@@ -516,44 +441,6 @@
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-times');
         });
-
-        // COUNTDOWN LOGIC
-        // Hedef: 3 Haziran 2026, 15:00
-        const countDownDate = new Date("June 3, 2026 15:00:00").getTime();
-
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-            const buttons = document.querySelectorAll('.locked-btn');
-            
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("timer").innerHTML = "APPLICATIONS OPEN!";
-                document.getElementById("countdown-container").style.background = "#27f4d2";
-                document.getElementById("countdown-container").style.color = "#142948";
-                
-                // Butonları Aktif Et
-                buttons.forEach(btn => {
-                    btn.classList.remove('locked');
-                    btn.style.pointerEvents = "auto";
-                    btn.style.opacity = "1";
-                    btn.style.background = ""; // Orijinal CSS'e döner
-                });
-            } else {
-                // Kilitli Kal
-                buttons.forEach(btn => {
-                    btn.classList.add('locked');
-                });
-            }
-        }, 1000);
     </script>
 </body>
 </html>
