@@ -16,7 +16,7 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #15151e;
     color: #142948;
     line-height: 1.6;
     overflow-x: hidden;
@@ -24,7 +24,7 @@ body {
 
 /* --- NAVIGASYON --- */
 nav {
-    background: linear-gradient(to bottom, #142948 0%, rgb(21,21,30) 100%);
+    background: linear-gradient(to bottom, #142948 0%, #15151e 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -134,10 +134,9 @@ nav {
     backdrop-filter: blur(0px);
     border: 1px solid rgba(255,255,255,0.2);
     position: relative;
-    margin-top: 150px; /* Kartalın ayağının temas etmesi için aşağı kaydırıldı */
+    margin-top: 150px; 
 }
 
-/* Kartal Ayarlamaları - Biraz daha sola kaydırıldı */
 .hero-content::before {
     content: "";
     position: absolute;
@@ -204,6 +203,66 @@ nav {
     text-transform: uppercase;
 }
 
+/* --- SPONSORS (PARTNERS) SECTION --- */
+.partners-section {
+    background-color: rgb(21, 21, 30);
+    padding: 60px 8% 0 8%;
+}
+
+.partners-title {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.partners-title i {
+    font-size: 14px;
+    color: #27f4d2;
+}
+
+.partners-tier {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.partners-tier:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 40px; 
+}
+
+.partners-tier span {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: default;
+}
+
+.partners-tier span:hover {
+    color: white;
+    transform: scale(1.05);
+}
+
+.tier-1 span { font-size: 26px; letter-spacing: 2px; color: rgba(255, 255, 255, 0.9); }
+.tier-2 span { font-size: 18px; letter-spacing: 1.5px; }
+.tier-3 span { font-size: 13px; letter-spacing: 1px; max-width: 400px; line-height: 1.5; color: rgba(255,255,255,0.5); }
+.tier-4 span { font-size: 15px; letter-spacing: 1.2px; color: rgba(255,255,255,0.6); }
+
 /* --- FOOTER (3 Sütun + Logolar + Kıvrımlı Çizgi) --- */
 footer {
     background-color: rgb(21, 21, 30);
@@ -222,7 +281,6 @@ footer {
     padding-right: 50px;
     margin: 0 auto;
     
-    /* İSTEDİĞİN SARI ÇİZGİ BURADA: F1 tarzı sağ alt kıvrım */
     border-bottom: 14px solid #383842;
     border-right: 14px solid #383842;
     border-bottom-right-radius: 50px;
@@ -231,6 +289,7 @@ footer {
 .footer-col {
     display: flex;
     flex-direction: column;
+    height: 100%; /* Sütunların aynı yüksekliği kaplaması için */
 }
 
 .footer-col h4 {
@@ -283,9 +342,10 @@ footer {
     transform: translateY(-3px);
 }
 
-/* Logolar (Mavi ve Kırmızı alanlara eklenenler) */
+/* Logolar ve Hizalama */
 .footer-logo {
-    margin-top: 40px; 
+    margin-top: auto; /* İki logoyu da bulundukları sütunun en altına (aynı hizaya) sabitler */
+    padding-top: 40px; 
     opacity: 0.8;
     transition: 0.3s;
 }
@@ -296,7 +356,7 @@ footer {
 }
 
 .footer-logo img {
-    max-width: 75%;
+    width: 75%; /* Genişlik tam olarak istendiği gibi %75 yapıldı */
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
@@ -368,6 +428,17 @@ footer {
 
     .time-box span { font-size: 24px; }
 
+    .partners-tier {
+        flex-direction: column;
+        gap: 25px;
+        padding: 30px 0;
+    }
+    
+    .tier-1 span { font-size: 20px; }
+    .tier-2 span { font-size: 16px; }
+    .tier-3 span { font-size: 12px; }
+    .tier-4 span { font-size: 14px; }
+
     .footer-links-container {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -381,59 +452,9 @@ footer {
 
     .footer-logo {
         margin-top: 25px;
+        padding-top: 0;
     }
     
     .social-icons { justify-content: flex-start; }
     .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
-}
-
-
-/* --- CSS Kodları (Sponsor Kartları) --- */
-.sponsor-container {
-  background-color: #142948; /* Görseldeki koyu kırmızı tonu */
-  padding: 50px 0;
-  overflow: hidden; /* Dışarı taşan kartları gizle */
-  width: 100%;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.sponsor-title {
-    font-family: 'Northwell', cursive;
-    font-size: clamp(60px, 10vw, 120px);
-    color: #27f4d2;
-    line-height: normal;
-    margin-bottom: 15px;
-    font-weight: normal;
-}
-
-.slider-wrapper {
-  width: 75%;
-  overflow: hidden;
-}
-
-.sponsor-track {
-  display: flex;
-  gap: 30px;
-  width: max-content;
-  animation: scrollLeft 20s linear infinite; /* Sola kayma animasyonu */
-}
-
-.sponsor-card {
-  background-color: #f8f9fa; /* Kartların beyaz/krem rengi */
-  padding: 40px 60px;
-  border-radius: 10px;
-  color: #142948;
-  font-weight: bold;
-  font-family: sans-serif;
-  white-space: nowrap;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
-
-/* Animasyon Tanımı */
-@keyframes scrollLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* Kartların yarısı kadar kaydır */
 }
