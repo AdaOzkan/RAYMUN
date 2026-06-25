@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Rayfelmun '26</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- GLOBAL SETTINGS & GRADIENTS --- */
+        @font-face {
+            font-family: 'Northwell';
+            src: url('Northwell.ttf') format('truetype');
+            font-display: swap;
+        }
+
+        :root {
+            --teal: #27f4d2;
+            --purple: #8a2be2;
+            --blue: #1e3c66;
+            --dark: rgb(21,21,30);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Gizli varsayılan imleç, kendi imlecimizi kullanacağız */
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #ffffff;
+            background-color: var(--dark);
+            overflow: hidden; /* Scroll-container kullanacağımız için ana body scrollunu kapattık */
+        }
+
+        /* DİNAMİK ARKA PLAN GRADYANI */
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(-45deg, rgb(21,21,30), #142948, #0f172a, #1a0b2e);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* SCROLL SNAPPING (MIKNATIS GİBİ KAYDIRMA) */
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        /* Hide scrollbar for a cleaner look */
+        .scroll-container::-webkit-scrollbar { display: none; }
+        .scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
+
+        section {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start; /* Her section başa kilitlenir */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* SCROLL REVEAL ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 1. INTRO SCREEN */
+        .intro-screen {
+            text-align: center;
+        }
+
+        .intro-screen h1 {
+            font-family: 'Northwell', cursive;
+            font-size: clamp(70px, 15vw, 160px);
+            /* Gradient Text */
+            background: linear-gradient(to right, var(--teal), #ffffff, #ff7eb3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            font-weight: normal;
+            line-height: 1;
+            animation: textShine 5s linear infinite;
+            background-size: 200% auto;
+        }
+
+        @keyframes textShine {
+            to { background-position: 200% center; }
+        }
+
+        .intro-screen p {
+            font-size: 18px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .start-journey-btn {
+            background: linear-gradient(45deg, rgba(39,244,210,0.1), rgba(138,43,226,0.1));
+            color: #ffffff;
+            border: 1px solid var(--teal);
+            padding: 18px 45px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(39, 244, 210, 0.2);
+        }
+
+        .start-journey-btn:hover {
+            background: linear-gradient(45deg, var(--teal), var(--purple));
+            border-color: transparent;
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(39, 244, 210, 0.4);
+            color: var(--dark);
+        }
+
+        /* 2. 3D CAROUSEL (COVERFLOW) */
+        .day-title {
+            font-family: 'Antonio', sans-serif;
+            font-size: 70px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #ffffff, var(--teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1500px;
+        }
+
+        .card {
+            position: absolute;
+            width: 340px;
+            height: 510px;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                        opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        box-shadow 0.8s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: #fff;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+            transition: transform 0.8s ease;
+        }
+
+        .card.active:hover img { transform: scale(1.05); }
+
+        /* 3D Positions */
+        .card.active { transform: translateX(0) scale(1) translateY(0) rotate(0deg); z-index: 5; opacity: 1; box-shadow: 0 30px 70px rgba(39, 244, 210, 0.2); }
+        .card.prev-1 { transform: translateX(-55%) scale(0.85) translateY(20px) rotate(-6deg); z-index: 4; opacity: 0.8; }
+        .card.next-1 { transform: translateX(55%) scale(0.85) translateY(20px) rotate(6deg); z-index: 4; opacity: 0.8; }
+        .card.prev-2 { transform: translateX(-100%) scale(0.7) translateY(40px) rotate(-12deg); z-index: 3; opacity: 0.4; }
+        .card.next-2 { transform: translateX(100%) scale(0.7) translateY(40px) rotate(12deg); z-index: 3; opacity: 0.4; }
+        .card.hidden { transform: translateY(80px) scale(0.5); opacity: 0; z-index: 1; }
+
+        .controls {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .controls button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .controls button:hover {
+            background: var(--teal);
+            color: var(--dark);
+            border-color: var(--teal);
+            transform: scale(1.15);
+            box-shadow: 0 0 20px var(--teal);
+        }
+
+        /* 3. DRIVE BUTTON & MUSIC TOGGLE */
+        .drive-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(90deg, #ffffff, #e0e0e0);
+            color: var(--dark);
+            padding: 22px 55px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.5s ease;
+        }
+
+        .drive-link i { font-size: 24px; color: #34A853; }
+
+        .drive-link:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(90deg, var(--teal), #34A853);
+            color: white;
+            box-shadow: 0 20px 40px rgba(52, 168, 83, 0.4);
+        }
+        .drive-link:hover i { color: white; }
+
+        .music-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            background: rgba(39, 244, 210, 0.3);
+            border-color: var(--teal);
+            box-shadow: 0 0 20px rgba(39, 244, 210, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* 4. MOUSE TRAIL ANIMATION */
+        #trail-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .cursor-trail {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, var(--teal) 0%, var(--purple) 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: trailFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            box-shadow: 0 0 10px var(--teal);
+        }
+
+        /* Ana Mouse Noktası */
+        .cursor-main {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            box-shadow: 0 0 5px white;
+        }
+
+        @keyframes trailFade {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
+        }
+
+        /* Mobile Fixes */
+        @media (max-width: 768px) {
+            .card { width: 220px; height: 330px; }
+            .carousel-container { height: 400px; }
+            .day-title { font-size: 45px; }
+            .music-toggle { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACKGROUND MUSIC -->
+    <audio id="bg-music" src="memory-song.mp3" loop></audio>
+
+    <!-- DYNAMIC GRADIENT BACKGROUND -->
+    <div class="bg-gradient"></div>
+
+    <!-- MOUSE TRAIL CONTAINER -->
+    <div id="trail-container">
+        <div class="cursor-main" id="cursor-main"></div>
+    </div>
+
+    <!-- MUSIC CONTROLLER -->
+    <div class="music-toggle" id="music-toggle">
+        <i class="fas fa-volume-up"></i>
+    </div>
+
+    <!-- SCROLL SNAP WRAPPER -->
+    <div class="scroll-container" id="scroll-container">
+        
+        <!-- HERO / INTRO -->
+         
+        <section class="intro-screen">
+            <h1 class="reveal active">Rayfelmun '26</h1>
+            <p class="reveal active" style="transition-delay: 0.2s;">Moments Pass, Memories Last</p>
+            <button class="start-journey-btn reveal active" id="start-btn" style="transition-delay: 0.4s;">Start Exploring</button>
+        </section>
+        
+
+        <!-- DAY 1 ALBUM -->
+        <section id="day1-album">
+            <h2 class="day-title reveal">Day 01</h2>
+            <div class="carousel-container reveal" id="carousel-1">
+                <div class="card"><img src="day1-1.jpg" alt="Day 1 - 1"></div>
+                <div class="card"><img src="day1-2.jpg" alt="Day 1 - 2"></div>
+                <div class="card"><img src="day1-3.jpg" alt="Day 1 - 3"></div>
+                <div class="card"><img src="day1-4.jpg" alt="Day 1 - 4"></div>
+                <div class="card"><img src="day1-5.jpg" alt="Day 1 - 5"></div>
+            </div>
+            <div class="controls reveal">
+                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- DAY 2 ALBUM -->
+        <section>
+            <h2 class="day-title reveal">Day 02</h2>
+            <div class="carousel-container reveal" id="carousel-2">
+                <div class="card"><img src="day2-1.jpg" alt="Day 2 - 1"></div>
+                <div class="card"><img src="day2-2.jpg" alt="Day 2 - 2"></div>
+                <div class="card"><img src="day2-3.jpg" alt="Day 2 - 3"></div>
+                <div class="card"><img src="day2-4.jpg" alt="Day 2 - 4"></div>
+                <div class="card"><img src="day2-5.jpg" alt="Day 2 - 5"></div>
+            </div>
+            <div class="controls reveal">
+                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- DAY 3 ALBUM -->
+        <section>
+            <h2 class="day-title reveal">Day 03</h2>
+            <div class="carousel-container reveal" id="carousel-3">
+                <div class="card"><img src="day3-1.jpg" alt="Day 3 - 1"></div>
+                <div class="card"><img src="day3-2.jpg" alt="Day 3 - 2"></div>
+                <div class="card"><img src="day3-3.jpg" alt="Day 3 - 3"></div>
+                <div class="card"><img src="day3-4.jpg" alt="Day 3 - 4"></div>
+                <div class="card"><img src="day3-5.jpg" alt="Day 3 - 5"></div>
+            </div>
+            <div class="controls reveal">
+                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- DRIVE LINK SECTION -->
+        <section>
+            <div class="reveal">
+                <a href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_LINK" target="_blank" rel="noopener" class="drive-link">
+                    <i class="fab fa-google-drive"></i> Access Full Archive
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // 1. MOUSE TRAIL ANIMATION
+        const trailContainer = document.getElementById('trail-container');
+        const cursorMain = document.getElementById('cursor-main');
+
+        document.addEventListener('mousemove', (e) => {
+            // Ana imleci takip ettir
+            cursorMain.style.left = e.clientX + 'px';
+            cursorMain.style.top = e.clientY + 'px';
+
+            // Kuyruk için yeni element oluştur
+            const dot = document.createElement('div');
+            dot.className = 'cursor-trail';
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+            
+            trailContainer.appendChild(dot);
+
+            // Animasyon bittiğinde DOM'dan sil
+            setTimeout(() => {
+                dot.remove();
+            }, 600);
+        });
+
+        // Click yapınca imleci büyütme efekti
+        document.addEventListener('mousedown', () => cursorMain.style.transform = 'translate(-50%, -50%) scale(2)');
+        document.addEventListener('mouseup', () => cursorMain.style.transform = 'translate(-50%, -50%) scale(1)');
+
+
+        // 2. MUSIC CONTROL LOGIC
+        const bgMusic = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('music-toggle');
+        const musicIcon = musicToggle.querySelector('i');
+        let musicStarted = false;
+
+        // Ekrana ilk tıklandığında müziği başlat
+        document.body.addEventListener('click', (e) => {
+            // Müzik butonuna tıklandıysa bu event'i atla
+            if(e.target.closest('#music-toggle')) return; 
+
+            if (!musicStarted) {
+                bgMusic.play().catch(e => console.log("Music blocked:", e));
+                musicStarted = true;
+                musicIcon.className = 'fas fa-volume-up';
+            }
+        }, { once: true });
+
+        // Müzik kontrol butonu tıklaması
+        musicToggle.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                musicIcon.className = 'fas fa-volume-up';
+                musicStarted = true;
+            } else {
+                bgMusic.pause();
+                musicIcon.className = 'fas fa-volume-mute';
+            }
+        });
+
+        // 3. START BUTTON (Scroll to Day 1)
+        document.getElementById('start-btn').addEventListener('click', () => {
+            document.getElementById('day1-album').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // 4. SCROLL REVEAL (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+        const scrollContainer = document.getElementById('scroll-container');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    // Yukarı/Aşağı çıkarken animasyonun tekrarlanması için:
+                    entry.target.classList.remove('active'); 
+                }
+            });
+        }, { 
+            root: scrollContainer,
+            threshold: 0.3 
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+
+        // 5. 3D FAN (COVERFLOW) CAROUSEL LOGIC
+        function initCarousel(section) {
+            const container = section.querySelector('.carousel-container');
+            if(!container) return; // Drive section gibi yerlerde hata vermemesi için
+            
+            const cards = Array.from(container.querySelectorAll('.card'));
+            const prevBtn = section.querySelector('.prev-btn');
+            const nextBtn = section.querySelector('.next-btn');
+            
+            let currentIndex = Math.floor(cards.length / 2);
+
+            function updateCards() {
+                const total = cards.length;
+                
+                cards.forEach((card, index) => {
+                    card.className = 'card';
+                    
+                    let diff = index - currentIndex;
+                    
+                    if (diff < -Math.floor(total / 2)) diff += total;
+                    if (diff > Math.floor(total / 2)) diff -= total;
+
+                    if (diff === 0) card.classList.add('active');
+                    else if (diff === -1) card.classList.add('prev-1');
+                    else if (diff === 1) card.classList.add('next-1');
+                    else if (diff === -2) card.classList.add('prev-2');
+                    else if (diff === 2) card.classList.add('next-2');
+                    else card.classList.add('hidden');
+                });
+            }
+
+            updateCards();
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                updateCards();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % cards.length;
+                updateCards();
+            });
+
+            cards.forEach((card, index) => {
+                card.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCards();
+                });
+            });
+        }
+
+        document.querySelectorAll('section').forEach(section => initCarousel(section));
+    </script>
+</body>
+</html>

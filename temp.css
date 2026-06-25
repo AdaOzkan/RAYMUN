@@ -23,7 +23,7 @@
 
         /* --- NAVIGASYON --- */
         nav {
-            background: linear-gradient(to bottom, #142948 0%, #0a0a0a 100%);
+            background: linear-gradient(to bottom, #142948 0%, rgb(21,21,30) 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -202,7 +202,7 @@
 
         /* --- FOOTER --- */
         footer {
-            background-color: #0a0a0a;
+            background-color: rgb(21,21,30);
             padding: 80px 8% 40px 8%;
             display: grid;
             grid-template-columns: 1.8fr 1fr 1fr 1fr;
@@ -243,7 +243,7 @@
         .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
 
         .bottom-bar {
-            background-color: #0a0a0a;
+            background-color: rgb(21,21,30);
             padding: 30px 8%;
             display: flex;
             justify-content: space-between;
@@ -273,7 +273,7 @@
                 right: -100%;
                 width: 80%;
                 height: 100vh;
-                background: #0a0a0a;
+                background: rgb(21,21,30);
                 flex-direction: column;
                 justify-content: center;
                 gap: 40px;
