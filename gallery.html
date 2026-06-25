@@ -4,41 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery | Rayfelmun '26</title>
-    
-    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        /* --- GLOBAL SETTINGS & GRADIENTS --- */
         @font-face {
             font-family: 'Northwell';
             src: url('Northwell.ttf') format('truetype');
             font-display: swap;
         }
-
         :root {
             --teal: #27f4d2;
             --purple: #8a2be2;
-            --blue: #1e3c66;
             --dark: rgb(21,21,30);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: none; /* Gizli varsayılan imleç, kendi imlecimizi kullanacağız */
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
         body {
             font-family: 'Outfit', sans-serif;
-            color: #ffffff;
+            color: #fff;
             background-color: var(--dark);
-            overflow: hidden; /* Scroll-container kullanacağımız için ana body scrollunu kapattık */
+            overflow: hidden;
         }
 
-        /* DİNAMİK ARKA PLAN GRADYANI */
+        /* ANIMATED BG */
         .bg-gradient {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -47,82 +34,68 @@
             animation: gradientMove 15s ease infinite;
             z-index: -1;
         }
-
         @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* SCROLL SNAPPING (MIKNATIS GİBİ KAYDIRMA) */
+        /* SCROLL SNAP */
         .scroll-container {
             height: 100vh;
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
         }
-
-        /* Hide scrollbar for a cleaner look */
         .scroll-container::-webkit-scrollbar { display: none; }
         .scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 
         section {
             height: 100vh;
             width: 100vw;
-            scroll-snap-align: start; /* Her section başa kilitlenir */
+            scroll-snap-align: start;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
+            overflow: hidden;
         }
 
-        /* SCROLL REVEAL ANIMATIONS */
+        /* REVEAL */
         .reveal {
             opacity: 0;
-            transform: translateY(80px);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(60px);
+            transition: all 1.1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* 1. INTRO SCREEN */
-        .intro-screen {
-            text-align: center;
-        }
-
+        /* ── INTRO ── */
+        .intro-screen { text-align: center; }
         .intro-screen h1 {
             font-family: 'Northwell', cursive;
             font-size: clamp(70px, 15vw, 160px);
-            /* Gradient Text */
             background: linear-gradient(to right, var(--teal), #ffffff, #ff7eb3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
             font-weight: normal;
-            line-height: 1;
+            line-height: 2;
             animation: textShine 5s linear infinite;
             background-size: 200% auto;
+            margin-bottom: 5px;
         }
-
-        @keyframes textShine {
-            to { background-position: 200% center; }
-        }
-
+        @keyframes textShine { to { background-position: 200% center; } }
         .intro-screen p {
             font-size: 18px;
             letter-spacing: 8px;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255,255,255,0.8);
             margin-bottom: 50px;
             font-weight: 300;
         }
-
         .start-journey-btn {
             background: linear-gradient(45deg, rgba(39,244,210,0.1), rgba(138,43,226,0.1));
-            color: #ffffff;
+            color: #fff;
             border: 1px solid var(--teal);
             padding: 18px 45px;
             font-size: 14px;
@@ -130,104 +103,393 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             border-radius: 50px;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
             backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(39, 244, 210, 0.2);
+            box-shadow: 0 0 20px rgba(39,244,210,0.2);
         }
-
         .start-journey-btn:hover {
             background: linear-gradient(45deg, var(--teal), var(--purple));
             border-color: transparent;
             transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(39, 244, 210, 0.4);
+            box-shadow: 0 15px 40px rgba(39,244,210,0.4);
             color: var(--dark);
         }
 
-        /* 2. 3D CAROUSEL (COVERFLOW) */
-        .day-title {
+        /* ── DAY LAYOUT ── */
+        .day-layout {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .day-left {
+            width: 120px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        .day-outline-text {
             font-family: 'Antonio', sans-serif;
-            font-size: 70px;
-            letter-spacing: 2px;
+            font-size: clamp(72px, 9vw, 130px);
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(39,244,210,0.35);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 10px;
+            user-select: none;
+            line-height: 1;
+        }
+        .day-outline-text span {
+            display: block;
+            font-size: clamp(36px, 4vw, 60px);
+            -webkit-text-stroke: 1.5px rgba(39,244,210,0.25);
+            letter-spacing: 6px;
+        }
+        .day-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            z-index: 1;
+        }
+        .day-title-small {
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(24px, 3.5vw, 46px);
+            letter-spacing: 6px;
             text-transform: uppercase;
-            margin-bottom: 40px;
-            background: linear-gradient(to right, #ffffff, var(--teal));
+            background: linear-gradient(to right, #fff, var(--teal));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .carousel-container {
+        /* ── NEXT DAY BTN ── */
+        .next-day-btn {
+            background: linear-gradient(45deg, rgba(39,244,210,0.08), rgba(138,43,226,0.08));
+            color: #fff;
+            border: 1px solid rgba(39,244,210,0.5);
+            padding: 11px 30px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(8px);
+        }
+        .next-day-btn:hover {
+            background: linear-gradient(45deg, var(--teal), var(--purple));
+            border-color: transparent;
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(39,244,210,0.3);
+        }
+
+        /* ══════════════════════════════════════
+           3D BOOK / DEFTER
+        ══════════════════════════════════════ */
+        .album-cover-wrap {
             position: relative;
-            width: 100%;
-            height: 500px;
+            perspective: 1200px;
+        }
+        .album-cover {
+            width: clamp(180px, 22vw, 260px);
+            height: clamp(240px, 30vw, 360px);
+            position: relative;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
+            filter: drop-shadow(0 30px 50px rgba(0,0,0,0.6));
+        }
+        .album-cover:hover {
+            transform: rotateY(-12deg) rotateX(4deg) translateY(-8px);
+            filter: drop-shadow(0 40px 60px rgba(39,244,210,0.25));
+        }
+
+        .cover-front {
+            position: absolute;
+            inset: 0;
+            border-radius: 4px 16px 16px 4px;
+            overflow: hidden;
+            backface-visibility: hidden;
+        }
+        .cover-front img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .cover-front::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 55%, rgba(0,0,0,0.25) 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .cover-spine {
+            position: absolute;
+            left: -14px;
+            top: 0;
+            width: 14px;
+            height: 100%;
+            background: linear-gradient(to right, #1a1a2e, #2d2d5e, #1a1a2e);
+            border-radius: 4px 0 0 4px;
+            transform: rotateY(90deg) translateZ(-7px);
+            backface-visibility: hidden;
+        }
+        .cover-back {
+            position: absolute;
+            inset: 0;
+            border-radius: 4px 16px 16px 4px;
+            background: linear-gradient(135deg, #1a1a2e, #0f172a);
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+        }
+
+        .open-hint {
+            margin-top: 12px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(39,244,210,0.6);
             display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+        .open-hint i { font-size: 14px; animation: hintPulse 2s ease-in-out infinite; }
+        @keyframes hintPulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+        /* ── BOOK OVERLAY ── */
+        .book-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10,10,18,0);
+            backdrop-filter: blur(18px);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            perspective: 1500px;
-        }
-
-        .card {
-            position: absolute;
-            width: 340px;
-            height: 510px;
-            border-radius: 24px;
-            overflow: hidden;
-            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                        opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
-                        box-shadow 0.8s ease;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            background: #fff;
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            gap: 28px;
+            opacity: 0;
             pointer-events: none;
-            transition: transform 0.8s ease;
+            transition: opacity 0.5s ease;
         }
+        .book-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .book-overlay-close {
+            position: absolute;
+            top: 24px; right: 28px;
+            font-size: 26px;
+            color: rgba(255,255,255,0.55);
+            background: none; border: none;
+            transition: color 0.2s, transform 0.2s;
+            z-index: 10;
+        }
+        .book-overlay-close:hover { color: var(--teal); transform: rotate(90deg); }
 
-        .card.active:hover img { transform: scale(1.05); }
-
-        /* 3D Positions */
-        .card.active { transform: translateX(0) scale(1) translateY(0) rotate(0deg); z-index: 5; opacity: 1; box-shadow: 0 30px 70px rgba(39, 244, 210, 0.2); }
-        .card.prev-1 { transform: translateX(-55%) scale(0.85) translateY(20px) rotate(-6deg); z-index: 4; opacity: 0.8; }
-        .card.next-1 { transform: translateX(55%) scale(0.85) translateY(20px) rotate(6deg); z-index: 4; opacity: 0.8; }
-        .card.prev-2 { transform: translateX(-100%) scale(0.7) translateY(40px) rotate(-12deg); z-index: 3; opacity: 0.4; }
-        .card.next-2 { transform: translateX(100%) scale(0.7) translateY(40px) rotate(12deg); z-index: 3; opacity: 0.4; }
-        .card.hidden { transform: translateY(80px) scale(0.5); opacity: 0; z-index: 1; }
-
-        .controls {
-            margin-top: 40px;
+        .book-scene {
+            perspective: 2000px;
+        }
+        .book {
+            width: clamp(560px, 70vw, 780px);
+            height: clamp(320px, 42vw, 480px);
+            position: relative;
+            transform-style: preserve-3d;
             display: flex;
-            gap: 20px;
         }
 
-        .controls button {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            width: 55px;
-            height: 55px;
+        /* Sol Sayfa (Sabit Arka Plan) */
+        .book-left {
+            width: 50%;
+            height: 100%;
+            position: relative;
+            background: linear-gradient(135deg, #141426 0%, #1e1e3c 100%);
+            border-radius: 6px 0 0 6px;
+            box-shadow: inset -4px 0 12px rgba(0,0,0,0.5);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .book-left::after {
+            content: '';
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 18px;
+            background: linear-gradient(to right, transparent, rgba(0,0,0,0.4));
+        }
+        .left-page-img {
+            width: 88%; height: 88%;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        /* Sağ Sayfa Konteyneri (Flipping Pages Parent) */
+        .book-right {
+            width: 50%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        /* Her Bir Dinamik Yaprak */
+        .page {
+            position: absolute;
+            inset: 0; /* Artık .book-right içinde olduğu için tam sağ yarıyı kaplar */
+            transform-style: preserve-3d;
+            transform-origin: left center; /* Tam orta omurgadan kusursuzca döner */
+            transition: transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+        .page-front,
+        .page-back {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            border-radius: 0 6px 6px 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .page-front {
+            background: linear-gradient(135deg, #181830 0%, #1e1e40 100%);
+            box-shadow: inset -3px 0 10px rgba(0,0,0,0.4);
+        }
+        .page-back {
+            background: linear-gradient(135deg, #1a1a38 0%, #20203e 100%);
+            transform: rotateY(180deg);
+            box-shadow: inset 3px 0 10px rgba(0,0,0,0.4);
+        }
+        
+        /* Omurga gölgesi (Sayfa dönünce otomatik yön değiştirir) */
+        .page-front::before, .page-back::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 22px;
+            background: linear-gradient(to right, rgba(0,0,0,0.35), transparent);
+            pointer-events: none;
+        }
+
+        .page-photo {
+            width: 88%; height: 88%;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.55);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .page-num {
+            position: absolute;
+            bottom: 14px;
+            right: 18px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.35);
+            font-family: 'Antonio', sans-serif;
+        }
+        .page-back .page-num { right: auto; left: 18px; }
+
+        /* Flipped state */
+        .page.flipped { transform: rotateY(-180deg); }
+
+        .page-shine {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.07) 50%, transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+        }
+        .page.flipping .page-shine { opacity: 1; }
+
+        .book-shadow {
+            position: absolute;
+            bottom: -24px;
+            left: 5%;
+            width: 90%;
+            height: 30px;
+            background: radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, transparent 70%);
+            filter: blur(8px);
+            pointer-events: none;
+        }
+        .book-spine-center {
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #0a0a18, #1a1a3e, #0a0a18);
+            transform: translateX(-50%);
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        /* ── BOOK CONTROLS ── */
+        .book-controls {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+        .book-ctrl-btn {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: #fff;
+            width: 50px; height: 50px;
             border-radius: 50%;
             font-size: 16px;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
+            transition: all 0.35s ease;
+            backdrop-filter: blur(6px);
         }
-
-        .controls button:hover {
+        .book-ctrl-btn:hover {
             background: var(--teal);
             color: var(--dark);
             border-color: var(--teal);
             transform: scale(1.15);
-            box-shadow: 0 0 20px var(--teal);
+            box-shadow: 0 0 18px var(--teal);
+        }
+        .book-ctrl-btn:disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .book-page-info {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.45);
+            min-width: 80px;
+            text-align: center;
         }
 
-        /* 3. DRIVE BUTTON & MUSIC TOGGLE */
+        /* ── DRIVE SECTION ── */
+        .drive-section { text-align: center; gap: 40px; }
+        .drive-section h2 {
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(28px, 5vw, 60px);
+            letter-spacing: 4px;
+            background: linear-gradient(to right, #fff, var(--teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .drive-section p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 2px;
+        }
         .drive-link {
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            background: linear-gradient(90deg, #ffffff, #e0e0e0);
+            background: linear-gradient(90deg, #fff, #e0e0e0);
             color: var(--dark);
             padding: 22px 55px;
             font-size: 14px;
@@ -238,27 +500,24 @@
             text-decoration: none;
             transition: all 0.5s ease;
         }
-
         .drive-link i { font-size: 24px; color: #34A853; }
-
         .drive-link:hover {
             transform: translateY(-8px);
             background: linear-gradient(90deg, var(--teal), #34A853);
-            color: white;
-            box-shadow: 0 20px 40px rgba(52, 168, 83, 0.4);
+            color: #fff;
+            box-shadow: 0 20px 40px rgba(52,168,83,0.4);
         }
-        .drive-link:hover i { color: white; }
+        .drive-link:hover i { color: #fff; }
 
+        /* MUSIC BTN */
         .music-toggle {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            bottom: 30px; right: 30px;
+            width: 60px; height: 60px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -267,289 +526,477 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
-
         .music-toggle:hover {
-            background: rgba(39, 244, 210, 0.3);
+            background: rgba(39,244,210,0.22);
             border-color: var(--teal);
-            box-shadow: 0 0 20px rgba(39, 244, 210, 0.5);
+            box-shadow: 0 0 20px rgba(39,244,210,0.4);
             transform: scale(1.1);
         }
 
-        /* 4. MOUSE TRAIL ANIMATION */
-        #trail-container {
+        /* PAGE DOTS */
+        .page-dots {
             position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
+            right: 22px; top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 500;
+        }
+        .page-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,0.28);
+            transition: all 0.3s;
+        }
+        .page-dot.active {
+            background: var(--teal);
+            box-shadow: 0 0 8px var(--teal);
+            transform: scale(1.35);
+        }
+
+        /* CURSOR */
+        #trail-container {
+            position: fixed; inset: 0;
             pointer-events: none;
             z-index: 9999;
             overflow: hidden;
         }
-
         .cursor-trail {
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 12px; height: 12px;
             background: radial-gradient(circle, var(--teal) 0%, var(--purple) 100%);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
-            animation: trailFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: trailFade 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
             box-shadow: 0 0 10px var(--teal);
         }
-
-        /* Ana Mouse Noktası */
         .cursor-main {
             position: fixed;
-            width: 8px;
-            height: 8px;
-            background: white;
+            width: 8px; height: 8px;
+            background: #fff;
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 10000;
-            box-shadow: 0 0 5px white;
+            box-shadow: 0 0 5px #fff;
         }
-
         @keyframes trailFade {
-            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
+            0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%,-50%) scale(0.1); }
         }
 
-        /* Mobile Fixes */
+        /* MOBILE */
         @media (max-width: 768px) {
-            .card { width: 220px; height: 330px; }
-            .carousel-container { height: 400px; }
-            .day-title { font-size: 45px; }
-            .music-toggle { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+            .day-left { display: none; }
+            .album-cover { width: 160px; height: 220px; }
+            .book { width: 96vw; height: 54vw; min-height: 220px; }
+            .music-toggle { bottom: 18px; right: 18px; width: 48px; height: 48px; }
+            .page-dots { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BACKGROUND MUSIC -->
-    <audio id="bg-music" src="memory-song.mp3" loop></audio>
+<audio id="bg-music" src="memory-song.mp3" loop></audio>
+<div class="bg-gradient"></div>
 
-    <!-- DYNAMIC GRADIENT BACKGROUND -->
-    <div class="bg-gradient"></div>
+<div id="trail-container">
+    <div class="cursor-main" id="cursor-main"></div>
+</div>
 
-    <!-- MOUSE TRAIL CONTAINER -->
-    <div id="trail-container">
-        <div class="cursor-main" id="cursor-main"></div>
+<div class="music-toggle" id="music-toggle">
+    <i class="fas fa-volume-up"></i>
+</div>
+
+<nav class="page-dots" id="page-dots"></nav>
+
+<div class="book-overlay" id="book-overlay">
+    <button class="book-overlay-close" id="book-overlay-close"><i class="fas fa-times"></i></button>
+
+    <div class="book-scene">
+        <div class="book" id="the-book">
+            <div class="book-left" id="book-left-page">
+                <img src="" alt="" class="left-page-img" id="left-page-img">
+            </div>
+
+            <div class="book-right" id="book-right-page"></div>
+
+            <div class="book-spine-center"></div>
+        </div>
+        <div class="book-shadow"></div>
     </div>
 
-    <!-- MUSIC CONTROLLER -->
-    <div class="music-toggle" id="music-toggle">
-        <i class="fas fa-volume-up"></i>
+    <div class="book-controls">
+        <button class="book-ctrl-btn" id="book-prev"><i class="fas fa-chevron-left"></i></button>
+        <span class="book-page-info" id="book-page-info">1 / 5</span>
+        <button class="book-ctrl-btn" id="book-next"><i class="fas fa-chevron-right"></i></button>
     </div>
+</div>
 
-    <!-- SCROLL SNAP WRAPPER -->
-    <div class="scroll-container" id="scroll-container">
-        
-        <!-- HERO / INTRO -->
-         
-        <section class="intro-screen">
-            <h1 class="reveal active">Rayfelmun '26</h1>
-            <p class="reveal active" style="transition-delay: 0.2s;">Moments Pass, Memories Last</p>
-            <button class="start-journey-btn reveal active" id="start-btn" style="transition-delay: 0.4s;">Start Exploring</button>
-        </section>
-        
+<div class="scroll-container" id="scroll-container">
 
-        <!-- DAY 1 ALBUM -->
-        <section id="day1-album">
-            <h2 class="day-title reveal">Day 01</h2>
-            <div class="carousel-container reveal" id="carousel-1">
-                <div class="card"><img src="day1-1.jpg" alt="Day 1 - 1"></div>
-                <div class="card"><img src="day1-2.jpg" alt="Day 1 - 2"></div>
-                <div class="card"><img src="day1-3.jpg" alt="Day 1 - 3"></div>
-                <div class="card"><img src="day1-4.jpg" alt="Day 1 - 4"></div>
-                <div class="card"><img src="day1-5.jpg" alt="Day 1 - 5"></div>
+    <section id="sec-0" class="intro-screen">
+        <h1 class="reveal active">Rayfelmun '26</h1>
+        <p class="reveal active" style="transition-delay:.2s">Moments Pass, Memories Last</p>
+        <button class="start-journey-btn reveal active" id="start-btn" style="transition-delay:.4s">
+            Start Exploring
+        </button>
+    </section>
+
+    <section id="sec-1">
+        <div class="day-layout">
+            <div class="day-left">
+                <div class="day-outline-text reveal">DAY<span>01</span></div>
             </div>
-            <div class="controls reveal">
-                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            <div class="day-right">
+                <h2 class="day-title-small reveal">Day 01</h2>
+
+                <div class="album-cover-wrap reveal" style="transition-delay:.15s">
+                    <div class="album-cover" id="cover-1"
+                         data-photos='["day1-1.jpg","day1-2.jpg","day1-3.jpg","day1-4.jpg","day1-5.jpg"]'>
+                        <div class="cover-front">
+                            <img src="day1-1.jpg" alt="Day 1 Cover">
+                        </div>
+                        <div class="cover-spine"></div>
+                        <div class="cover-back"></div>
+                    </div>
+                    <div class="open-hint"><i class="fas fa-book-open"></i> Tap to open</div>
+                </div>
+
+                <button class="next-day-btn reveal" style="transition-delay:.3s" data-target="sec-2">
+                    Day 02 →
+                </button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- DAY 2 ALBUM -->
-        <section>
-            <h2 class="day-title reveal">Day 02</h2>
-            <div class="carousel-container reveal" id="carousel-2">
-                <div class="card"><img src="day2-1.jpg" alt="Day 2 - 1"></div>
-                <div class="card"><img src="day2-2.jpg" alt="Day 2 - 2"></div>
-                <div class="card"><img src="day2-3.jpg" alt="Day 2 - 3"></div>
-                <div class="card"><img src="day2-4.jpg" alt="Day 2 - 4"></div>
-                <div class="card"><img src="day2-5.jpg" alt="Day 2 - 5"></div>
+    <section id="sec-2">
+        <div class="day-layout">
+            <div class="day-left">
+                <div class="day-outline-text reveal">DAY<span>02</span></div>
             </div>
-            <div class="controls reveal">
-                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            <div class="day-right">
+                <h2 class="day-title-small reveal">Day 02</h2>
+
+                <div class="album-cover-wrap reveal" style="transition-delay:.15s">
+                    <div class="album-cover" id="cover-2"
+                         data-photos='["teamPhotos/dGeneral.jpg","day2-2.jpg","day2-3.jpg","day2-4.jpg","day2-5.jpg"]'>
+                        <div class="cover-front">
+                            <img src="teamPhotos/dGeneral.jpg" alt="Day 2 Cover">
+                        </div>
+                        <div class="cover-spine"></div>
+                        <div class="cover-back"></div>
+                    </div>
+                    <div class="open-hint"><i class="fas fa-book-open"></i> Tap to open</div>
+                </div>
+
+                <button class="next-day-btn reveal" style="transition-delay:.3s" data-target="sec-3">
+                    Day 03 →
+                </button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- DAY 3 ALBUM -->
-        <section>
-            <h2 class="day-title reveal">Day 03</h2>
-            <div class="carousel-container reveal" id="carousel-3">
-                <div class="card"><img src="day3-1.jpg" alt="Day 3 - 1"></div>
-                <div class="card"><img src="day3-2.jpg" alt="Day 3 - 2"></div>
-                <div class="card"><img src="day3-3.jpg" alt="Day 3 - 3"></div>
-                <div class="card"><img src="day3-4.jpg" alt="Day 3 - 4"></div>
-                <div class="card"><img src="day3-5.jpg" alt="Day 3 - 5"></div>
+    <section id="sec-3">
+        <div class="day-layout">
+            <div class="day-left">
+                <div class="day-outline-text reveal">DAY<span>03</span></div>
             </div>
-            <div class="controls reveal">
-                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            <div class="day-right">
+                <h2 class="day-title-small reveal">Day 03</h2>
+
+                <div class="album-cover-wrap reveal" style="transition-delay:.15s">
+                    <div class="album-cover" id="cover-3"
+                         data-photos='["day3-1.jpg","day3-2.jpg","day3-3.jpg","day3-4.jpg","day3-5.jpg"]'>
+                        <div class="cover-front">
+                            <img src="day3-1.jpg" alt="Day 3 Cover">
+                        </div>
+                        <div class="cover-spine"></div>
+                        <div class="cover-back"></div>
+                    </div>
+                    <div class="open-hint"><i class="fas fa-book-open"></i> Tap to open</div>
+                </div>
+
+                <button class="next-day-btn reveal" style="transition-delay:.3s" data-target="sec-4">
+                    Full Archive →
+                </button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- DRIVE LINK SECTION -->
-        <section>
-            <div class="reveal">
-                <a href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_LINK" target="_blank" rel="noopener" class="drive-link">
-                    <i class="fab fa-google-drive"></i> Access Full Archive
-                </a>
-            </div>
-        </section>
+    <section id="sec-4" class="drive-section">
+        <h2 class="reveal">Every Moment.</h2>
+        <p class="reveal" style="transition-delay:.15s">The full archive lives here.</p>
+        <a href="https://drive.google.com/drive/folders/YOUR_DRIVE_LINK"
+           target="_blank" rel="noopener"
+           class="drive-link reveal" style="transition-delay:.3s">
+            <i class="fab fa-google-drive"></i> Access Full Archive
+        </a>
+    </section>
 
-    </div>
+</div>
 
-    <script>
-        // 1. MOUSE TRAIL ANIMATION
-        const trailContainer = document.getElementById('trail-container');
-        const cursorMain = document.getElementById('cursor-main');
+<script>
+/* ─────────────────────────────────────────
+   CURSOR TRAIL
+───────────────────────────────────────── */
+const trailCont  = document.getElementById('trail-container');
+const cursorMain = document.getElementById('cursor-main');
 
-        document.addEventListener('mousemove', (e) => {
-            // Ana imleci takip ettir
-            cursorMain.style.left = e.clientX + 'px';
-            cursorMain.style.top = e.clientY + 'px';
+document.addEventListener('mousemove', e => {
+    cursorMain.style.left = e.clientX + 'px';
+    cursorMain.style.top  = e.clientY + 'px';
+    const dot = document.createElement('div');
+    dot.className   = 'cursor-trail';
+    dot.style.left  = e.clientX + 'px';
+    dot.style.top   = e.clientY + 'px';
+    trailCont.appendChild(dot);
+    setTimeout(() => dot.remove(), 600);
+});
+document.addEventListener('mousedown', () => cursorMain.style.transform = 'translate(-50%,-50%) scale(2)');
+document.addEventListener('mouseup',   () => cursorMain.style.transform = 'translate(-50%,-50%) scale(1)');
 
-            // Kuyruk için yeni element oluştur
-            const dot = document.createElement('div');
-            dot.className = 'cursor-trail';
-            dot.style.left = e.clientX + 'px';
-            dot.style.top = e.clientY + 'px';
-            
-            trailContainer.appendChild(dot);
+/* ─────────────────────────────────────────
+   MUSIC
+───────────────────────────────────────── */
+const bgMusic   = document.getElementById('bg-music');
+const musicBtn  = document.getElementById('music-toggle');
+const musicIcon = musicBtn.querySelector('i');
+let musicStarted = false;
 
-            // Animasyon bittiğinde DOM'dan sil
-            setTimeout(() => {
-                dot.remove();
-            }, 600);
-        });
+document.body.addEventListener('click', e => {
+    if (e.target.closest('#music-toggle')) return;
+    if (!musicStarted) {
+        bgMusic.play().catch(() => {});
+        musicStarted = true;
+        musicIcon.className = 'fas fa-volume-up';
+    }
+}, { once: true });
 
-        // Click yapınca imleci büyütme efekti
-        document.addEventListener('mousedown', () => cursorMain.style.transform = 'translate(-50%, -50%) scale(2)');
-        document.addEventListener('mouseup', () => cursorMain.style.transform = 'translate(-50%, -50%) scale(1)');
+musicBtn.addEventListener('click', () => {
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicIcon.className = 'fas fa-volume-up';
+        musicStarted = true;
+    } else {
+        bgMusic.pause();
+        musicIcon.className = 'fas fa-volume-mute';
+    }
+});
 
+/* ─────────────────────────────────────────
+   SCROLL / SECTIONS
+───────────────────────────────────────── */
+const sections   = Array.from(document.querySelectorAll('#scroll-container section'));
+const scrollCont = document.getElementById('scroll-container');
+const dotsNav    = document.getElementById('page-dots');
 
-        // 2. MUSIC CONTROL LOGIC
-        const bgMusic = document.getElementById('bg-music');
-        const musicToggle = document.getElementById('music-toggle');
-        const musicIcon = musicToggle.querySelector('i');
-        let musicStarted = false;
+sections.forEach((sec, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'page-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => sec.scrollIntoView({ behavior: 'smooth' }));
+    dotsNav.appendChild(dot);
+});
+const dots = Array.from(dotsNav.querySelectorAll('.page-dot'));
 
-        // Ekrana ilk tıklandığında müziği başlat
-        document.body.addEventListener('click', (e) => {
-            // Müzik butonuna tıklandıysa bu event'i atla
-            if(e.target.closest('#music-toggle')) return; 
-
-            if (!musicStarted) {
-                bgMusic.play().catch(e => console.log("Music blocked:", e));
-                musicStarted = true;
-                musicIcon.className = 'fas fa-volume-up';
-            }
-        }, { once: true });
-
-        // Müzik kontrol butonu tıklaması
-        musicToggle.addEventListener('click', () => {
-            if (bgMusic.paused) {
-                bgMusic.play();
-                musicIcon.className = 'fas fa-volume-up';
-                musicStarted = true;
-            } else {
-                bgMusic.pause();
-                musicIcon.className = 'fas fa-volume-mute';
-            }
-        });
-
-        // 3. START BUTTON (Scroll to Day 1)
-        document.getElementById('start-btn').addEventListener('click', () => {
-            document.getElementById('day1-album').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // 4. SCROLL REVEAL (Intersection Observer)
-        const revealElements = document.querySelectorAll('.reveal');
-        const scrollContainer = document.getElementById('scroll-container');
-        
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                } else {
-                    // Yukarı/Aşağı çıkarken animasyonun tekrarlanması için:
-                    entry.target.classList.remove('active'); 
-                }
-            });
-        }, { 
-            root: scrollContainer,
-            threshold: 0.3 
-        });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-
-
-        // 5. 3D FAN (COVERFLOW) CAROUSEL LOGIC
-        function initCarousel(section) {
-            const container = section.querySelector('.carousel-container');
-            if(!container) return; // Drive section gibi yerlerde hata vermemesi için
-            
-            const cards = Array.from(container.querySelectorAll('.card'));
-            const prevBtn = section.querySelector('.prev-btn');
-            const nextBtn = section.querySelector('.next-btn');
-            
-            let currentIndex = Math.floor(cards.length / 2);
-
-            function updateCards() {
-                const total = cards.length;
-                
-                cards.forEach((card, index) => {
-                    card.className = 'card';
-                    
-                    let diff = index - currentIndex;
-                    
-                    if (diff < -Math.floor(total / 2)) diff += total;
-                    if (diff > Math.floor(total / 2)) diff -= total;
-
-                    if (diff === 0) card.classList.add('active');
-                    else if (diff === -1) card.classList.add('prev-1');
-                    else if (diff === 1) card.classList.add('next-1');
-                    else if (diff === -2) card.classList.add('prev-2');
-                    else if (diff === 2) card.classList.add('next-2');
-                    else card.classList.add('hidden');
-                });
-            }
-
-            updateCards();
-
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-                updateCards();
-            });
-
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % cards.length;
-                updateCards();
-            });
-
-            cards.forEach((card, index) => {
-                card.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateCards();
-                });
-            });
+new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            const idx = sections.indexOf(e.target);
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
         }
+    });
+}, { root: scrollCont, threshold: 0.5 }).observe(...sections) || sections.forEach(s =>
+    new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+            const idx = sections.indexOf(s);
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+    }, { root: scrollCont, threshold: 0.5 }).observe(s)
+);
 
-        document.querySelectorAll('section').forEach(section => initCarousel(section));
-    </script>
+document.getElementById('start-btn').addEventListener('click', () =>
+    document.getElementById('sec-1').scrollIntoView({ behavior: 'smooth' })
+);
+document.querySelectorAll('.next-day-btn').forEach(btn =>
+    btn.addEventListener('click', () =>
+        document.getElementById(btn.dataset.target)?.scrollIntoView({ behavior: 'smooth' })
+    )
+);
+
+/* ─────────────────────────────────────────
+   SCROLL REVEAL
+───────────────────────────────────────── */
+const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => e.target.classList.toggle('active', e.isIntersecting));
+}, { root: scrollCont, threshold: 0.22 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ─────────────────────────────────────────
+   3D BOOK / DEFTER
+───────────────────────────────────────── */
+const bookOverlay       = document.getElementById('book-overlay');
+const bookRightContainer = document.getElementById('book-right-page');
+const leftPageImg       = document.getElementById('left-page-img');
+const bookPageInfo      = document.getElementById('book-page-info');
+const btnPrev           = document.getElementById('book-prev');
+const btnNext           = document.getElementById('book-next');
+const overlayClose      = document.getElementById('book-overlay-close');
+
+let bookPhotos  = [];
+let bookPages   = [];   
+let currentSpread = 0;  
+let isFlipping  = false;
+
+/* Build page elements for a set of photos */
+function buildBook(photos) {
+    /* Clear old dynamic pages */
+    bookRightContainer.innerHTML = '';
+    bookPages = [];
+
+    const pageCount = photos.length - 1;
+
+    for (let i = 0; i < pageCount; i++) {
+        const page = document.createElement('div');
+        page.className = 'page';
+
+        // Ön Yüz (Gelecek sayfa)
+        const front = document.createElement('div');
+        front.className = 'page-front';
+        const frontImg = document.createElement('img');
+        frontImg.className = 'page-photo';
+        frontImg.src = photos[i + 1];
+        frontImg.alt = 'Photo ' + (i + 2);
+        const frontNum = document.createElement('span');
+        frontNum.className = 'page-num';
+        frontNum.textContent = (i + 2) + ' / ' + photos.length;
+        const frontShine = document.createElement('div');
+        frontShine.className = 'page-shine';
+        front.appendChild(frontImg);
+        front.appendChild(frontNum);
+        front.appendChild(frontShine);
+
+        // Arka Yüz (Sayfa sola katlandığında görünecek yüz)
+        // [DÜZELTME] İndeks kayma mantığı photos[i + 1] ve sayfa numarası (i + 2) olarak senkronize edildi
+        const back = document.createElement('div');
+        back.className = 'page-back';
+        const backImg = document.createElement('img');
+        backImg.className = 'page-photo';
+        backImg.src = photos[i + 1];   
+        backImg.alt = 'Photo ' + (i + 2);
+        const backNum = document.createElement('span');
+        backNum.className = 'page-num';
+        backNum.textContent = (i + 2) + ' / ' + photos.length;
+        const backShine = document.createElement('div');
+        backShine.className = 'page-shine';
+        back.appendChild(backImg);
+        back.appendChild(backNum);
+        back.appendChild(backShine);
+
+        page.appendChild(front);
+        page.appendChild(back);
+
+        /* [DÜZELTME] Sayfalar artık tüm kitaba değil, tam sağ yarıyı temsil eden container'a ekleniyor */
+        bookRightContainer.appendChild(page);
+        bookPages.push(page);
+    }
+}
+
+function setSpread(spread, animate) {
+    const total = bookPages.length; 
+
+    bookPages.forEach((page, i) => {
+        const shouldBeFlipped = i < spread;
+        if (animate) {
+            const isChanging = (shouldBeFlipped && !page.classList.contains('flipped'))
+                             || (!shouldBeFlipped && page.classList.contains('flipped'));
+            if (isChanging) {
+                page.classList.add('flipping');
+                setTimeout(() => page.classList.remove('flipping'), 400);
+            }
+        }
+        page.classList.toggle('flipped', shouldBeFlipped);
+        
+        // Z-Index yönetimi
+        if (!shouldBeFlipped) {
+            page.style.zIndex = total - i;
+        } else {
+            page.style.zIndex = i;
+        }
+    });
+
+    /* Sol sayfa alt arka plan resmini güncelle */
+    leftPageImg.src = bookPhotos[spread] || '';
+
+    /* Alt kontrolleri ve butonları aktif/deaktif et */
+    bookPageInfo.textContent = (spread + 1) + ' / ' + bookPhotos.length;
+    btnPrev.disabled = spread === 0;
+    btnNext.disabled = spread === bookPhotos.length - 1;
+}
+
+function openBook(photos) {
+    bookPhotos = photos;
+    buildBook(photos);
+    currentSpread = 0;
+    setSpread(0, false);
+
+    bookOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeBook() {
+    bookOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+btnNext.addEventListener('click', () => {
+    if (isFlipping || currentSpread >= bookPhotos.length - 1) return;
+    isFlipping = true;
+    currentSpread++;
+    setSpread(currentSpread, true);
+    setTimeout(() => isFlipping = false, 950);
+});
+
+btnPrev.addEventListener('click', () => {
+    if (isFlipping || currentSpread <= 0) return;
+    isFlipping = true;
+    currentSpread--;
+    setSpread(currentSpread, true);
+    setTimeout(() => isFlipping = false, 950);
+});
+
+overlayClose.addEventListener('click', closeBook);
+bookOverlay.addEventListener('click', e => {
+    if (e.target === bookOverlay) closeBook();
+});
+
+/* Klavye desteği */
+document.addEventListener('keydown', e => {
+    if (!bookOverlay.classList.contains('open')) return;
+    if (e.key === 'Escape') closeBook();
+    if (e.key === 'ArrowRight') btnNext.click();
+    if (e.key === 'ArrowLeft')  btnPrev.click();
+});
+
+/* Touch swipe desteği */
+let touchStartX = 0;
+bookOverlay.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+bookOverlay.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) { dx < 0 ? btnNext.click() : btnPrev.click(); }
+});
+
+/* Albüm kapaklarına tıklama olayı */
+document.querySelectorAll('.album-cover').forEach(cover => {
+    cover.addEventListener('click', () => {
+        let photos = [];
+        try { photos = JSON.parse(cover.dataset.photos); } catch(e) {}
+        if (photos.length) openBook(photos);
+    });
+});
+</script>
 </body>
 </html>
