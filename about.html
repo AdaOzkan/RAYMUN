@@ -13,8 +13,6 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 
-    
-   
     <style>
             @font-face {
             font-family: 'Northwell';
@@ -583,6 +581,23 @@ footer {
     .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
 }
 
+        /* --- YENİ EKLENEN SCROLL ANİMASYONU CSS --- */
+        html { scroll-behavior: smooth; }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
 
     </style>
 </head>
@@ -710,6 +725,37 @@ footer {
             const icon = menuToggle.querySelector('i');
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-times');
+        });
+
+        /* --- YENİ EKLENEN SCROLL ANİMASYONU JS --- */
+        document.addEventListener("DOMContentLoaded", function() {
+            // Animasyon uygulanacak tüm ana elementleri seçiyoruz
+            const revealElements = document.querySelectorAll('.about-label, .about-title, .about-description, .story-container, .footer-col, .footer-logo');
+            
+            // Başlangıç sınıfını ekle ve footer kolonlarına gecikme (delay) tanımla
+            revealElements.forEach((el, index) => {
+                el.classList.add('scroll-reveal');
+                if(el.classList.contains('footer-col')) {
+                    el.classList.add('delay-' + ((index % 3) + 1));
+                }
+            });
+
+            // Ekrana girdiğinde aktif sınıfını ekleyecek observer yapılandırması
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Sadece bir kere çalışmasını sağlar
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15,
+                rootMargin: "0px"
+            });
+
+            // Seçilen elementleri izlemeye başla
+            revealElements.forEach(el => revealObserver.observe(el));
         });
     </script>
 </body>
