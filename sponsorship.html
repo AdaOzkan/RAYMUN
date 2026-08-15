@@ -72,7 +72,17 @@
         .package-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(20, 41, 72, 0.25); }
 
         .package-icon-title { text-align: center; }
-        .package-card i { font-size: 40px; margin-bottom: 15px; }
+        
+        /* Modern SVG Icon Styles for Packages */
+        .package-icon-title svg {
+            width: 52px; height: 52px; margin-bottom: 15px;
+            filter: drop-shadow(0 0 8px currentColor); transition: all 0.4s ease;
+        }
+        .package-card:hover .package-icon-title svg {
+            transform: scale(1.15) translateY(-5px);
+            filter: drop-shadow(0 0 16px currentColor);
+        }
+
         .package-card h3 { font-family: 'Antonio', sans-serif; font-size: 30px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
         
         .package-price { font-family: 'Antonio', sans-serif; font-size: 38px; color: #27f4d2; text-align: center; font-weight: 700; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;}
@@ -82,13 +92,13 @@
         .package-features li i { font-size: 14px; color: #27f4d2; margin-top: 4px; margin-bottom: 0; }
         
         /* Colors */
-        .diamond-tier h3, .diamond-tier .package-icon-title i, .plus-diamond { color: #b9f2ff !important; }
-        .emerald-tier h3, .emerald-tier .package-icon-title i, .plus-emerald { color: #50c878 !important; }
-        .palladium-tier h3, .palladium-tier .package-icon-title i, .plus-palladium { color: #ced4da !important; }
-        .platinum-tier h3, .platinum-tier .package-icon-title i, .plus-platinum { color: #e5e4e2 !important; }
-        .gold-tier h3, .gold-tier .package-icon-title i, .plus-gold { color: #ffd700 !important; }
-        .silver-tier h3, .silver-tier .package-icon-title i, .plus-silver { color: #c0c0c0 !important; }
-        .bronze-tier h3, .bronze-tier .package-icon-title i, .plus-bronze { color: #cd7f32 !important; }
+        .diamond-tier h3, .diamond-tier .package-icon-title svg, .plus-diamond { color: #b9f2ff !important; }
+        .emerald-tier h3, .emerald-tier .package-icon-title svg, .plus-emerald { color: #50c878 !important; }
+        .amethyst-tier h3, .amethyst-tier .package-icon-title svg, .plus-amethyst { color: #9b59b6 !important; }
+        .platinum-tier h3, .platinum-tier .package-icon-title svg, .plus-platinum { color: #e5e4e2 !important; }
+        .gold-tier h3, .gold-tier .package-icon-title svg, .plus-gold { color: #ffd700 !important; }
+        .silver-tier h3, .silver-tier .package-icon-title svg, .plus-silver { color: #c0c0c0 !important; }
+        .bronze-tier h3, .bronze-tier .package-icon-title svg, .plus-bronze { color: #cd7f32 !important; }
 
         /* Cumulative Features */
         .plus-feature { 
@@ -97,9 +107,9 @@
         }
 
         .btn-sponsor {
-            display: block; text-align: center; background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3);
+            display: block; width: 100%; text-align: center; background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3);
             padding: 12px 25px; border-radius: 30px; text-decoration: none; font-size: 13px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-top: auto;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-top: auto; cursor: pointer; font-family: 'Outfit', sans-serif;
         }
         .package-card:hover .btn-sponsor { background: #27f4d2; color: #142948; border-color: #27f4d2; }
 
@@ -158,7 +168,7 @@
         .banner-price { font-family: 'Antonio', sans-serif; font-size: 50px; font-weight: 700; color: #27f4d2; }
         
         .action-btn {
-            background: #27f4d2; color: #142948; padding: 15px 35px; border-radius: 30px;
+            background: #27f4d2; color: #142948; padding: 15px 35px; border-radius: 30px; font-family: 'Outfit', sans-serif;
             text-decoration: none; font-weight: 800; font-size: 13px; text-transform: uppercase;
             letter-spacing: 1px; transition: 0.3s; border: none; cursor: pointer; display: inline-block;
         }
@@ -170,20 +180,59 @@
             padding: 30px 20px; text-align: center; transition: 0.3s;
         }
         .area-card:hover { border-color: #142948; box-shadow: 0 10px 20px rgba(20,41,72,0.05); }
-        .area-card i { font-size: 30px; color: #142948; margin-bottom: 15px; }
         .area-card h4 { font-family: 'Outfit', sans-serif; font-size: 18px; color: #142948; margin-bottom: 10px; font-weight: 700;}
+        
+        /* Modern SVG Icon Styles for Area Cards */
+        .area-card svg { width: 42px; height: 42px; color: #142948; margin-bottom: 15px; transition: 0.3s; }
+        .area-card:hover svg { transform: translateY(-4px); color: #27f4d2; }
 
         .donation-box {
             background: white; border: 1px solid #e2e8f0; border-radius: 30px;
             padding: 50px; text-align: center; box-shadow: 0 15px 30px rgba(0,0,0,0.03);
         }
         .donation-box h3 { font-family: 'Antonio', sans-serif; font-size: 28px; color: #142948; margin-bottom: 15px; text-transform: uppercase;}
-        .donation-form { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
-        .donation-input {
-            padding: 15px 25px; border-radius: 30px; border: 1px solid #cbd5e1;
-            font-size: 16px; outline: none; width: 100%; max-width: 250px; font-family: 'Outfit', sans-serif;
+        
+        .donation-form { display: flex; justify-content: center; align-items: center; margin-top: 25px; }
+
+        /* --- MODAL (POPUP) CSS --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px); 
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s ease;
         }
-        .donation-input:focus { border-color: #27f4d2; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .modal-box {
+            background: #ffffff; width: 90%; max-width: 550px; border-radius: 20px;
+            padding: 40px; position: relative; transform: translateY(30px) scale(0.95); 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25); text-align: center;
+            border-top: 8px solid #142948;
+        }
+        .modal-overlay.active .modal-box { transform: translateY(0) scale(1); }
+        
+        .modal-close {
+            position: absolute; top: 20px; right: 20px; background: #f1f5f9; border: none;
+            width: 35px; height: 35px; border-radius: 50%; font-size: 16px; cursor: pointer;
+            color: #142948; transition: 0.3s; display: flex; justify-content: center; align-items: center;
+        }
+        .modal-close:hover { background: #e2e8f0; color: #e53e3e; transform: rotate(90deg); }
+        
+        .modal-title { font-family: 'Antonio', sans-serif; font-size: 32px; color: #142948; text-transform: uppercase; margin-bottom: 10px; }
+        .modal-desc { color: #4a5568; font-size: 15px; margin-bottom: 30px; font-weight: 300; line-height: 1.6; }
+        
+        .modal-info-group { text-align: left; background: #f8f9fa; padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #e2e8f0; position: relative; }
+        .modal-label { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 8px; display: block; }
+        .modal-value { font-size: 17px; color: #142948; font-weight: 700; font-family: 'Outfit', monospace; word-break: break-all; margin-bottom: 15px; }
+        
+        .copy-btn { 
+            background: #142948; color: white; border: none; padding: 8px 16px; 
+            border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; 
+            transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; font-family: 'Outfit', sans-serif; 
+        }
+        .copy-btn:hover { background: #1e3a5f; }
+        .copy-btn.copied { background: #27f4d2; color: #142948; }
 
         /* --- FOOTER --- */
         footer { background-color: rgb(21, 21, 30); padding: 60px 8%; display: flex; justify-content: center; margin-top: 60px;}
@@ -277,7 +326,9 @@
             <!-- Diamond -->
             <div class="package-card diamond-tier scroll-reveal">
                 <div class="package-icon-title">
-                    <i class="fa-regular fa-gem"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13"/><path d="M13 3l3 6-4 13"/><path d="M2 9h20"/>
+                    </svg>
                     <h3>Diamond</h3>
                 </div>
                 <div class="package-price">30.000 ₺</div>
@@ -287,29 +338,33 @@
                     <li><i class="fa-solid fa-check"></i> Right to speech at the opening ceremony</li>
                     <li><i class="fa-solid fa-check"></i> Main name display at the closing ceremony</li>
                 </ul>
-                <a href="contact.html" class="btn-sponsor">Become a Sponsor</a>
+                <button class="btn-sponsor" onclick="openSponsorModal('Diamond')">Become a Sponsor</button>
             </div>
             
             <!-- Emerald -->
             <div class="package-card emerald-tier scroll-reveal delay-1">
                 <div class="package-icon-title">
-                    <i class="fa-solid fa-leaf"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                    </svg>
                     <h3>Emerald</h3>
                 </div>
                 <div class="package-price">25.000 ₺</div>
                 <ul class="package-features">
-                    <li class="plus-feature plus-palladium"><i class="fa-solid fa-layer-group"></i> Everything in the Palladium tier, plus;</li>
+                    <li class="plus-feature plus-amethyst"><i class="fa-solid fa-layer-group"></i> Everything in the Amethyst tier, plus;</li>
                     <li><i class="fa-solid fa-check"></i> Right to open a dedicated booth in the conference area</li>
                     <li><i class="fa-solid fa-check"></i> Premium logo placement in session rooms</li>
                 </ul>
-                <a href="contact.html" class="btn-sponsor">Become a Sponsor</a>
+                <button class="btn-sponsor" onclick="openSponsorModal('Emerald')">Become a Sponsor</button>
             </div>
 
-            <!-- Palladium -->
-            <div class="package-card palladium-tier scroll-reveal delay-2">
+            <!-- Amethyst -->
+            <div class="package-card amethyst-tier scroll-reveal delay-2">
                 <div class="package-icon-title">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <h3>Palladium</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+                    </svg>
+                    <h3>Amethyst</h3>
                 </div>
                 <div class="package-price">20.000 ₺</div>
                 <ul class="package-features">
@@ -318,13 +373,15 @@
                     <li><i class="fa-solid fa-check"></i> Exclusive PR campaign and interview for your brand</li>
                     <li><i class="fa-solid fa-check"></i> Special committee session sponsorship</li>
                 </ul>
-                <a href="contact.html" class="btn-sponsor">Become a Sponsor</a>
+                <button class="btn-sponsor" onclick="openSponsorModal('Amethyst')">Become a Sponsor</button>
             </div>
 
             <!-- Platinum -->
             <div class="package-card platinum-tier scroll-reveal">
                 <div class="package-icon-title">
-                    <i class="fa-solid fa-crown"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/>
+                    </svg>
                     <h3>Platinum</h3>
                 </div>
                 <div class="package-price">15.000 ₺</div>
@@ -334,13 +391,15 @@
                     <li><i class="fa-solid fa-check"></i> Product distribution in delegate promotional kits</li>
                     <li><i class="fa-solid fa-check"></i> Booklet advertisement (Upgraded to full page)</li>
                 </ul>
-                <a href="contact.html" class="btn-sponsor">Become a Sponsor</a>
+                <button class="btn-sponsor" onclick="openSponsorModal('Platinum')">Become a Sponsor</button>
             </div>
 
             <!-- Gold -->
             <div class="package-card gold-tier scroll-reveal delay-1">
                 <div class="package-icon-title">
-                    <i class="fa-solid fa-medal"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                    </svg>
                     <h3>Gold</h3>
                 </div>
                 <div class="package-price">10.000 ₺</div>
@@ -350,13 +409,15 @@
                     <li><i class="fa-solid fa-check"></i> Logo on badges</li>
                     <li><i class="fa-solid fa-check"></i> Booklet advertisement (Upgraded to half page)</li>
                 </ul>
-                <a href="contact.html" class="btn-sponsor">Become a Sponsor</a>
+                <button class="btn-sponsor" onclick="openSponsorModal('Gold')">Become a Sponsor</button>
             </div>
 
             <!-- Silver -->
             <div class="package-card silver-tier scroll-reveal delay-2">
                 <div class="package-icon-title">
-                    <i class="fa-solid fa-star"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
                     <h3>Silver</h3>
                 </div>
                 <div class="package-price">7.000 ₺</div>
@@ -366,13 +427,15 @@
                     <li><i class="fa-solid fa-check"></i> Logo placement on certificates</li>
                     <li><i class="fa-solid fa-check"></i> Quarter-page advertisement in the event booklet</li>
                 </ul>
-                <a href="contact.html" class="btn-sponsor">Become a Sponsor</a>
+                <button class="btn-sponsor" onclick="openSponsorModal('Silver')">Become a Sponsor</button>
             </div>
 
             <!-- Bronze -->
             <div class="package-card bronze-tier scroll-reveal">
                 <div class="package-icon-title">
-                    <i class="fa-solid fa-certificate"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
                     <h3>Bronze</h3>
                 </div>
                 <div class="package-price">5.000 ₺</div>
@@ -381,7 +444,7 @@
                     <li><i class="fa-solid fa-check"></i> Appreciation announcement on social media</li>
                     <li><i class="fa-solid fa-check"></i> Verbal appreciation during the certificate distribution ceremony</li>
                 </ul>
-                <a href="contact.html" class="btn-sponsor">Become a Sponsor</a>
+                <button class="btn-sponsor" onclick="openSponsorModal('Bronze')">Become a Sponsor</button>
             </div>
         </div>
 
@@ -402,7 +465,7 @@
                             <select id="pkg1" onchange="updateComparison()">
                                 <option value="diamond" selected>Diamond (30.000 ₺)</option>
                                 <option value="emerald">Emerald (25.000 ₺)</option>
-                                <option value="palladium">Palladium (20.000 ₺)</option>
+                                <option value="amethyst">Amethyst (20.000 ₺)</option>
                                 <option value="platinum">Platinum (15.000 ₺)</option>
                                 <option value="gold">Gold (10.000 ₺)</option>
                                 <option value="silver">Silver (7.000 ₺)</option>
@@ -412,7 +475,7 @@
                             <select id="pkg2" onchange="updateComparison()">
                                 <option value="diamond">Diamond (30.000 ₺)</option>
                                 <option value="emerald">Emerald (25.000 ₺)</option>
-                                <option value="palladium">Palladium (20.000 ₺)</option>
+                                <option value="amethyst">Amethyst (20.000 ₺)</option>
                                 <option value="platinum" selected>Platinum (15.000 ₺)</option>
                                 <option value="gold">Gold (10.000 ₺)</option>
                                 <option value="silver">Silver (7.000 ₺)</option>
@@ -447,7 +510,7 @@
                     <p>Support a student's vision by enabling their participation in the conference. Cover all conference expenses for a single delegate.</p>
                 </div>
                 <div class="banner-price">800 ₺</div>
-                <button class="action-btn">Become a Sponsor</button>
+                <button class="action-btn" onclick="openSponsorModal('Delegate')">Become a Sponsor</button>
             </div>
 
             <!-- Area Sponsorships -->
@@ -457,32 +520,32 @@
                     
                     <!-- Food Card -->
                     <div class="area-card">
-                        <i class="fa-solid fa-utensils"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
                         <h4>Food / Catering</h4>
                         <p style="font-size: 14px; color: #4a5568; margin-bottom: 15px; text-align: left;">
                             Sponsor coffee breaks and lunches during the conference. The daily food and beverage cost for one delegate is on average <strong>150 - 170 TRY</strong>. Considering our 3-day program, the average cost per delegate is <strong>450 - 510 TRY</strong>.
                         </p>
-                        <button class="action-btn" style="padding: 10px 20px; font-size: 11px;">Select</button>
+                        <button class="action-btn" style="padding: 10px 20px; font-size: 11px;" onclick="openSponsorModal('Food Area')">Select</button>
                     </div>
 
                     <!-- Printing and Material Card -->
                     <div class="area-card">
-                        <i class="fa-solid fa-print"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                         <h4>Printing & Materials</h4>
                         <p style="font-size: 14px; color: #4a5568; margin-bottom: 15px; text-align: left;">
                             We provide each delegate with <strong>1 tote bag, 1 pen, 1 notebook, 1 folder, 1 placard, and 1 badge</strong> for the conference. According to our market research, the average cost of this fully equipped kit per delegate is around <strong>100 - 130 TRY</strong>.
                         </p>
-                        <button class="action-btn" style="padding: 10px 20px; font-size: 11px;">Select</button>
+                        <button class="action-btn" style="padding: 10px 20px; font-size: 11px;" onclick="openSponsorModal('Printing Area')">Select</button>
                     </div>
 
                     <!-- Transportation and Logistics Card -->
                     <div class="area-card">
-                        <i class="fa-solid fa-bus"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                         <h4>Transportation & Logistics</h4>
                         <p style="font-size: 14px; color: #4a5568; margin-bottom: 15px; text-align: left;">
                             Covers the transfer expenses of our participants coming from within and outside Lüleburgaz. According to current data, while the shuttle/minibus transportation cost for local delegates is <strong>100 - 150 TRY</strong> per delegate, the bus expenses for out-of-town delegates (e.g., Istanbul-Lüleburgaz round trip) average <strong>750 - 900 TRY</strong>.
                         </p>
-                        <button class="action-btn" style="padding: 10px 20px; font-size: 11px;">Select</button>
+                        <button class="action-btn" style="padding: 10px 20px; font-size: 11px;" onclick="openSponsorModal('Transportation Area')">Select</button>
                     </div>
 
                 </div>
@@ -492,14 +555,40 @@
             <div class="donation-box scroll-reveal">
                 <h3>Make a Custom Donation</h3>
                 <p style="color: #4a5568; max-width: 600px; margin: 0 auto;">You can support us by donating any amount you wish from your heart, helping the Rayfelmun organization reach larger audiences.</p>
-                <form class="donation-form" onsubmit="event.preventDefault(); alert('Thank you for your support!');">
-                    <input type="number" class="donation-input" placeholder="Enter Amount (₺)" min="1" required>
-                    <button type="submit" class="action-btn">DONATE</button>
-                </form>
+                <div class="donation-form">
+                    <button class="action-btn" onclick="openSponsorModal('Custom Donation')">DONATE</button>
+                </div>
             </div>
 
         </div>
     </section>
+
+    <!-- SPONSORSHIP PAYMENT MODAL -->
+    <div class="modal-overlay" id="sponsorModal" onclick="closeModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal(event)"><i class="fa-solid fa-times"></i></button>
+            
+            <h3 class="modal-title" id="modalTitle">Payment Details</h3>
+            <p class="modal-desc" id="modalMainDesc">Please complete your sponsorship by transferring the appropriate amount to the IBAN below.</p>
+            
+            <div class="modal-info-group">
+                <span class="modal-label">Bank Account (IBAN)</span>
+                <!-- BURAYA KENDI IBAN NUMARANI YAZ -->
+                <div class="modal-value" id="modalIban">TR00 0000 0000 0000 0000 0000 00</div>
+                <button class="copy-btn" id="btn-copy-iban" onclick="copyText('modalIban', 'btn-copy-iban')">
+                    <i class="fa-regular fa-copy"></i> Copy IBAN
+                </button>
+            </div>
+
+            <div class="modal-info-group">
+                <span class="modal-label">Transfer Description</span>
+                <div class="modal-value" id="modalDesc">RAYFELMUN 27 ... PAYMENT</div>
+                <button class="copy-btn" id="btn-copy-desc" onclick="copyText('modalDesc', 'btn-copy-desc')">
+                    <i class="fa-regular fa-copy"></i> Copy Description
+                </button>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-links-container">
@@ -570,11 +659,96 @@
             }, { root: null, threshold: 0.15, rootMargin: "0px" });
             revealElements.forEach(el => revealObserver.observe(el));
             
-            // Fill table on load
             updateComparison();
         });
 
-        // Accordion Module
+        // Modal Logic (Now with dynamic titles and detailed descriptions)
+        function openSponsorModal(packageName) {
+            const modal = document.getElementById('sponsorModal');
+            const titleEl = document.getElementById('modalTitle');
+            const mainDescEl = document.getElementById('modalMainDesc');
+            const descEl = document.getElementById('modalDesc');
+            
+            const pkgUpper = packageName.toUpperCase();
+            
+            // Set dynamic title
+            titleEl.innerText = `${packageName} Sponsorship`;
+
+            // Set detailed custom description based on selection
+            let detailedText = "";
+            if (pkgUpper === 'DIAMOND') {
+                detailedText = "Thank you for choosing the Diamond Package and becoming our Main Sponsor. Please transfer the amount of <strong>30,000 ₺</strong> to the IBAN below. Your generous contribution will profoundly elevate the overall Rayfelmun experience.";
+            } else if (pkgUpper === 'EMERALD') {
+                detailedText = "Thank you for selecting the Emerald Package. Please transfer the amount of <strong>25,000 ₺</strong> to the IBAN below. Your support is vital in creating an outstanding conference environment for our youth.";
+            } else if (pkgUpper === 'AMETHYST') {
+                detailedText = "Thank you for choosing the Amethyst Package. Please complete your <strong>20,000 ₺</strong> sponsorship payment using the IBAN below. We are excited to feature your brand prominently throughout our event.";
+            } else if (pkgUpper === 'PLATINUM') {
+                detailedText = "Thank you for your Platinum Package sponsorship. Please transfer the amount of <strong>15,000 ₺</strong> to the IBAN below. Your valuable contribution ensures top-quality materials for our delegates.";
+            } else if (pkgUpper === 'GOLD') {
+                detailedText = "Thank you for your Gold Package sponsorship. Please transfer the amount of <strong>10,000 ₺</strong> to the IBAN below. We deeply appreciate your commitment to supporting this academic initiative.";
+            } else if (pkgUpper === 'SILVER') {
+                detailedText = "Thank you for selecting the Silver Package. Please transfer <strong>7,000 ₺</strong> to the IBAN below. Your contribution plays a crucial role in our event's ultimate success.";
+            } else if (pkgUpper === 'BRONZE') {
+                detailedText = "Thank you for your Bronze Package sponsorship. Please complete your <strong>5,000 ₺</strong> payment to the IBAN below. Every single contribution makes a huge difference for our delegates.";
+            } else if (pkgUpper === 'DELEGATE') {
+                detailedText = "Thank you for For covering the expenses of a delegate! Please transfer <strong>800 ₺</strong> to the IBAN below. By covering their essential conference expenses, you are directly investing in a student's vision and future.";
+            } else if (pkgUpper === 'FOOD AREA') {
+                detailedText = "Thank you for supporting our Food & Catering Area. Please transfer your determined amount to the IBAN below. Your sponsorship is key to keeping our delegates energized throughout the 3-day event.";
+            } else if (pkgUpper === 'PRINTING AREA') {
+                detailedText = "Thank you for sponsoring our Printing & Materials. Please transfer your determined amount to the IBAN below. You are helping us provide comprehensive and professional kits to every delegate.";
+            } else if (pkgUpper === 'TRANSPORTATION AREA') {
+                detailedText = "Thank you for supporting Transportation & Logistics. Please transfer your determined amount to the IBAN below. Your generosity ensures safe, reliable transit for local and out-of-town participants.";
+            } else if (pkgUpper === 'CUSTOM DONATION') {
+                detailedText = "Thank you for your generous heart! Please transfer your desired donation amount to the IBAN below. Any amount you choose helps Rayfelmun reach larger audiences and achieve its grandest goals.";
+            } else {
+                detailedText = "Please complete your sponsorship by transferring the appropriate amount to the IBAN below.";
+            }
+            
+            // Add the crucial instruction about the exact description
+            detailedText += "<br><br><strong>Make sure to include the exact Transfer Description below</strong> in your banking app so we can easily verify and officially track your payment.";
+            
+            mainDescEl.innerHTML = detailedText;
+
+            // Generate copyable bank description
+            let descText = `RAYFELMUN 27 ${pkgUpper} PACKAGE SPONSORSHIP PAYMENT`;
+            if(pkgUpper === 'DELEGATE' || pkgUpper === 'CUSTOM DONATION') {
+                descText = `RAYFELMUN 27 ${pkgUpper} PAYMENT`;
+            } else if (pkgUpper.includes('AREA')) {
+                descText = `RAYFELMUN 27 ${pkgUpper} SPONSORSHIP PAYMENT`;
+            }
+            
+            descEl.innerText = descText;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal(e) {
+            if(e) e.preventDefault();
+            const modal = document.getElementById('sponsorModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Kopyalama Fonksiyonu
+        function copyText(elementId, btnId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById(btnId);
+                const originalHTML = btn.innerHTML;
+                
+                // Kopyalandı efekti
+                btn.classList.add('copied');
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                
+                // 2 saniye sonra eski haline dön
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = originalHTML;
+                }, 2000);
+            });
+        }
+
+        // Compare Accordion
         const compareToggle = document.getElementById('compare-toggle');
         const compareContent = document.getElementById('compare-content');
         const compareIcon = document.getElementById('compare-icon');
@@ -583,59 +757,149 @@
             compareContent.classList.toggle('open');
             if (compareContent.classList.contains('open')) {
                 compareIcon.style.transform = 'rotate(180deg)';
+                setTimeout(() => { compareContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 300);
             } else {
                 compareIcon.style.transform = 'rotate(0deg)';
             }
         });
 
-        // Comparison Logic
+        // Compare Logic
         const packageData = {
-            diamond: { name: "Diamond", color: "#b9f2ff", website: true, social: true, closing: true, booklet: "Full Page", openingCert: true, booth: true, speech: true },
-            emerald: { name: "Emerald", color: "#50c878", website: true, social: true, closing: true, booklet: "Full Page", openingCert: true, booth: true, speech: false },
-            palladium: { name: "Palladium", color: "#ced4da", website: true, social: true, closing: true, booklet: "Half Page", openingCert: true, booth: false, speech: false },
-            platinum: { name: "Platinum", color: "#e5e4e2", website: true, social: true, closing: true, booklet: "Full Page", openingCert: false, booth: false, speech: false },
-            gold: { name: "Gold", color: "#ffd700", website: true, social: true, closing: true, booklet: "Half Page", openingCert: false, booth: false, speech: false },
-            silver: { name: "Silver", color: "#c0c0c0", website: true, social: true, closing: false, booklet: "Quarter Page", openingCert: false, booth: false, speech: false },
-            bronze: { name: "Bronze", color: "#cd7f32", website: true, social: true, closing: false, booklet: "None", openingCert: false, booth: false, speech: false }
+            "diamond": { name: "Diamond", color: "#b9f2ff",
+                features: {
+                    "Website (Partners Section)": true, "Social Media Announcement": true,
+                    "Verbal Appreciation": true, "Inclusion in Mailing List": true,
+                    "Logo on Certificates": true, "Event Booklet Ad": "Full Page",
+                    "Logo on Badges": true, "Closing Ceremony Display": "Main Sponsor",
+                    "Logo on Lanyards": true, "Delegate Kit Products": true,
+                    "Committee Sponsorship": true, "PR Campaign": true,
+                    "Opening Ceremony Certificate": true, "Dedicated Booth": true,
+                    "Session Room Logo": "Premium", "Opening Speech": true,
+                    "VIP Protocol": true
+                }
+            },
+            "emerald": { name: "Emerald", color: "#50c878",
+                features: {
+                    "Website (Partners Section)": true, "Social Media Announcement": true,
+                    "Verbal Appreciation": true, "Inclusion in Mailing List": true,
+                    "Logo on Certificates": true, "Event Booklet Ad": "Full Page",
+                    "Logo on Badges": true, "Closing Ceremony Display": "Standard",
+                    "Logo on Lanyards": true, "Delegate Kit Products": true,
+                    "Committee Sponsorship": true, "PR Campaign": true,
+                    "Opening Ceremony Certificate": true, "Dedicated Booth": true,
+                    "Session Room Logo": "Premium", "Opening Speech": false,
+                    "VIP Protocol": false
+                }
+            },
+            "amethyst": { name: "Amethyst", color: "#9b59b6",
+                features: {
+                    "Website (Partners Section)": true, "Social Media Announcement": true,
+                    "Verbal Appreciation": true, "Inclusion in Mailing List": true,
+                    "Logo on Certificates": true, "Event Booklet Ad": "Full Page",
+                    "Logo on Badges": true, "Closing Ceremony Display": "Standard",
+                    "Logo on Lanyards": true, "Delegate Kit Products": true,
+                    "Committee Sponsorship": true, "PR Campaign": true,
+                    "Opening Ceremony Certificate": true, "Dedicated Booth": false,
+                    "Session Room Logo": false, "Opening Speech": false,
+                    "VIP Protocol": false
+                }
+            },
+            "platinum": { name: "Platinum", color: "#e5e4e2",
+                features: {
+                    "Website (Partners Section)": true, "Social Media Announcement": true,
+                    "Verbal Appreciation": true, "Inclusion in Mailing List": true,
+                    "Logo on Certificates": true, "Event Booklet Ad": "Full Page",
+                    "Logo on Badges": true, "Closing Ceremony Display": "Standard",
+                    "Logo on Lanyards": true, "Delegate Kit Products": true,
+                    "Committee Sponsorship": false, "PR Campaign": false,
+                    "Opening Ceremony Certificate": false, "Dedicated Booth": false,
+                    "Session Room Logo": false, "Opening Speech": false,
+                    "VIP Protocol": false
+                }
+            },
+            "gold": { name: "Gold", color: "#ffd700",
+                features: {
+                    "Website (Partners Section)": true, "Social Media Announcement": true,
+                    "Verbal Appreciation": true, "Inclusion in Mailing List": true,
+                    "Logo on Certificates": true, "Event Booklet Ad": "Half Page",
+                    "Logo on Badges": true, "Closing Ceremony Display": "Standard",
+                    "Logo on Lanyards": false, "Delegate Kit Products": false,
+                    "Committee Sponsorship": false, "PR Campaign": false,
+                    "Opening Ceremony Certificate": false, "Dedicated Booth": false,
+                    "Session Room Logo": false, "Opening Speech": false,
+                    "VIP Protocol": false
+                }
+            },
+            "silver": { name: "Silver", color: "#c0c0c0",
+                features: {
+                    "Website (Partners Section)": true, "Social Media Announcement": true,
+                    "Verbal Appreciation": true, "Inclusion in Mailing List": true,
+                    "Logo on Certificates": true, "Event Booklet Ad": "Quarter Page",
+                    "Logo on Badges": false, "Closing Ceremony Display": false,
+                    "Logo on Lanyards": false, "Delegate Kit Products": false,
+                    "Committee Sponsorship": false, "PR Campaign": false,
+                    "Opening Ceremony Certificate": false, "Dedicated Booth": false,
+                    "Session Room Logo": false, "Opening Speech": false,
+                    "VIP Protocol": false
+                }
+            },
+            "bronze": { name: "Bronze", color: "#cd7f32",
+                features: {
+                    "Website (Partners Section)": true, "Social Media Announcement": true,
+                    "Verbal Appreciation": true, "Inclusion in Mailing List": false,
+                    "Logo on Certificates": false, "Event Booklet Ad": false,
+                    "Logo on Badges": false, "Closing Ceremony Display": false,
+                    "Logo on Lanyards": false, "Delegate Kit Products": false,
+                    "Committee Sponsorship": false, "PR Campaign": false,
+                    "Opening Ceremony Certificate": false, "Dedicated Booth": false,
+                    "Session Room Logo": false, "Opening Speech": false,
+                    "VIP Protocol": false
+                }
+            }
         };
 
-        const featureList = [
-            { key: "website", label: "Inclusion on Website" },
-            { key: "social", label: "Mailing List & Social Media" },
-            { key: "booklet", label: "Event Booklet Advertisement" },
-            { key: "closing", label: "Name Display at Closing Ceremony" },
-            { key: "openingCert", label: "Special Certificate of Appreciation at Opening Ceremonies" },
-            { key: "booth", label: "Dedicated Booth in Conference Area" },
-            { key: "speech", label: "Right to Speech at Opening Ceremony" }
+        const allFeaturesList = [
+            "Website (Partners Section)", "Social Media Announcement", "Verbal Appreciation",
+            "Inclusion in Mailing List", "Logo on Certificates", "Event Booklet Ad",
+            "Logo on Badges", "Closing Ceremony Display", "Logo on Lanyards", "Delegate Kit Products",
+            "Committee Sponsorship", "PR Campaign", "Opening Ceremony Certificate",
+            "Dedicated Booth", "Session Room Logo", "Opening Speech", "VIP Protocol"
         ];
 
-        function getIcon(val) {
-            if(val === true) return '<i class="fa-solid fa-check feature-yes"></i>';
-            if(val === false) return '<i class="fa-solid fa-times feature-no"></i>';
-            return `<strong>${val}</strong>`; // Text (Half page etc.)
+        function getFeatureHtml(val) {
+            if (val === true) return '<i class="fa-solid fa-check feature-yes"></i>';
+            if (val === false) return '<i class="fa-solid fa-times feature-no"></i>';
+            return `<strong>${val}</strong>`;
         }
 
         function updateComparison() {
-            const pkg1Key = document.getElementById('pkg1').value;
-            const pkg2Key = document.getElementById('pkg2').value;
+            const p1 = document.getElementById('pkg1').value;
+            const p2 = document.getElementById('pkg2').value;
             
-            const p1 = packageData[pkg1Key];
-            const p2 = packageData[pkg2Key];
-
-            document.getElementById('th-pkg1').innerText = p1.name;
-            document.getElementById('th-pkg1').style.color = p1.color;
-            document.getElementById('th-pkg2').innerText = p2.name;
-            document.getElementById('th-pkg2').style.color = p2.color;
+            const th1 = document.getElementById('th-pkg1');
+            const th2 = document.getElementById('th-pkg2');
+            
+            th1.textContent = packageData[p1].name;
+            th1.style.color = packageData[p1].color;
+            
+            th2.textContent = packageData[p2].name;
+            th2.style.color = packageData[p2].color;
 
             const tbody = document.getElementById('compare-body');
             tbody.innerHTML = '';
 
-            featureList.forEach(feature => {
+            allFeaturesList.forEach(feature => {
+                const val1 = packageData[p1].features[feature];
+                const val2 = packageData[p2].features[feature];
+                
+                // If both packages don't have it, don't show the row to save space
+                if (val1 === false && val2 === false) return;
+
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${feature.label}</td>
-                    <td>${getIcon(p1[feature.key])}</td>
-                    <td>${getIcon(p2[feature.key])}</td>
+                    <td>${feature}</td>
+                    <td>${getFeatureHtml(val1)}</td>
+                    <td>${getFeatureHtml(val2)}</td>
                 `;
                 tbody.appendChild(tr);
             });
