@@ -6,6 +6,59 @@
     font-display: swap;
 }
 
+/* --- TEMA DEĞİŞKENLERİ (DARK / LIGHT MODE İÇİN) --- */
+:root {
+    /* Varsayılan (Dark) Tema - Senin Orijinal Renklerin */
+    --bg-main: rgb(21, 21, 30);
+    --bg-nav: linear-gradient(to bottom, #142948 0%, rgb(21, 21, 30) 100%);
+    --nav-border: rgba(255, 255, 255, 0.05);
+    
+    --text-primary: #efefef;       /* Nav linkleri, beyaz metinler */
+    --text-secondary: #142948;     /* Hero content içi koyu lacivert metinler */
+    --accent: #27f4d2;             /* Mint yeşili vurgular */
+    
+    --hero-box-bg: rgba(255, 255, 255, 0.6);
+    --hero-box-border: rgba(255, 255, 255, 0.2);
+    
+    --timebox-bg: #f4f7fa;
+    --timebox-border: rgba(20, 41, 72, 0.1);
+    
+    --partners-bg: rgb(21, 21, 30);
+    --partners-border: rgba(255, 255, 255, 0.1);
+    --partners-text: rgba(255, 255, 255, 0.7);
+    --partners-text-hover: white;
+    
+    --footer-bg: rgb(21, 21, 30);
+    --footer-deco-border: #383842;
+    --footer-bottom-bar: #65001a;
+}
+
+[data-theme="light"] {
+    /* Açık Tema Renkleri */
+    --bg-main: #f0f4f8;
+    --bg-nav: linear-gradient(to bottom, #ffffff 0%, #e8edf2 100%);
+    --nav-border: rgba(0, 0, 0, 0.1);
+    
+    --text-primary: #142948;       /* Siyah/Lacivert metinler */
+    --text-secondary: #0f1c30;     
+    --accent: #0056b3;             /* Mavi vurgular */
+    
+    --hero-box-bg: rgba(255, 255, 255, 0.9);
+    --hero-box-border: rgba(0, 0, 0, 0.1);
+    
+    --timebox-bg: #ffffff;
+    --timebox-border: rgba(0, 0, 0, 0.15);
+    
+    --partners-bg: #e8edf2;
+    --partners-border: rgba(0, 0, 0, 0.1);
+    --partners-text: #555555;
+    --partners-text-hover: #111111;
+    
+    --footer-bg: #e8edf2;
+    --footer-deco-border: #c8d0db;
+    --footer-bottom-bar: #d9d9d9;
+}
+
 /* Temel Ayarlar */
 * {
     margin: 0;
@@ -15,15 +68,16 @@
 }
 
 body {
-    background-color: rgb(21,21,30);
-    color: #142948;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* --- NAVIGASYON --- */
 nav {
-    background: linear-gradient(to bottom, #142948 0%, rgb(21,21,30) 100%);
+    background: var(--bg-nav);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +86,8 @@ nav {
     width: 100%;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--nav-border);
+    transition: background 0.3s ease;
 }
 
 .logo-area {
@@ -52,7 +107,7 @@ nav {
 .logo-area span {
     font-family: 'Northwell', cursive;
     font-size: 34px;
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .nav-right {
@@ -68,7 +123,7 @@ nav {
 }
 
 .nav-links a {
-    color: #ffffff;
+    color: var(--text-primary);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 11px;
@@ -80,12 +135,56 @@ nav {
 
 .nav-links a:hover, .nav-links a.active { 
     opacity: 1; 
-    color: #27f4d2;
+    color: var(--accent);
 }
 
+/* --- DİL VE TEMA KONTROLLERİ --- */
+.theme-lang-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-right: 10px;
+}
+
+.lang-dropdown {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+}
+
+.lang-dropdown option {
+    color: #000; /* Dropdown seçenekleri okunaklı olsun */
+}
+
+.theme-btn {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+    opacity: 0.8;
+}
+
+.theme-btn:hover {
+    color: var(--accent);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* -------------------------------- */
+
 .apply-btn {
-    background-color: #111111;
-    color: white;
+    background-color: var(--text-primary);
+    color: var(--bg-main);
     padding: 10px 24px;
     border-radius: 30px;
     text-decoration: none;
@@ -93,19 +192,20 @@ nav {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid var(--nav-border);
     transition: 0.3s;
 }
 
 .apply-btn:hover { 
-    background: white; 
-    color: #142948; 
+    background: var(--accent); 
+    color: #fff; 
     transform: translateY(-2px); 
+    border-color: var(--accent);
 }
 
 .menu-toggle {
     display: none;
-    color: white;
+    color: var(--text-primary);
     font-size: 24px;
     cursor: pointer;
     z-index: 1001;
@@ -121,19 +221,39 @@ nav {
     align-items: center;
     text-align: center;
     padding: 0 5%;
+    
+    /* F1 EFEKTİ */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+@keyframes scrollFadeOutAnim {
+    to {
+        opacity: 0;
+        filter: brightness(0.2);
+        transform: scale(0.95);
+    }
+}
+
+.scroll-fade-out {
+    animation: scrollFadeOutAnim linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 25rem;
 }
 
 .hero-content {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--hero-box-bg);
     padding: 40px 30px; 
     border-radius: 40px;
     max-width: 750px; 
     width: 100%;
     box-shadow: 0 30px 60px rgba(0,0,0,0.3);
     backdrop-filter: blur(0px);
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid var(--hero-box-border);
     position: relative;
     margin-top: 150px; 
+    transition: background-color 0.3s ease;
 }
 
 .hero-content::before {
@@ -152,7 +272,7 @@ nav {
 .hero-content h1 {
     font-family: 'Northwell', cursive;
     font-size: clamp(60px, 10vw, 120px); 
-    color: #142948;
+    color: var(--text-secondary);
     line-height: normal;
     margin-bottom: 15px;
     font-weight: normal;
@@ -161,7 +281,7 @@ nav {
 .hero-content p.slogan {
     font-size: 15px; 
     font-weight: 600;
-    color: #142948;
+    color: var(--text-secondary);
     letter-spacing: 3px;
     text-transform: uppercase;
     opacity: 0.8;
@@ -177,11 +297,11 @@ nav {
 }
 
 .time-box {
-    background: #f4f7fa;
+    background: var(--timebox-bg);
     padding: 15px; 
     border-radius: 18px;
     min-width: 85px;
-    border: 1px solid rgba(20, 41, 72, 0.1);
+    border: 1px solid var(--timebox-border);
 }
 
 .time-box span {
@@ -189,7 +309,7 @@ nav {
     font-family: 'Antonio', sans-serif;
     font-size: 32px; 
     font-weight: 700;
-    color: #142948;
+    color: var(--text-secondary);
     line-height: 1;
 }
 
@@ -197,18 +317,18 @@ nav {
     font-size: 9px;
     font-weight: 800;
     letter-spacing: 1.5px;
-    color: #142948;
+    color: var(--text-secondary);
     opacity: 0.5;
     text-transform: uppercase;
 }
 
-/* --- FLOATING GALLERY BUTTON (SOL ALT) --- */
+/* --- FLOATING GALLERY BUTTON --- */
 .floating-gallery-btn {
     position: fixed;
     bottom: 30px;
     left: 30px;
-    background-color: #27f4d2;
-    color: #142948;
+    background-color: var(--accent);
+    color: #fff;
     padding: 14px 24px;
     border-radius: 50px;
     font-size: 13px;
@@ -229,21 +349,27 @@ nav {
 }
 
 .floating-gallery-btn:hover {
-    background-color: #142948;
-    color: #27f4d2;
+    background-color: var(--text-primary);
+    color: var(--bg-main);
     transform: translateY(-5px);
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* --- SPONSORS (PARTNERS) SECTION --- */
+/* --- SPONSORS SECTION --- */
 .partners-section {
-    background-color: rgb(21, 21, 30);
-    padding: 60px 8% 0 8%;
+    background-color: var(--partners-bg);
+    padding: 60px 8% 50px 8%;
+    position: sticky;
+    top: 67px; 
+    z-index: 2;
+    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.5);
+    border-top: 1px solid var(--nav-border);
+    transition: background-color 0.3s ease;
 }
 
 .partners-title {
     text-align: center;
-    color: white;
+    color: var(--text-primary);
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
@@ -257,7 +383,7 @@ nav {
 
 .partners-title i {
     font-size: 14px;
-    color: #27f4d2;
+    color: var(--accent);
 }
 
 .partners-tier {
@@ -267,16 +393,16 @@ nav {
     align-items: center;
     gap: 50px;
     padding: 40px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--partners-border);
 }
 
 .partners-tier:last-child {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--partners-border);
     margin-bottom: 40px; 
 }
 
 .partners-tier span {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--partners-text);
     font-weight: 700;
     font-family: 'Outfit', sans-serif;
     text-transform: uppercase;
@@ -286,21 +412,26 @@ nav {
 }
 
 .partners-tier span:hover {
-    color: white;
+    color: var(--partners-text-hover);
     transform: scale(1.05);
 }
 
-.tier-1 span { font-size: 26px; letter-spacing: 2px; color: rgba(255, 255, 255, 0.9); }
+.tier-1 span { font-size: 26px; letter-spacing: 2px; }
 .tier-2 span { font-size: 18px; letter-spacing: 1.5px; }
-.tier-3 span { font-size: 13px; letter-spacing: 1px; max-width: 400px; line-height: 1.5; color: rgba(255,255,255,0.5); }
-.tier-4 span { font-size: 15px; letter-spacing: 1.2px; color: rgba(255,255,255,0.6); }
+.tier-3 span { font-size: 13px; letter-spacing: 1px; max-width: 400px; line-height: 1.5; }
+.tier-4 span { font-size: 15px; letter-spacing: 1.2px; }
 
-/* --- FOOTER (3 Sütun + Logolar + Kıvrımlı Çizgi) --- */
+/* --- FOOTER --- */
 footer {
-    background-color: rgb(21, 21, 30);
+    background-color: var(--footer-bg);
     padding: 60px 8% 60px 8%; 
     display: flex;
     justify-content: center; 
+    position: relative;
+    z-index: 3; 
+    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.5);
+    border-top: 1px solid var(--nav-border);
+    transition: background-color 0.3s ease;
 }
 
 .footer-links-container {
@@ -313,22 +444,22 @@ footer {
     padding-right: 50px;
     margin: 0 auto;
     
-    border-bottom: 14px solid #383842;
-    border-right: 14px solid #383842;
+    border-bottom: 14px solid var(--footer-deco-border);
+    border-right: 14px solid var(--footer-deco-border);
     border-bottom-right-radius: 50px;
 }
 
 .footer-col {
     display: flex;
     flex-direction: column;
-    height: 100%; /* Sütunların aynı yüksekliği kaplaması için */
+    height: 100%; 
 }
 
 .footer-col h4 {
     font-size: 14px;
     letter-spacing: 2px;
     margin-bottom: 25px;
-    color: #27f4d2;
+    color: var(--accent);
     text-transform: uppercase;
     font-weight: 700;
 }
@@ -337,7 +468,7 @@ footer {
 .footer-col ul li { margin-bottom: 15px; }
 
 .footer-col ul li a {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--partners-text);
     text-decoration: none;
     transition: 0.3s;
     font-size: 13px;
@@ -347,11 +478,11 @@ footer {
 }
 
 .footer-col ul li a:hover {
-    color: #27f4d2;
+    color: var(--accent);
     padding-left: 5px;
 }
 
-.apply-text { color: #27f4d2 !important; }
+.apply-text { color: var(--accent) !important; }
 
 .social-icons {
     display: flex;
@@ -359,7 +490,7 @@ footer {
 }
 
 .social-icons a {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--partners-text);
     text-decoration: none;
 }
 
@@ -370,11 +501,10 @@ footer {
 }
 
 .social-icons i:hover {
-    color: #27f4d2;
+    color: var(--accent);
     transform: translateY(-3px);
 }
 
-/* Logolar ve Hizalama */
 .footer-logo {
     margin-top: auto; 
     padding-top: 40px; 
@@ -395,13 +525,16 @@ footer {
 }
 
 .bottom-bar {
-    background-color: #65001a;
+    background-color: var(--footer-bottom-bar);
     padding: 30px 8%;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid var(--nav-border);
     font-size: 12px;
-    color: rgba(255,255,255,0.5);
+    color: var(--text-primary);
+    position: relative;
+    z-index: 3;
+    transition: background-color 0.3s ease;
 }
 
 /* --- MOBIL UYUMLULUK --- */
@@ -420,7 +553,7 @@ footer {
         right: -100%;
         width: 80%;
         height: 100vh;
-        background: rgb(21,21,30);
+        background: var(--bg-main);
         flex-direction: column;
         justify-content: center;
         gap: 40px;
@@ -438,6 +571,11 @@ footer {
     }
 
     .nav-links a { font-size: 16px; opacity: 1; }
+    
+    .theme-lang-controls {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
 
     .hero-content { padding: 30px 20px; width: 92%; margin-top: 130px; }
     .hero-content h1 { font-size: clamp(50px, 12vw, 75px); }
@@ -460,7 +598,6 @@ footer {
 
     .time-box span { font-size: 24px; }
     
-    /* Mobil Galeri Butonu Ayarları */
     .floating-gallery-btn {
         bottom: 20px;
         left: 20px;
@@ -484,8 +621,8 @@ footer {
         gap: 40px;
         padding-right: 25px;
         padding-bottom: 35px;
-        border-bottom: 10px solid #383842;
-        border-right: 10px solid #383842;
+        border-bottom: 10px solid var(--footer-deco-border);
+        border-right: 10px solid var(--footer-deco-border);
         border-bottom-right-radius: 35px;
         text-align: left;
     }
