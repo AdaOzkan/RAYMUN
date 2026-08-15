@@ -105,6 +105,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- CSS Dosyan -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -122,16 +123,30 @@
 
             <div class="nav-right" id="nav-menu">
                 <ul class="nav-links">
-                    <li><a href="/" class="active">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="team.html">TEAM</a></li>
-                    <li><a href="committees.html">COMMITTEES</a></li> 
-                    <li><a href="calendar.html">CALENDAR</a></li> 
-                    <li><a href="venue.html">VENUE</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="/" class="active" data-i18n="nav_home">HOME</a></li>
+                    <li><a href="about.html" data-i18n="nav_about">ABOUT</a></li>
+                    <li><a href="team.html" data-i18n="nav_team">TEAM</a></li>
+                    <li><a href="committees.html" data-i18n="nav_committees">COMMITTEES</a></li> 
+                    <li><a href="calendar.html" data-i18n="nav_calendar">CALENDAR</a></li> 
+                    <li><a href="venue.html" data-i18n="nav_venue">VENUE</a></li>
+                    <li><a href="faq.html" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">CONTACT</a></li>
                 </ul>
-                <a href="apply.html" class="apply-btn">APPLY NOW</a>
+
+                <!-- DİL VE TEMA KONTROLLERİ -->
+                <div class="theme-lang-controls">
+                    <select id="lang-select" class="lang-dropdown">
+                        <option value="en">EN</option>
+                        <option value="tr">TR</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                    </select>
+                    <button id="theme-toggle" class="theme-btn" title="Theme">
+                        <i class="fas fa-desktop"></i>
+                    </button>
+                </div>
+
+                <a href="apply.html" class="apply-btn" data-i18n="nav_apply">APPLY NOW</a>
             </div>
         </nav>
     </header>
@@ -140,7 +155,7 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Rayfelmun</h1>
-                <p class="slogan">Your voıce can change the world.</p>
+                <p class="slogan" data-i18n="hero_slogan">Your voıce can change the world.</p>
                 
                 <div class="countdown">
                     <div class="time-box">
@@ -165,12 +180,12 @@
     </main>
 
     <a href="gallery.html" class="floating-gallery-btn">
-        <i class="fas fa-camera"></i> Fotoğraflar Yüklendi!
+        <i class="fas fa-camera"></i> <span data-i18n="gallery_btn">Fotoğraflar Yüklendi!</span>
     </a>
 
     <section class="partners-section">
         <div class="partners-title">
-            Our Sponsors <i class="fas fa-angle-right"></i>
+            <span data-i18n="sponsors_title">Our Sponsors</span> <i class="fas fa-angle-right"></i>
         </div>
         
         <div class="partners-tier tier-1">
@@ -204,26 +219,26 @@
         <div class="footer-links-container">
             
             <div class="footer-col">
-                <h4>CONFERENCE</h4>
+                <h4 data-i18n="footer_conference">CONFERENCE</h4>
                 <ul>
-                    <li><a href="/">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="team.html">TEAM</a></li>
-                    <li><a href="committees.html">COMMITTEES</a></li> 
-                    <li><a href="calendar.html">CALENDAR</a></li> 
-                    <li><a href="venue.html">VENUE</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                    <li><a href="apply.html" class="apply-text">APPLY NOW</a></li>
+                    <li><a href="/" data-i18n="nav_home">HOME</a></li>
+                    <li><a href="about.html" data-i18n="nav_about">ABOUT</a></li>
+                    <li><a href="team.html" data-i18n="nav_team">TEAM</a></li>
+                    <li><a href="committees.html" data-i18n="nav_committees">COMMITTEES</a></li> 
+                    <li><a href="calendar.html" data-i18n="nav_calendar">CALENDAR</a></li> 
+                    <li><a href="venue.html" data-i18n="nav_venue">VENUE</a></li>
+                    <li><a href="faq.html" data-i18n="nav_faq">FAQ</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">CONTACT</a></li>
+                    <li><a href="apply.html" class="apply-text" data-i18n="nav_apply">APPLY NOW</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <div class="col-content">
-                    <h4>LEGAL</h4>
+                    <h4 data-i18n="footer_legal">LEGAL</h4>
                     <ul>
-                        <li><a href="terms.html">TERMS & CONDITIONS</a></li>
-                        <li><a href="privacy.html">PRIVACY POLICY</a></li>
+                        <li><a href="terms.html" data-i18n="footer_terms">TERMS & CONDITIONS</a></li>
+                        <li><a href="privacy.html" data-i18n="footer_privacy">PRIVACY POLICY</a></li>
                     </ul>
                 </div>
                 
@@ -236,7 +251,7 @@
 
             <div class="footer-col">
                 <div class="col-content">
-                    <h4>SOCIAL</h4>
+                    <h4 data-i18n="footer_social">SOCIAL</h4>
                     <div class="social-icons">
                         <a href="https://www.instagram.com/rayfelmun/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
@@ -255,11 +270,13 @@
     </footer>
 
     <div class="bottom-bar">
-        <div>© Rayfelmun 2026. All rights reserved.</div>
-        <div>Crafted with ❤️ by Ada Özkan</div>
+        <div>© Rayfelmun 2026. <span data-i18n="footer_rights">All rights reserved.</span></div>
+        <div data-i18n="footer_crafted">Crafted with ❤️ by Ada Özkan</div>
     </div>
 
+    <!-- Eski Scriptini ve Yeni global.js'i Yüklüyoruz -->
     <script>
+        // -- MENÜ AÇMA/KAPAMA --
         const menuToggle = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
@@ -270,6 +287,7 @@
             icon.classList.toggle('fa-times');
         });
 
+        // -- COUNTDOWN (GERİ SAYIM) --
         const targetDate = new Date("Jun 15, 2026 11:00:00").getTime();
         const timer = setInterval(function() {
             const now = new Date().getTime();
@@ -287,9 +305,12 @@
 
             if (distance < 0) {
                 clearInterval(timer);
-                document.querySelector(".countdown").innerHTML = "<h3 style='color:#142948; letter-spacing:2px;'>Thank you for your participation.<br>See You Next Year</h3>";
+                document.querySelector(".countdown").innerHTML = "<h3 style='color:var(--text-secondary); letter-spacing:2px;'>Thank you for your participation.<br>See You Next Year</h3>";
             }
         }, 1000);
     </script>
+    
+    <!-- Ortak JS Dosyanız (Dil ve Tema için) -->
+    <script src="global.js"></script>
 </body>
 </html>
