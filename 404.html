@@ -1,290 +1,672 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
+    <!-- 404 sayfası /foo/bar gibi iç içe adreslerde de açılabildiği için, sunucu üzerinde görsel ve linklerin
+         kök dizinden çözülmesini sağlar. Yerel (file://) önizlemede devreye girmez. -->
+    <script>
+        if (location.protocol.indexOf('http') === 0) {
+            var b = document.createElement('base');
+            b.href = '/';
+            document.head.prepend(b);
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayfa Bulunamadı - 404</title>
+    <meta name="robots" content="noindex">
+    <title>Page not found | Rayfelmun '27</title>
+
+    <link rel="icon" type="image/png" sizes="256x256" href="rayfelmunLogo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="rayfelmunLogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="rayfelmunLogo.png">
+    <link rel="apple-touch-icon" href="rayfelmunLogo.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        body {
+        @font-face {
+            font-family: 'Northwell';
+            src: url('Northwell.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Temel Ayarlar */
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            /* Footer'ın üstündeki 60px'lik boşluk koyu zeminle bütünleşsin diye */
+            background-color: rgb(21,21,30);
+            color: #142948;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGASYON --- */
+        nav {
+            background: linear-gradient(to bottom, #142948 0%, rgb(21,21,30) 100%);
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            text-align: center;
+            padding: 8px 5%;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .container {
-            max-width: 500px;
-            padding: 2rem;
-        }
-        h1 {
-            font-size: 6rem;
-            margin: 0;
-            color: #f85149;
-        }
-        h2 {
-            font-size: 1.8rem;
-            margin: 1rem 0;
-        }
-        p {
-            color: #8b949e;
-            margin-bottom: 2rem;
-        }
-        a {
-            display: inline-block;
-            background-color: #238636;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s;
+            z-index: 1001;
         }
-        a:hover {
-            background-color: #2ea043;
+
+        .logo-area img {
+            height: 50px;
+            filter: brightness(1.2);
+            width: auto;
+        }
+
+        .logo-area span {
+            font-family: 'Northwell', cursive;
+            font-size: 34px;
+            color: #ffffff;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 18px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            opacity: 1;
+            color: #27f4d2;
+        }
+
+        .apply-btn {
+            background-color: #111111;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: 0.3s;
+        }
+
+        .apply-btn:hover {
+            background-color: #ffffff;
+            color: #000;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* --- 404 İÇERİK --- */
+        .lost {
+            position: relative;
+            overflow: hidden;
+            padding: 56px 5% 250px 5%;
+            text-align: center;
+            color: #ffffff;
+            background:
+                radial-gradient(ellipse 60% 55% at 50% 22%, rgba(39, 244, 210, 0.10), transparent 70%),
+                radial-gradient(ellipse 90% 70% at 50% 0%, rgba(20, 41, 72, 0.95), transparent 80%),
+                rgb(21,21,30);
+        }
+
+        /* Hakkımızda sayfasındaki "RAYFEL" filigranının devamı */
+        .lost::after {
+            content: "RAYFEL";
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Antonio', sans-serif;
+            font-size: clamp(140px, 24vw, 320px);
+            font-weight: 700;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .lost > * { position: relative; z-index: 1; }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        /* 4 [dünya] 4 */
+        .code {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.05em;
+            font-family: 'Antonio', sans-serif;
+            font-weight: 700;
+            font-size: clamp(120px, 25vw, 290px);
+            line-height: 1;
+            color: #ffffff;
+        }
+
+        .code .digit {
+            font-family: 'Antonio', sans-serif;
+            display: block;
+            line-height: 0.9;
+        }
+
+        .globe {
+            display: block;
+            width: 0.86em;
+            height: 0.86em;
+            transform: translateY(0.07em);
+            border-radius: 50%;
+            cursor: grab;
+            touch-action: pan-y;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .globe:active { cursor: grabbing; }
+
+        .globe:focus-visible {
+            outline: 2px solid #27f4d2;
+            outline-offset: 8px;
+        }
+
+        .last-seen {
+            margin-top: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #27f4d2;
+            min-height: 1.6em;
+        }
+
+        .globe-hint {
+            font-size: 13px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .lost-script {
+            display: block;
+            margin-top: 46px;
+            font-family: 'Northwell', cursive;
+            font-size: 64px;
+            line-height: 1;
+            color: #27f4d2;
+        }
+
+        .lost-title {
+            font-family: 'Antonio', sans-serif;
+            text-transform: uppercase;
+            font-size: clamp(30px, 5vw, 52px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            margin-top: 6px;
+        }
+
+        .lost-text {
+            max-width: 560px;
+            margin: 22px auto 0 auto;
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .lost-text code {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1px 10px;
+            border-radius: 20px;
+            word-break: break-all;
+        }
+
+        .lost-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 36px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #27f4d2;
+            color: #0e1a2e;
+            border: 1px solid #27f4d2;
+        }
+
+        .btn-primary:hover { background-color: #ffffff; border-color: #ffffff; }
+
+        .btn-ghost {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-ghost:hover { border-color: #27f4d2; color: #27f4d2; }
+
+        .btn:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
+
+        /* --- NEREYE GİDEYİM --- */
+        .agenda {
+            max-width: 1100px;
+            margin: 90px auto 0 auto;
+            text-align: left;
+        }
+
+        .agenda h2 {
+            font-family: 'Antonio', sans-serif;
+            font-size: 30px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .agenda-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 70px;
+        }
+
+        .agenda-list a {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 18px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            text-decoration: none;
+            transition: padding-left 0.3s, color 0.3s;
+        }
+
+        .agenda-list .name {
+            font-family: 'Antonio', sans-serif;
+            font-size: 26px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .agenda-list .desc {
+            font-size: 14px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .agenda-list a:hover,
+        .agenda-list a:focus-visible { padding-left: 12px; color: #27f4d2; outline: none; }
+
+        .agenda-list .apply-row .name { color: #27f4d2; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: rgb(21,21,30);
+            padding: 80px 8% 40px 8%;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr;
+            gap: 40px;
+            color: white;
+            margin-top: 60px;
+            align-items: start;
+        }
+
+        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.6;
+            transition: 0.3s;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
+
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons a { color: white; text-decoration: none; }
+        .social-icons i { font-size: 22px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
+        .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
+
+        .bottom-bar {
+            background-color: #65001a;
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
         }
 
         /* --- FOOTER (3 Sütun + Logolar + Kıvrımlı Çizgi) --- */
-footer {
-    background-color: rgb(21, 21, 30);
-    padding: 60px 8% 60px 8%; 
-    display: flex;
-    justify-content: center; 
-}
+        footer {
+            background-color: rgb(21, 21, 30);
+            padding: 60px 8% 60px 8%;
+            display: flex;
+            justify-content: center;
+        }
 
-.footer-links-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 80px;
-    width: 100%;
-    max-width: 1100px;
-    padding-bottom: 50px;
-    padding-right: 50px;
-    margin: 0 auto;
-    
-    border-bottom: 14px solid #383842;
-    border-right: 14px solid #383842;
-    border-bottom-right-radius: 50px;
-}
+        .footer-links-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 80px;
+            width: 100%;
+            max-width: 1100px;
+            padding-bottom: 50px;
+            padding-right: 50px;
+            margin: 0 auto;
 
-.footer-col {
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Sütunların aynı yüksekliği kaplaması için */
-}
+            border-bottom: 14px solid #383842;
+            border-right: 14px solid #383842;
+            border-bottom-right-radius: 50px;
+        }
 
-.footer-col h4 {
-    font-size: 14px;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-    color: #27f4d2;
-    text-transform: uppercase;
-    font-weight: 700;
-}
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Sütunların aynı yüksekliği kaplaması için */
+        }
 
-.footer-col ul { list-style: none; }
-.footer-col ul li { margin-bottom: 15px; }
+        .footer-col h4 {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            color: #27f4d2;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
 
-.footer-col ul li a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 13px;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 15px; }
 
-.footer-col ul li a:hover {
-    color: #27f4d2;
-    padding-left: 5px;
-}
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
 
-.apply-text { color: #27f4d2 !important; }
+        .footer-col ul li a:hover {
+            color: #27f4d2;
+            padding-left: 5px;
+        }
 
-.social-icons {
-    display: flex;
-    gap: 20px;
-}
+        .apply-text { color: #27f4d2 !important; }
 
-.social-icons a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-}
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
 
-.social-icons i {
-    font-size: 24px;
-    transition: 0.3s;
-    cursor: pointer;
-}
+        .social-icons a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
 
-.social-icons i:hover {
-    color: #27f4d2;
-    transform: translateY(-3px);
-}
+        .social-icons i {
+            font-size: 24px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
 
-/* Logolar ve Hizalama */
-.footer-logo {
-    margin-top: auto; 
-    padding-top: 40px; 
-    opacity: 0.8;
-    transition: 0.3s;
-}
+        .social-icons i:hover {
+            color: #27f4d2;
+            transform: translateY(-3px);
+        }
 
-.footer-logo:hover {
-    opacity: 1;
-    transform: scale(1.03);
-}
+        /* Logolar ve Hizalama */
+        .footer-logo {
+            margin-top: auto;
+            padding-top: 40px;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
 
-.footer-logo img {
-    width: 75%; 
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-}
+        .footer-logo:hover {
+            opacity: 1;
+            transform: scale(1.03);
+        }
 
-.bottom-bar {
-    background-color: #65001a;
-    padding: 30px 8%;
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-}
+        .footer-logo img {
+            width: 75%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
 
-/* --- MOBIL UYUMLULUK --- */
-@media (max-width: 992px) {
-    .footer-links-container {
-        gap: 40px;
-    }
-}
+        .bottom-bar {
+            background-color: #65001a;
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
 
-@media (max-width: 768px) {
-    .menu-toggle { display: block; }
+        /* --- MOBIL UYUMLULUK --- */
+        @media (max-width: 992px) {
+            .footer-links-container {
+                gap: 40px;
+            }
+        }
 
-    .nav-right {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background: rgb(21,21,30);
-        flex-direction: column;
-        justify-content: center;
-        gap: 40px;
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1000;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-    }
+        @media (max-width: 968px) {
+            footer { grid-template-columns: 1.5fr 1fr; }
+        }
 
-    .nav-right.active { right: 0; }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
 
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
+            .nav-right {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: rgb(21,21,30);
+                flex-direction: column;
+                justify-content: center;
+                gap: 40px;
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            }
 
-    .nav-links a { font-size: 16px; opacity: 1; }
+            .nav-right.active { right: 0; }
 
-    .hero-content { padding: 30px 20px; width: 92%; margin-top: 130px; }
-    .hero-content h1 { font-size: clamp(50px, 12vw, 75px); }
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+            }
 
-    .hero-content::before {
-        width: 190px; 
-        height: 190px; 
-        top: -160px; 
-        left: -40px; 
-        transform: translateY(15px);
-    }
+            .nav-links a { font-size: 16px; opacity: 1; }
 
-    .countdown { 
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        max-width: 250px;
-        margin: 20px auto 0 auto;
-    }
+            footer { grid-template-columns: 1fr; text-align: center; }
+            .social-icons { justify-content: center; }
 
-    .time-box span { font-size: 24px; }
-    
-    /* Mobil Galeri Butonu Ayarları */
-    .floating-gallery-btn {
-        bottom: 20px;
-        left: 20px;
-        padding: 10px 18px;
-        font-size: 11px;
-    }
+            .footer-links-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding-right: 25px;
+                padding-bottom: 35px;
+                border-bottom: 10px solid #383842;
+                border-right: 10px solid #383842;
+                border-bottom-right-radius: 35px;
+                text-align: left;
+            }
 
-    .partners-tier {
-        flex-direction: column;
-        gap: 25px;
-        padding: 30px 0;
-    }
-    
-    .tier-1 span { font-size: 20px; }
-    .tier-2 span { font-size: 16px; }
-    .tier-3 span { font-size: 12px; }
-    .tier-4 span { font-size: 14px; }
+            .footer-logo {
+                margin-top: 25px;
+                padding-top: 0;
+            }
 
-    .footer-links-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding-right: 25px;
-        padding-bottom: 35px;
-        border-bottom: 10px solid #383842;
-        border-right: 10px solid #383842;
-        border-bottom-right-radius: 35px;
-        text-align: left;
-    }
+            .social-icons { justify-content: flex-start; }
+            .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
 
-    .footer-logo {
-        margin-top: 25px;
-        padding-top: 0;
-    }
-    
-    .social-icons { justify-content: flex-start; }
-    .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
-}
+            /* 404 gövdesi */
+            .lost { padding: 36px 6% 150px 6%; }
+            .lost-script { font-size: 52px; margin-top: 34px; }
+            .lost-text { font-size: 16px; }
+            .agenda { margin-top: 64px; }
+            .agenda-list { grid-template-columns: 1fr; }
+            .agenda-list .name { font-size: 22px; }
+        }
 
-        /* --- YENİ EKLENEN SCROLL ANİMASYONU CSS --- */
+        /* --- SCROLL ANİMASYONU --- */
         html { scroll-behavior: smooth; }
-        
+
         .scroll-reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
-        
+
         .scroll-reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
-        
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .scroll-reveal { opacity: 1; transform: none; transition: none; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>404</h1>
-        <h2>Aradığın Sayfa Bulunamadı</h2>
-        <p>Gitmek istediğin sayfa taşınmış, silinmiş veya hiç var olmamış olabilir.</p>
-        <a href="/">Ana Sayfaya Dön</a>
-    </div>
-</body>
 
-<footer>
+    <nav>
+        <a href="index.html" class="logo-area" style="text-decoration: none;">
+            <img src="rayfelmunLogo.jpg" alt="Rayfelmun Logo">
+            <span>Rayfelmun</span>
+        </a>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="nav-right" id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="team.html">TEAM</a></li>
+                <li><a href="committees.html">COMMITTEES</a></li>
+                <li><a href="calendar.html">CALENDAR</a></li>
+                <li><a href="venue.html">VENUE</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <a href="apply.html" class="apply-btn">APPLY NOW</a>
+        </div>
+    </nav>
+
+    <main class="lost">
+        <div class="code">
+            <span class="digit" aria-hidden="true">4</span>
+            <canvas id="globe" class="globe" tabindex="0" role="button"
+                    aria-label="Globe. Drag or use the arrow keys to rotate it. Press Enter to search somewhere else."></canvas>
+            <span class="digit" aria-hidden="true">4</span>
+        </div>
+
+        <p class="last-seen" id="last-seen" aria-live="polite">Page last seen at 0.00°N, 0.00°E</p>
+        <p class="globe-hint">Drag the globe to look around. Tap it to search somewhere else.</p>
+
+        <span class="lost-script">Point of order</span>
+        <h1 class="lost-title"><span class="sr-only">Error 404. </span>This page is not on the agenda</h1>
+        <p class="lost-text">
+            We couldn't find <code id="path">that page</code>. The link may be mistyped, or the page may have moved.
+        </p>
+
+        <div class="lost-actions">
+            <a href="index.html" class="btn btn-primary">Back to home</a>
+            <a href="#" class="btn btn-ghost" id="go-back">Go back</a>
+        </div>
+
+        <section class="agenda" aria-labelledby="agenda-title">
+            <h2 id="agenda-title">Where to next?</h2>
+            <ul class="agenda-list">
+                <li><a href="about.html"><span class="name">About</span><span class="desc">The story behind Rayfelmun</span></a></li>
+                <li><a href="committees.html"><span class="name">Committees</span><span class="desc">Topics, agendas and chairs</span></a></li>
+                <li><a href="calendar.html"><span class="name">Calendar</span><span class="desc">Dates and the conference schedule</span></a></li>
+                <li><a href="team.html"><span class="name">Team</span><span class="desc">The people running the conference</span></a></li>
+                <li><a href="venue.html"><span class="name">Venue</span><span class="desc">Where the sessions take place</span></a></li>
+                <li><a href="faq.html"><span class="name">FAQ</span><span class="desc">Answers to common questions</span></a></li>
+                <li><a href="contact.html"><span class="name">Contact</span><span class="desc">Reach the secretariat</span></a></li>
+                <li class="apply-row"><a href="apply.html"><span class="name">Apply now</span><span class="desc">Register as a delegate</span></a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
         <div class="footer-links-container">
-            
+
             <!-- SÜTUN 1: CONFERENCE -->
             <div class="footer-col">
                 <h4>CONFERENCE</h4>
@@ -292,8 +674,8 @@ footer {
                     <li><a href="/">HOME</a></li>
                     <li><a href="about.html">ABOUT</a></li>
                     <li><a href="team.html">TEAM</a></li>
-                    <li><a href="committees.html">COMMITTEES</a></li> 
-                    <li><a href="calendar.html">CALENDAR</a></li> 
+                    <li><a href="committees.html">COMMITTEES</a></li>
+                    <li><a href="calendar.html">CALENDAR</a></li>
                     <li><a href="venue.html">VENUE</a></li>
                     <li><a href="faq.html">FAQ</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
@@ -310,7 +692,7 @@ footer {
                         <li><a href="privacy.html">PRIVACY POLICY</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Rayfelmun Logosu -->
                 <div class="footer-logo">
                     <a href="/">
@@ -329,7 +711,7 @@ footer {
                         <a href="https://www.linkedin.com/school/ramazan-yaman-fen-lisesi/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Okul Logosu -->
                 <div class="footer-logo">
                     <a href="https://ramazanyamanfenlisesi.meb.k12.tr/" target="_blank" rel="noopener" aria-label="Ramazan Yaman Fen Lisesi">
@@ -340,5 +722,252 @@ footer {
 
         </div>
     </footer>
-    
+
+    <div class="bottom-bar">
+        <div>© Rayfelmun 2026. All rights reserved.</div>
+        <div>Crafted with ❤️ by Ada Özkan</div>
+    </div>
+
+    <script>
+        /* --- MOBİL MENÜ --- */
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        /* --- İSTENEN ADRES + GERİ DÖN --- */
+        (function () {
+            let p = location.pathname + location.search;
+            if (location.protocol === 'file:') p = p.split('/').pop();
+            try { p = decodeURIComponent(p); } catch (e) {}
+            if (p && p !== '/') document.getElementById('path').textContent = p;
+
+            document.getElementById('go-back').addEventListener('click', function (e) {
+                e.preventDefault();
+                if (history.length > 1) history.back();
+                else location.href = 'index.html';
+            });
+        })();
+
+        /* --- DÖNEN DÜNYA (404'ün ortasındaki sıfır) --- */
+        (function () {
+            const canvas = document.getElementById('globe');
+            const ctx = canvas.getContext('2d');
+            const lastSeen = document.getElementById('last-seen');
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const RAD = Math.PI / 180;
+            const TILT = 20 * RAD, cosT = Math.cos(TILT), sinT = Math.sin(TILT);
+            const AUTO = reduce ? 0 : 7;          // boştayken saniyedeki derece
+            let lon0 = -30, vel = AUTO;             // görüş boylamı ve dönüş hızı
+            let pin = { lat: 0, lon: 0 };           // sayfanın "son görüldüğü" yer
+            let fly = null;                         // yeni aramaya geçiş animasyonu
+            let W = 0, dpr = 1;
+
+            /* Izgara: her 20° boylam ve enlem çizgisi */
+            const lines = [];
+            for (let lon = 0; lon < 360; lon += 20) {
+                const l = [];
+                for (let lat = -90; lat <= 90; lat += 5) l.push([lat, lon]);
+                lines.push(l);
+            }
+            for (let lat = -60; lat <= 60; lat += 20) {
+                const l = [];
+                for (let lon = 0; lon <= 360; lon += 5) l.push([lat, lon]);
+                lines.push(l);
+            }
+
+            function resize() {
+                const r = canvas.getBoundingClientRect();
+                dpr = Math.min(window.devicePixelRatio || 1, 2);
+                W = r.width;
+                canvas.width = Math.round(W * dpr);
+                canvas.height = Math.round(W * dpr);
+            }
+
+            function proj(lat, lon) {
+                const phi = lat * RAD, lam = (lon - lon0) * RAD;
+                const x = Math.cos(phi) * Math.sin(lam);
+                const y = Math.sin(phi);
+                const z = Math.cos(phi) * Math.cos(lam);
+                return [x, y * cosT - z * sinT, y * sinT + z * cosT];
+            }
+
+            function draw(t) {
+                if (!W) return;
+                const c = W / 2, R = c * 0.96;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                ctx.clearRect(0, 0, W, W);
+
+                const g = ctx.createRadialGradient(c - R * 0.3, c - R * 0.35, R * 0.1, c, c, R);
+                g.addColorStop(0, 'rgba(39, 244, 210, 0.12)');
+                g.addColorStop(1, 'rgba(20, 41, 72, 0.65)');
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.arc(c, c, R, 0, Math.PI * 2);
+                ctx.fill();
+
+                const front = new Path2D(), back = new Path2D();
+                for (const line of lines) {
+                    let prev = null;
+                    for (const pt of line) {
+                        const p = proj(pt[0], pt[1]);
+                        if (prev) {
+                            const path = (prev[2] + p[2]) / 2 > 0 ? front : back;
+                            path.moveTo(c + prev[0] * R, c - prev[1] * R);
+                            path.lineTo(c + p[0] * R, c - p[1] * R);
+                        }
+                        prev = p;
+                    }
+                }
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = 'rgba(39, 244, 210, 0.10)';
+                ctx.stroke(back);
+                ctx.lineWidth = 1.1;
+                ctx.strokeStyle = 'rgba(39, 244, 210, 0.55)';
+                ctx.stroke(front);
+
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = 'rgba(39, 244, 210, 0.9)';
+                ctx.beginPath();
+                ctx.arc(c, c, R, 0, Math.PI * 2);
+                ctx.stroke();
+
+                /* Kayıp sayfanın iğnesi */
+                const p = proj(pin.lat, pin.lon);
+                const sx = c + p[0] * R, sy = c - p[1] * R;
+                if (p[2] > 0.02) {
+                    const ph = reduce ? 0.4 : (t / 1500) % 1;
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = 'rgba(255, 90, 116, ' + (1 - ph) * 0.8 + ')';
+                    ctx.beginPath();
+                    ctx.arc(sx, sy, 6 + ph * 24, 0, Math.PI * 2);
+                    ctx.stroke();
+                    ctx.fillStyle = '#ff5a74';
+                    ctx.beginPath();
+                    ctx.arc(sx, sy, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.stroke();
+                } else {
+                    ctx.fillStyle = 'rgba(255, 90, 116, 0.25)';
+                    ctx.beginPath();
+                    ctx.arc(sx, sy, 4, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function fmt(lat, lon) {
+                return Math.abs(lat).toFixed(2) + '°' + (lat >= 0 ? 'N' : 'S') + ', ' +
+                       Math.abs(lon).toFixed(2) + '°' + (lon >= 0 ? 'E' : 'W');
+            }
+
+            function search() {
+                if (fly) return;
+                const lat = -50 + Math.random() * 110;
+                const lon = -180 + Math.random() * 360;
+                lastSeen.textContent = 'Searching…';
+                fly = { from: lon0, diff: ((lon - lon0 + 540) % 360) - 180, start: performance.now(), dur: reduce ? 1 : 1100, lat: lat, lon: lon };
+            }
+
+            /* Sürükleme */
+            let drag = null;
+            canvas.addEventListener('pointerdown', function (e) {
+                if (fly) return;
+                drag = { x: e.clientX, moved: 0, t: performance.now() };
+                canvas.setPointerCapture(e.pointerId);
+            });
+            canvas.addEventListener('pointermove', function (e) {
+                if (!drag) return;
+                const now = performance.now();
+                const dx = e.clientX - drag.x;
+                const dLon = -dx * (140 / Math.max(W, 1));
+                lon0 += dLon;
+                vel = dLon / Math.max((now - drag.t) / 1000, 0.016);
+                vel = Math.max(-240, Math.min(240, vel));
+                drag.moved += Math.abs(dx);
+                drag.x = e.clientX;
+                drag.t = now;
+            });
+            function endDrag() {
+                if (!drag) return;
+                const wasTap = drag.moved < 6;
+                drag = null;
+                if (wasTap) search();
+            }
+            canvas.addEventListener('pointerup', endDrag);
+            canvas.addEventListener('pointercancel', function () { drag = null; });
+
+            /* Klavye */
+            canvas.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); search(); }
+                else if (e.key === 'ArrowLeft')  { lon0 -= 15; e.preventDefault(); }
+                else if (e.key === 'ArrowRight') { lon0 += 15; e.preventDefault(); }
+            });
+
+            let last = performance.now();
+            function frame(now) {
+                const dt = Math.min((now - last) / 1000, 0.05);
+                last = now;
+
+                if (fly) {
+                    const k = Math.min((now - fly.start) / fly.dur, 1);
+                    const ease = 1 - Math.pow(1 - k, 3);
+                    lon0 = fly.from + fly.diff * ease;
+                    if (k === 1) {
+                        pin = { lat: fly.lat, lon: fly.lon };
+                        lastSeen.textContent = 'Page last seen at ' + fmt(pin.lat, pin.lon);
+                        vel = AUTO;
+                        fly = null;
+                    }
+                } else if (!drag) {
+                    vel += (AUTO - vel) * Math.min(1, dt * 2.5);
+                    lon0 += vel * dt;
+                }
+
+                draw(now);
+                requestAnimationFrame(frame);
+            }
+
+            window.addEventListener('resize', resize);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(resize);
+            resize();
+            requestAnimationFrame(frame);
+        })();
+
+        /* --- SCROLL ANİMASYONU (navigasyon + footer, orijinaliyle aynı) --- */
+        document.addEventListener("DOMContentLoaded", function() {
+            const revealElements = document.querySelectorAll('nav, .footer-col, .footer-logo, .bottom-bar');
+
+            revealElements.forEach((el, index) => {
+                el.classList.add('scroll-reveal');
+                if(el.classList.contains('footer-col')) {
+                    el.classList.add('delay-' + ((index % 3) + 1));
+                }
+            });
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15,
+                rootMargin: "0px"
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
 </html>
