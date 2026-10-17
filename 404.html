@@ -151,20 +151,7 @@
         }
 
         /* Hakkımızda sayfasındaki "RAYFEL" filigranının devamı */
-        .lost::after {
-            content: "RAYFEL";
-            position: absolute;
-            bottom: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Antonio', sans-serif;
-            font-size: clamp(140px, 24vw, 320px);
-            font-weight: 700;
-            line-height: 1;
-            color: rgba(255, 255, 255, 0.03);
-            pointer-events: none;
-            white-space: nowrap;
-        }
+        
 
         .lost > * { position: relative; z-index: 1; }
 
@@ -210,7 +197,7 @@
         .globe:active { cursor: grabbing; }
 
         .globe:focus-visible {
-            outline: 2px solid #27f4d2;
+            outline: 2px solid #e4ff65;
             outline-offset: 8px;
         }
 
@@ -234,7 +221,7 @@
             font-family: 'Northwell', cursive;
             font-size: 64px;
             line-height: 1;
-            color: #27f4d2;
+            color: #e4ff65;
         }
 
         .lost-title {
@@ -287,9 +274,9 @@
         }
 
         .btn-primary {
-            background-color: #27f4d2;
+            background-color: #e4ff65;
             color: #0e1a2e;
-            border: 1px solid #27f4d2;
+            border: 1px solid #e4ff65;
         }
 
         .btn-primary:hover { background-color: #ffffff; border-color: #ffffff; }
@@ -300,7 +287,7 @@
             border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
-        .btn-ghost:hover { border-color: #27f4d2; color: #27f4d2; }
+        .btn-ghost:hover { border-color: #e4ff65; color: #e4ff65; }
 
         .btn:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
 
@@ -649,19 +636,7 @@
             <a href="#" class="btn btn-ghost" id="go-back">Go back</a>
         </div>
 
-        <section class="agenda" aria-labelledby="agenda-title">
-            <h2 id="agenda-title">Where to next?</h2>
-            <ul class="agenda-list">
-                <li><a href="about.html"><span class="name">About</span><span class="desc">The story behind Rayfelmun</span></a></li>
-                <li><a href="committees.html"><span class="name">Committees</span><span class="desc">Topics, agendas and chairs</span></a></li>
-                <li><a href="calendar.html"><span class="name">Calendar</span><span class="desc">Dates and the conference schedule</span></a></li>
-                <li><a href="team.html"><span class="name">Team</span><span class="desc">The people running the conference</span></a></li>
-                <li><a href="venue.html"><span class="name">Venue</span><span class="desc">Where the sessions take place</span></a></li>
-                <li><a href="faq.html"><span class="name">FAQ</span><span class="desc">Answers to common questions</span></a></li>
-                <li><a href="contact.html"><span class="name">Contact</span><span class="desc">Reach the secretariat</span></a></li>
-                <li class="apply-row"><a href="apply.html"><span class="name">Apply now</span><span class="desc">Register as a delegate</span></a></li>
-            </ul>
-        </section>
+        
     </main>
 
     <footer>
@@ -805,8 +780,8 @@
                 ctx.clearRect(0, 0, W, W);
 
                 const g = ctx.createRadialGradient(c - R * 0.3, c - R * 0.35, R * 0.1, c, c, R);
-                g.addColorStop(0, 'rgba(39, 244, 210, 0.12)');
-                g.addColorStop(1, 'rgba(20, 41, 72, 0.65)');
+                g.addColorStop(0, 'rgba(228, 255, 101, 0.10)');
+                g.addColorStop(1, 'rgba(228, 255, 101, 0.10)');
                 ctx.fillStyle = g;
                 ctx.beginPath();
                 ctx.arc(c, c, R, 0, Math.PI * 2);
@@ -829,11 +804,11 @@
                 ctx.strokeStyle = 'rgba(39, 244, 210, 0.10)';
                 ctx.stroke(back);
                 ctx.lineWidth = 1.1;
-                ctx.strokeStyle = 'rgba(39, 244, 210, 0.55)';
+                ctx.strokeStyle = 'rgba(3228, 255, 101, 0.9)';
                 ctx.stroke(front);
 
                 ctx.lineWidth = 2;
-                ctx.strokeStyle = 'rgba(39, 244, 210, 0.9)';
+                ctx.strokeStyle = 'rgba(228, 255, 101, 0.9)';
                 ctx.beginPath();
                 ctx.arc(c, c, R, 0, Math.PI * 2);
                 ctx.stroke();
