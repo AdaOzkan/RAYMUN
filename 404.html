@@ -25,8 +25,8 @@
 
     <style>
         @font-face {
-            font-family: 'Northwell';
-            src: url('Northwell.ttf') format('truetype');
+            font-family: 'NorthwellCleanAlt';
+            src: url('northwell-clean-alt.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
@@ -41,7 +41,6 @@
         }
 
         body {
-            /* Footer'ın üstündeki 60px'lik boşluk koyu zeminle bütünleşsin diye */
             background-color: rgb(21,21,30);
             color: #142948;
             line-height: 1.6;
@@ -77,7 +76,7 @@
         }
 
         .logo-area span {
-            font-family: 'Northwell', cursive;
+            font-family: 'NorthwellCleanAlt', cursive;
             font-size: 34px;
             color: #ffffff;
         }
@@ -150,9 +149,6 @@
                 rgb(21,21,30);
         }
 
-        /* Hakkımızda sayfasındaki "RAYFEL" filigranının devamı */
-        
-
         .lost > * { position: relative; z-index: 1; }
 
         .sr-only {
@@ -164,12 +160,12 @@
             white-space: nowrap;
         }
 
-        /* 4 [dünya] 4 */
+        /* 4 [görsel] 4 düzeni - Boşluklar daraltıldı, görsel büyütüldü */
         .code {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.05em;
+            gap: -0.05em;
             font-family: 'Antonio', sans-serif;
             font-weight: 700;
             font-size: clamp(120px, 25vw, 290px);
@@ -183,47 +179,33 @@
             line-height: 0.9;
         }
 
-        .globe {
-            display: block;
-            width: 0.86em;
-            height: 0.86em;
-            transform: translateY(0.07em);
-            border-radius: 50%;
-            cursor: grab;
-            touch-action: pan-y;
-            -webkit-tap-highlight-color: transparent;
+        .error-image-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 0.9em;
+            vertical-align: middle;
+            margin: 0 -0.05em;
         }
 
-        .globe:active { cursor: grabbing; }
-
-        .globe:focus-visible {
-            outline: 2px solid #e4ff65;
-            outline-offset: 8px;
+        .error-image-container img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(39, 244, 210, 0.25));
         }
 
-        .last-seen {
-            margin-top: 30px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #27f4d2;
-            min-height: 1.6em;
-        }
-
-        .globe-hint {
-            font-size: 13px;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
+        /* Point of order yukarı taşındı ve Northwell Clean Alt fontu uygulandı */
         .lost-script {
             display: block;
-            margin-top: 46px;
-            font-family: 'Northwell', cursive;
-            font-size: 64px;
+            margin-bottom: 10px;
+            font-family: 'NorthwellCleanAlt', cursive;
+            font-size: 68px;
             line-height: 1;
             color: #e4ff65;
         }
 
+        /* This page is not on the agenda hafif aşağı alındı (margin-top artırıldı) */
         .lost-title {
             font-family: 'Antonio', sans-serif;
             text-transform: uppercase;
@@ -231,7 +213,7 @@
             font-weight: 700;
             letter-spacing: -0.5px;
             line-height: 1.1;
-            margin-top: 6px;
+            margin-top: 24px;
         }
 
         .lost-text {
@@ -291,100 +273,7 @@
 
         .btn:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
 
-        /* --- NEREYE GİDEYİM --- */
-        .agenda {
-            max-width: 1100px;
-            margin: 90px auto 0 auto;
-            text-align: left;
-        }
-
-        .agenda h2 {
-            font-family: 'Antonio', sans-serif;
-            font-size: 30px;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 22px;
-        }
-
-        .agenda-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            column-gap: 70px;
-        }
-
-        .agenda-list a {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            padding: 18px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
-            color: #ffffff;
-            text-decoration: none;
-            transition: padding-left 0.3s, color 0.3s;
-        }
-
-        .agenda-list .name {
-            font-family: 'Antonio', sans-serif;
-            font-size: 26px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-        }
-
-        .agenda-list .desc {
-            font-size: 14px;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.55);
-        }
-
-        .agenda-list a:hover,
-        .agenda-list a:focus-visible { padding-left: 12px; color: #27f4d2; outline: none; }
-
-        .agenda-list .apply-row .name { color: #27f4d2; }
-
         /* --- FOOTER --- */
-        footer {
-            background-color: rgb(21,21,30);
-            padding: 80px 8% 40px 8%;
-            display: grid;
-            grid-template-columns: 1.8fr 1fr 1fr 1fr;
-            gap: 40px;
-            color: white;
-            margin-top: 60px;
-            align-items: start;
-        }
-
-        .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 25px; color: #27f4d2; text-transform: uppercase; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a {
-            color: white;
-            text-decoration: none;
-            opacity: 0.6;
-            transition: 0.3s;
-            font-size: 13px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-        .footer-col ul li a:hover { opacity: 1; color: #27f4d2; padding-left: 5px; }
-
-        .social-icons { display: flex; gap: 20px; }
-        .social-icons a { color: white; text-decoration: none; }
-        .social-icons i { font-size: 22px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
-        .social-icons i:hover { opacity: 1; color: #27f4d2; transform: translateY(-3px); }
-
-        .bottom-bar {
-            background-color: #65001a;
-            padding: 30px 8%;
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            font-size: 12px;
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* --- FOOTER (3 Sütun + Logolar + Kıvrımlı Çizgi) --- */
         footer {
             background-color: rgb(21, 21, 30);
             padding: 60px 8% 60px 8%;
@@ -401,7 +290,6 @@
             padding-bottom: 50px;
             padding-right: 50px;
             margin: 0 auto;
-
             border-bottom: 14px solid #383842;
             border-right: 14px solid #383842;
             border-bottom-right-radius: 50px;
@@ -410,7 +298,7 @@
         .footer-col {
             display: flex;
             flex-direction: column;
-            height: 100%; /* Sütunların aynı yüksekliği kaplaması için */
+            height: 100%;
         }
 
         .footer-col h4 {
@@ -463,7 +351,6 @@
             transform: translateY(-3px);
         }
 
-        /* Logolar ve Hizalama */
         .footer-logo {
             margin-top: auto;
             padding-top: 40px;
@@ -554,16 +441,10 @@
             .social-icons { justify-content: flex-start; }
             .bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
 
-            /* 404 gövdesi */
             .lost { padding: 36px 6% 150px 6%; }
-            .lost-script { font-size: 52px; margin-top: 34px; }
-            .lost-text { font-size: 16px; }
-            .agenda { margin-top: 64px; }
-            .agenda-list { grid-template-columns: 1fr; }
-            .agenda-list .name { font-size: 22px; }
+            .lost-script { font-size: 52px; }
         }
 
-        /* --- SCROLL ANİMASYONU --- */
         html { scroll-behavior: smooth; }
 
         .scroll-reveal {
@@ -615,17 +496,16 @@
     </nav>
 
     <main class="lost">
+        <span class="lost-script">Point of Order</span>
+
         <div class="code">
             <span class="digit" aria-hidden="true">4</span>
-            <canvas id="globe" class="globe" tabindex="0" role="button"
-                    aria-label="Globe. Drag or use the arrow keys to rotate it. Press Enter to search somewhere else."></canvas>
+            <div class="error-image-container">
+                <img src="404.png" alt="404 Graphic">
+            </div>
             <span class="digit" aria-hidden="true">4</span>
         </div>
 
-        <p class="last-seen" id="last-seen" aria-live="polite">Page last seen at 0.00°N, 0.00°E</p>
-        <p class="globe-hint">Drag the globe to look around. Tap it to search somewhere else.</p>
-
-        <span class="lost-script">Point of order</span>
         <h1 class="lost-title"><span class="sr-only">Error 404. </span>This page is not on the agenda</h1>
         <p class="lost-text">
             We couldn't find <code id="path">that page</code>. The link may be mistyped, or the page may have moved.
@@ -635,14 +515,10 @@
             <a href="index.html" class="btn btn-primary">Back to home</a>
             <a href="#" class="btn btn-ghost" id="go-back">Go back</a>
         </div>
-
-        
     </main>
 
     <footer>
         <div class="footer-links-container">
-
-            <!-- SÜTUN 1: CONFERENCE -->
             <div class="footer-col">
                 <h4>CONFERENCE</h4>
                 <ul>
@@ -658,7 +534,6 @@
                 </ul>
             </div>
 
-            <!-- SÜTUN 2: LEGAL & MAVİ ALAN LOGO -->
             <div class="footer-col">
                 <div class="col-content">
                     <h4>LEGAL</h4>
@@ -667,8 +542,6 @@
                         <li><a href="privacy.html">PRIVACY POLICY</a></li>
                     </ul>
                 </div>
-
-                <!-- Rayfelmun Logosu -->
                 <div class="footer-logo">
                     <a href="/">
                         <img src="rayfelmunLogo.png" alt="Rayfelmun Logo">
@@ -676,7 +549,6 @@
                 </div>
             </div>
 
-            <!-- SÜTUN 3: SOCIAL & KIRMIZI ALAN LOGO -->
             <div class="footer-col">
                 <div class="col-content">
                     <h4>SOCIAL</h4>
@@ -686,15 +558,12 @@
                         <a href="https://www.linkedin.com/school/ramazan-yaman-fen-lisesi/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-
-                <!-- Okul Logosu -->
                 <div class="footer-logo">
                     <a href="https://ramazanyamanfenlisesi.meb.k12.tr/" target="_blank" rel="noopener" aria-label="Ramazan Yaman Fen Lisesi">
                         <img src="ryfl-logo.png" alt="Ramazan Yaman Fen Lisesi Logo">
                     </a>
                 </div>
             </div>
-
         </div>
     </footer>
 
@@ -729,194 +598,7 @@
             });
         })();
 
-        /* --- DÖNEN DÜNYA (404'ün ortasındaki sıfır) --- */
-        (function () {
-            const canvas = document.getElementById('globe');
-            const ctx = canvas.getContext('2d');
-            const lastSeen = document.getElementById('last-seen');
-            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            const RAD = Math.PI / 180;
-            const TILT = 20 * RAD, cosT = Math.cos(TILT), sinT = Math.sin(TILT);
-            const AUTO = reduce ? 0 : 7;          // boştayken saniyedeki derece
-            let lon0 = -30, vel = AUTO;             // görüş boylamı ve dönüş hızı
-            let pin = { lat: 0, lon: 0 };           // sayfanın "son görüldüğü" yer
-            let fly = null;                         // yeni aramaya geçiş animasyonu
-            let W = 0, dpr = 1;
-
-            /* Izgara: her 20° boylam ve enlem çizgisi */
-            const lines = [];
-            for (let lon = 0; lon < 360; lon += 20) {
-                const l = [];
-                for (let lat = -90; lat <= 90; lat += 5) l.push([lat, lon]);
-                lines.push(l);
-            }
-            for (let lat = -60; lat <= 60; lat += 20) {
-                const l = [];
-                for (let lon = 0; lon <= 360; lon += 5) l.push([lat, lon]);
-                lines.push(l);
-            }
-
-            function resize() {
-                const r = canvas.getBoundingClientRect();
-                dpr = Math.min(window.devicePixelRatio || 1, 2);
-                W = r.width;
-                canvas.width = Math.round(W * dpr);
-                canvas.height = Math.round(W * dpr);
-            }
-
-            function proj(lat, lon) {
-                const phi = lat * RAD, lam = (lon - lon0) * RAD;
-                const x = Math.cos(phi) * Math.sin(lam);
-                const y = Math.sin(phi);
-                const z = Math.cos(phi) * Math.cos(lam);
-                return [x, y * cosT - z * sinT, y * sinT + z * cosT];
-            }
-
-            function draw(t) {
-                if (!W) return;
-                const c = W / 2, R = c * 0.96;
-                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-                ctx.clearRect(0, 0, W, W);
-
-                const g = ctx.createRadialGradient(c - R * 0.3, c - R * 0.35, R * 0.1, c, c, R);
-                g.addColorStop(0, 'rgba(228, 255, 101, 0.10)');
-                g.addColorStop(1, 'rgba(228, 255, 101, 0.10)');
-                ctx.fillStyle = g;
-                ctx.beginPath();
-                ctx.arc(c, c, R, 0, Math.PI * 2);
-                ctx.fill();
-
-                const front = new Path2D(), back = new Path2D();
-                for (const line of lines) {
-                    let prev = null;
-                    for (const pt of line) {
-                        const p = proj(pt[0], pt[1]);
-                        if (prev) {
-                            const path = (prev[2] + p[2]) / 2 > 0 ? front : back;
-                            path.moveTo(c + prev[0] * R, c - prev[1] * R);
-                            path.lineTo(c + p[0] * R, c - p[1] * R);
-                        }
-                        prev = p;
-                    }
-                }
-                ctx.lineWidth = 1;
-                ctx.strokeStyle = 'rgba(39, 244, 210, 0.10)';
-                ctx.stroke(back);
-                ctx.lineWidth = 1.1;
-                ctx.strokeStyle = 'rgba(3228, 255, 101, 0.9)';
-                ctx.stroke(front);
-
-                ctx.lineWidth = 2;
-                ctx.strokeStyle = 'rgba(228, 255, 101, 0.9)';
-                ctx.beginPath();
-                ctx.arc(c, c, R, 0, Math.PI * 2);
-                ctx.stroke();
-
-                /* Kayıp sayfanın iğnesi */
-                const p = proj(pin.lat, pin.lon);
-                const sx = c + p[0] * R, sy = c - p[1] * R;
-                if (p[2] > 0.02) {
-                    const ph = reduce ? 0.4 : (t / 1500) % 1;
-                    ctx.lineWidth = 2;
-                    ctx.strokeStyle = 'rgba(255, 90, 116, ' + (1 - ph) * 0.8 + ')';
-                    ctx.beginPath();
-                    ctx.arc(sx, sy, 6 + ph * 24, 0, Math.PI * 2);
-                    ctx.stroke();
-                    ctx.fillStyle = '#ff5a74';
-                    ctx.beginPath();
-                    ctx.arc(sx, sy, 6, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.lineWidth = 2;
-                    ctx.strokeStyle = '#ffffff';
-                    ctx.stroke();
-                } else {
-                    ctx.fillStyle = 'rgba(255, 90, 116, 0.25)';
-                    ctx.beginPath();
-                    ctx.arc(sx, sy, 4, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            function fmt(lat, lon) {
-                return Math.abs(lat).toFixed(2) + '°' + (lat >= 0 ? 'N' : 'S') + ', ' +
-                       Math.abs(lon).toFixed(2) + '°' + (lon >= 0 ? 'E' : 'W');
-            }
-
-            function search() {
-                if (fly) return;
-                const lat = -50 + Math.random() * 110;
-                const lon = -180 + Math.random() * 360;
-                lastSeen.textContent = 'Searching…';
-                fly = { from: lon0, diff: ((lon - lon0 + 540) % 360) - 180, start: performance.now(), dur: reduce ? 1 : 1100, lat: lat, lon: lon };
-            }
-
-            /* Sürükleme */
-            let drag = null;
-            canvas.addEventListener('pointerdown', function (e) {
-                if (fly) return;
-                drag = { x: e.clientX, moved: 0, t: performance.now() };
-                canvas.setPointerCapture(e.pointerId);
-            });
-            canvas.addEventListener('pointermove', function (e) {
-                if (!drag) return;
-                const now = performance.now();
-                const dx = e.clientX - drag.x;
-                const dLon = -dx * (140 / Math.max(W, 1));
-                lon0 += dLon;
-                vel = dLon / Math.max((now - drag.t) / 1000, 0.016);
-                vel = Math.max(-240, Math.min(240, vel));
-                drag.moved += Math.abs(dx);
-                drag.x = e.clientX;
-                drag.t = now;
-            });
-            function endDrag() {
-                if (!drag) return;
-                const wasTap = drag.moved < 6;
-                drag = null;
-                if (wasTap) search();
-            }
-            canvas.addEventListener('pointerup', endDrag);
-            canvas.addEventListener('pointercancel', function () { drag = null; });
-
-            /* Klavye */
-            canvas.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); search(); }
-                else if (e.key === 'ArrowLeft')  { lon0 -= 15; e.preventDefault(); }
-                else if (e.key === 'ArrowRight') { lon0 += 15; e.preventDefault(); }
-            });
-
-            let last = performance.now();
-            function frame(now) {
-                const dt = Math.min((now - last) / 1000, 0.05);
-                last = now;
-
-                if (fly) {
-                    const k = Math.min((now - fly.start) / fly.dur, 1);
-                    const ease = 1 - Math.pow(1 - k, 3);
-                    lon0 = fly.from + fly.diff * ease;
-                    if (k === 1) {
-                        pin = { lat: fly.lat, lon: fly.lon };
-                        lastSeen.textContent = 'Page last seen at ' + fmt(pin.lat, pin.lon);
-                        vel = AUTO;
-                        fly = null;
-                    }
-                } else if (!drag) {
-                    vel += (AUTO - vel) * Math.min(1, dt * 2.5);
-                    lon0 += vel * dt;
-                }
-
-                draw(now);
-                requestAnimationFrame(frame);
-            }
-
-            window.addEventListener('resize', resize);
-            if (document.fonts && document.fonts.ready) document.fonts.ready.then(resize);
-            resize();
-            requestAnimationFrame(frame);
-        })();
-
-        /* --- SCROLL ANİMASYONU (navigasyon + footer, orijinaliyle aynı) --- */
+        /* --- SCROLL ANİMASYONU --- */
         document.addEventListener("DOMContentLoaded", function() {
             const revealElements = document.querySelectorAll('nav, .footer-col, .footer-logo, .bottom-bar');
 
@@ -940,7 +622,6 @@
                 threshold: 0.15,
                 rootMargin: "0px"
             });
-
             revealElements.forEach(el => revealObserver.observe(el));
         });
     </script>
